@@ -3,6 +3,8 @@ import "react-tabs/style/react-tabs.css";
 import { PiAirplaneTakeoffLight } from "react-icons/pi";
 import { LiaHotelSolid, LiaGlassMartiniAltSolid } from "react-icons/lia";
 import FlightQuery from "./FlightQuery";
+import HotelQuery from "./HotelQuery";
+import HolidayQuery from "./HolidayQuery";
 
 const Banner = () => {
   return (
@@ -48,10 +50,10 @@ const Banner = () => {
               <FlightQuery></FlightQuery>
             </TabPanel>
             <TabPanel>
-              <h2>Any content 1</h2>
+              <HotelQuery></HotelQuery>
             </TabPanel>
             <TabPanel>
-              <h2>Any content 1</h2>
+              <HolidayQuery></HolidayQuery>
             </TabPanel>
           </Tabs>
         </div>

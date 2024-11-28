@@ -30,7 +30,9 @@ const FlightQuery = () => {
       {/* Inputs */}
       <section className="grid grid-cols-1 lg:grid-cols-5 gap-5 border-2 p-5 rounded-md text-left uppercase">
         <div className="border-r-2 ">
-          <label htmlFor="">From</label>
+          <label htmlFor="" className="font-semibold text-primary">
+            From
+          </label>
           <input
             type="text"
             list="location"
@@ -46,7 +48,9 @@ const FlightQuery = () => {
           </datalist>
         </div>
         <div className="border-r-2">
-          <label htmlFor="">To</label>
+          <label htmlFor="" className="font-semibold text-primary">
+            To
+          </label>
           <input
             type="text"
             list="location"
@@ -56,7 +60,9 @@ const FlightQuery = () => {
         </div>
 
         <div className="border-r-2">
-          <label htmlFor="">Departure</label>
+          <label htmlFor="" className="font-semibold text-primary">
+            Departure
+          </label>
           <DatePicker
             className="focus:outline-none h-12"
             selected={startDate}
@@ -69,7 +75,9 @@ const FlightQuery = () => {
         </div>
 
         <div className="border-r-2">
-          <label htmlFor="">Return</label>
+          <label htmlFor="" className="font-semibold text-primary">
+            Return
+          </label>
           <DatePicker
             className="focus:outline-none h-12"
             selected={startDate}
@@ -82,9 +90,73 @@ const FlightQuery = () => {
         </div>
 
         <div className="">
-          <label htmlFor="">Traveller & Class</label>
-
-          <p className="text-gray-700">1 Traveller All</p>
+          <label htmlFor="" className="font-semibold text-primary">
+            Traveller & Class
+          </label>
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className="">
+              1 Travellers ALL
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-6 w-72  p-2 shadow space-y-5"
+            >
+              <section className="flex justify-between items-center px-1">
+                <p className="font-semibold ">Adult (12+)</p>
+                <div className="flex justify-center items-center gap-5 text-center ">
+                  <button className="rounded-full border-2 w-10 border-secondary">
+                    -
+                  </button>
+                  <p className="rounded-full border-2 w-10 border-secondary">
+                    0
+                  </p>
+                  <button className="rounded-full border-2 w-10 border-secondary">
+                    +
+                  </button>
+                </div>
+              </section>
+              <section className="flex justify-between items-center px-1">
+                <p className="font-semibold ">Child (2-11)</p>
+                <div className="flex justify-center items-center gap-5 text-center ">
+                  <button className="rounded-full border-2 w-10 border-secondary">
+                    -
+                  </button>
+                  <p className="rounded-full border-2 w-10 border-secondary">
+                    0
+                  </p>
+                  <button className="rounded-full border-2 w-10 border-secondary">
+                    +
+                  </button>
+                </div>
+              </section>
+              <section className="flex justify-between items-center px-1">
+                <p className="font-semibold ">Infant (0-2)</p>
+                <div className="flex justify-center items-center gap-5 text-center ">
+                  <button className="rounded-full border-2 w-10 border-secondary">
+                    -
+                  </button>
+                  <p className="rounded-full border-2 w-10 border-secondary">
+                    0
+                  </p>
+                  <button className="rounded-full border-2 w-10 border-secondary">
+                    +
+                  </button>
+                </div>
+              </section>
+              <div className="px-2 font-semibold flex justify-between">
+                <p>Class</p>
+                <select className="border-2 rounded-sm p-1 border-secondary">
+                    <option value="All">All</option>
+                    <option value="Economy">Economy</option>
+                    <option value="Business">Business</option>
+                    <option value="First">First</option>
+                </select>
+              </div>
+              <div className="text-right">
+                <button className="btn btn-sm bg-primary text-white hover:bg-secondary">Done</button>
+              </div>
+            </ul>
+          </div>
         </div>
       </section>
     </div>
