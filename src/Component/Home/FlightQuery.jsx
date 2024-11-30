@@ -12,6 +12,9 @@ const FlightQuery = () => {
   const [child, setChild] = useState(0);
   const [infant, setInfant] = useState(0);
   const [airClass, setAirClass] = useState();
+  let totalpassenger = 0;
+
+  // handle total
 
   // handle change
   const handleChange = (event) => {
@@ -30,12 +33,15 @@ const FlightQuery = () => {
     }
   };
 
+  totalpassenger = adult + child + infant;
+
   // handleSubmit Function
   const handleSubmit = (event) => {
     event.preventDefault();
     const tripType = event.target.tripType.value;
     const journeyFrom = event.target.journeyFrom.value;
     const journeyTo = event.target.journeyTo.value;
+
     console.log(
       tripType,
       journeyFrom,
@@ -86,7 +92,8 @@ const FlightQuery = () => {
               type="text"
               list="location"
               name="journeyFrom"
-              className=" focus:outline-none h-12"
+              placeholder="Dellhi"
+              className=" focus:outline-none h-12 text-lg font-semibold"
             />
             <p className="text-gray-700">Delhi Indira Gandhi Intl</p>
 
@@ -110,8 +117,9 @@ const FlightQuery = () => {
             <input
               type="text"
               list="location"
+              placeholder="Australia"
               name="journeyTo"
-              className=" focus:outline-none h-12"
+              className=" focus:outline-none h-12 font-semibold text-lg"
             />
             <p className="text-gray-700">Chhatrapati Shivaji</p>
           </motion.div>
@@ -126,7 +134,7 @@ const FlightQuery = () => {
               Departure
             </label>
             <DatePicker
-              className="focus:outline-none h-12 text-gray-700"
+              className="focus:outline-none h-12 text-gray-800 font-semibold text-lg"
               selected={departure}
               onChange={(date) => setDepartureDate(date)}
               showDisabledMonthNavigation
@@ -146,7 +154,7 @@ const FlightQuery = () => {
               Return
             </label>
             <DatePicker
-              className="focus:outline-none h-12 text-gray-700"
+              className="focus:outline-none h-12 text-gray-700 font-semibold text-lg"
               selected={returnDate}
               onChange={(date) => setReturnDate(date)}
               showDisabledMonthNavigation
@@ -171,7 +179,7 @@ const FlightQuery = () => {
                 role="button"
                 onClick={() => setToggle(!toggle)}
               >
-                1 Travellers {airClass}
+                {totalpassenger} Travellers {airClass}
               </div>
               <ul
                 className={`bg-base-100 rounded-box z-[1] mt-6 w-72  p-2 shadow space-y-5 ${
@@ -182,6 +190,7 @@ const FlightQuery = () => {
                   <p className="font-semibold ">Adult (12+)</p>
                   <div className="flex justify-center items-center gap-5 text-center ">
                     <p
+                      role="button"
                       onClick={() => handleDecrement(adult, setAdult)}
                       className="rounded-full border-2 w-10 border-secondary"
                     >
@@ -191,6 +200,7 @@ const FlightQuery = () => {
                       {adult}
                     </p>
                     <p
+                      role="button"
                       onClick={() => handleIncrement(adult, setAdult)}
                       className="rounded-full border-2 w-10 border-secondary"
                     >
@@ -202,6 +212,7 @@ const FlightQuery = () => {
                   <p className="font-semibold ">Child (2-11)</p>
                   <div className="flex justify-center items-center gap-5 text-center ">
                     <p
+                      role="button"
                       onClick={() => handleDecrement(child, setChild)}
                       className="rounded-full border-2 w-10 border-secondary"
                     >
@@ -211,6 +222,7 @@ const FlightQuery = () => {
                       {child}
                     </p>
                     <p
+                      role="button"
                       onClick={() => handleIncrement(child, setChild)}
                       className="rounded-full border-2 w-10 border-secondary"
                     >
@@ -222,6 +234,7 @@ const FlightQuery = () => {
                   <p className="font-semibold ">Infant (0-2)</p>
                   <div className="flex justify-center items-center gap-5 text-center ">
                     <p
+                      role="button"
                       onClick={() => handleDecrement(infant, setInfant)}
                       className="rounded-full border-2 w-10 border-secondary"
                     >
@@ -231,6 +244,7 @@ const FlightQuery = () => {
                       {infant}
                     </p>
                     <p
+                      role="button"
                       onClick={() => handleIncrement(infant, setInfant)}
                       className="rounded-full border-2 w-10 border-secondary"
                     >
