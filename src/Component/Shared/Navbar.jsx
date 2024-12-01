@@ -8,7 +8,7 @@ import { Autoplay } from "swiper/modules";
 
 const Navbar = () => {
   return (
-    <section className="fixed top-0 w-full">
+    <section className="fixed top-0 w-full z-20">
       {/* topbar */}
 
       <div className="bg-secondary text-white py-1">
