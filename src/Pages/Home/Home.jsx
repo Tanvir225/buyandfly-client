@@ -1,9 +1,11 @@
 import Banner from "../../Component/Home/Banner";
+import CountryPackageCard from "../../Component/Home/Card/CountryPackageCard";
 import CruiseCard from "../../Component/Home/Card/CruiseCard";
 import PackageCard from "../../Component/Home/Card/PackageCard";
 import PackageCard1 from "../../Component/Home/Card/PackageCard1";
 import VisaCard from "../../Component/Home/Card/VisaCard";
 import Gallery from "../../Component/Home/Gallery";
+import SubscribeSection from "../../Component/Home/SubscribeSection";
 import Title from "../../Component/Shared/Title";
 
 const Home = () => {
@@ -69,6 +71,24 @@ const Home = () => {
             <PackageCard1></PackageCard1>
             <PackageCard1></PackageCard1>
           </div>
+        </section>
+
+        {/* Abu Dabi & Dubai Package */}
+        <section className="space-y-10 my-16">
+          <Title title="Explre Abu Dhabi & Dubai Packages"></Title>
+          
+          <div className="flex flex-col md:flex-row justify-center items-center gap-10">
+          <CountryPackageCard></CountryPackageCard>
+          <CountryPackageCard></CountryPackageCard>
+          <CountryPackageCard></CountryPackageCard>
+          </div>
+        </section>
+
+        {/* subcriber section */}
+        <section className="space-y-5 my-16">
+          <Title title="Get the best deals inyour inbox!" center="center"></Title>
+          <p className="text-center font-semibold">Subscribe us now !</p>
+          <SubscribeSection></SubscribeSection>
         </section>
       </div>
     </section>

@@ -1,8 +1,8 @@
 
 
-const Title = ({title}) => {
+const Title = ({title,center}) => {
     return (
-        <div className="text-xl md:text-4xl text-primary font-semibold">
+        <div className={`text-xl md:text-4xl text-primary font-semibold text-${center}`}>
             {title}
         </div>
     );
