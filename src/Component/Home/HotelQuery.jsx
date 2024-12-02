@@ -23,7 +23,7 @@ const HotelQuery = () => {
           >
             <label htmlFor="" className="font-semibold text-primary">
               Region, City, Area
-            </label><br />
+            </label>
             <input
               type="text"
               placeholder="Region, City, Area"
