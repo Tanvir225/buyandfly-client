@@ -1,11 +1,13 @@
 import Banner from "../../Component/Home/Banner";
 import CountryPackageCard from "../../Component/Home/Card/CountryPackageCard";
 import CruiseCard from "../../Component/Home/Card/CruiseCard";
+import MemoriesSection from "../../Component/Home/Card/MemoriesSection";
 import PackageCard from "../../Component/Home/Card/PackageCard";
 import PackageCard1 from "../../Component/Home/Card/PackageCard1";
 import VisaCard from "../../Component/Home/Card/VisaCard";
 import Gallery from "../../Component/Home/Gallery";
 import SubscribeSection from "../../Component/Home/SubscribeSection";
+import Testimonial from "../../Component/Home/Testimonial";
 import Title from "../../Component/Shared/Title";
 
 const Home = () => {
@@ -15,7 +17,7 @@ const Home = () => {
       <Banner></Banner>
 
       {/* all section into a container */}
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto px-5 lg:px-0">
         {/* best sellers */}
         <section className="md:my-16">
           <Title title="Bestsellers..."></Title>
@@ -76,19 +78,33 @@ const Home = () => {
         {/* Abu Dabi & Dubai Package */}
         <section className="space-y-10 my-16">
           <Title title="Explre Abu Dhabi & Dubai Packages"></Title>
-          
+
           <div className="flex flex-col md:flex-row justify-center items-center gap-10">
-          <CountryPackageCard></CountryPackageCard>
-          <CountryPackageCard></CountryPackageCard>
-          <CountryPackageCard></CountryPackageCard>
+            <CountryPackageCard></CountryPackageCard>
+            <CountryPackageCard></CountryPackageCard>
+            <CountryPackageCard></CountryPackageCard>
           </div>
         </section>
 
         {/* subcriber section */}
         <section className="space-y-5 my-16">
-          <Title title="Get the best deals inyour inbox!" center="center"></Title>
+          <Title
+            title="Get the best deals inyour inbox!"
+            center="center"
+          ></Title>
           <p className="text-center font-semibold">Subscribe us now !</p>
           <SubscribeSection></SubscribeSection>
+        </section>
+
+        {/* memory section */}
+        <section className=" my-16">
+          <MemoriesSection></MemoriesSection>
+        </section>
+
+        {/* review section */}
+        <section className="space-y-5 my-20">
+          <Title title="Our customer speaks" center="center"></Title>
+          <Testimonial reviews={reviews}></Testimonial>
         </section>
       </div>
     </section>
@@ -96,3 +112,25 @@ const Home = () => {
 };
 
 export default Home;
+
+// reviews fake data
+const reviews = [
+  {
+    id: 1,
+    name: "John Doe",
+    place: "Switzerland",
+    review: "Thank you for the quick response and even faster ",
+  },
+  {
+    id: 2,
+    name: "Jam Doe",
+    place: "Dubai",
+    review: "It's just awesome ",
+  },
+  {
+    id: 3,
+    name: "Alex Doe",
+    place: "Paris",
+    review: "I am so happy with the service ",
+  },
+];

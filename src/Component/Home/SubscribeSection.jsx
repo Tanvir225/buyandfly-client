@@ -4,7 +4,7 @@ const SubscribeSection = () => {
   return (
     <div className="text-center flex justify-center items-center gap-5">
       <input
-        className="input input-bordered w-[35%] focus:outline-none"
+        className="input input-bordered w-full lg:w-[35%] focus:outline-none"
         type="text"
         placeholder="email address"
       />
