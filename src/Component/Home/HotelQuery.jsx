@@ -231,8 +231,8 @@ const HotelQuery = () => {
             </div>
           </motion.div>
         </section>
-        <div className="text-center absolute  -mt-5 left-[30%] md:left-[40%] lg:left-[45%]  ">
-          <Button text="Search" width={40}></Button>
+        <div className="text-center absolute  -mt-5 left-[35%] md:left-[40%] lg:left-[45%]  ">
+          <Button text="Search" width={32}></Button>
         </div>
       </form>
     </div>
