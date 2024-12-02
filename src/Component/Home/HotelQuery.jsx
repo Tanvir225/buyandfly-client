@@ -11,7 +11,7 @@ const HotelQuery = () => {
   const [startDate, setStartDate] = useState(new Date());
 
   return (
-    <div className="">
+    <div className="p-2 bg-white rounded-xl rounded-tl-none">
       <form>
         {/* Inputs */}
         <section className="grid grid-cols-1 lg:grid-cols-6 gap-5 p-7 rounded-xl text-left uppercase text-black bg-white rounded-tl-none">
@@ -19,15 +19,15 @@ const HotelQuery = () => {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="border-r-2 "
+            className="border-b-2 lg:border-r-2 lg:border-b-0 "
           >
             <label htmlFor="" className="font-semibold text-primary">
               Region, City, Area
-            </label>
+            </label><br />
             <input
               type="text"
               placeholder="Region, City, Area"
-              className=" focus:outline-none h-12 text-gray-800"
+              className=" focus:outline-none h-12 text-gray-800 w-full"
             />
           </motion.div>
 
@@ -35,11 +35,11 @@ const HotelQuery = () => {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="border-r-2"
+            className="border-b-2 lg:border-r-2 lg:border-b-0"
           >
             <label htmlFor="" className="font-semibold text-primary">
               Check-in
-            </label>
+            </label> <br />
             <DatePicker
               className="focus:outline-none h-12"
               selected={startDate}
@@ -55,11 +55,11 @@ const HotelQuery = () => {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="border-r-2"
+            className="border-b-2 lg:border-r-2 lg:border-b-0"
           >
             <label htmlFor="" className="font-semibold text-primary">
               Check-out
-            </label>
+            </label> <br />
             <DatePicker
               className="focus:outline-none h-12"
               selected={startDate}
@@ -75,7 +75,7 @@ const HotelQuery = () => {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="border-r-2"
+            className="border-b-2 lg:border-r-2 lg:border-b-0"
           >
             <label htmlFor="" className="font-semibold text-primary">
               Nights
@@ -87,7 +87,7 @@ const HotelQuery = () => {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
-            className="border-r-2"
+            className="border-b-2 lg:border-r-2 lg:border-b-0 pb-2"
           >
             <label htmlFor="" className="font-semibold text-primary">
               Nationality
