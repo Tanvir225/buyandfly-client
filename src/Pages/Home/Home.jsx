@@ -1,11 +1,12 @@
 import Banner from "../../Component/Home/Banner";
 import CountryPackageCard from "../../Component/Home/Card/CountryPackageCard";
 import CruiseCard from "../../Component/Home/Card/CruiseCard";
-import MemoriesSection from "../../Component/Home/Card/MemoriesSection";
+
 import PackageCard from "../../Component/Home/Card/PackageCard";
 import PackageCard1 from "../../Component/Home/Card/PackageCard1";
 import VisaCard from "../../Component/Home/Card/VisaCard";
 import Gallery from "../../Component/Home/Gallery";
+import MemoriesSection from "../../Component/Home/MemoriesSection";
 import SubscribeSection from "../../Component/Home/SubscribeSection";
 import Testimonial from "../../Component/Home/Testimonial";
 import Title from "../../Component/Shared/Title";
