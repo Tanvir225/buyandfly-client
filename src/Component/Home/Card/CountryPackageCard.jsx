@@ -15,7 +15,7 @@ const CountryPackageCard = () => {
         <p className="text-gray-900 font-semibold text-sm">Dubai 3 nights</p>
         <div className="space-y-3">
           <div className="border-t-2 border-secondary w-1/2 mx-auto"></div>
-          <Button text="Explore Trip" ></Button>
+          <Button text="Explore Trip"></Button>
         </div>
       </div>
     </div>

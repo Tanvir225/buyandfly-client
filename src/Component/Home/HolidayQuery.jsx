@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import Button from "../Shared/Button";
 
 const HolidayQuery = () => {
   return (
@@ -26,13 +27,8 @@ const HolidayQuery = () => {
           </button>
         </motion.div>
 
-        <div className="text-center absolute mt-16 left-1/2 ">
-          <button
-            type="submit"
-            className="btn btn-outline text-white w-40  bg-gradient-to-r from-primary to-secondary hover:bg-gradient-to-t hover:from-secondary hover:to-primary "
-          >
-            search
-          </button>
+        <div className="text-center absolute  mt-16 left-[30%] md:left-[40%] lg:left-[45%]  ">
+          <Button text="Search" width={40}></Button>
         </div>
       </form>
     </div>

@@ -12,7 +12,7 @@ const PackageCard1 = () => {
         />
       </div>
       {/* profile name & des */}
-      <div className="md:px-4">
+      <div className="px-4">
         <h1 className="text-lg md:text-xl font-semibold text-primary">
           Scenic SwizerLand
         </h1>

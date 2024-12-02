@@ -49,7 +49,7 @@ const BannerNew = () => {
                 </Tab>
               ))}
             </Tab.List>
-            <Tab.Panels className="">
+            <Tab.Panels className="pb-10">
               {tabContent.map((Component, index) => (
                 <Tab.Panel key={index} className="">
                   <motion.div

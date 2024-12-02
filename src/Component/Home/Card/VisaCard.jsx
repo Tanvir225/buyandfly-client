@@ -3,7 +3,7 @@ import cruise from "../../../assets/cruise.jpg";
 
 const VisaCard = () => {
   return (
-    <div className="card  w-96 space-y-3 group">
+    <div className="card   space-y-3 group">
       <figure>
         <img src={bali} alt="visa" className="group-hover:scale-110 duration-300 delay-100" />
       </figure>

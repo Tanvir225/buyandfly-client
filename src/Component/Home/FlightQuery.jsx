@@ -60,9 +60,9 @@ const FlightQuery = () => {
     <div className="p-5 bg-white rounded-xl rounded-tl-none">
       <form onSubmit={handleSubmit}>
         {/* Radio Buttons */}
-        <section className="flex items-center justify-between gap-10 text-primary">
-          <div className="flex space-x-4 mb-4">
-            <label className="flex items-center space-x-2 cursor-pointer">
+        <section className="flex flex-col md:flex-row justify-between  gap-5 lg:gap-10 text-primary">
+          <div className="flex space-x-4 md:mb-4">
+            <label className="flex items-center  space-x-2 cursor-pointer">
               <input type="radio" name="tripType" className="radio" />
               <span>Oneway</span>
             </label>
@@ -79,16 +79,16 @@ const FlightQuery = () => {
         </section>
 
         {/* Inputs */}
-        <section className="grid grid-cols-1 lg:grid-cols-5 gap-5 border-2 p-5 rounded-md text-left uppercase text-primary">
+        <section className="grid grid-cols-1 lg:grid-cols-5 gap-5 border-2 p-5 mt-2 rounded-md text-left uppercase text-primary">
           <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="border-r-2 "
+            className="border-b-2 lg:border-r-2 lg:border-b-0"
           >
             <label htmlFor="" className="font-semibold text-primary">
               From
-            </label>
+            </label> <br />
             <input
               type="text"
               list="location"
@@ -110,11 +110,11 @@ const FlightQuery = () => {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.25 }}
-            className="border-r-2"
+            className="border-b-2 lg:border-r-2 lg:border-b-0"
           >
             <label htmlFor="" className="font-semibold text-primary">
               To
-            </label>
+            </label> <br />
             <input
               type="text"
               list="location"
@@ -129,11 +129,11 @@ const FlightQuery = () => {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="border-r-2"
+            className="border-b-2 lg:border-r-2 lg:border-b-0"
           >
             <label htmlFor="" className="font-semibold text-primary">
               Departure
-            </label>
+            </label> <br />
             <DatePicker
               className="focus:outline-none h-12 text-gray-800 font-semibold text-lg"
               selected={departure}
@@ -149,11 +149,11 @@ const FlightQuery = () => {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.75 }}
-            className="border-r-2"
+            className="border-b-2 lg:border-r-2 lg:border-b-0"
           >
             <label htmlFor="" className="font-semibold text-primary">
               Return
-            </label>
+            </label><br />
             <DatePicker
               className="focus:outline-none h-12 text-gray-700 font-semibold text-lg"
               selected={returnDate}
@@ -173,7 +173,7 @@ const FlightQuery = () => {
           >
             <label htmlFor="" className="font-semibold text-primary ">
               Traveller & Class
-            </label>
+            </label><br />
             <div className="dropdown text-gray-700">
               <div
                 className=""
@@ -278,8 +278,8 @@ const FlightQuery = () => {
             </div>
           </motion.div>
         </section>
-        <div className="text-center absolute  mt-2 left-1/2 ">
-         <Button text="Search" width={32} ></Button>
+        <div className="text-center absolute  mt-2 left-[30%] md:left-[40%] lg:left-[45%]  ">
+         <Button text="Search" width={40} ></Button>
         </div>
       </form>
     </div>
