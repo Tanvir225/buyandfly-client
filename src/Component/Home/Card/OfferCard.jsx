@@ -23,8 +23,8 @@ const OfferCard = () => {
       <Swiper
         slidesPerView={isSmallScreen ? 1 : 3}
         autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
+          delay: 3000,
+          disableOnInteraction: true,
         }}
         spaceBetween={20}
         modules={[Pagination, Autoplay]}

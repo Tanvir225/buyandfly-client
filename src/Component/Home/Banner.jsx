@@ -3,19 +3,27 @@ import { motion } from "framer-motion";
 
 import { PiAirplaneTakeoffLight } from "react-icons/pi";
 import { LiaHotelSolid, LiaGlassMartiniAltSolid } from "react-icons/lia";
+import { IoIdCardOutline } from "react-icons/io5";
 
 import FlightQuery from "./FlightQuery";
 import HotelQuery from "./HotelQuery";
 import HolidayQuery from "./HolidayQuery";
+import VisaQuery from "./VisaQuery";
 
 const BannerNew = () => {
   const tabList = [
     { label: "Flights", icon: PiAirplaneTakeoffLight },
     { label: "Hotels", icon: LiaHotelSolid },
     { label: "Holiday", icon: LiaGlassMartiniAltSolid },
+    { label: "Visa", icon: IoIdCardOutline },
   ];
 
-  const tabContent = [<FlightQuery />, <HotelQuery />, <HolidayQuery />];
+  const tabContent = [
+    <FlightQuery />,
+    <HotelQuery />,
+    <HolidayQuery />,
+    <VisaQuery />,
+  ];
 
   return (
     <div
