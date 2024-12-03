@@ -1,6 +1,7 @@
 import Banner from "../../Component/Home/Banner";
 import CountryPackageCard from "../../Component/Home/Card/CountryPackageCard";
 import CruiseCard from "../../Component/Home/Card/CruiseCard";
+import OfferCard from "../../Component/Home/Card/OfferCard";
 
 import PackageCard from "../../Component/Home/Card/PackageCard";
 import PackageCard1 from "../../Component/Home/Card/PackageCard1";
@@ -19,8 +20,15 @@ const Home = () => {
 
       {/* all section into a container */}
       <div className="max-w-6xl mx-auto px-5 lg:px-0">
+
+        {/* exclusive Offer */}
+        <section className="space-y-5 my-16">
+          <Title title="Exclusive Offers"/>
+          <OfferCard></OfferCard>
+        </section>
+
         {/* best sellers */}
-        <section className="md:my-16">
+        <section className="my-16">
           <Title title="Bestsellers..."></Title>
           <Gallery></Gallery>
         </section>
