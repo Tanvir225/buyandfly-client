@@ -17,7 +17,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 import Button from "../../Shared/Button";
 
 const OfferCard = () => {
-  const isSmallScreen = window.innerWidth <= 768;
+  const isSmallScreen = window.innerWidth < 1024;
   return (
     <div>
       <Swiper

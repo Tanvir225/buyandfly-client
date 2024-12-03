@@ -19,7 +19,7 @@ const Home = () => {
       <Banner></Banner>
 
       {/* all section into a container */}
-      <div className="max-w-6xl mx-auto px-5 lg:px-0">
+      <div className="max-w-6xl mx-auto px-5 lg:px-2">
 
         {/* exclusive Offer */}
         <section className="space-y-5 my-16">
