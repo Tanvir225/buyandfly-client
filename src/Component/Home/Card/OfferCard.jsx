@@ -53,7 +53,7 @@ const OfferCard = () => {
             <img
               src={bkash}
               alt="Sample"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-fill"
             />
             {/* Full Overlay */}
             <div className="absolute inset-0 space-y-2 bg-black/70 text-white flex flex-col items-center justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
@@ -76,7 +76,7 @@ const OfferCard = () => {
             <img
               src={singapore}
               alt="Sample"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-fill"
             />
             {/* Full Overlay */}
             <div className="absolute inset-0 space-y-2 bg-black/70 text-white flex flex-col items-center justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
@@ -99,7 +99,7 @@ const OfferCard = () => {
             <img
               src={brack}
               alt="Sample"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-fill"
             />
             {/* Full Overlay */}
             <div className="absolute inset-0 space-y-2 bg-black/70 text-white flex flex-col items-center justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
@@ -122,7 +122,7 @@ const OfferCard = () => {
             <img
               src={umrah}
               alt="Sample"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-fill"
             />
             {/* Full Overlay */}
             <div className="absolute inset-0 space-y-2 bg-black/70 text-white flex flex-col items-center justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
@@ -146,7 +146,7 @@ const OfferCard = () => {
             <img
               src={health}
               alt="Sample"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-fill"
             />
             {/* Full Overlay */}
             <div className="absolute inset-0 space-y-2 bg-black/70 text-white flex flex-col items-center justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
@@ -169,7 +169,7 @@ const OfferCard = () => {
             <img
               src={enjoy}
               alt="Sample"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-fill"
             />
             {/* Full Overlay */}
             <div className="absolute inset-0 space-y-2 bg-black/70 text-white flex flex-col items-center justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
