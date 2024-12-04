@@ -40,7 +40,7 @@ const VisaQuery = () => {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="border-b-2 lg:border-r-2 lg:border-b-0 "
+            className="space-y-2 "
           >
             <label htmlFor="" className="font-semibold text-primary">
               Flying Form Airport / City
@@ -48,8 +48,8 @@ const VisaQuery = () => {
             <input
               type="text"
               list="location"
-              placeholder="Airport / City"
-              className="  focus:outline-none h-12 text-gray-800 w-full"
+              placeholder="TH | Thailand"
+              className="input-bordered input  focus:outline-none h-12 text-gray-800 w-full"
             />
 
             <datalist id="location" className="">
@@ -63,13 +63,14 @@ const VisaQuery = () => {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="border-b-2 lg:border-r-2 lg:border-b-0 "
+            className="space-y-2"
           >
             <label htmlFor="" className="font-semibold text-primary">
               Select Date
-            </label> <br />
+            </label>{" "}
+            <br />
             <DatePicker
-              className="focus:outline-none h-12 text-lg font-semibold text-gray-600"
+              className="input input-bordered focus:outline-none h-12 text-lg font-semibold text-gray-600"
               onChange={onChange}
               startDate={startDate}
               selectsRange
@@ -80,7 +81,7 @@ const VisaQuery = () => {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="border-b-2 lg:border-r-2 lg:border-b-0 "
+            className="space-y-2"
           >
             <label htmlFor="" className="font-semibold text-primary">
               End Date
@@ -88,7 +89,7 @@ const VisaQuery = () => {
             <br />
             <DatePicker
               disabled
-              className="focus:outline-none h-12 bg-transparent text-lg font-semibold text-gray-600"
+              className=" input input-bordered focus:outline-none h-12 bg-transparent text-lg font-semibold text-gray-600"
               endDate={endDate}
               selected={endDate ? endDate : startDate}
             />
@@ -98,15 +99,15 @@ const VisaQuery = () => {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 1 }}
-      
+            className="space-y-2"
           >
             <label htmlFor="" className="font-semibold text-primary ">
               Traveller
             </label>
             <br />
-            <div className="dropdown text-gray-700">
+            <div className="dropdown text-gray-700 ">
               <div
-                className=""
+                className="input input-bordered flex  items-center w-64"
                 role="button"
                 onClick={() => setToggle(!toggle)}
               >

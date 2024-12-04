@@ -15,16 +15,28 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
 import Button from "../../Shared/Button";
+import { useRef } from "react";
 
 const OfferCard = () => {
+  const swiperRef = useRef(null); // Ref to access Swiper instance
+
+  const handleMouseEnter = () => {
+    swiperRef.current?.autoplay.stop(); // Stop autoplay on hover
+  };
+
+  const handleMouseLeave = () => {
+    swiperRef.current?.autoplay.start(); // Restart autoplay on mouse leave
+  };
+
   const isSmallScreen = window.innerWidth < 1024;
   return (
     <div>
       <Swiper
+        onSwiper={(swiper) => (swiperRef.current = swiper)} // Assign Swiper instance to ref
         slidesPerView={isSmallScreen ? 1 : 3}
         autoplay={{
           delay: 3000,
-          disableOnInteraction: true,
+          disableOnInteraction: false,
         }}
         spaceBetween={20}
         modules={[Pagination, Autoplay]}
@@ -32,7 +44,11 @@ const OfferCard = () => {
         pagination={{ clickable: true }}
       >
         <SwiperSlide>
-          <div className="relative group  h-52 overflow-hidden rounded-lg shadow-lg">
+          <div
+            className="relative group  h-52 overflow-hidden rounded-lg shadow-lg mb-14"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             {/* Image */}
             <img
               src={bkash}
@@ -51,7 +67,11 @@ const OfferCard = () => {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="relative group  h-52 overflow-hidden rounded-lg shadow-lg">
+          <div
+            className="relative group  h-52 overflow-hidden rounded-lg shadow-lg mb-14"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             {/* Image */}
             <img
               src={singapore}
@@ -70,7 +90,11 @@ const OfferCard = () => {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="relative group  h-52 overflow-hidden rounded-lg shadow-lg">
+          <div
+            className="relative group  h-52 overflow-hidden rounded-lg shadow-lg mb-14"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             {/* Image */}
             <img
               src={brack}
@@ -89,7 +113,11 @@ const OfferCard = () => {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="relative group  h-52 overflow-hidden rounded-lg shadow-lg">
+          <div
+            className="relative group  h-52 overflow-hidden rounded-lg shadow-lg mb-14"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             {/* Image */}
             <img
               src={umrah}
@@ -109,7 +137,11 @@ const OfferCard = () => {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="relative group  h-52 overflow-hidden rounded-lg shadow-lg">
+          <div
+            className="relative group  h-52 overflow-hidden rounded-lg shadow-lg mb-14"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             {/* Image */}
             <img
               src={health}
@@ -128,7 +160,11 @@ const OfferCard = () => {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="relative group  h-52 overflow-hidden rounded-lg shadow-lg">
+          <div
+            className="relative group  h-52 overflow-hidden rounded-lg shadow-lg mb-14"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             {/* Image */}
             <img
               src={enjoy}
