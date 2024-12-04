@@ -88,16 +88,16 @@ const FlightQuery = () => {
           >
             <label htmlFor="" className="font-semibold text-primary">
               From
-            </label> <br />
+            </label>{" "}
+            <br />
             <input
               type="text"
               list="location"
               name="journeyFrom"
               placeholder="Dellhi"
-              className=" focus:outline-none h-12 text-lg font-semibold"
+              className=" focus:outline-none h-12  font-semibold"
             />
             <p className="text-gray-700">Delhi Indira Gandhi Intl</p>
-
             <datalist id="location" className="">
               <option value="✈️ Delhi"></option>
               <option value="✈️ Mumbai"></option>
@@ -114,13 +114,14 @@ const FlightQuery = () => {
           >
             <label htmlFor="" className="font-semibold text-primary">
               To
-            </label> <br />
+            </label>{" "}
+            <br />
             <input
               type="text"
               list="location"
               placeholder="Australia"
               name="journeyTo"
-              className=" focus:outline-none h-12 font-semibold text-lg"
+              className=" focus:outline-none h-12 font-semibold "
             />
             <p className="text-gray-700">Chhatrapati Shivaji</p>
           </motion.div>
@@ -133,9 +134,10 @@ const FlightQuery = () => {
           >
             <label htmlFor="" className="font-semibold text-primary">
               Departure
-            </label> <br />
+            </label>{" "}
+            <br />
             <DatePicker
-              className="focus:outline-none h-12 text-gray-800 font-semibold text-lg"
+              className="focus:outline-none h-12 text-gray-800 font-semibold "
               selected={departure}
               onChange={(date) => setDepartureDate(date)}
               showDisabledMonthNavigation
@@ -153,9 +155,10 @@ const FlightQuery = () => {
           >
             <label htmlFor="" className="font-semibold text-primary">
               Return
-            </label><br />
+            </label>
+            <br />
             <DatePicker
-              className="focus:outline-none h-12 text-gray-700 font-semibold text-lg"
+              className="focus:outline-none h-12 text-gray-700 font-semibold "
               selected={returnDate}
               onChange={(date) => setReturnDate(date)}
               showDisabledMonthNavigation
@@ -173,7 +176,8 @@ const FlightQuery = () => {
           >
             <label htmlFor="" className="font-semibold text-primary ">
               Traveller & Class
-            </label><br />
+            </label>
+            <br />
             <div className="dropdown text-gray-700">
               <div
                 className=""
@@ -278,8 +282,21 @@ const FlightQuery = () => {
             </div>
           </motion.div>
         </section>
+
+        {/* fare section */}
+        <section className="flex space-x-4 md:mb-4 text-gray-700 my-5 font-semibold">
+          <label className="flex items-center  space-x-2 cursor-pointer">
+            <input type="radio" name="fare" className="radio" />
+            <span>Regular Fare</span>
+          </label>
+          <label className="flex items-center space-x-2 cursor-pointer">
+            <input type="radio" name="fare" className="radio" />
+            <span>Student Fare</span>
+          </label>
+        </section>
+
         <div className="text-center absolute  mt-2 left-[35%] md:left-[40%] lg:left-[45%]  ">
-         <Button text="Search" width={32} ></Button>
+          <Button text="Search" width={32}></Button>
         </div>
       </form>
     </div>

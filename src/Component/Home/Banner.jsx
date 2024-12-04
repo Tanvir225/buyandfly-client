@@ -52,8 +52,8 @@ const BannerNew = () => {
                   }`
                   }
                 >
-                  <Icon size={25} color="purple" />{" "}
-                  <span className="text-lg font-semibold">{label}</span>
+                  <Icon size={24} color="purple" />{" "}
+                  <span className=" font-semibold">{label}</span>
                 </Tab>
               ))}
             </Tab.List>

@@ -70,7 +70,7 @@ const VisaQuery = () => {
             </label>{" "}
             <br />
             <DatePicker
-              className="input input-bordered focus:outline-none h-12 text-lg font-semibold text-gray-600"
+              className="input input-bordered focus:outline-none h-12  font-semibold text-gray-600"
               onChange={onChange}
               startDate={startDate}
               selectsRange
@@ -89,7 +89,7 @@ const VisaQuery = () => {
             <br />
             <DatePicker
               disabled
-              className=" input input-bordered focus:outline-none h-12 bg-transparent text-lg font-semibold text-gray-600"
+              className=" input input-bordered focus:outline-none h-12 bg-transparent  font-semibold text-gray-600"
               endDate={endDate}
               selected={endDate ? endDate : startDate}
             />
