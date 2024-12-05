@@ -12,7 +12,26 @@ import SubscribeSection from "../../Component/Home/SubscribeSection";
 import Testimonial from "../../Component/Home/Testimonial";
 import Title from "../../Component/Shared/Title";
 
+import brack from "../../assets/brack_Offer.png";
+import bkash from "../../assets/bkash_offer.png";
+import enjoy from "../../assets/enjoy_offer.png";
+import umrah from "../../assets/umrah_Offer.png";
+import health from "../../assets/health_Offer.png";
+import singapore from "../../assets/singapre_Offer.png";
+import notice1 from "../../assets/notice1.jpeg";
+import notice2 from "../../assets/notice2.jpeg";
+import notice3 from "../../assets/notice3.jpeg";
+import Summary from "../../Component/Home/Summary";
+import MemberPartner from "../../Component/Home/MemberPartner";
+
 const Home = () => {
+  const date = new Date();
+  const today = new Intl.DateTimeFormat("en-GB", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  }).format(date);
+
   return (
     <section>
       {/* banner */}
@@ -20,11 +39,17 @@ const Home = () => {
 
       {/* all section into a container */}
       <div className="max-w-6xl mx-auto px-5 lg:px-2">
-
         {/* exclusive Offer */}
         <section className="space-y-5 my-16">
-          <Title title="Exclusive Offers"/>
-          <OfferCard></OfferCard>
+          <Title title="Exclusive Offers" />
+          <OfferCard
+            slider1={brack}
+            slider2={bkash}
+            slider3={enjoy}
+            slider4={umrah}
+            slider5={health}
+            slider6={singapore}
+          ></OfferCard>
         </section>
 
         {/* best sellers */}
@@ -110,6 +135,30 @@ const Home = () => {
           <MemoriesSection></MemoriesSection>
         </section>
 
+        {/* notice */}
+        <section className="space-y-5 my-16">
+          <Title title="Notice"></Title>
+          <OfferCard
+            slider1={notice1}
+            slider2={notice2}
+            slider3={notice3}
+            slider4={umrah}
+            slider5={brack}
+            slider6={bkash}
+          ></OfferCard>
+        </section>
+
+        {/* Today's Summmary */}
+        <section className="space-y-5 my-16">
+          <Title title={`Today's Summary | ${today}`} size="md"></Title>
+          <Summary></Summary>
+        </section>
+
+        {/* member & partners */}
+
+        <section className="space-y-5 my-16 ">
+          <MemberPartner></MemberPartner>
+        </section>
         {/* review section */}
         <section className="space-y-5 my-20">
           <Title title="Our customer speaks" center="center"></Title>

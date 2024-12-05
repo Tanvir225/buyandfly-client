@@ -1,11 +1,5 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import brack from "../../../assets/brack_Offer.png";
-import bkash from "../../../assets/bkash_offer.png";
-import enjoy from "../../../assets/enjoy_offer.png";
-import umrah from "../../../assets/umrah_Offer.png";
-import health from "../../../assets/health_Offer.png";
-import singapore from "../../../assets/singapre_Offer.png";
 
 // Import Swiper styles
 import "swiper/css";
@@ -17,7 +11,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 import Button from "../../Shared/Button";
 import { useRef } from "react";
 
-const OfferCard = () => {
+const OfferCard = ({slider1,slider2,slider3,slider4,slider5,slider6}) => {
   const swiperRef = useRef(null); // Ref to access Swiper instance
 
   const handleMouseEnter = () => {
@@ -51,7 +45,7 @@ const OfferCard = () => {
           >
             {/* Image */}
             <img
-              src={bkash}
+              src={slider1}
               alt="Sample"
               className="w-full h-full object-fill"
             />
@@ -74,7 +68,7 @@ const OfferCard = () => {
           >
             {/* Image */}
             <img
-              src={singapore}
+              src={slider2}
               alt="Sample"
               className="w-full h-full object-fill"
             />
@@ -97,7 +91,7 @@ const OfferCard = () => {
           >
             {/* Image */}
             <img
-              src={brack}
+              src={slider3}
               alt="Sample"
               className="w-full h-full object-fill"
             />
@@ -120,7 +114,7 @@ const OfferCard = () => {
           >
             {/* Image */}
             <img
-              src={umrah}
+              src={slider4}
               alt="Sample"
               className="w-full h-full object-fill"
             />
@@ -144,7 +138,7 @@ const OfferCard = () => {
           >
             {/* Image */}
             <img
-              src={health}
+              src={slider5}
               alt="Sample"
               className="w-full h-full object-fill"
             />
@@ -167,7 +161,7 @@ const OfferCard = () => {
           >
             {/* Image */}
             <img
-              src={enjoy}
+              src={slider6}
               alt="Sample"
               className="w-full h-full object-fill"
             />
