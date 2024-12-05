@@ -156,7 +156,7 @@ const Home = () => {
 
         {/* member & partners */}
 
-        <section className="space-y-5 my-16 ">
+        <section className="space-y-5 my-16 lg:w-[1170px]">
           <MemberPartner></MemberPartner>
         </section>
         {/* review section */}

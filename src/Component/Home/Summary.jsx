@@ -5,7 +5,7 @@ const Summary = () => {
   return (
     <div className="flex flex-col md:flex-row gap-5 w-full">
       {/* flight */}
-      <section className="flex gap-8 md:gap-16 bg-base-100 shadow-md p-5 rounded-lg font-semibold text-lg w-full">
+      <section className="flex gap-5 md:gap-16 bg-base-100 shadow-md p-5 rounded-lg font-semibold text-lg w-full">
         <div className="flex items-center gap-3">
           <PiAirplaneTakeoffLight
             size={40}
@@ -32,7 +32,7 @@ const Summary = () => {
       </section>
 
       {/* hotes */}
-      <section className="flex gap-8 md:gap-16 bg-base-100 shadow-md p-5 rounded-lg font-semibold text-lg w-full">
+      <section className="flex gap-5 md:gap-16 bg-base-100 shadow-md p-5 rounded-lg font-semibold text-lg w-full">
         <div className="flex items-center gap-3">
           <LiaHotelSolid
             size={40}
