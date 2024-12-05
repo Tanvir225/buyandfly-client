@@ -5,7 +5,7 @@ import { PiYoutubeLogoLight } from "react-icons/pi";
 const Footer = () => {
   return (
     <footer
-      className="hero md:h-[120vh] object-cover bg-transparent md:-mt-48"
+      className="hero md:h-[110vh] object-cover bg-transparent md:-mt-28"
       style={{
         backgroundImage: `url(${footerImage})`,
      
@@ -17,7 +17,7 @@ const Footer = () => {
          
         }}
       >
-        <section className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-10 justify-between py-36 px-5  ">
+        <section className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-10 justify-between py-28 px-5  ">
           <div className="space-y-5">
             <div className="w-32">
               <img src={logo} alt="logo" />

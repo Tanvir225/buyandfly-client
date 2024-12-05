@@ -21,7 +21,7 @@ import singapore from "../../assets/singapre_Offer.png";
 import notice1 from "../../assets/notice1.jpeg";
 import notice2 from "../../assets/notice2.jpeg";
 import notice3 from "../../assets/notice3.jpeg";
-import bg from "../../assets/bg.png";
+import bg from "../../assets/bg1.png";
 import Summary from "../../Component/Home/Summary";
 import MemberPartner from "../../Component/Home/MemberPartner";
 import Button from "../../Component/Shared/Button";
@@ -150,6 +150,12 @@ const Home = () => {
           ></OfferCard>
         </section>
 
+        {/* review section */}
+        <section className="space-y-5 my-20">
+          <Title title="Our customer speaks" center="center"></Title>
+          <Testimonial reviews={reviews}></Testimonial>
+        </section>
+
         {/* Today's Summmary */}
         <section className="space-y-5 my-16">
           <Title title={`Today's Summary | ${today}`} size="md"></Title>
@@ -161,15 +167,10 @@ const Home = () => {
         <section className="space-y-5 my-16 w-full xl:w-[1170px]">
           <MemberPartner></MemberPartner>
         </section>
-        {/* review section */}
-        <section className="space-y-5 my-20">
-          <Title title="Our customer speaks" center="center"></Title>
-          <Testimonial reviews={reviews}></Testimonial>
-        </section>
       </div>
       {/*  */}
       <section
-        className="hero hidden lg:h-[100vh] relative   lg:flex justify-center  "
+        className="hero hidden lg:h-[55vh] relative   lg:flex justify-center  "
         style={{
           backgroundImage: `url(${bg})`,
         }}
