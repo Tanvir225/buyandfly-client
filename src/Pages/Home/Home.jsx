@@ -137,14 +137,16 @@ const Home = () => {
           <MemoriesSection></MemoriesSection>
         </section>
 
+    
+
         {/* review section */}
         <section className="space-y-5 my-20">
           <Title title="Our customer speaks" center="center"></Title>
           <Testimonial reviews={reviews}></Testimonial>
         </section>
 
-        {/* notice */}
-        <section className="space-y-5 my-16">
+            {/* notice */}
+            <section className="space-y-5 my-16">
           <Title title="Notice"></Title>
           <OfferCard
             slider1={notice1}
@@ -170,7 +172,7 @@ const Home = () => {
       </div>
       {/*  */}
       <section
-        className="hero hidden lg:h-[55vh] relative   lg:flex justify-center  "
+        className="hero hidden lg:h-[50vh] relative   lg:flex justify-center  "
         style={{
           backgroundImage: `url(${bg})`,
         }}
