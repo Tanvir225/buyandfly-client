@@ -5,20 +5,19 @@ import { PiYoutubeLogoLight } from "react-icons/pi";
 const Footer = () => {
   return (
     <footer
-      className="hero h-full object-cover "
+      className="hero md:h-[120vh] object-cover bg-transparent md:-mt-48"
       style={{
         backgroundImage: `url(${footerImage})`,
-        borderRadius: "90px 90px 0 0",
-        borderTop: "5px solid tomato",
+     
       }}
     >
       <div
         className="hero-overlay bg-opacity-80 bg-[#FAFAFA]"
         style={{
-          borderRadius: "90px 90px 0 0",
+         
         }}
       >
-        <section className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-10 justify-between py-16 px-5  ">
+        <section className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-10 justify-between py-36 px-5  ">
           <div className="space-y-5">
             <div className="w-32">
               <img src={logo} alt="logo" />

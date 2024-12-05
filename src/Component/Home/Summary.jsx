@@ -3,7 +3,7 @@ import { LiaHotelSolid } from "react-icons/lia";
 
 const Summary = () => {
   return (
-    <div className="flex flex-col md:flex-row gap-5 w-full">
+    <div className="flex flex-col xl:flex-row gap-5 w-full">
       {/* flight */}
       <section className="flex gap-5 md:gap-16 bg-base-100 shadow-md p-5 rounded-lg font-semibold text-lg w-full">
         <div className="flex items-center gap-3">

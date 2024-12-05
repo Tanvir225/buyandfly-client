@@ -21,8 +21,10 @@ import singapore from "../../assets/singapre_Offer.png";
 import notice1 from "../../assets/notice1.jpeg";
 import notice2 from "../../assets/notice2.jpeg";
 import notice3 from "../../assets/notice3.jpeg";
+import bg from "../../assets/bg.png";
 import Summary from "../../Component/Home/Summary";
 import MemberPartner from "../../Component/Home/MemberPartner";
+import Button from "../../Component/Shared/Button";
 
 const Home = () => {
   const date = new Date();
@@ -156,7 +158,7 @@ const Home = () => {
 
         {/* member & partners */}
 
-        <section className="space-y-5 my-16 lg:w-[1170px]">
+        <section className="space-y-5 my-16 w-full xl:w-[1170px]">
           <MemberPartner></MemberPartner>
         </section>
         {/* review section */}
@@ -165,6 +167,26 @@ const Home = () => {
           <Testimonial reviews={reviews}></Testimonial>
         </section>
       </div>
+      {/*  */}
+      <section
+        className="hero hidden lg:h-[100vh] relative   lg:flex justify-center  "
+        style={{
+          backgroundImage: `url(${bg})`,
+        }}
+      >
+        <div className="flex gap-16 justify-between mb-20">
+          <div className="text-white">
+            <h1 className="text-2xl font-semibold">Join Biman Loyalty Club</h1>
+            <p className="text-lg">
+              Enjoy the rewards of membership, earn miles, and get access to
+              special offers.
+            </p>
+          </div>
+          <div>
+            <Button text="Become a Loyality Club Member"></Button>
+          </div>
+        </div>
+      </section>
     </section>
   );
 };
