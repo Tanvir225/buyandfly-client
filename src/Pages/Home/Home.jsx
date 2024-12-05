@@ -137,6 +137,12 @@ const Home = () => {
           <MemoriesSection></MemoriesSection>
         </section>
 
+        {/* review section */}
+        <section className="space-y-5 my-20">
+          <Title title="Our customer speaks" center="center"></Title>
+          <Testimonial reviews={reviews}></Testimonial>
+        </section>
+
         {/* notice */}
         <section className="space-y-5 my-16">
           <Title title="Notice"></Title>
@@ -148,12 +154,6 @@ const Home = () => {
             slider5={brack}
             slider6={bkash}
           ></OfferCard>
-        </section>
-
-        {/* review section */}
-        <section className="space-y-5 my-20">
-          <Title title="Our customer speaks" center="center"></Title>
-          <Testimonial reviews={reviews}></Testimonial>
         </section>
 
         {/* Today's Summmary */}
