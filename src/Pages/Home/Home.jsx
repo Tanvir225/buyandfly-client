@@ -55,14 +55,14 @@ const Home = () => {
         </section>
 
         {/* best sellers */}
-        <section className="my-16">
+        <section className="hidden md:block my-28 space-y-5">
           <Title title="Bestsellers..."></Title>
           <Gallery></Gallery>
         </section>
 
         {/* cruise package  */}
 
-        <section className="space-y-5 my-16">
+        <section className="space-y-5 ">
           <Title title="Cruise Packages from Dubai"></Title>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
             <CruiseCard></CruiseCard>
