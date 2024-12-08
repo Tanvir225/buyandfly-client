@@ -4,9 +4,12 @@ import { motion } from "motion/react";
 
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../Shared/Button";
+import Select from "react-dropdown-select";
 
 const FlightQuery = () => {
   const [country, setCountries] = useState([]);
+  const [journeyFrom, setJourneyFrom] = useState();
+  const [journeyTo, setJourneyTo] = useState();
   const [departure, setDepartureDate] = useState(new Date());
   const [returnDate, setReturnDate] = useState(new Date());
   const [toggle, setToggle] = useState(false);
@@ -47,12 +50,12 @@ const FlightQuery = () => {
   // handleSubmit Function
   const handleSubmit = (event) => {
     event.preventDefault();
-    const journeyFrom = event.target.journeyFrom.value;
+
     const journeyTo = event.target.journeyTo.value;
 
     console.log(
       tripType,
-      journeyFrom,
+
       journeyTo,
       departure,
       returnDate,
@@ -64,13 +67,32 @@ const FlightQuery = () => {
   };
 
   //set countries into state
-  useEffect(()=>{
-    fetch('https://restcountries.com/v3.1/all')
-    .then(response => response.json())
-    .then(data => setCountries(data))
-  },[])
-
+  const countryData = (value) => {
+    fetch("https://restcountries.com/v3.1/all")
+      .then((response) => response.json())
+      .then((data) => {
+        const result = data.filter((c) => {
+          return (
+            c?.flags?.png &&
+            c?.name?.common &&
+            c?.name?.common.toLowerCase().includes(value.toLowerCase())
+          );
+        });
+        setCountries(result);
+      });
+  };
   // console.log(country[0]?.flags?.png);
+
+  //handle
+  const handleCountryChangeFrom = (value) => {
+    setJourneyFrom(value);
+    countryData(value);
+  };
+  //handle
+  const handleCountryChangeTo = (value) => {
+    setJourneyTo(value);
+    countryData(value);
+  };
 
   return (
     <div className="p-5 bg-white rounded-xl rounded-tl-none">
@@ -145,17 +167,32 @@ const FlightQuery = () => {
             <br />
             <input
               type="text"
-              list="location"
-              name="journeyFrom"
-              placeholder="Dellhi"
-              className="border-hidden focus:outline-none h-12  font-semibold text-gray-700"
+              className="h-12 border-none focus:outline-none text-gray-700 font-semibold"
+              value={journeyFrom}
+              placeholder="Bangaldesh"
+              onChange={(e) => handleCountryChangeFrom(e.target.value)}
             />
-            <datalist id="location" className="">
-              <option value="✈️ Delhi"></option>
-              <option value="✈️ Mumbai"></option>
-              <option value="✈️ Lucknow"></option>
-              <option value="✈️ Kolkata"></option>
-            </datalist>
+            <div
+              className={`text-black ${
+                journeyFrom ? "absolute" : "hidden"
+              } h-36 overflow-y-auto bg-base-100 shadow-xl w-48  p-3 rounded-md`}
+            >
+              {country?.map((c, index) => (
+                <div
+                  key={index}
+                  className="flex gap-2 text-sm items-center py-2 "
+                  role="button"
+                  onClick={() => setJourneyFrom(c?.name?.common)}
+                >
+                  <img
+                    className="w-10"
+                    src={c?.flags?.png}
+                    alt={c?.name?.common}
+                  />
+                  <p>{c?.name?.common}</p>
+                </div>
+              ))}
+            </div>
           </motion.div>
 
           <motion.div
@@ -170,11 +207,32 @@ const FlightQuery = () => {
             <br />
             <input
               type="text"
-              list="location"
-              placeholder="Australia"
-              name="journeyTo"
-              className=" focus:outline-none h-12 font-semibold text-gray-700"
+              className="h-12 border-none focus:outline-none text-gray-700 font-semibold"
+              value={journeyTo}
+              placeholder="Nepal"
+              onChange={(e) => handleCountryChangeTo(e.target.value)}
             />
+            <div
+              className={`text-black ${
+                journeyTo ? "absolute" : "hidden"
+              } h-36 overflow-y-auto bg-base-100 shadow-xl w-48  p-3 rounded-md`}
+            >
+              {country?.map((c, index) => (
+                <div
+                  key={index}
+                  className="flex gap-2 text-sm items-center py-2 "
+                  role="button"
+                  onClick={() => setJourneyTo(c?.name?.common)}
+                >
+                  <img
+                    className="w-10"
+                    src={c?.flags?.png}
+                    alt={c?.name?.common}
+                  />
+                  <p>{c?.name?.common}</p>
+                </div>
+              ))}
+            </div>
           </motion.div>
 
           <motion.div
