@@ -36,13 +36,13 @@ const Navbar = () => {
 
           {/* navigate to pages */}
           <div className="flex justify-center items-center text-sm md:text-base space-x-0 sm:space-x-1 md:space-x-1">
-            <Link to={"/"}>Log in</Link>
+            <Link to={"/"}>017XXXXXXXX</Link>
             <div className="divider divider-horizontal"></div>
-            <Link to={"/"}>Sign up</Link>
+            <Link to={"/"}>buyandfly@gmail.com</Link>
+            <div className="divider divider-horizontal"></div>
+            <Link to={"/"}>Login</Link>
             <div className="divider divider-horizontal"></div>
             <Link to={"/"}>Agent Login</Link>
-            <div className="divider divider-horizontal"></div>
-            <Link to={"/"}>Customer Care</Link>
           </div>
         </div>
       </div>
@@ -61,19 +61,22 @@ const Navbar = () => {
                 <Link>Home</Link>
               </li>
               <li>
-                <Link>Flights</Link>
+                <Link>About</Link>
               </li>
               <li>
-                <Link>Hotels</Link>
+                <Link>Blog</Link>
               </li>
               <li>
-                <Link>HoliDays</Link>
+                <Link>Contact</Link>
               </li>
               <li>
-                <Link>About Us</Link>
+                <Link>Support </Link>
               </li>
               <li>
-                <Link>Contact us</Link>
+                <Link>Pay Now </Link>
+              </li>
+              <li>
+                <Link>Print Ticket </Link>
               </li>
             </ul>
           </section>

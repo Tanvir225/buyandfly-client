@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import { motion } from "motion/react";
 
@@ -6,13 +6,15 @@ import "react-datepicker/dist/react-datepicker.css";
 import Button from "../Shared/Button";
 
 const FlightQuery = () => {
+  const [country, setCountries] = useState([]);
   const [departure, setDepartureDate] = useState(new Date());
   const [returnDate, setReturnDate] = useState(new Date());
   const [toggle, setToggle] = useState(false);
+  const [tripType, setTripType] = useState("oneway");
   const [adult, setAdult] = useState(0);
   const [child, setChild] = useState(0);
   const [infant, setInfant] = useState(0);
-  const [airClass, setAirClass] = useState();
+  const [airClass, setAirClass] = useState("All");
   let totalpassenger = 0;
 
   // handle total
@@ -35,11 +37,16 @@ const FlightQuery = () => {
   };
 
   totalpassenger = adult + child + infant;
+  console.log(tripType);
+
+  // handTripTypeChange function
+  const handleTripTypeChange = (event) => {
+    setTripType(event.target.value);
+  };
 
   // handleSubmit Function
   const handleSubmit = (event) => {
     event.preventDefault();
-    const tripType = event.target.tripType.value;
     const journeyFrom = event.target.journeyFrom.value;
     const journeyTo = event.target.journeyTo.value;
 
@@ -56,37 +63,83 @@ const FlightQuery = () => {
     );
   };
 
+  //set countries into state
+  useEffect(()=>{
+    fetch('https://restcountries.com/v3.1/all')
+    .then(response => response.json())
+    .then(data => setCountries(data))
+  },[])
+
+  // console.log(country[0]?.flags?.png);
+
   return (
     <div className="p-5 bg-white rounded-xl rounded-tl-none">
       <form onSubmit={handleSubmit}>
         {/* Radio Buttons */}
         <section className="flex flex-col md:flex-row justify-between  gap-5 lg:gap-10 text-primary">
-          <div className="flex space-x-4 md:mb-4">
+          <div className="flex items-center  space-x-4 md:mb-4">
             <label className="flex items-center  space-x-2 cursor-pointer">
-              <input type="radio" name="tripType" className="radio" />
+              <input
+                type="radio"
+                name="tripType"
+                className="radio"
+                value="oneway"
+                checked={tripType === "oneway"}
+                onChange={handleTripTypeChange}
+              />
               <span>Oneway</span>
             </label>
             <label className="flex items-center space-x-2 cursor-pointer">
-              <input type="radio" name="tripType" className="radio" />
+              <input
+                type="radio"
+                name="tripType"
+                className="radio"
+                value="round trip"
+                checked={tripType === "round trip"}
+                onChange={handleTripTypeChange}
+              />
               <span>Round Trip</span>
             </label>
             <label className="flex items-center space-x-2 cursor-pointer">
-              <input type="radio" name="tripType" className="radio" />
+              <input
+                type="radio"
+                name="tripType"
+                className="radio"
+                value="multicity"
+                checked={tripType === "multicity"}
+                onChange={handleTripTypeChange}
+              />
               <span>Multicity</span>
             </label>
           </div>
-          <p>Book Domestic and International flights</p>
+          {
+            <p>
+              {tripType === "oneway" ? (
+                "Book Domestic and International flights"
+              ) : (
+                <div className="text-right mx-auto p-2 bg-gradient-to-t  from-secondary to-primary  text-transparent bg-clip-text font-semibold">
+                  -- Days
+                </div>
+              )}
+            </p>
+          }
         </section>
 
         {/* Inputs */}
-        <section className="grid grid-cols-1 lg:grid-cols-5 gap-5 border-2 p-5 mt-2 rounded-md text-left uppercase text-primary">
+        <section
+          className={`grid gap-5 border-2 p-5 mt-2 rounded-md text-left uppercase bg-gradient-to-b from-secondary to-primary text-transparent bg-clip-text ${
+            tripType === "oneway"
+              ? "lg:grid-cols-5 !important"
+              : "lg:grid-cols-6 !important"
+          } grid-cols-1`}
+        >
           <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             className="border-b-2 lg:border-r-2 lg:border-b-0"
           >
-            <label htmlFor="" className="font-semibold text-primary">
+            <label htmlFor="" className="font-semibold ">
               From
             </label>{" "}
             <br />
@@ -95,9 +148,8 @@ const FlightQuery = () => {
               list="location"
               name="journeyFrom"
               placeholder="Dellhi"
-              className=" focus:outline-none h-12  font-semibold"
+              className="border-hidden focus:outline-none h-12  font-semibold text-gray-700"
             />
-            <p className="text-gray-700">Delhi Indira Gandhi Intl</p>
             <datalist id="location" className="">
               <option value="✈️ Delhi"></option>
               <option value="✈️ Mumbai"></option>
@@ -112,7 +164,7 @@ const FlightQuery = () => {
             transition={{ duration: 0.5, delay: 0.25 }}
             className="border-b-2 lg:border-r-2 lg:border-b-0"
           >
-            <label htmlFor="" className="font-semibold text-primary">
+            <label htmlFor="" className="font-semibold ">
               To
             </label>{" "}
             <br />
@@ -121,9 +173,8 @@ const FlightQuery = () => {
               list="location"
               placeholder="Australia"
               name="journeyTo"
-              className=" focus:outline-none h-12 font-semibold "
+              className=" focus:outline-none h-12 font-semibold text-gray-700"
             />
-            <p className="text-gray-700">Chhatrapati Shivaji</p>
           </motion.div>
 
           <motion.div
@@ -132,66 +183,67 @@ const FlightQuery = () => {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="border-b-2 lg:border-r-2 lg:border-b-0"
           >
-            <label htmlFor="" className="font-semibold text-primary">
+            <label htmlFor="" className="font-semibold ">
               Departure
             </label>{" "}
             <br />
             <DatePicker
-              className="focus:outline-none h-12 text-gray-800 font-semibold "
+              className="focus:outline-none h-12  text-gray-700 font-semibold "
               selected={departure}
               onChange={(date) => setDepartureDate(date)}
               showDisabledMonthNavigation
               monthsShown={1}
               dateFormat={"MMMM d, yyyy"}
             />
-            <p className="text-gray-500">Select Date</p>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.75 }}
-            className="border-b-2 lg:border-r-2 lg:border-b-0"
-          >
-            <label htmlFor="" className="font-semibold text-primary">
-              Return
-            </label>
-            <br />
-            <DatePicker
-              className="focus:outline-none h-12 text-gray-700 font-semibold "
-              selected={returnDate}
-              onChange={(date) => setReturnDate(date)}
-              showDisabledMonthNavigation
-              monthsShown={1}
-              dateFormat={"MMMM d, yyyy"}
-            />
-            <p className="text-gray-500">Select Date</p>
-          </motion.div>
-
+          {tripType !== "oneway" && (
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="border-b-2 lg:border-r-2 lg:border-b-0"
+            >
+              <label htmlFor="" className="font-semibold ">
+                Return
+              </label>
+              <br />
+              <DatePicker
+                className="focus:outline-none h-12  font-semibold text-gray-700"
+                selected={returnDate}
+                onChange={(date) => setReturnDate(date)}
+                showDisabledMonthNavigation
+                monthsShown={1}
+                dateFormat={"MMMM d, yyyy"}
+              />
+            </motion.div>
+          )}
           <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 1 }}
-            className=""
+            className={`border-b-2 lg:border-r-2 lg:border-b-0 text-sm ${
+              tripType === "oneway" ? "h-full" : "h-8"
+            }`}
           >
-            <label htmlFor="" className="font-semibold text-primary ">
-              Traveller & Class
+            <label htmlFor="" className="font-semibold  ">
+              Traveller
             </label>
             <br />
-            <div className="dropdown text-gray-700">
+            <div className="dropdown  ">
               <div
-                className=""
+                className="mt-5 font-semibold text-gray-700"
                 role="button"
                 onClick={() => setToggle(!toggle)}
               >
-                {totalpassenger} Travellers {airClass}
+                {totalpassenger} Travellers | {airClass}
               </div>
               <ul
-                className={`bg-base-100 rounded-box z-[1] mt-6 w-72  p-2 shadow space-y-5 ${
+                className={`bg-base-100 rounded-box z-[1] mt-6 w-80  p-5 shadow space-y-5 text-gray-700 ${
                   toggle ? "absolute" : "hidden"
                 }`}
               >
-                <section className="flex justify-between items-center px-1">
+                <section className="flex justify-between items-center px-2">
                   <p className="font-semibold ">Adult (12+)</p>
                   <div className="flex justify-center items-center gap-5 text-center ">
                     <p
@@ -257,19 +309,7 @@ const FlightQuery = () => {
                     </p>
                   </div>
                 </section>
-                <div className="px-2 font-semibold flex justify-between">
-                  <p>Class</p>
-                  <select
-                    value={airClass}
-                    onChange={handleChange}
-                    className="border-2 rounded-sm p-1 border-secondary"
-                  >
-                    <option value="All">All</option>
-                    <option value="Economy">Economy</option>
-                    <option value="Business">Business</option>
-                    <option value="First">First</option>
-                  </select>
-                </div>
+
                 <div className="text-right">
                   <p
                     onClick={() => setToggle(false)}
@@ -279,6 +319,28 @@ const FlightQuery = () => {
                   </p>
                 </div>
               </ul>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <label htmlFor="" className="font-semibold">
+              Class
+            </label>
+            <div className="mt-1">
+              <select
+                value={airClass}
+                onChange={handleChange}
+                className="rounded-sm font-semibold p-2 w-full border-none focus:outline-none text-gray-700"
+              >
+                <option value="All">All</option>
+                <option value="Economy">Economy</option>
+                <option value="Business">Business</option>
+                <option value="First">First</option>
+              </select>
             </div>
           </motion.div>
         </section>
@@ -292,6 +354,10 @@ const FlightQuery = () => {
           <label className="flex items-center space-x-2 cursor-pointer">
             <input type="radio" name="fare" className="radio" />
             <span>Student Fare</span>
+          </label>
+          <label className="flex items-center space-x-2 cursor-pointer">
+            <input type="radio" name="fare" className="radio" />
+            <span>Hotel</span>
           </label>
         </section>
 
