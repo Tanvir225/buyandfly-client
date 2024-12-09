@@ -40,7 +40,9 @@ const Navbar = () => {
             <div className="divider divider-horizontal"></div>
             <Link to={"/"}>buyandfly@gmail.com</Link>
             <div className="divider divider-horizontal"></div>
-            <Link to={"/"}>Login</Link>
+            <Link to={"/"}>
+                user login
+            </Link>
             <div className="divider divider-horizontal"></div>
             <Link to={"/"}>Agent Login</Link>
           </div>
