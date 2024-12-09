@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../Shared/Button";
-import Select from "react-dropdown-select";
+import { LiaMaleSolid } from "react-icons/lia";
 
 const FlightQuery = () => {
   const [country, setCountries] = useState([]);
@@ -17,10 +17,15 @@ const FlightQuery = () => {
   const [adult, setAdult] = useState(0);
   const [child, setChild] = useState(0);
   const [infant, setInfant] = useState(0);
-  const [airClass, setAirClass] = useState("All");
+
   let totalpassenger = 0;
 
-  // handle total
+  const [isAirClass, setIsAirClass] = useState(false);
+  const [isTravell, setIsTravel] = useState(false);
+  const [travellers, setTravellers] = useState(1);
+  const [airClass, setAirClass] = useState("Economy");
+  // array of options
+  const airClassoptions = ["Premium", "Business", "First Class"];
 
   // handle change
   const handleChange = (event) => {
@@ -134,17 +139,137 @@ const FlightQuery = () => {
               <span>Multicity</span>
             </label>
           </div>
-          {
-            <p>
-              {tripType === "oneway" ? (
-                "Book Domestic and International flights"
-              ) : (
-                <div className="text-right mx-auto p-2 bg-gradient-to-t  from-secondary to-primary  text-transparent bg-clip-text font-semibold">
-                  -- Days
+
+          {/*people and economy  */}
+          <section className="flex items-center gap-5">
+            <div className="relative">
+              {/* dropdown - btn */}
+              <div
+                onClick={() => setIsTravel(!isTravell)}
+                className="mx-auto bg-sky-100  flex w-40 items-center justify-between rounded-xl  px-3 py-2 border"
+              >
+                <h1 className="font-medium text-gray-600" role="button">
+                  {totalpassenger} Travellers
+                </h1>
+                <svg
+                  className={`${
+                    isTravell ? "-rotate-180" : "rotate-0"
+                  } duration-300`}
+                  width={25}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g strokeWidth="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M7 10L12 15L17 10"
+                      stroke="#4B5563"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>{" "}
+                  </g>
+                </svg>
+              </div>
+              {/* dropdown - options  */}
+              <div
+                className={`${
+                  isTravell
+                    ? "visible top-0 opacity-100"
+                    : "invisible -top-4 opacity-0"
+                } absolute mx-auto my-12 w-48  rounded-xl py-4 border bg-base-100 duration-300`}
+              >
+                <div className="flex justify-center items-center gap-5 text-center ">
+                  <h2 className="flex items-center">
+                    <LiaMaleSolid size={25}></LiaMaleSolid> Adults
+                  </h2>
+                  <p
+                    role="button"
+                    onClick={() => handleDecrement(travellers, setTravellers)}
+                    className="rounded-full border-2 w-10 border-secondary"
+                  >
+                    -
+                  </p>
+                  <p className="rounded-full border-2 w-10 border-secondary">
+                    {travellers}
+                  </p>
+                  <p
+                    role="button"
+                    onClick={() => handleIncrement(travellers, setTravellers)}
+                    className="rounded-full border-2 w-10 border-secondary"
+                  >
+                    +
+                  </p>
                 </div>
-              )}
-            </p>
-          }
+              </div>
+            </div>
+
+            {/* economy */}
+            <div className="relative">
+              {/* dropdown - btn */}
+              <div
+                onClick={() => setIsAirClass(!isAirClass)}
+                className="mx-auto bg-sky-100 w-32 flex  items-center justify-between rounded-xl  px-3 py-2 border"
+              >
+                <h1 className="font-medium text-gray-600" role="button">
+                  {airClass}
+                </h1>
+                <svg
+                  className={`${
+                    isAirClass ? "-rotate-180" : "rotate-0"
+                  } duration-300`}
+                  width={25}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g strokeWidth="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M7 10L12 15L17 10"
+                      stroke="#4B5563"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>{" "}
+                  </g>
+                </svg>
+              </div>
+              {/* dropdown - options  */}
+              <div
+                className={`${
+                  isAirClass
+                    ? "visible top-0 opacity-100"
+                    : "invisible -top-4 opacity-0"
+                } absolute mx-auto my-12 w-36  rounded-xl py-4 border bg-base-100 duration-300`}
+              >
+                {airClassoptions?.map((option, idx) => (
+                  <div
+                    key={idx}
+                    onClick={(e) => {
+                      setAirClass(e.target.textContent);
+                      setIsAirClass(false);
+                    }}
+                    className="px-6 py-2 text-gray-500 hover:bg-sky-100"
+                    role="button"
+                  >
+                    {option}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
         </section>
 
         {/* Inputs */}
@@ -276,131 +401,6 @@ const FlightQuery = () => {
               />
             </motion.div>
           )}
-          <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 1 }}
-            className={`border-b-2 lg:border-r-2 lg:border-b-0 text-sm ${
-              tripType === "oneway" ? "h-full" : "h-8"
-            }`}
-          >
-            <label htmlFor="" className="font-semibold  ">
-              Traveller
-            </label>
-            <br />
-            <div className="dropdown  ">
-              <div
-                className="mt-5 font-semibold text-gray-700"
-                role="button"
-                onClick={() => setToggle(!toggle)}
-              >
-                {totalpassenger} Travellers | {airClass}
-              </div>
-              <ul
-                className={`bg-base-100 rounded-box z-[1] mt-6 w-80  p-5 shadow space-y-5 text-gray-700 ${
-                  toggle ? "absolute" : "hidden"
-                }`}
-              >
-                <section className="flex justify-between items-center px-2">
-                  <p className="font-semibold ">Adult (12+)</p>
-                  <div className="flex justify-center items-center gap-5 text-center ">
-                    <p
-                      role="button"
-                      onClick={() => handleDecrement(adult, setAdult)}
-                      className="rounded-full border-2 w-10 border-secondary"
-                    >
-                      -
-                    </p>
-                    <p className="rounded-full border-2 w-10 border-secondary">
-                      {adult}
-                    </p>
-                    <p
-                      role="button"
-                      onClick={() => handleIncrement(adult, setAdult)}
-                      className="rounded-full border-2 w-10 border-secondary"
-                    >
-                      +
-                    </p>
-                  </div>
-                </section>
-                <section className="flex justify-between items-center px-1">
-                  <p className="font-semibold ">Child (2-11)</p>
-                  <div className="flex justify-center items-center gap-5 text-center ">
-                    <p
-                      role="button"
-                      onClick={() => handleDecrement(child, setChild)}
-                      className="rounded-full border-2 w-10 border-secondary"
-                    >
-                      -
-                    </p>
-                    <p className="rounded-full border-2 w-10 border-secondary">
-                      {child}
-                    </p>
-                    <p
-                      role="button"
-                      onClick={() => handleIncrement(child, setChild)}
-                      className="rounded-full border-2 w-10 border-secondary"
-                    >
-                      +
-                    </p>
-                  </div>
-                </section>
-                <section className="flex justify-between items-center px-1">
-                  <p className="font-semibold ">Infant (0-2)</p>
-                  <div className="flex justify-center items-center gap-5 text-center ">
-                    <p
-                      role="button"
-                      onClick={() => handleDecrement(infant, setInfant)}
-                      className="rounded-full border-2 w-10 border-secondary"
-                    >
-                      -
-                    </p>
-                    <p className="rounded-full border-2 w-10 border-secondary">
-                      {infant}
-                    </p>
-                    <p
-                      role="button"
-                      onClick={() => handleIncrement(infant, setInfant)}
-                      className="rounded-full border-2 w-10 border-secondary"
-                    >
-                      +
-                    </p>
-                  </div>
-                </section>
-
-                <div className="text-right">
-                  <p
-                    onClick={() => setToggle(false)}
-                    className="btn btn-sm bg-primary text-white hover:bg-secondary"
-                  >
-                    Done
-                  </p>
-                </div>
-              </ul>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <label htmlFor="" className="font-semibold">
-              Class
-            </label>
-            <div className="mt-1">
-              <select
-                value={airClass}
-                onChange={handleChange}
-                className="rounded-sm font-semibold p-2 w-full border-none focus:outline-none text-gray-700"
-              >
-                <option value="All">All</option>
-                <option value="Economy">Economy</option>
-                <option value="Business">Business</option>
-                <option value="First">First</option>
-              </select>
-            </div>
-          </motion.div>
         </section>
 
         {/* fare section */}
