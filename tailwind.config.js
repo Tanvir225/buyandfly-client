@@ -9,9 +9,9 @@ export default {
     themes: [
       {
         mytheme: {
-          primary: "#400D51", // my custom primary color
-          secondary: "#EF5B0C", // my custom secondary color
-          accent: "#37cdbe", // Customize other colors as needed
+          primary: "#EF5B0C", // my custom primary color
+          secondary: "#002E5B", // my custom secondary color
+          accent: "#ffffff", // Customize other colors as needed
           neutral: "#3d4451",
           "base-100": "#ffffff",
         },

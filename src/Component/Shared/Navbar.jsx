@@ -6,7 +6,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
 
+import { FaMailBulk, FaPhone } from "react-icons/fa";
+import NavLink from "./NavLink";
+
+
 const Navbar = () => {
+
+
+
   return (
     <section className="fixed top-0 w-full z-20">
       {/* topbar */}
@@ -19,7 +26,7 @@ const Navbar = () => {
               spaceBetween={10}
               grabCursor={true}
               slidesPerView={1}
-              autoplay={{delay:3000}}
+              autoplay={{ delay: 3000 }}
               modules={[Autoplay]}
               loop={true} // Infinite loop
             >
@@ -35,22 +42,37 @@ const Navbar = () => {
           </div>
 
           {/* navigate to pages */}
-          <div className="flex justify-center items-center text-sm md:text-base space-x-0 sm:space-x-1 md:space-x-1">
-            <Link to={"/"}>017XXXXXXXX</Link>
-            <div className="divider divider-horizontal"></div>
-            <Link to={"/"}>buyandfly@gmail.com</Link>
-            <div className="divider divider-horizontal"></div>
-            <Link to={"/"}>
-                user login
-            </Link>
-            <div className="divider divider-horizontal"></div>
-            <Link to={"/"}>Agent Login</Link>
+          <div className="flex justify-center items-center text-sm space-x-0 sm:space-x-1 md:space-x-1">
+            <Link to={"/"} className="flex items-center gap-1"><FaPhone size={10}></FaPhone> 017XXXXXXXX</Link>
+            <div className="divider divider-horizontal  divider-accent"></div>
+            <Link to={"/"} className="flex items-center gap-1"><FaMailBulk size={15}></FaMailBulk> buyandfly@gmail.com</Link>
+            <div className="divider divider-horizontal divider-accent"></div>
+
+            {/* user  */}
+            <details className="dropdown">
+              <summary className="">Login</summary>
+              <ul className="menu dropdown-content bg-base-100 text-black rounded-box z-[1] w-48 p-2 shadow">
+                <li><Link to={"/"}>User Login</Link></li>
+                <li><Link to={"/"}>User Register</Link></li>
+              </ul>
+            </details>
+
+            <div className="divider divider-horizontal divider-accent"></div>
+
+            {/* agent  */}
+            <details className="dropdown">
+              <summary className="">Agent</summary>
+              <ul className="menu dropdown-content bg-base-100 text-black rounded-box z-[1] w-44 p-1 shadow">
+                <li><Link to={"/"}>Agent Login</Link></li>
+                <li><Link to={"/"}>Agent Register</Link></li>
+              </ul>
+            </details>
           </div>
         </div>
       </div>
 
       {/* navbar */}
-      <div className="bg-base-100 shadow-md py-2">
+      <div className="bg-base-100 shadow-md py-1">
         <div className="max-w-6xl mx-auto px-2 flex items-center justify-between">
           {/* logo */}
           <section className="w-32">
@@ -58,28 +80,8 @@ const Navbar = () => {
           </section>
           {/* nav item */}
           <section>
-            <ul className="uppercase flex items-center justify-center gap-5 ">
-              <li>
-                <Link>Home</Link>
-              </li>
-              <li>
-                <Link>About</Link>
-              </li>
-              <li>
-                <Link>Blog</Link>
-              </li>
-              <li>
-                <Link>Contact</Link>
-              </li>
-              <li>
-                <Link>Support </Link>
-              </li>
-              <li>
-                <Link>Pay Now </Link>
-              </li>
-              <li>
-                <Link>Print Ticket </Link>
-              </li>
+            <ul className=" text-sm flex items-center justify-center gap-5 ">
+               <NavLink></NavLink>
             </ul>
           </section>
         </div>
