@@ -240,10 +240,10 @@ const FlightQuery = () => {
                 onChange={(date) => setDepartureDate(date)}
                 showDisabledMonthNavigation
                 monthsShown={1}
-                dateFormat={"dd/mm/yyyy"}
+                dateFormat={"dd/MM/yyyy"}
               />
 
-             
+
 
               {
                 tripType === 'round trip' && <DatePicker
@@ -253,10 +253,14 @@ const FlightQuery = () => {
                   onChange={(date) => setDepartureDate(date)}
                   showDisabledMonthNavigation
                   monthsShown={1}
-                  dateFormat={"dd/mm/yyyy"}
+                  dateFormat={"dd/MM/yyyy"}
                 />
               }
             </div>
+
+            {
+              tripType === 'round trip' && <p className="capitalize text-sm text-secondary my-1">Total Trip Duration : 00 days</p>
+            }
           </motion.div>
 
 
