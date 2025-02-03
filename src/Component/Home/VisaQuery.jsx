@@ -20,7 +20,7 @@ const VisaQuery = () => {
   const [isVisaType, setIsVisaType] = useState(false);
   const [visaType, setVisaType] = useState("Select Visa type");
   // array of options
-  const visaTypeOption = ["E-visa", "Sticker Visa", "Eta/Approval","Invariable"];
+  const visaTypeOption = ["E-visa", "Sticker Visa", "Eta/Approval"];
 
 
   //set countries into state
@@ -53,30 +53,29 @@ const VisaQuery = () => {
   };
 
   return (
-    <div className="p-2 bg-white rounded-xl rounded-tl-none w-full">
+    <div className="p-2 bg-white  rounded-b-lg rounded-tl-none w-full">
       <form>
         <section className="grid grid-cols-1 lg:grid-cols-4 gap-5 p-7 rounded-xl text-left uppercase text-black bg-white rounded-tl-none">
           <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="border-b-2 lg:border-r-2 lg:border-b-0"
+            className=""
           >
-            <label htmlFor="" className="font-semibold ">
+            <label htmlFor="" className=" ">
               Resident OF
             </label>{" "}
             <br />
             <input
               type="text"
-              className="h-12 border-none focus:outline-none text-gray-700 font-semibold"
+              className="h-12 input input-bordered focus:outline-none w-full "
               value={residentOF}
               placeholder="BD | Bangaldesh"
               onChange={(e) => handleResidentOf(e.target.value)}
             />
             <div
-              className={`text-black ${
-                residentOF ? "absolute" : "hidden"
-              } h-36 overflow-y-auto bg-base-100 shadow-xl w-60 z-20 p-3 rounded-md`}
+              className={`text-black ${residentOF ? "absolute" : "hidden"
+                } h-36 overflow-y-auto bg-base-100 shadow-xl w-60 z-20 p-3 rounded-md`}
             >
               {country?.map((c, index) => (
                 <div
@@ -99,23 +98,22 @@ const VisaQuery = () => {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="border-b-2 lg:border-r-2 lg:border-b-0"
+            className=""
           >
-            <label htmlFor="" className="font-semibold ">
+            <label htmlFor="" className=" ">
               Travelling To
             </label>{" "}
             <br />
             <input
               type="text"
-              className="h-12 border-none focus:outline-none text-gray-700 font-semibold"
+              className="h-12 input input-bordered focus:outline-none w-full"
               value={travellingTo}
               placeholder="TH | Thailand"
               onChange={(e) => handelTavellingTo(e.target.value)}
             />
             <div
-              className={`text-black ${
-                travellingTo ? "absolute" : "hidden"
-              } h-36 overflow-y-auto bg-base-100 shadow-xl w-60 z-20 p-3 rounded-md`}
+              className={`text-black ${travellingTo ? "absolute" : "hidden"
+                } h-36 overflow-y-auto bg-base-100 shadow-xl w-60 z-20 p-3 rounded-md`}
             >
               {country?.map((c, index) => (
                 <div
@@ -139,24 +137,23 @@ const VisaQuery = () => {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="space-y-2 lg:border-r-2"
+            className=""
           >
-            <label htmlFor="" className="font-semibold ">
+            <label htmlFor="" className=" ">
               Visa Category
             </label>
             <div className="relative">
               {/* dropdown - btn */}
               <div
                 onClick={() => setIsVisaCategory(!isVisaCategory)}
-                className=" flex  items-center justify-between w-52 rounded-xl   py-2 "
+                className=" h-12 input input-bordered focus:outline-none w-full flex items-center justify-between"
               >
-                <h1 className="font-semibold text-gray-600" role="button">
+                <h1 className=" text-gray-600" role="button">
                   {visaCategory}
                 </h1>
                 <svg
-                  className={`${
-                    isVisaCategory ? "-rotate-180" : "rotate-0"
-                  } duration-300`}
+                  className={`${isVisaCategory ? "-rotate-180" : "rotate-0"
+                    } duration-300`}
                   width={25}
                   viewBox="0 0 24 24"
                   fill="none"
@@ -181,11 +178,10 @@ const VisaQuery = () => {
               </div>
               {/* dropdown - options  */}
               <div
-                className={`${
-                  isVisaCategory
+                className={`${isVisaCategory
                     ? "visible top-0 opacity-100"
                     : "invisible -top-4 opacity-0"
-                } absolute z-20 mx-auto my-12 w-36  rounded-xl py-4 border bg-base-100 duration-300`}
+                  } absolute z-20 mx-auto my-12 w-full  rounded-xl py-4 border bg-base-100 duration-300`}
               >
                 {visaCategoryOption?.map((option, idx) => (
                   <div
@@ -207,24 +203,23 @@ const VisaQuery = () => {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="space-y-2"
+            className=""
           >
-            <label htmlFor="" className="font-semibold ">
+            <label htmlFor="" className=" ">
               Visa Type
             </label>
             <div className="relative">
               {/* dropdown - btn */}
               <div
                 onClick={() => setIsVisaType(!isVisaType)}
-                className=" flex  items-center justify-between w-52 rounded-xl   py-2 "
+                className=" h-12 input input-bordered focus:outline-none w-full flex items-center justify-between"
               >
-                <h1 className="font-semibold text-gray-600" role="button">
+                <h1 className=" text-gray-600" role="button">
                   {visaType}
                 </h1>
                 <svg
-                  className={`${
-                    isVisaType ? "-rotate-180" : "rotate-0"
-                  } duration-300`}
+                  className={`${isVisaType ? "-rotate-180" : "rotate-0"
+                    } duration-300`}
                   width={25}
                   viewBox="0 0 24 24"
                   fill="none"
@@ -249,11 +244,10 @@ const VisaQuery = () => {
               </div>
               {/* dropdown - options  */}
               <div
-                className={`${
-                  isVisaType
+                className={`${isVisaType
                     ? "visible top-0 opacity-100"
                     : "invisible -top-4 opacity-0"
-                } absolute z-20 mx-auto my-12 w-42  rounded-xl py-4 border bg-base-100 duration-300`}
+                  } absolute z-20 mx-auto my-12 w-full  rounded-xl py-4 border bg-base-100 duration-300`}
               >
                 {visaTypeOption?.map((option, idx) => (
                   <div
@@ -272,12 +266,27 @@ const VisaQuery = () => {
             </div>
           </motion.div>
 
-         
+
         </section>
 
-        <div className="text-center absolute   left-[35%] md:left-[40%] lg:left-[45%]  ">
-          <Button text="Check Details" width={32}></Button>
-        </div>
+        {/* fare section */}
+        <section className="flex items-center justify-between  md:mb-4 text-secondary my-5 ">
+          <div className="flex space-x-3">
+            <label htmlFor="" className="font-semibold">Approval Type : </label>
+            <label className="flex items-center btn btn-sm btn-outline  cursor-pointer">
+              <input type="checkbox" name="eta" className="checkbox-primary" />
+              <span className="text-secondary">ETA</span>
+            </label>
+            <label className="flex items-center btn btn-sm btn-outline   cursor-pointer">
+              <input type="checkbox" name="invariable" className="checkbox-primary" />
+              <span className="text-secondary">Invariable</span>
+            </label>
+          </div>
+
+          <div className="">
+            <Button width={36} text="Search"></Button>
+          </div>
+        </section>
       </form>
     </div>
   );
