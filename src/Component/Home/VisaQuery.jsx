@@ -20,7 +20,7 @@ const VisaQuery = () => {
   const [isVisaType, setIsVisaType] = useState(false);
   const [visaType, setVisaType] = useState("Select Visa type");
   // array of options
-  const visaTypeOption = ["E-visa", "Sticker Visa", "Eta/Approval"];
+  const visaTypeOption = ["E-visa", "Sticker Visa"];
 
 
   //set countries into state
