@@ -18,6 +18,8 @@ const BannerNew = () => {
   const [isAirClass, setIsAirClass] = useState(false);
   const [airClass, setAirClass] = useState("Select Flight Class");
 
+  const [selectedLabel,setSelectedLabel] = useState('Flights')
+
   // array of options
   const airClassoptions = ['Economy', "Premium", "Business", "First Class"];
 
@@ -34,6 +36,11 @@ const BannerNew = () => {
     <HolidayQuery />,
     <VisaQuery />,
   ];
+
+  const handleClick = (label)=>{
+
+    setSelectedLabel(label)
+  }
 
 
   return (
@@ -56,6 +63,7 @@ const BannerNew = () => {
                 {tabList.map(({ label, icon: Icon }, idx) => (
                   <Tab
                     key={idx}
+                    onClick={()=>handleClick(label)}
                     className={({ selected }) =>
                       ` btn btn-sm focus:outline-none ${idx === 0 ? "rounded-tl-xl" : ""
                       } ${idx === tabList.length - 1 ? "rounded-tr-xl" : ""}
@@ -72,7 +80,7 @@ const BannerNew = () => {
               </div>
 
               {/* economy */}
-              <div className="relative ">
+              <div className={`relative ${selectedLabel === "Flights" || selectedLabel === "Holiday" ? 'block' :'hidden'}`}>
                 {/* dropdown - btn */}
                 <div
                   onClick={() => setIsAirClass(!isAirClass)}

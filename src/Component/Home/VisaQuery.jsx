@@ -108,7 +108,7 @@ const VisaQuery = () => {
               type="text"
               className="h-12 input input-bordered focus:outline-none w-full"
               value={travellingTo}
-              placeholder="TH | Thailand"
+              placeholder="JP | Japan"
               onChange={(e) => handelTavellingTo(e.target.value)}
             />
             <div

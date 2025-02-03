@@ -85,8 +85,22 @@ const MultiCity = ({ visible, setVisiable }) => {
             </motion.div>
 
             <div className="mt-9 space-x-3">
-                <button onClick={()=>setVisiable(true)} className={`btn btn-sm btn-primary text-white ${visible && 'hidden'}`}><FaPlus></FaPlus> Add Another</button>
-                <button onClick={()=>setVisiable(false)} className={`btn text-primary btn-sm btn-outline hover:bg-red-600 ${!visible && 'hidden'}`}><IoIosClose size={20}></IoIosClose></button>
+                <button
+                    onClick={() => setVisiable(true)}
+                    className={`btn btn-sm btn-primary text-white transform transition-all duration-500 ease-in-out 
+    ${visible ? "opacity-0 scale-90 pointer-events-none" : "opacity-100 scale-100"}`}
+                >
+                    <FaPlus /> Add Another
+                </button>
+
+                <button
+                    onClick={() => setVisiable(false)}
+                    className={`btn text-primary btn-sm btn-outline hover:bg-red-600 transform transition-all duration-500 ease-in-out
+    ${!visible ? "opacity-0 scale-90 pointer-events-none" : "opacity-100 scale-100"}`}
+                >
+                    <IoIosClose size={20} />
+                </button>
+
             </div>
         </div>
     );

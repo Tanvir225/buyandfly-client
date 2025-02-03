@@ -16,13 +16,21 @@ const FlightQuery = () => {
   const [departure, setDepartureDate] = useState(new Date());
   const [toggle, setToggle] = useState(false);
   const [tripType, setTripType] = useState("oneway");
+
+
   // Automatically set returnDate to tomorrow
   const [returnDate, setReturnDate] = useState(() => {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     return tomorrow;
   });
+
   const [visible, setVisiable] = useState(false)
+
+  // filter serach state
+  const [filter, setFilter] = useState([])
+
+
   // const [adult, setAdult] = useState(0);
   // const [child, setChild] = useState(0);
   // const [infant, setInfant] = useState(0);
@@ -33,10 +41,7 @@ const FlightQuery = () => {
   // array of options
   const airClassoptions = ['Economy', "Premium", "Business", "First Class"];
 
-  // // handle change
-  // const handleChange = (event) => {
-  //   setAirClass(event.target.value);
-  // };
+
 
 
 
@@ -82,10 +87,20 @@ const FlightQuery = () => {
   // console.log(country[0]?.flags?.png);
 
   //handle
-  const handleCountryChangeFrom = (value) => {
+  const handleCountryChangeFrom = (e) => {
+    const value = e.target.value;
     setJourneyFrom(value);
-    countryData(value);
+    setFilter(
+      value ? country.filter((c) => c.toLowerCase().startsWith(value.toLowerCase())) : []
+    )
   };
+
+
+  const handleSelect = (country) => {
+    setInput(country);
+    setFilter([]); // Hide suggestions
+  };
+
   //handle
   const handleCountryChangeTo = (value) => {
     setJourneyTo(value);
@@ -154,11 +169,11 @@ const FlightQuery = () => {
             </label>{" "}
             <br />
             <input
-              type="text"
-              className="border-2 w-full focus:outline-none h-10 p-3 mt-2 rounded-lg"
+              readOnly
+              className="border-2 w-full focus:outline-none h-10 p-3 mt-2 rounded-lg "
               value={journeyFrom}
               placeholder="Bangaldesh"
-              onChange={(e) => handleCountryChangeFrom(e.target.value)}
+             
             />
             <div
               className={`text-black ${journeyFrom ? "absolute" : "hidden"
@@ -194,11 +209,11 @@ const FlightQuery = () => {
             </label>{" "}
             <br />
             <input
-              type="text"
+              readOnly
               className={`w-full focus:outline-none border-2 mt-2 h-10 p-3 rounded-lg`}
               value={journeyTo}
               placeholder="Nepal"
-              onChange={(e) => handleCountryChangeTo(e.target.value)}
+              
             />
             <div
               className={`text-black ${journeyTo ? "absolute" : "hidden"
