@@ -273,18 +273,18 @@ const VisaQuery = () => {
         <section className="flex items-center justify-between  md:mb-4 text-secondary my-5 ">
           <div className="flex space-x-3">
             <label htmlFor="" className="font-semibold">Approval Type : </label>
-            <label className="flex items-center btn btn-sm btn-outline  cursor-pointer">
+            <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="checkbox" name="eta" className="checkbox-primary" />
               <span className="text-secondary">ETA</span>
             </label>
-            <label className="flex items-center btn btn-sm btn-outline   cursor-pointer">
+            <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="checkbox" name="invariable" className="checkbox-primary" />
               <span className="text-secondary">Invariable</span>
             </label>
           </div>
 
-          <div className="">
-            <Button width={36} text="Search"></Button>
+          <div className="px-5">
+            <Button width={44} text="Search"></Button>
           </div>
         </section>
       </form>
