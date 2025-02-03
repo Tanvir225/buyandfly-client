@@ -4,20 +4,25 @@ import { motion } from "motion/react";
 
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../Shared/Button";
-import { LiaChildSolid, LiaMaleSolid } from "react-icons/lia";
-import { FaChildReaching, FaHandsHoldingChild } from "react-icons/fa6";
 import HButton from "../Shared/HButton";
 import Travellers from "./Utility/Travellers";
 import { GoArrowSwitch } from "react-icons/go";
+import MultiCity from "./Utility/MultiCity";
 
 const FlightQuery = () => {
   const [country, setCountries] = useState([]);
   const [journeyFrom, setJourneyFrom] = useState();
   const [journeyTo, setJourneyTo] = useState();
   const [departure, setDepartureDate] = useState(new Date());
-  const [returnDate, setReturnDate] = useState(new Date());
   const [toggle, setToggle] = useState(false);
   const [tripType, setTripType] = useState("oneway");
+  // Automatically set returnDate to tomorrow
+  const [returnDate, setReturnDate] = useState(() => {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    return tomorrow;
+  });
+  const [visible, setVisiable] = useState(false)
   // const [adult, setAdult] = useState(0);
   // const [child, setChild] = useState(0);
   // const [infant, setInfant] = useState(0);
@@ -28,10 +33,10 @@ const FlightQuery = () => {
   // array of options
   const airClassoptions = ['Economy', "Premium", "Business", "First Class"];
 
-  // handle change
-  const handleChange = (event) => {
-    setAirClass(event.target.value);
-  };
+  // // handle change
+  // const handleChange = (event) => {
+  //   setAirClass(event.target.value);
+  // };
 
 
 
@@ -45,17 +50,16 @@ const FlightQuery = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const journeyTo = event.target.journeyTo.value;
+
 
     console.log(
       tripType,
-
       journeyTo,
       departure,
       returnDate,
-      adult,
-      child,
-      infant,
+      // adult,
+      // child,
+      // infant,
       airClass
     );
   };
@@ -232,10 +236,10 @@ const FlightQuery = () => {
               {tripType === 'oneway' ? "Journey Date" : "Add Dates"}
             </label>
 
-            <div className="input input-bordered h-10 mt-2 flex items-center -space-x-10 focus:outline-none">
+            <motion.div className="input input-bordered h-10 mt-2 flex items-center -space-x-10 focus:outline-none">
               <DatePicker
 
-                className="border-none "
+                className="focus:outline-none "
                 selected={departure}
                 onChange={(date) => setDepartureDate(date)}
                 showDisabledMonthNavigation
@@ -248,24 +252,20 @@ const FlightQuery = () => {
               {
                 tripType === 'round trip' && <DatePicker
 
-                  className="border-l-2 pl-2"
-                  selected={departure}
-                  onChange={(date) => setDepartureDate(date)}
+                  className="border-l-2 pl-1 focus:outline-none "
+                  selected={returnDate}
+                  onChange={(date) => setReturnDate(date)}
                   showDisabledMonthNavigation
                   monthsShown={1}
                   dateFormat={"dd/MM/yyyy"}
                 />
               }
-            </div>
+            </motion.div>
 
             {
               tripType === 'round trip' && <p className="capitalize text-sm text-secondary my-1">Total Trip Duration : 00 days</p>
             }
           </motion.div>
-
-
-
-
 
 
           <motion.div
@@ -280,6 +280,17 @@ const FlightQuery = () => {
 
 
         </section>
+
+        {/* multicity */}
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className=""
+        >
+          {tripType === 'multicity' && <MultiCity visible={visible} setVisiable={setVisiable}></MultiCity>}
+          {visible && <MultiCity visible={visible} setVisiable={setVisiable}></MultiCity>}
+        </motion.div>
 
         {/* fare section */}
         <section className="flex items-center justify-between  md:mb-4 text-secondary my-5 ">
