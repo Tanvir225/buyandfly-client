@@ -1,193 +1,96 @@
-import footerImage from "../../assets/footer-1.jpg";
 import logo from "/logo.svg";
-import { PiFacebookLogoLight } from "react-icons/pi";
-import { PiYoutubeLogoLight } from "react-icons/pi";
+import { CreditCard, Mail, MapPin, MoveUp, Phone } from "lucide-react";
+
+
 const Footer = () => {
+
+  //scroll top function
+  const scrollTop = () => {
+    window.scroll({
+      top: 50,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <footer
-      className="hero md:h-[110vh] object-cover bg-transparent md:-mt-28"
-      style={{
-        backgroundImage: `url(${footerImage})`,
-     
-      }}
-    >
-      <div
-        className="hero-overlay bg-opacity-80 bg-[#FAFAFA]"
-        style={{
-         
-        }}
-      >
-        <section className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-10 justify-between py-28 px-5  ">
-          <div className="space-y-5">
-            <div className="w-32">
-              <img src={logo} alt="logo" />
-            </div>
-            <p>address</p>
-          </div>
-          <div className="space-y-5">
-            <h2 className="text-xl font-semibold text-primary">Useful links</h2>
-            <p
-              className="text-lg hover:border-b-2 hover:border-secondary hover:transition-all delay-100 duration-200"
-              role="button"
-            >
-              Accessbelity Plan
-            </p>
-            <p
-              className="text-lg hover:border-b-2 hover:border-secondary hover:transition-all delay-100 duration-200"
-              role="button"
-            >
-              Lates News
-            </p>
-            <p
-              className="text-lg hover:border-b-2 hover:border-secondary hover:transition-all delay-100 duration-200"
-              role="button"
-            >
-              Careers
-            </p>
-            <p
-              className="text-lg hover:border-b-2 hover:border-secondary hover:transition-all delay-100 duration-200"
-              role="button"
-            >
-              Feedback
-            </p>
-            <p
-              className="text-lg hover:border-b-2 hover:border-secondary hover:transition-all delay-100 duration-200"
-              role="button"
-            >
-              Contacts
-            </p>
-            <p
-              className="text-lg hover:border-b-2 hover:border-secondary hover:transition-all delay-100 duration-200"
-              role="button"
-            >
-              Tender
-            </p>
-          </div>
-          <div className="space-y-5">
-            <h2 className="text-xl font-semibold text-primary">Other Links</h2>
-            <p
-              className="text-lg hover:border-b-2 hover:border-secondary hover:transition-all delay-100 duration-200"
-              role="button"
-            >
-              Biman Govt. Portal
-            </p>
-            <p
-              className="text-lg hover:border-b-2 hover:border-secondary hover:transition-all delay-100 duration-200"
-              role="button"
-            >
-              Biman Flight Catering Center
-            </p>
-            <p
-              className="text-lg hover:border-b-2 hover:border-secondary hover:transition-all delay-100 duration-200"
-              role="button"
-            >
-              Civil Aviation Authority
-            </p>
-            <p
-              className="text-lg hover:border-b-2 hover:border-secondary hover:transition-all delay-100 duration-200"
-              role="button"
-            >
-              Minister Health And Family Welfear
-            </p>
-          </div>
-          <div className="space-y-5">
-            <h2 className="text-xl font-semibold text-primary">
-              Parjanta Corporation
-            </h2>
+    <div className="bg-[#FFF9F5] p-7 lg:p-16">
+      <div className="max-w-6xl mx-auto grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 lg:justify-items-end md:justify-items-stretch justify-items-stretch lg:gap-10 md:gap-6 gap-3">
+        <div>
+          <img src={logo} alt="logo" className="w-32" />
+          <p className="font-medium text-[#7B6E7E] mt-3">
+            Convenient routes and affordable fares to make your journey easy and budget-friendly.
+          </p>
+        </div>
 
-            <p
-              className="text-lg hover:border-b-2 hover:border-secondary hover:transition-all delay-100 duration-200"
-              role="button"
-            >
-              Online Travel Agency
-            </p>
-            <p
-              className="text-lg hover:border-b-2 hover:border-secondary hover:transition-all delay-100 duration-200"
-              role="button"
-            >
-              Booking Policy
-            </p>
-            <p
-              className="text-lg hover:border-b-2 hover:border-secondary hover:transition-all delay-100 duration-200"
-              role="button"
-            >
+        <div>
+          <p className="font-semibold text-[18px] text-[#111111]">Get In Touch</p>
+
+          <p className="text-[14px] text-[#7B6E7E] font-medium mt-3 flex items-center gap-2">
+            <MapPin size={22} className="bg-[#FFD7C1] p-1 text-[#EF5B0C] rounded-md" />
+            Plati Gialos, Mykonos, Greece
+          </p>
+
+          <p className="text-[14px] text-[#7B6E7E] font-medium mt-2 flex items-center gap-2">
+            <Phone size={22} className="bg-[#FFD7C1] p-1 text-[#EF5B0C] rounded-md" />
+            +8801319.555.0115
+          </p>
+
+          <p className="text-[14px] text-[#7B6E7E] font-medium mt-2 flex items-center gap-2">
+            <Mail size={22} className="bg-[#FFD7C1] p-1 text-[#EF5B0C] rounded-md" />
+            felicia.reid@example.com
+          </p>
+        </div>
+
+        <div>
+          <p className="font-semibold text-[18px] text-[#111111]">Quick Links</p>
+
+          <div className="flex flex-col space-y-2">
+            <a className="text-[14px] text-[#7B6E7E] font-medium mt-2" href="">
+              Contact
+            </a>
+            <a className="text-[14px] text-[#7B6E7E] font-medium mt-1" href="">
+              About
+            </a>
+            <a className="text-[14px] text-[#7B6E7E] font-medium mt-1" href="">
+              Bank Details
+            </a>
+            <a className="text-[14px] text-[#7B6E7E] font-medium mt-1" href="">
               ADM Policy
-            </p>
+            </a>
+            <a className="text-[14px] text-[#7B6E7E] font-medium mt-1" href="">
+              Privacy Policy
+            </a>
+            <a className="text-[14px] text-[#7B6E7E] font-medium mt-1" href="">
+              Terms And Conditions
+            </a>
+            <a className="text-[14px] text-[#7B6E7E] font-medium mt-1" href="">
+              Booking Policy
+            </a>
           </div>
-        </section>
+        </div>
 
-        <section className="max-w-6xl mx-auto font-semibold flex flex-col lg:flex-row items-center justify-between mb-5">
-          <div className="flex gap-10 ">
-            <p
-              className="text-lg hover:border-b-2 hover:border-secondary hover:transition-all delay-100 duration-200"
-              role="button"
-            >
-              CEO's Message
+        <div>
+          <p className="font-semibold text-[18px] text-[#111111]">We Accept</p>
+          <div className="flex gap-3 mt-3">
+            <p className="bg-[#FFD7C1] rounded-full p-3 w-fit text-[#EF5B0C]">
+              <CreditCard size={20} />
             </p>
-            <p
-              className="text-lg hover:border-b-2 hover:border-secondary hover:transition-all delay-100 duration-200"
-              role="button"
-            >
-              Lates News
+            <p className="bg-[#FFD7C1] rounded-full p-3 w-fit text-[#EF5B0C]">
+              <CreditCard size={20} />
             </p>
-            <p
-              className="text-lg hover:border-b-2 hover:border-secondary hover:transition-all delay-100 duration-200"
-              role="button"
-            >
-              Careers
+            <p className="bg-[#FFD7C1] rounded-full p-3 w-fit text-[#EF5B0C]">
+              <CreditCard size={20} />
             </p>
           </div>
-
-          <div className="flex gap-5 items-center">
-            <PiFacebookLogoLight
-              size={50}
-              role="button"
-              className="rounded-full bg-sky-100 p-1"
-            ></PiFacebookLogoLight>
-            <PiYoutubeLogoLight
-              size={50}
-              role="button"
-              className="rounded-full bg-sky-100 p-1"
-            ></PiYoutubeLogoLight>
-          </div>
-        </section>
-
-        <section className="max-w-6xl mx-auto text-lg font-semibold flex flex-col lg:flex-row items-center justify-between pb-5">
-          <div className="flex flex-col justify-center lg:flex-row items-center gap-5">
-            <p className=" text-secondary">© IT Division</p>
-            <div className="flex items-center gap-2">
-              <img src={logo} alt="logo" />
-              <p>BuyAndFly</p>
-            </div>
-          </div>
-          <div className="flex flex-col lg:flex-row justify-center items-center gap-5">
-            <p className=" text-secondary">We Accept</p>
-            <div className="flex justify-center items-center gap-2">
-              <img
-              className="w-12 rounded-lg"
-                src="https://www.shutterstock.com/image-vector/vinnytsia-ukraine-september-04-2023-600nw-2357100277.jpg"
-                alt="logo"
-              />
-              <img
-              className="w-12 rounded-lg"
-                src="https://www.shutterstock.com/image-vector/vinnytsia-ukraine-september-04-2023-600nw-2357100277.jpg"
-                alt="logo"
-              />
-              <img
-              className="w-12 rounded-lg"
-                src="https://www.shutterstock.com/image-vector/vinnytsia-ukraine-september-04-2023-600nw-2357100277.jpg"
-                alt="logo"
-              />
-              <img
-              className="w-12 rounded-lg"
-                src="https://www.shutterstock.com/image-vector/vinnytsia-ukraine-september-04-2023-600nw-2357100277.jpg"
-                alt="logo"
-              />
-            </div>
-          </div>
-        </section>
+        </div>
       </div>
-    </footer>
+      <div className="border border-[#DEE2E6] mt-6"></div>
+      <div className="mt-7 flex items-center justify-between">
+        <p className="font-medium text-[#7B6E7E]">Copyright © Buyandfly</p>
+        <button onClick={scrollTop} className="text-white bg-[#EF5B0C] py-[10px] px-6 rounded-lg flex gap-1 items-center">Back To Top <MoveUp size={16} strokeWidth={2.25} /></button>
+      </div>
+    </div>
   );
 };
 
