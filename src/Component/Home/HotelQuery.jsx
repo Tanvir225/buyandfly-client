@@ -17,6 +17,7 @@ const HotelQuery = () => {
 
   const [adult, setAdult] = useState(0)
   const [child, setChild] = useState(0)
+  const [room, setRoom] = useState(1)
 
   const [adult2, setAdult2] = useState(0)
   const [child2, setChild2] = useState(0)
@@ -33,7 +34,14 @@ const HotelQuery = () => {
 
   //handle click
   const handleClick = () => {
+    if (!toggle) {
+      setRoom(room + 1)
+    }
+    else {
+      setRoom(room - 1)
+    }
     setToggle(!toggle)
+
   }
 
 
@@ -125,12 +133,12 @@ const HotelQuery = () => {
             className=""
           >
             <label htmlFor="" className="font-semibold text-secondary">
-              Room & Guest
+              How Many Are Travelling
             </label>
             <br />
-            <div className="dropdown text-gray-700 input input-bordered h-10 mt-2 focus:outline-none w-full">
+            <div className="dropdown text-gray-700 input input-bordered h-10 mt-2 focus:outline-none w-full transition-all">
               <div tabIndex={0} role="button" className="my-1">
-                2 Rooms
+                {adult || child ? `${room} rooms ${adult + child + adult2 + child2} guest` : " Room & Guest "}
               </div>
               <ul
                 tabIndex={0}
