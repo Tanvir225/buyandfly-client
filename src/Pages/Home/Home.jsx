@@ -23,9 +23,12 @@ import notice2 from "../../assets/notice2.jpeg";
 import notice3 from "../../assets/notice3.jpeg";
 import bg from "../../assets/bg1.png";
 import Summary from "../../Component/Home/Summary";
-import MemberPartner from "../../Component/Home/MemberPartner";
+
+
 import Button from "../../Component/Shared/Button";
 import FreeVisa from "../../Component/Home/Card/FreeVisa";
+import { Section } from "lucide-react";
+import HoliDayDeal from "../../Component/Home/HoliDayDeal";
 
 const Home = () => {
   const date = new Date();
@@ -44,6 +47,8 @@ const Home = () => {
       <section >
         <FreeVisa></FreeVisa>
       </section>
+
+    
 
       {/* memory section */}
       <section className="">

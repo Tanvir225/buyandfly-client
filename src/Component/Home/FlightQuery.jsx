@@ -10,12 +10,16 @@ import { GoArrowSwitch } from "react-icons/go";
 import MultiCity from "./Utility/MultiCity";
 
 const FlightQuery = () => {
-  const [country, setCountries] = useState([]);
+
+  const [allCountries, setAllCountries] = useState([]);
+  const [country, setCountry] = useState([]);
   const [journeyFrom, setJourneyFrom] = useState();
   const [journeyTo, setJourneyTo] = useState();
   const [departure, setDepartureDate] = useState(new Date());
   const [toggle, setToggle] = useState(false);
   const [tripType, setTripType] = useState("oneway");
+  const [searchToggleFrom, setSearchToggleFrom] = useState(false)
+  const [searchToggleTo, setSearchToggleTo] = useState(false)
 
 
   // Automatically set returnDate to tomorrow
@@ -69,43 +73,74 @@ const FlightQuery = () => {
     );
   };
 
-  //set countries into state
-  const countryData = (value) => {
+
+  // Fetch data and set the states
+  useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((data) => {
-        const result = data.filter((c) => {
-          return (
-            c?.flags?.png &&
-            c?.name?.common &&
-            c?.name?.common.toLowerCase().includes(value.toLowerCase())
-          );
-        });
-        setCountries(result);
+        setAllCountries(data);
+        setCountry(data);  // Show all countries initially
       });
-  };
-  // console.log(country[0]?.flags?.png);
+  }, []);
 
-  //handle
+
+
+  // Handle search input change
   const handleCountryChangeFrom = (e) => {
-    const value = e.target.value;
-    setJourneyFrom(value);
-    setFilter(
-      value ? country.filter((c) => c.toLowerCase().startsWith(value.toLowerCase())) : []
-    )
+    const value = e.target.value.toLowerCase();
+    if (value === "") {
+      setCountry(allCountries);  // Reset to full list if input is empty
+    } else {
+      const filteredCountries = allCountries.filter((c) =>
+        c?.name?.common.toLowerCase().includes(value)
+      );
+      setCountry(filteredCountries);
+    }
+  };
+
+  // Handle search input change
+  const handleCountryChangeTo = (e) => {
+    const value = e.target.value.toLowerCase();
+    if (value === "") {
+      setCountry(allCountries);  // Reset to full list if input is empty
+    } else {
+      const filteredCountries = allCountries.filter((c) =>
+        c?.name?.common.toLowerCase().includes(value)
+      );
+      setCountry(filteredCountries);
+    }
   };
 
 
-  const handleSelect = (country) => {
-    setInput(country);
-    setFilter([]); // Hide suggestions
+
+
+
+
+  // Handle country selection from
+  const handleCountrySelect = (selectedCountry) => {
+    setJourneyFrom(selectedCountry);  // Set selected country
+    setSearchToggleFrom(false);           // Close the dropdown
   };
 
-  //handle
-  const handleCountryChangeTo = (value) => {
-    setJourneyTo(value);
-    countryData(value);
+  // Handle country selection To
+  const handleCountrySelectTo = (selectedCountry) => {
+    setJourneyTo(selectedCountry);  // Set selected country
+    setSearchToggleTo(false);           // Close the dropdown
   };
+
+  // handle searchClick FROM
+  const handleSearchClick = () => {
+    setSearchToggleFrom(true)
+  }
+
+  // handle searchClick TO
+  const handleSearchClickTo = () => {
+    setSearchToggleTo(true)
+  }
+
+
+
 
   return (
     <div className="p-5 bg-white rounded-b-lg rounded-tl-none">
@@ -170,27 +205,26 @@ const FlightQuery = () => {
             <br />
             <input
               readOnly
+              onClick={handleSearchClick}
               className="border-2 w-full focus:outline-none h-10 p-3 mt-2 rounded-lg "
               value={journeyFrom}
               placeholder="Bangaldesh"
-             
+
             />
             <div
-              className={`text-black ${journeyFrom ? "absolute" : "hidden"
-                } h-36 overflow-y-auto bg-base-100 shadow-xl w-60 z-20 p-3 rounded-md`}
+              className={`text-black space-y-3 ${searchToggleFrom ? "absolute" : "hidden"
+                } h-48 overflow-y-auto bg-base-100 shadow-xl w-60 z-20 p-3 rounded-md`}
             >
+              <input
+                onChange={handleCountryChangeFrom}
+                name="search"
+                type="text"
+                className="input-sm w-full focus:outline-none border-b-2 h-12 rounded-md"
+                placeholder="🛪 Type for airport name or code"
+              />
               {country?.map((c, index) => (
-                <div
-                  key={index}
-                  className="flex gap-2 text-sm items-center py-2 "
-                  role="button"
-                  onClick={() => setJourneyFrom(c?.name?.common)}
-                >
-                  <img
-                    className="w-10"
-                    src={c?.flags?.png}
-                    alt={c?.name?.common}
-                  />
+                <div onClick={() => handleCountrySelect(c?.name?.common)} key={index} className="flex items-center gap-5 cursor-pointer p-2">
+                  <img src={`${c?.flags?.png}`} alt={`${c?.name?.common}`} className="w-10" />
                   <p>{c?.name?.common}</p>
                 </div>
               ))}
@@ -210,27 +244,27 @@ const FlightQuery = () => {
             <br />
             <input
               readOnly
+              onClick={handleSearchClickTo}
               className={`w-full focus:outline-none border-2 mt-2 h-10 p-3 rounded-lg`}
               value={journeyTo}
               placeholder="Nepal"
-              
+
             />
             <div
-              className={`text-black ${journeyTo ? "absolute" : "hidden"
-                }  h-36 overflow-y-auto bg-base-100 shadow-xl w-60 z-20  p-3 rounded-md`}
+              className={` text-black ${searchToggleTo ? "absolute" : "hidden"
+                }  h-48 space-y-3 overflow-y-auto bg-base-100 shadow-xl w-60 z-20  p-3 rounded-md`}
             >
+
+              <input
+                onChange={handleCountryChangeTo}
+                name="search"
+                type="text"
+                className="input-sm w-full focus:outline-none border-b-2 h-12 rounded-md"
+                placeholder="🛪 Type for airport name or code"
+              />
               {country?.map((c, index) => (
-                <div
-                  key={index}
-                  className="flex gap-2 text-sm items-center py-2 "
-                  role="button"
-                  onClick={() => setJourneyTo(c?.name?.common) && setToggle(!toggle)}
-                >
-                  <img
-                    className="w-10"
-                    src={c?.flags?.png}
-                    alt={c?.name?.common}
-                  />
+                <div onClick={() => handleCountrySelectTo(c?.name?.common)} key={index} className="flex items-center gap-5 cursor-pointer p-2">
+                  <img src={`${c?.flags?.png}`} alt={`${c?.name?.common}`} className="w-10" />
                   <p>{c?.name?.common}</p>
                 </div>
               ))}

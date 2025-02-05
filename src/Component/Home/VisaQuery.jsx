@@ -269,7 +269,7 @@ const VisaQuery = () => {
 
         </section>
 
-        {/* fare section */}
+        {/* visa approve section */}
         <section className="flex items-center justify-between  md:mb-4 text-secondary my-5 ">
           <div className="flex space-x-3">
             <label htmlFor="" className="font-semibold">Approval Type : </label>
