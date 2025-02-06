@@ -53,6 +53,14 @@ export default function ExTravels() {
     );
   };
 
+    // if you don't want to change the slider automatically then you can just remove the useEffect
+    useEffect(() => {
+      const intervalId = setInterval(() => {
+        nextSlide();
+      }, 3000);
+      return () => clearInterval(intervalId);
+    }, [nextSlide]);
+
   return (
     <div className="max-w-6xl mx-auto my-16">
       <div className="flex items-center justify-between">

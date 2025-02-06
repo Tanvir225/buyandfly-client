@@ -7,10 +7,12 @@ import Button from "../Shared/Button";
 
 import HotelPerson from "./Utility/HotelPerson";
 import HButton from "../Shared/HButton";
+import { FaCalendar } from "react-icons/fa6";
+import { LucideCalendarSync } from "lucide-react";
 
 
 
-const HotelQuery = () => {
+const HotelQuery = ({ toggleButton }) => {
 
   //STATE
   const [isTravellers, setIsTravellers] = useState(false);
@@ -59,7 +61,7 @@ const HotelQuery = () => {
             transition={{ duration: 0.5 }}
             className=""
           >
-            <label htmlFor="" className="font-semibold text-secondary">
+            <label htmlFor="" className="font-semibold ">
               Where Do you want to stay
             </label>
             <input
@@ -75,34 +77,42 @@ const HotelQuery = () => {
             transition={{ duration: 0.5, delay: 0.5 }}
 
           >
-            <label htmlFor="" className="font-semibold text-secondary ">
+            <label htmlFor="" className="font-semibold  ">
               Add Dates
             </label>
 
-            <motion.div className="input input-bordered h-10 mt-2 flex items-center -space-x-11 focus:outline-none">
-              <DatePicker
+            {/* date picker */}
 
-                className="focus:outline-none "
-                selected={departure}
-                onChange={(date) => setDepartureDate(date)}
-                showDisabledMonthNavigation
-                monthsShown={1}
-                dateFormat={"dd/MM/yyyy"}
-              />
+            <motion.div className="relative flex">
+              <div className="input input-bordered h-10 flex items-center focus:outline-none w-1/2 mt-2 border-r-0">
+                <DatePicker
 
+                  className="focus:outline-none "
+                  selected={departure}
+                  onChange={(date) => setDepartureDate(date)}
+                  showDisabledMonthNavigation
+                  monthsShown={1}
+                  dateFormat={"dd/MM/yyyy"}
+                />
+              </div>
+              <div className="input input-bordered h-10 flex items-center focus:outline-none w-1/2 mt-2 border-l-0">
 
+                <DatePicker
 
-              <DatePicker
+                  className="pl-2"
+                  selected={returnDate}
+                  onChange={(date) => setReturnDate(date)}
+                  showDisabledMonthNavigation
+                  monthsShown={1}
+                  dateFormat={"dd/MM/yyyy"}
+                />
+              </div>
 
-                className="border-l-2 -pl-2  focus:outline-none "
-                selected={returnDate}
-                onChange={(date) => setReturnDate(date)}
-                showDisabledMonthNavigation
-                monthsShown={1}
-                dateFormat={"dd/MM/yyyy"}
-              />
-
+              <div className="absolute bottom-1  bg-secondary rounded-2xl p-1 left-[44%]">
+                <LucideCalendarSync size={20} color="white" ></LucideCalendarSync >
+              </div>
             </motion.div>
+
 
           </motion.div>
 
@@ -112,7 +122,7 @@ const HotelQuery = () => {
             transition={{ duration: 0.5, delay: 0.8 }}
             className=""
           >
-            <label htmlFor="" className="font-semibold text-secondary">
+            <label htmlFor="" className="font-semibold ">
               Hotel Rating
             </label>
 
@@ -132,7 +142,7 @@ const HotelQuery = () => {
             transition={{ duration: 0.5, delay: 1 }}
             className=""
           >
-            <label htmlFor="" className="font-semibold text-secondary">
+            <label htmlFor="" className="font-semibold ">
               How Many Are Travelling
             </label>
             <br />
@@ -167,32 +177,32 @@ const HotelQuery = () => {
         </section>
 
         {/* hotel type section */}
-        <section className="flex items-center justify-between  md:mb-4 text-secondary my-5 ">
+        <section className="flex items-center justify-between  md:mb-4  my-5 ">
           <div className="flex space-x-3">
-            <label htmlFor="" className="font-semibold">Search For : </label>
+            <label htmlFor="" className="font-semibold text-secondary">Search For : </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="checkbox" name="business" className="checkbox-primary" />
-              <span className="text-secondary">Business</span>
+              <span className="">Business</span>
             </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="checkbox" name="couples" className="checkbox-primary" />
-              <span className="text-secondary">Couples</span>
+              <span className="">Couples</span>
             </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="checkbox" name="family" className="checkbox-primary" />
-              <span className="text-secondary">Family</span>
+              <span className="">Family</span>
             </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="checkbox" name="friends" className="checkbox-primary" />
-              <span className="text-secondary">Friends</span>
+              <span className="">Friends</span>
             </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="checkbox" name="friends" className="checkbox-primary" />
-              <span className="text-secondary">Solo</span>
+              <span className="">Solo</span>
             </label>
           </div>
 
-          <div className="px-5 space-x-5">
+          <div className={`px-5 space-x-5 ${toggleButton && 'opacity-0'}`}>
             <HButton width={44} text="Add Flights"></HButton>
             <Button width={44} text="Search"></Button>
           </div>
@@ -204,3 +214,5 @@ const HotelQuery = () => {
 };
 
 export default HotelQuery;
+
+

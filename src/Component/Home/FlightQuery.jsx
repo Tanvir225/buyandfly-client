@@ -8,6 +8,7 @@ import HButton from "../Shared/HButton";
 import Travellers from "./Utility/Travellers";
 import { GoArrowSwitch } from "react-icons/go";
 import MultiCity from "./Utility/MultiCity";
+import HotelQuery from "./HotelQuery";
 
 const FlightQuery = () => {
 
@@ -355,16 +356,24 @@ const FlightQuery = () => {
             </label>
           </div>
 
-          <div className=" space-x-5">
-            <HButton text="Add Hotel"></HButton>
+          <div className={`space-x-5 ${toggle && 'opacity-0'}`}>
+            <button className="btn btn-outline btn-primary" onClick={()=>setToggle(!toggle)}>Add Hotel</button>
             <Button width={36} text="Search"></Button>
           </div>
         </section>
 
-
+          {/* add hotel content */}
+          <section>
+            {
+              toggle ? <HotelQuery toggleButton={toggle}></HotelQuery> : ""
+            }
+          </section>
+          
       </form>
     </div>
   );
 };
 
 export default FlightQuery;
+
+
