@@ -174,7 +174,7 @@ const destinations = [
     images: [
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
 
-      "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
+      "https://i.ibb.co.com/svhPTc2k/bali.jpg",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
     ],
@@ -188,7 +188,7 @@ const destinations = [
     time: "Night",
     category: "Beachfront",
     images: [
-      "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
+      "https://i.ibb.co.com/svhPTc2k/bali.jpg",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
@@ -205,7 +205,7 @@ const destinations = [
     time: "Day",
     category: "Lakefront",
     images: [
-      "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
+      "https://i.ibb.co.com/KxfDZC5h/america.webp",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
@@ -222,7 +222,7 @@ const destinations = [
     time: "Day",
     category: "Boats",
     images: [
-      "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
+      "https://i.ibb.co.com/KxfDZC5h/america.webp",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
@@ -238,7 +238,7 @@ const destinations = [
     time: "Night",
     category: "Camping",
     images: [
-      "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
+      "https://i.ibb.co.com/svhPTc2k/bali.jpg",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
@@ -255,7 +255,7 @@ const destinations = [
     time: "Day",
     category: "Amazing Views",
     images: [
-      "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
+      "https://i.ibb.co.com/svhPTc2k/bali.jpg",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
@@ -271,7 +271,7 @@ const destinations = [
     time: "Night",
     category: "Amazing Views",
     images: [
-      "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
+      "https://i.ibb.co.com/bjwMYcCS/baki.jpg",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
