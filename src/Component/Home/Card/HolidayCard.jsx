@@ -1,128 +1,179 @@
 import { useState } from "react";
-import beach from "../../assets/icon/beach-02.png";
-import boat from "../../assets/icon/boat.png";
-import campfire from "../../assets/icon/campfire.png";
-import lake from "../../assets/icon/lake.png";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { FaStar } from "react-icons/fa";
-import { Carousel } from "@material-tailwind/react";
 
-const HoliDayDeal = () => {
-  const [activeTab, setActiveTab] = useState("Amazing Views");
+import campfire from "../../../assets/icon/campfire.png"
+import boat from "../../../assets/icon/boat.png"
+import beach from "../../../assets/icon/beach-02.png"
+import lake from "../../../assets/icon/lake.png"
 
-  const handleTabClick = (tabName) => {
-    setActiveTab(tabName);
+
+// card view
+
+function Card({ card }) {
+  const [imageIndex, setImageIndex] = useState(0);
+
+  const nextImage = () => {
+    if (imageIndex < card.images.length - 1) {
+      setImageIndex((prev) => prev + 1);
+    }
   };
-  // console.log(activeTab);
-  const matchCategories = destinations.filter((destination) => destination.category === activeTab);
+
+  const prevImage = () => {
+    if (imageIndex > 0) {
+      setImageIndex((prev) => prev - 1);
+    }
+  };
 
   return (
-    <div className="bg-[#FFF9F5] lg:px-28 md:px-24 lg:py-20 md:py-16">
-      <p className="font-semibold lg:text-[46px] md:text-4xl text-2xl leading-[64px] text-[#002E5B] md:text-left text-center">
-        Holiday Deals Under Budget
-      </p>
-      <div className="grid lg:grid-cols-5 grid-cols-3 border-2 border-[#DEE2E6] p-[10px] w-fit rounded-[10px] lg:mt-10 md:mt-7 mt-2 bg-white">
-        <button
-          className={`px-4 flex gap-2 items-center ${activeTab === "Amazing Views"
-              ? "bg-[#EF5B0C] px-5 py-2 items-center font-medium text-[#FFFFFF] rounded-[10px]"
-              : "font-medium px-4 py-2 items-center leading-[22px] text-[#7B6E7E]"
-            }`}
-          onClick={() => handleTabClick("Amazing Views")}
-        >
-          <img src={lake} alt="" /> Amazing Views
-        </button>
+    <div className=" rounded-lg overflow-hidden mt-10 h-96">
+      <div className="rounded-2xl border border-[#DEE2E6] bg-base-100 shadow-sm p-4">
+        <div className="relative">
+          <div>
+            <img
+              src={card.images[imageIndex]}
+              alt={card.title}
+              className="w-full h-full object-cover rounded-lg"
+            />
+          </div>
 
-        <button
-          className={`px-4 flex gap-2 items-center ${activeTab === "Lakefront"
-              ? "bg-[#EF5B0C] px-5 py-2 items-center font-medium text-[#FFFFFF] rounded-[10px]"
-              : "font-medium px-4 py-2 items-center leading-[22px] text-[#7B6E7E]"
-            }`}
-          onClick={() => handleTabClick("Lakefront")}
-        >
-          <img src={lake} alt="" /> Lakefront
-        </button>
-        <button
-          className={`px-4 flex gap-2 items-center ${activeTab === "Beachfront"
-              ? "bg-[#EF5B0C] px-5 py-2 items-center font-medium text-[#FFFFFF] rounded-[10px]"
-              : "font-medium px-4 py-2 items-center leading-[22px] text-[#7B6E7E]"
-            }`}
-          onClick={() => handleTabClick("Beachfront")}
-        >
-          <img src={beach} alt="" /> Beachfront
-        </button>
-        <button
-          className={`px-4 flex gap-2 items-center ${activeTab === "Boats"
-              ? "bg-[#EF5B0C] px-5 py-2 items-center font-medium text-[#FFFFFF] rounded-[10px]"
-              : "font-medium px-4 py-2 items-center leading-[22px] text-[#7B6E7E]"
-            }`}
-          onClick={() => handleTabClick("Boats")}
-        >
-          <img src={boat} alt="" /> Boats
-        </button>
-        <button
-          className={`px-4 flex gap-2 items-center ${activeTab === "Camping"
-              ? "bg-[#EF5B0C] px-5 py-2 items-center font-medium text-[#FFFFFF] rounded-[10px]"
-              : "font-medium px-4 py-2 items-center leading-[22px] text-[#7B6E7E]"
-            }`}
-          onClick={() => handleTabClick("Camping")}
-        >
-          <img src={campfire} alt="" /> Camping
-        </button>
-      </div>
+          {imageIndex > 0 && (
+            <button
+              onClick={prevImage}
+              className="absolute left-2 top-1/2 transform -translate-y-1/2 p-2 bg-white text-[#3F1600] rounded-full transition"
+            >
+              <ChevronLeft />
+            </button>
+          )}
 
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
-        {matchCategories.map((data, index) => (
-          <div
-            key={index}
-            className="rounded-2xl border border-[#DEE2E6] lg:mt-10 md:mt-6 mt-3 p-4"
-          >
-            <div>
-              <Carousel className="rounded-xl">
-                {data.images.map((imgUrl, index) => (
-                  <div key={index}>
-                    <img src={imgUrl} alt="image 1" className="h-full w-full object-cover" />
-                  </div>
-                ))}
-              </Carousel>
-            </div>
+          {imageIndex < card.images.length - 1 && (
+            <button
+              onClick={nextImage}
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 p-2 bg-white text-[#3F1600] rounded-full transition"
+            >
+              <ChevronRight />
+            </button>
+          )}
 
+          <div className="flex justify-center space-x-2 absolute bottom-3 left-1/2 -translate-x-1/2">
+            {card.images.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setImageIndex(idx)}
+                className={`h-2 w-2 rounded-full ${imageIndex === idx ? "bg-white w-4 transition-all" : "bg-gray-200"
+                  }`}
+              ></button>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-3">
+          <div >
             <div className="mt-3 text-[#111111] flex justify-between">
-              <p className="font-semibold text-lg">{data.title}</p>
+              <p className="font-semibold text-lg">{card.title}</p>
               <p className="text-lg flex gap-2 items-center">
-                <FaStar /> {data.rating}
+                <FaStar /> {card.rating}
               </p>
             </div>
-            <p className="font-medium text-lg text-[#7B6E7E]">{data.description}</p>
-            <p className="font-medium text-lg text-[#7B6E7E]">{data.expected_date}</p>
-            <p className="font-semibold text-lg text-[#111111] mt-1">
-              {data.price}
-              <span className="font-normal text-sm">/{data.time}</span>
+            <p className="font-medium  text-[#7B6E7E]">{card.description}</p>
+            <p className="font-medium  text-[#7B6E7E]">{card.expected_date}</p>
+            <p className="font-semibold  text-[#111111] mt-1">
+              {card.price}
+              <span className="font-normal text-sm">/{card.time}</span>
             </p>
           </div>
-        ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const HolidayCard = () => {
+  const [selectedTab, setSelectedTab] = useState("Amazing Views");
+  console.log(selectedTab);
+
+  const matchData = destinations.filter((card) => card.category === selectedTab);
+
+  return (
+    <div className="bg-[#FFF9F5] p-7 lg:p-16">
+      <div className=" max-w-6xl mx-auto">
+        <div className="flex items-center justify-between">
+          <p className="font-semibold text-xl lg:text-2xl text-secondary">
+            Holiday Deals Under Budget
+          </p>
+        </div>
+
+        <div className="flex space-x-4 mt-8 bg-white w-fit p-3 rounded-lg">
+          <button
+            className={`px-4 py-2 rounded-lg flex gap-1 items-center ${selectedTab === "Amazing Views" ? "bg-orange-500 text-white" : "text-[#7B6E7E]"
+              }`}
+            onClick={() => setSelectedTab("Amazing Views")}
+          >
+            <img src={lake} alt="" />Amazing Views
+          </button>
+          <button
+            className={`px-4 py-2 rounded-lg flex gap-1 items-center ${selectedTab === "Lakefront" ? "bg-orange-500 text-white" : "text-[#7B6E7E]"
+              }`}
+            onClick={() => setSelectedTab("Lakefront")}
+          >
+            <img src={lake} alt="" />Lakefront
+          </button>
+
+          <button
+            className={`px-4 py-2 rounded-lg flex gap-1 items-center ${selectedTab === "Beachfront" ? "bg-orange-500 text-white" : "text-[#7B6E7E]"
+              }`}
+            onClick={() => setSelectedTab("Beachfront")}
+          >
+            <img src={beach} alt="" />Beachfront
+          </button>
+
+          <button
+            className={`px-4 py-2 rounded-lg flex gap-1 items-center ${selectedTab === "Boats" ? "bg-orange-500 text-white" : "text-[#7B6E7E]"
+              }`}
+            onClick={() => setSelectedTab("Boats")}
+          >
+            <img src={boat} alt="" />Boats
+          </button>
+
+          <button
+            className={`px-4 py-2 rounded-lg flex gap-1 items-center ${selectedTab === "Camping" ? "bg-orange-500 text-white" : "text-[#7B6E7E]"
+              }`}
+            onClick={() => setSelectedTab("Camping")}
+          >
+            <img src={campfire} alt="" />Camping
+          </button>
+        </div>
+
+        <div className="overflow-hidden">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
+            {matchData.map((card, index) => (
+              <div key={index} className=" ">
+                <Card card={card} />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default HoliDayDeal;
-
+export default HolidayCard;
 
 
 // fake data
-
-
 const destinations = [
   {
     title: "Santorini, Greece",
     rating: 4.8,
-    description: "A beautiful island with blue and white buildings overlooking the Aegean Sea.",
+    description: "A beautiful island with blue and white.",
     expected_date: "2025-06-15",
     price: 1500,
     time: "Day",
     category: "Amazing Views",
     images: [
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
-      "https://i.ibb.co.com/zW7zhQjw/Vietnam.png",
+
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
       "https://i.ibb.co.com/pjknrGzq/wooden-footbridge-leading-into-lake.jpg",
@@ -131,7 +182,7 @@ const destinations = [
   {
     title: "Bali, Indonesia",
     rating: 4.7,
-    description: "Bali's peaceful beaches and lush forests captivate travelers.",
+    description: "Bali's peaceful beaches and lush forests",
     expected_date: "2025-07-20",
     price: 1200,
     time: "Night",
@@ -148,7 +199,7 @@ const destinations = [
     title: "Lake Como, Italy",
     rating: 4.7,
     description:
-      "The calm waters of Lake Como and the surrounding mountains create a magical view.",
+      "The calm waters of Lake  view.",
     expected_date: "2025-07-10",
     price: 1400,
     time: "Day",
@@ -165,7 +216,7 @@ const destinations = [
     title: "Ha Long Bay, Vietnam",
     rating: 4.8,
     description:
-      "The stunning limestone islands of Ha Long Bay make for an unforgettable boat trip.",
+      "The stunning islands for an unforgettable trip.",
     expected_date: "2025-09-15",
     price: 1600,
     time: "Day",
@@ -181,7 +232,7 @@ const destinations = [
   {
     title: "Grand Canyon, USA",
     rating: 4.9,
-    description: "Camping in the heart of the Grand Canyon is a breathtaking experience.",
+    description: "Camping in the heart of the Grand Canyon.",
     expected_date: "2025-10-05",
     price: 900,
     time: "Night",
@@ -198,7 +249,7 @@ const destinations = [
     title: "Machu Picchu, Peru",
     rating: 4.9,
     description:
-      "The ancient ruins of Machu Picchu sit atop the Andes Mountains, offering an awe-inspiring view.",
+      "The ancient ruins of Machu Picchu.",
     expected_date: "2025-08-25",
     price: 1700,
     time: "Day",
@@ -214,7 +265,7 @@ const destinations = [
   {
     title: "Dubai, UAE",
     rating: 4.6,
-    description: "A city where modern architecture meets desert landscapes.",
+    description: "A city where modern architecture.",
     expected_date: "2025-12-05",
     price: 2000,
     time: "Night",
@@ -231,7 +282,7 @@ const destinations = [
     title: "The Maldives",
     rating: 4.9,
     description:
-      "Luxury overwater bungalows and crystal-clear waters make this the perfect beach paradise.",
+      "Luxury overwater and crystal-clear waters.",
     expected_date: "2025-11-10",
     price: 2500,
     time: "Day",
@@ -248,7 +299,7 @@ const destinations = [
     title: "Yellowstone National Park, USA",
     rating: 4.8,
     description:
-      "Home to geysers, hot springs, and an abundance of wildlife, Yellowstone is perfect for nature lovers.",
+      "Home to geysers, hot springs, and wildlife.",
     expected_date: "2025-09-30",
     price: 800,
     time: "Day",
@@ -264,7 +315,7 @@ const destinations = [
   {
     title: "Venice, Italy",
     rating: 4.7,
-    description: "A city built on canals, where gondola rides create a romantic atmosphere.",
+    description: "A city canals,create a romantic atmosphere.",
     expected_date: "2025-05-20",
     price: 1800,
     time: "Night",

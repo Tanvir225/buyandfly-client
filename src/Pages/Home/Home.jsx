@@ -1,10 +1,9 @@
 import Banner from "../../Component/Home/Banner";
-import CountryPackageCard from "../../Component/Home/Card/CountryPackageCard";
-import CruiseCard from "../../Component/Home/Card/CruiseCard";
+
+
 import OfferCard from "../../Component/Home/Card/OfferCard";
 
-import PackageCard from "../../Component/Home/Card/PackageCard";
-import PackageCard1 from "../../Component/Home/Card/PackageCard1";
+
 import VisaCard from "../../Component/Home/Card/VisaCard";
 import Gallery from "../../Component/Home/Gallery";
 import MemoriesSection from "../../Component/Home/MemoriesSection";
@@ -29,6 +28,9 @@ import Button from "../../Component/Shared/Button";
 import FreeVisa from "../../Component/Home/Card/FreeVisa";
 import { Section } from "lucide-react";
 import HoliDayDeal from "../../Component/Home/HoliDayDeal";
+import FlightCards from "../../Component/Home/Card/FlightCards";
+import HolidayCard from "../../Component/Home/Card/HolidayCard";
+import TrendingHotel from "../../Component/Home/Card/TrendingHotel";
 
 const Home = () => {
   const date = new Date();
@@ -43,12 +45,30 @@ const Home = () => {
       {/* banner */}
       <Banner></Banner>
 
+      {/* exclusive travels deals */}
+      <section>
+        <OfferCard></OfferCard>
+      </section>
+
       {/* free visa */}
       <section >
         <FreeVisa></FreeVisa>
       </section>
 
-    
+      {/* flights section */}
+      <section>
+        <FlightCards></FlightCards>
+      </section>
+
+      {/* Holiday cards */}
+      <section>
+        <HolidayCard></HolidayCard>
+      </section>
+
+      {/* Trending Hotel */}
+      <section>
+        <TrendingHotel></TrendingHotel>
+      </section>
 
       {/* memory section */}
       <section className="">

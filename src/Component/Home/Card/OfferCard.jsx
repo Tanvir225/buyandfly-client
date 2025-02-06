@@ -1,183 +1,110 @@
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// Import Swiper styles
-import "swiper/css";
+const images = [
+  "https://i.ibb.co.com/fYNqfqQQ/Frame-1171275583.png",
+  "https://i.ibb.co.com/xt4xDDSX/Frame-1171275581.png",
+  "https://i.ibb.co.com/7dcQ0FC9/Frame-1171275582.png",
+  "https://i.ibb.co.com/fYNqfqQQ/Frame-1171275583.png",
+  "https://i.ibb.co.com/xt4xDDSX/Frame-1171275581.png",
+  "https://i.ibb.co.com/7dcQ0FC9/Frame-1171275582.png",
+  "https://i.ibb.co.com/fYNqfqQQ/Frame-1171275583.png",
+  "https://i.ibb.co.com/xt4xDDSX/Frame-1171275581.png",
+  "https://i.ibb.co.com/7dcQ0FC9/Frame-1171275582.png",
+  "https://i.ibb.co.com/fYNqfqQQ/Frame-1171275583.png",
+  "https://i.ibb.co.com/xt4xDDSX/Frame-1171275581.png",
+  "https://i.ibb.co.com/7dcQ0FC9/Frame-1171275582.png",
+  "https://i.ibb.co.com/fYNqfqQQ/Frame-1171275583.png",
+  "https://i.ibb.co.com/xt4xDDSX/Frame-1171275581.png",
+  "https://i.ibb.co.com/7dcQ0FC9/Frame-1171275582.png",
+  "https://i.ibb.co.com/7dcQ0FC9/Frame-1171275582.png",
+  "https://i.ibb.co.com/7dcQ0FC9/Frame-1171275582.png",
+  "https://i.ibb.co.com/7dcQ0FC9/Frame-1171275582.png",
+];
 
-// import required modules
+export default function ExTravels() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsPerView, setItemsPerView] = useState(1);
 
-import "swiper/css/pagination";
-import { Pagination, Autoplay } from "swiper/modules";
-import Button from "../../Shared/Button";
-import { useRef } from "react";
+  // Responsive breakpoints
+  useEffect(() => {
+    const updateItemsPerView = () => {
+      if (window.innerWidth >= 1024) {
+        setItemsPerView(3);
+      } else if (window.innerWidth >= 768) {
+        setItemsPerView(2);
+      } else {
+        setItemsPerView(1);
+      }
+    };
 
-const OfferCard = ({slider1,slider2,slider3,slider4,slider5,slider6}) => {
-  const swiperRef = useRef(null); // Ref to access Swiper instance
+    updateItemsPerView();
+    window.addEventListener("resize", updateItemsPerView);
+    return () => window.removeEventListener("resize", updateItemsPerView);
+  }, []);
 
-  const handleMouseEnter = () => {
-    swiperRef.current?.autoplay.stop(); // Stop autoplay on hover
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + itemsPerView >= images.length ? 0 : prev + itemsPerView));
   };
 
-  const handleMouseLeave = () => {
-    swiperRef.current?.autoplay.start(); // Restart autoplay on mouse leave
+  const prevSlide = () => {
+    setCurrentIndex((prev) =>
+      prev - itemsPerView < 0 ? images.length - itemsPerView : prev - itemsPerView
+    );
   };
 
-  const isSmallScreen = window.innerWidth < 1024;
   return (
-    <div>
-      <Swiper
-        onSwiper={(swiper) => (swiperRef.current = swiper)} // Assign Swiper instance to ref
-        slidesPerView={isSmallScreen ? 1 : 3}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        spaceBetween={20}
-        modules={[Pagination, Autoplay]}
-        className="mySwiper space-x-5 "
-        pagination={{ clickable: true }}
-      >
-        <SwiperSlide>
-          <div
-            className="relative group  h-52 overflow-hidden rounded-lg shadow-lg mb-14"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+    <div className="max-w-6xl mx-auto my-16">
+      <div className="flex items-center justify-between">
+        <p className="font-semibold text-xl lg:text-2xl text-secondary">
+          Exclusive travel deals.
+        </p>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={prevSlide}
+            disabled={currentIndex === 0}
+            className={`transform p-3 rounded-full transition ${
+              currentIndex === 0
+                ? "bg-transparent text-[#3F1600] border border-[#DEE2E6] cursor-not-allowed"
+                : "bg-[#EF5B0C] text-white hover:bg-orange-600"
+            }`}
           >
-            {/* Image */}
-            <img
-              src={slider1}
-              alt="Sample"
-              className="w-full h-full object-fill"
-            />
-            {/* Full Overlay */}
-            <div className="absolute inset-0 space-y-2 bg-black/70 text-white flex flex-col items-center justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
-              <p className="text-lg font-semibold">
-                Extra 5% discount on USD Payments
-              </p>
-              <p>Extra 5% discount on USD Payments</p>
-              <Button text="View Details"></Button>
-            </div>
-          </div>
-        </SwiperSlide>
+            <ChevronLeft />
+          </button>
 
-        <SwiperSlide>
-          <div
-            className="relative group  h-52 overflow-hidden rounded-lg shadow-lg mb-14"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+          <button
+            onClick={nextSlide}
+            disabled={currentIndex + itemsPerView >= images.length}
+            className={`transform p-3 rounded-full transition ${
+              currentIndex + itemsPerView >= images.length
+                ? "bg-transparent text-[#3F1600] border border-[#DEE2E6] cursor-not-allowed"
+                : "bg-[#EF5B0C] text-white hover:bg-orange-600"
+            }`}
           >
-            {/* Image */}
-            <img
-              src={slider2}
-              alt="Sample"
-              className="w-full h-full object-fill"
-            />
-            {/* Full Overlay */}
-            <div className="absolute inset-0 space-y-2 bg-black/70 text-white flex flex-col items-center justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
-              <p className=" text-center font-semibold">
-                Exciting limited-time deals with Singapore Airlines!
-              </p>
-              <p>Extra 5% discount on USD Payments</p>
-              <Button text="View Details"></Button>
-            </div>
-          </div>
-        </SwiperSlide>
+            <ChevronRight />
+          </button>
+        </div>
+      </div>
 
-        <SwiperSlide>
-          <div
-            className="relative group  h-52 overflow-hidden rounded-lg shadow-lg mb-14"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            {/* Image */}
-            <img
-              src={slider3}
-              alt="Sample"
-              className="w-full h-full object-fill"
-            />
-            {/* Full Overlay */}
-            <div className="absolute inset-0 space-y-2 bg-black/70 text-white flex flex-col items-center justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
-              <p className="text-lg font-semibold">
-                Extra 5% discount on USD Payments
-              </p>
-              <p>Extra 5% discount on USD Payments</p>
-              <Button text="View Details"></Button>
+      <div className="overflow-hidden lg:mt-10 md:mt-7 mt-4">
+        <div
+          className="flex transition-transform duration-500"
+          style={{
+            transform: `translateX(-${(currentIndex / images.length) * 100}%)`,
+            width: `${(images.length / itemsPerView) * 100}%`,
+          }}
+        >
+          {images.map((img, index) => (
+            <div key={index} className="w-full px-2">
+              <img
+                src={img}
+                alt={`Slide ${index}`}
+                className="w-full h-[240px] object-cover rounded-lg"
+              />
             </div>
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <div
-            className="relative group  h-52 overflow-hidden rounded-lg shadow-lg mb-14"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            {/* Image */}
-            <img
-              src={slider4}
-              alt="Sample"
-              className="w-full h-full object-fill"
-            />
-            {/* Full Overlay */}
-            <div className="absolute inset-0 space-y-2 bg-black/70 text-white flex flex-col items-center justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
-              <p className=" text-center font-semibold">
-                Umrah packages for specific BRAC Bank Premium Banking Debit
-                cardholders
-              </p>
-              <p>Extra 5% discount on USD Payments</p>
-              <Button text="View Details"></Button>
-            </div>
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <div
-            className="relative group  h-52 overflow-hidden rounded-lg shadow-lg mb-14"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            {/* Image */}
-            <img
-              src={slider5}
-              alt="Sample"
-              className="w-full h-full object-fill"
-            />
-            {/* Full Overlay */}
-            <div className="absolute inset-0 space-y-2 bg-black/70 text-white flex flex-col items-center justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
-              <p className="text-lg font-semibold">
-                Your health journey made rewarding
-              </p>
-              <p>Extra 5% discount on USD Payments</p>
-              <Button text="View Details"></Button>
-            </div>
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <div
-            className="relative group  h-52 overflow-hidden rounded-lg shadow-lg mb-14"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            {/* Image */}
-            <img
-              src={slider6}
-              alt="Sample"
-              className="w-full h-full object-fill"
-            />
-            {/* Full Overlay */}
-            <div className="absolute inset-0 space-y-2 bg-black/70 text-white flex flex-col items-center justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
-              <p className="text-lg font-semibold">
-                Extra 5% discount on USD Payments
-              </p>
-              <p>Extra 5% discount on USD Payments</p>
-              <Button text="View Details"></Button>
-            </div>
-          </div>
-        </SwiperSlide>
-      </Swiper>
+          ))}
+        </div>
+      </div>
     </div>
   );
-};
-
-export default OfferCard;
+}
