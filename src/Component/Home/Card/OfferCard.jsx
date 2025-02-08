@@ -62,7 +62,7 @@ export default function ExTravels() {
     }, [nextSlide]);
 
   return (
-    <div className="max-w-6xl mx-auto my-16">
+    <div className="max-w-6xl mx-auto my-16 p-5">
       <div className="flex items-center justify-between">
         <p className="font-semibold text-xl lg:text-3xl text-secondary">
           Exclusive travel deals.

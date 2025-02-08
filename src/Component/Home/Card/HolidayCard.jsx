@@ -95,7 +95,7 @@ const HolidayCard = () => {
   const matchData = destinations.filter((card) => card.category === selectedTab);
 
   return (
-    <div className="bg-[#FFF9F5] p-7 lg:p-16">
+    <div className="bg-[#FFF9F5] p-5 lg:p-16">
       <div className=" max-w-6xl mx-auto">
         <div className="flex items-center justify-between">
           <p className="font-semibold text-xl lg:text-3xl text-secondary">
@@ -103,7 +103,7 @@ const HolidayCard = () => {
           </p>
         </div>
 
-        <div className="flex space-x-4 mt-8 bg-white w-fit p-3 rounded-lg">
+        <div className="flex space-x-4 flex-wrap mt-8 bg-white w-fit p-3 rounded-lg">
           <button
             className={`px-4 py-2 rounded-lg flex gap-1 items-center ${selectedTab === "Amazing Views" ? "bg-orange-500 text-white" : "text-[#7B6E7E]"
               }`}

@@ -42,7 +42,7 @@ const Summary = () => {
   console.log(matchData);
 
   return (
-    <section className="space-y-7 ">
+    <section className="space-y-7 p-5">
       <div className="max-w-6xl mx-auto">
         <div className=" grid md:grid-cols-4 grid-cols-4 border-2 border-[#DEE2E6] p-2 w-fit md:mx-0 mx-auto rounded-md  bg-white">
           <button
@@ -88,7 +88,7 @@ const Summary = () => {
       </div>
 
 
-      <div className="max-w-6xl mx-auto grid md:gap-4 md:grid-cols-3 grid-cols-1">
+      <div className="max-w-6xl mx-auto grid md:gap-4 md:grid-cols-3 grid-cols-1 gap-5">
         <div className="border border-[#E2E2E2] bg-base-100 shadow-sm rounded-xl h-32 p-4">
           <div className="text-[#883DCF] bg-[#F4ECFB]  rounded-xl w-fit">
             <Search size={24} />

@@ -2,7 +2,7 @@ import logo from "/logo.svg";
 
 const Loading = () => {
     return (
-        <div className={`h-[100vh] z-20 w-full flex justify-center items-center`}>
+        <div className={`h-[100vh] w-full flex justify-center items-center`}>
             <img src={logo} alt="logo"  className="w-44 h-full"/>
         </div>
     );

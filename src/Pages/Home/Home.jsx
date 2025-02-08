@@ -73,8 +73,8 @@ const Home = () => {
 
 
           {/* Today's Summmary */}
-          <section className="space-y-5 bg-[#FFF9F5] py-16">
-            <Title title={`Today's Summary | ${today}`} size="md"></Title>
+          <section className="space-y-5 bg-[#FFF9F5] py-16 px-5">
+            <Title title={`Today's Summary | ${today}`} size="md" ></Title>
             <Summary></Summary>
           </section>
 

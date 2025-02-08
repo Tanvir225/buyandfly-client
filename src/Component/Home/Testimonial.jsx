@@ -23,7 +23,7 @@ const Testimonial = () => {
 
 
   return (
-    <div className="max-w-6xl mx-auto my-16 ">
+    <div className="max-w-6xl mx-auto my-16 p-5">
       <div className="flex items-center justify-between">
         <p className="font-semibold text-xl md:text-3xl text-secondary">
           What Our Customer Says

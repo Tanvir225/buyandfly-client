@@ -11,7 +11,7 @@ const FreeVisa = () => {
                 <Title size={4} title="Hassle-Free Visa Processing"></Title>
             </div>
 
-            <div className="max-w-6xl mx-auto grid lg:grid-cols-4 md:grid-cols-2 grid-cols-4 gap-4 w-full">
+            <div className="max-w-6xl mx-auto grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 gap-4 w-full">
                 {visaData.map((visa, index) => (<div key={index} className="relative w-fit mx-auto">
                     <div className="relative w-full">
                         <img className="rounded-2xl w-full  " src={visa.image} alt="" />

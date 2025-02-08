@@ -31,7 +31,7 @@ const MemoriesSection = () => {
   }, []);
 
   return (
-    <div className="text-center my-16">
+    <div className="text-center my-16 p-5">
       <p className="font-semibold text-xl lg:text-3xl lg:leading-normal">
         Unforgettable Travel <br /> Experiences  Get Your Guide
       </p>

@@ -149,7 +149,7 @@ const TrendingHotel = () => {
   };
 
   return (
-    <div className="p-7 lg:py-16 bg-[#002E5B]">
+    <div className="p-5 lg:py-16 bg-[#002E5B]">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between">
           <p className="font-semibold text-xl lg:text-3xl text-white ">
@@ -180,7 +180,7 @@ const TrendingHotel = () => {
           </div>
         </div>
 
-        <div className="flex space-x-4 mt-8 bg-white w-fit p-2 rounded-lg">
+        <div className="flex flex-wrap space-x-4 mt-8 bg-white w-fit p-2 rounded-lg">
           <button
             className={`px-4 py-2 rounded-lg ${selectedTab === "France" ? "bg-orange-500 text-white" : "text-[#7B6E7E]"
               }`}
