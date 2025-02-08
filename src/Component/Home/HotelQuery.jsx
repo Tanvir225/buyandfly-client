@@ -9,6 +9,8 @@ import HotelPerson from "./Utility/HotelPerson";
 import HButton from "../Shared/HButton";
 import { FaCalendar } from "react-icons/fa6";
 import { LucideCalendarSync } from "lucide-react";
+import FlightQuery from "./FlightQuery";
+import { HiOutlineCalendarDays } from "react-icons/hi2";
 
 
 
@@ -16,6 +18,7 @@ const HotelQuery = ({ toggleButton }) => {
 
   //STATE
   const [isTravellers, setIsTravellers] = useState(false);
+  const [toggleFlight, setToggleFlight] = useState(false);
 
   const [adult, setAdult] = useState(0)
   const [child, setChild] = useState(0)
@@ -61,7 +64,7 @@ const HotelQuery = ({ toggleButton }) => {
             transition={{ duration: 0.5 }}
             className=""
           >
-            <label htmlFor="" className="font-semibold ">
+            <label htmlFor="" className="text-sm ">
               Where Do you want to stay
             </label>
             <input
@@ -77,7 +80,7 @@ const HotelQuery = ({ toggleButton }) => {
             transition={{ duration: 0.5, delay: 0.5 }}
 
           >
-            <label htmlFor="" className="font-semibold  ">
+            <label htmlFor="" className="">
               Add Dates
             </label>
 
@@ -87,7 +90,7 @@ const HotelQuery = ({ toggleButton }) => {
               <div className="input input-bordered h-10 flex items-center focus:outline-none w-1/2 mt-2 border-r-0">
                 <DatePicker
 
-                  className="focus:outline-none "
+                  className="focus:outline-none"
                   selected={departure}
                   onChange={(date) => setDepartureDate(date)}
                   showDisabledMonthNavigation
@@ -108,8 +111,8 @@ const HotelQuery = ({ toggleButton }) => {
                 />
               </div>
 
-              <div className="absolute bottom-1  bg-secondary rounded-2xl p-1 left-[44%]">
-                <LucideCalendarSync size={20} color="white" ></LucideCalendarSync >
+              <div className="absolute bottom-2  bg-sky-200 shadow-lg rounded-2xl p-1 left-[45%]">
+                <HiOutlineCalendarDays  size={16} color="black" ></HiOutlineCalendarDays  >
               </div>
             </motion.div>
 
@@ -122,7 +125,7 @@ const HotelQuery = ({ toggleButton }) => {
             transition={{ duration: 0.5, delay: 0.8 }}
             className=""
           >
-            <label htmlFor="" className="font-semibold ">
+            <label htmlFor="" className="">
               Hotel Rating
             </label>
 
@@ -142,7 +145,7 @@ const HotelQuery = ({ toggleButton }) => {
             transition={{ duration: 0.5, delay: 1 }}
             className=""
           >
-            <label htmlFor="" className="font-semibold ">
+            <label htmlFor="" className="">
               How Many Are Travelling
             </label>
             <br />
@@ -203,9 +206,20 @@ const HotelQuery = ({ toggleButton }) => {
           </div>
 
           <div className={`px-5 space-x-5 ${toggleButton && 'opacity-0'}`}>
-            <HButton width={44} text="Add Flights"></HButton>
+            <button type="button" className="btn btn-outline btn-primary" onClick={() => setToggleFlight(!toggleFlight)}>{toggleFlight ? 'Remove Flight' : 'Add Flight'}</button>
             <Button width={44} text="Search"></Button>
           </div>
+        </section>
+
+        {/* add hotel content */}
+        <section>
+          {
+            toggleFlight ? <section>
+              <FlightQuery toggleButton={toggle} toggleFlight={toggleFlight}></FlightQuery>
+            </section> :
+              ""
+          }
+
         </section>
 
       </form>

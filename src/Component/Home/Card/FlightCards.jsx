@@ -165,7 +165,7 @@ const FlightCards = () => {
   return (
     <div className="max-w-6xl mx-auto my-16">
       <div className="flex items-center justify-between">
-        <p className="font-semibold text-xl lg:text-2xl text-secondary">
+        <p className="font-semibold text-xl lg:text-3xl text-secondary">
           Your Next Flight Awaits
         </p>
         <div className="flex items-center gap-4">

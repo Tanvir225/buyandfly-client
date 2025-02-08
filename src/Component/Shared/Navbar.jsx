@@ -21,7 +21,7 @@ const Navbar = () => {
       <div className="bg-secondary text-white py-1">
         <div className="flex justify-center items-center lg:justify-between max-w-6xl mx-auto px-2">
           {/* text */}
-          <div className="hidden text-sm  lg:block w-full lg:w-[40%]">
+          <div className="hidden text-[13px]  lg:block w-full lg:w-[40%]">
             <Swiper
               spaceBetween={10}
               grabCursor={true}

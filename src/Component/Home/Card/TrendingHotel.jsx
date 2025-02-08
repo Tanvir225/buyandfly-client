@@ -79,29 +79,29 @@ function Card({ card }) {
           United Kingdom
         </p>
         <div className="flex gap-2 mt-2 text-sm">
-          <p className="flex gap-2 items-center font-medium border border-[#DEE2E6] rounded-2xl px-1 py-1 mt-1">
-            <GrUserFemale size={12} />2 Adult
+          <p className="flex gap-2 items-center font-medium border border-[#DEE2E6] rounded-2xl   py-1 mt-1">
+            <GrUserFemale size={10} />2 Adult
           </p>
           <p className="flex gap-2 items-center font-medium border border-[#DEE2E6] rounded-2xl px-1 py-1 mt-1">
-            <PawPrint size={15} />
+            <PawPrint size={10} />
             Pet Friendly
           </p>
           <p className="flex gap-2 items-center font-medium border border-[#DEE2E6] rounded-2xl px-1 py-1 mt-1">
-            <TentTree size={15}/>
+            <TentTree size={10}/>
             Lake Nearby
           </p>
         </div>
         <div className="flex gap-2 mt-1">
-          <p className="flex gap-2 items-center font-medium border border-[#DEE2E6] rounded-2xl px-1 py-1 mt-1">
-            <Flame size={15}/>
+          <p className="flex gap-2 items-center font-medium border border-[#DEE2E6] rounded-2xl  py-1 mt-1">
+            <Flame size={10}/>
             BonFire 
           </p>
-          <p className="flex gap-2 items-center font-medium border border-[#DEE2E6] rounded-2xl px-1 py-1 mt-1">
-            <Mountain size={15} />
+          <p className="flex gap-2 items-center font-medium border border-[#DEE2E6] rounded-2xl  py-1 mt-1">
+            <Mountain size={10} />
             Mountain
           </p>
           <p className="flex gap-2 items-center font-medium border border-[#DEE2E6] rounded-2xl px-1 py-1 mt-1">
-            <FaUmbrellaBeach size={15}/>
+            <FaUmbrellaBeach size={10}/>
             Beach View
           </p>
         </div>
@@ -149,10 +149,10 @@ const TrendingHotel = () => {
   };
 
   return (
-    <div className="p-7 lg:p-10 bg-[#002E5B]">
+    <div className="p-7 lg:py-16 bg-[#002E5B]">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between">
-          <p className="font-semibold text-xl lg:text-2xl text-white ">
+          <p className="font-semibold text-xl lg:text-3xl text-white ">
             Top Trending hotel in worldwide
           </p>
           <div className="flex gap-4">

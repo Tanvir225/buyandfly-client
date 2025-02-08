@@ -98,7 +98,7 @@ const HolidayCard = () => {
     <div className="bg-[#FFF9F5] p-7 lg:p-16">
       <div className=" max-w-6xl mx-auto">
         <div className="flex items-center justify-between">
-          <p className="font-semibold text-xl lg:text-2xl text-secondary">
+          <p className="font-semibold text-xl lg:text-3xl text-secondary">
             Holiday Deals Under Budget
           </p>
         </div>

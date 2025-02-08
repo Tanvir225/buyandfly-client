@@ -4,6 +4,8 @@ import DatePicker from "react-datepicker";
 import { useState } from "react";
 import HotelPerson from "./Utility/HotelPerson";
 
+import { HiOutlineCalendarDays } from "react-icons/hi2";
+
 const HolidayQuery = () => {
 
   const [departure, setDepartureDate] = useState(new Date());
@@ -47,7 +49,7 @@ const HolidayQuery = () => {
             transition={{ duration: 0.5 }}
             className=""
           >
-            <label htmlFor="" className="font-semibold ">
+            <label htmlFor="" className="text-sm">
               Where Do you want to stay
             </label>
             <input
@@ -63,33 +65,43 @@ const HolidayQuery = () => {
             transition={{ duration: 0.5, delay: 0.5 }}
 
           >
-            <label htmlFor="" className="font-semibold  ">
+            <label htmlFor="" className="">
               Add Dates
             </label>
 
-            <div className="input input-bordered flex -space-x-12 items-center h-10 mt-2 ">
-              <DatePicker
+            {/* date picker */}
 
-                className="focus:outline-none "
-                selected={departure}
-                onChange={(date) => setDepartureDate(date)}
-                showDisabledMonthNavigation
-                monthsShown={1}
-                dateFormat={"dd/MM/yyyy"}
-              />
+            <motion.div className="relative flex">
+              <div className="input input-bordered h-10 flex items-center focus:outline-none w-1/2 mt-2 border-r-0">
+                <DatePicker
+
+                  className="focus:outline-none "
+                  selected={departure}
+                  onChange={(date) => setDepartureDate(date)}
+                  showDisabledMonthNavigation
+                  monthsShown={1}
+                  dateFormat={"dd/MM/yyyy"}
+                />
+              </div>
+              <div className="input input-bordered h-10 flex items-center focus:outline-none w-1/2 mt-2 border-l-0">
+
+                <DatePicker
+
+                  className="pl-2"
+                  selected={returnDate}
+                  onChange={(date) => setReturnDate(date)}
+                  showDisabledMonthNavigation
+                  monthsShown={1}
+                  dateFormat={"dd/MM/yyyy"}
+                />
+              </div>
+
+              <div className="absolute bottom-2  bg-sky-200 shadow-lg rounded-2xl p-1 left-[45%]">
+                <HiOutlineCalendarDays  size={16} color="black" ></HiOutlineCalendarDays  >
+              </div>
+            </motion.div>
 
 
-
-              <DatePicker
-
-                className="border-l-2  focus:outline-none "
-                selected={returnDate}
-                onChange={(date) => setReturnDate(date)}
-                showDisabledMonthNavigation
-                monthsShown={1}
-                dateFormat={"dd/MM/yyyy"}
-              />
-            </div>
           </motion.div>
 
           <motion.div
@@ -98,7 +110,7 @@ const HolidayQuery = () => {
             transition={{ duration: 0.5, delay: 0.8 }}
             className=""
           >
-            <label htmlFor="" className="font-semibold ">
+            <label htmlFor="" className="">
               What's Your Budget
             </label>
 
@@ -117,7 +129,7 @@ const HolidayQuery = () => {
             transition={{ duration: 0.5, delay: 1 }}
             className=""
           >
-            <label htmlFor="" className="font-semibold ">
+            <label htmlFor="" className="">
               How Many Are Travelling
             </label>
             <br />

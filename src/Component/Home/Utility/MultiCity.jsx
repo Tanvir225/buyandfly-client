@@ -22,7 +22,7 @@ const MultiCity = ({ visible, setVisiable }) => {
                 transition={{ duration: 0.5 }}
                 className="w-full"
             >
-                <label htmlFor="" className="text-black">
+                <label htmlFor="" className="">
                     From
                 </label>{" "}
                 <br />
@@ -48,7 +48,7 @@ const MultiCity = ({ visible, setVisiable }) => {
                 transition={{ duration: 0.5, delay: 0.25 }}
                 className="relative"
             >
-                <label htmlFor="" className="text-black">
+                <label htmlFor="" className="">
                     To
                 </label>{" "}
                 <br />
@@ -72,20 +72,28 @@ const MultiCity = ({ visible, setVisiable }) => {
             </motion.div>
 
 
-            <motion.div className="input input-bordered h-10 mt-8 flex items-center focus:outline-none">
-                <DatePicker
+            <div>
+                <label htmlFor="" className="">
+                    Journey Date
+                </label>
+                <motion.div className="input input-bordered h-10 mt-2 flex items-center focus:outline-none">
 
-                    className="focus:outline-none "
-                    selected={departure_1}
-                    onChange={(date) => setDeparture_1(date)}
-                    showDisabledMonthNavigation
-                    monthsShown={1}
-                    dateFormat={"dd/MM/yyyy"}
-                />
-            </motion.div>
 
+                    <DatePicker
+
+                        className="focus:outline-none "
+                        selected={departure_1}
+                        onChange={(date) => setDeparture_1(date)}
+                        showDisabledMonthNavigation
+                        monthsShown={1}
+                        dateFormat={"dd/MM/yyyy"}
+                    />
+                </motion.div>
+
+            </div>
             <div className="mt-9 space-x-3">
                 <button
+                    type="button"
                     onClick={() => setVisiable(true)}
                     className={`btn btn-sm btn-primary text-white transform transition-all duration-500 ease-in-out 
     ${visible ? "opacity-0 scale-90 pointer-events-none" : "opacity-100 scale-100"}`}

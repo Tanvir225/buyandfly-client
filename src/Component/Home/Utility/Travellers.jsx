@@ -30,7 +30,7 @@ const Travellers = () => {
 
     return (
         <div>
-            <label htmlFor="" className="text-black capitalize">
+            <label htmlFor="" className="">
                 How many are Travelling
             </label>
 

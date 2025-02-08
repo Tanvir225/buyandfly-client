@@ -25,7 +25,7 @@ const Testimonial = () => {
   return (
     <div className="max-w-6xl mx-auto my-16 ">
       <div className="flex items-center justify-between">
-        <p className="font-semibold text-xl md:text-2xl text-secondary">
+        <p className="font-semibold text-xl md:text-3xl text-secondary">
           What Our Customer Says
         </p>
         <div className="flex gap-5">

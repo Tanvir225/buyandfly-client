@@ -9,8 +9,11 @@ import Travellers from "./Utility/Travellers";
 import { GoArrowSwitch } from "react-icons/go";
 import MultiCity from "./Utility/MultiCity";
 import HotelQuery from "./HotelQuery";
+import { LucideCalendarSync } from "lucide-react";
+import Loading from "../Shared/Loading";
+import { HiOutlineCalendarDays } from "react-icons/hi2";
 
-const FlightQuery = () => {
+const FlightQuery = ({loading,setLoading,toggleFlight}) => {
 
   const [allCountries, setAllCountries] = useState([]);
   const [country, setCountry] = useState([]);
@@ -20,6 +23,7 @@ const FlightQuery = () => {
   const [toggle, setToggle] = useState(false);
   const [tripType, setTripType] = useState("oneway");
   const [searchToggleFrom, setSearchToggleFrom] = useState(false)
+
   const [searchToggleTo, setSearchToggleTo] = useState(false)
 
 
@@ -82,6 +86,7 @@ const FlightQuery = () => {
       .then((data) => {
         setAllCountries(data);
         setCountry(data);  // Show all countries initially
+        setLoading(false)
       });
   }, []);
 
@@ -200,7 +205,7 @@ const FlightQuery = () => {
             transition={{ duration: 0.5 }}
             className=""
           >
-            <label htmlFor="" className="text-black">
+            <label htmlFor="" className="">
               From
             </label>{" "}
             <br />
@@ -239,7 +244,7 @@ const FlightQuery = () => {
             transition={{ duration: 0.5, delay: 0.25 }}
             className="relative"
           >
-            <label htmlFor="" className="text-black">
+            <label htmlFor="" className="">
               To
             </label>{" "}
             <br />
@@ -282,35 +287,66 @@ const FlightQuery = () => {
             transition={{ duration: 0.5, delay: 0.5 }}
 
           >
-            <label htmlFor="" className="text-black ">
+            <label htmlFor="" className="">
               {tripType === 'oneway' ? "Journey Date" : "Add Dates"}
             </label>
 
-            <motion.div className="input input-bordered h-10 mt-2 flex items-center -space-x-10 focus:outline-none">
-              <DatePicker
+            {/* one way trip */}
 
-                className="focus:outline-none "
-                selected={departure}
-                onChange={(date) => setDepartureDate(date)}
-                showDisabledMonthNavigation
-                monthsShown={1}
-                dateFormat={"dd/MM/yyyy"}
-              />
+            {
+              (tripType === 'oneway' || tripType === 'multicity') && <motion.div className="input input-bordered h-10 mt-2 flex items-center -space-x-10 focus:outline-none">
 
 
 
-              {
-                tripType === 'round trip' && <DatePicker
+                <DatePicker
 
-                  className="border-l-2 pl-1 focus:outline-none "
-                  selected={returnDate}
-                  onChange={(date) => setReturnDate(date)}
+                  className="focus:outline-none "
+                  selected={departure}
+                  onChange={(date) => setDepartureDate(date)}
                   showDisabledMonthNavigation
                   monthsShown={1}
                   dateFormat={"dd/MM/yyyy"}
                 />
-              }
-            </motion.div>
+
+
+
+              </motion.div>
+            }
+
+            {/* round trip */}
+
+            {
+              tripType === 'round trip' &&
+              <motion.div className="relative flex">
+                <div className="input input-bordered h-10 flex items-center focus:outline-none w-1/2 mt-2 border-r-0">
+                  <DatePicker
+
+                    className="focus:outline-none "
+                    selected={departure}
+                    onChange={(date) => setDepartureDate(date)}
+                    showDisabledMonthNavigation
+                    monthsShown={1}
+                    dateFormat={"dd/MM/yyyy"}
+                  />
+                </div>
+                <div className="input input-bordered h-10 flex items-center focus:outline-none w-1/2 mt-2 border-l-0">
+
+                  <DatePicker
+
+                    className="pl-2"
+                    selected={returnDate}
+                    onChange={(date) => setReturnDate(date)}
+                    showDisabledMonthNavigation
+                    monthsShown={1}
+                    dateFormat={"dd/MM/yyyy"}
+                  />
+                </div>
+
+                <div className="absolute bottom-2  bg-sky-200 rounded-2xl shadow-lg p-1 left-[44%]">
+                  <HiOutlineCalendarDays  size={16} color="black" ></HiOutlineCalendarDays  >
+                </div>
+              </motion.div>
+            }
 
             {
               tripType === 'round trip' && <p className="capitalize text-sm text-secondary my-1">Total Trip Duration : 00 days</p>
@@ -356,19 +392,30 @@ const FlightQuery = () => {
             </label>
           </div>
 
-          <div className={`space-x-5 ${toggle && 'opacity-0'}`}>
-            <button className="btn btn-outline btn-primary" onClick={()=>setToggle(!toggle)}>Add Hotel</button>
+          <div className={`space-x-5 ${(toggle || toggleFlight) && 'opacity-0'}`}>
+            <button className="btn btn-outline btn-primary" onClick={() => setToggle(!toggle)}>Add Hotel</button>
             <Button width={36} text="Search"></Button>
+
           </div>
         </section>
 
-          {/* add hotel content */}
-          <section>
-            {
-              toggle ? <HotelQuery toggleButton={toggle}></HotelQuery> : ""
-            }
-          </section>
-          
+        {/* add hotel content */}
+        <section>
+          {
+            toggle ? <section>
+              <HotelQuery toggleButton={toggle}></HotelQuery>
+
+              <div className={`space-x-5  text-right`}>
+                <button className="btn btn-outline btn-primary" onClick={() => setToggle(!toggle)}>Remove Hotel</button>
+                <Button width={36} text="Search"></Button>
+
+              </div>
+            </section> :
+              ""
+          }
+
+        </section>
+
       </form>
     </div>
   );

@@ -9,8 +9,13 @@ import FreeVisa from "../../Component/Home/Card/FreeVisa";
 import FlightCards from "../../Component/Home/Card/FlightCards";
 import HolidayCard from "../../Component/Home/Card/HolidayCard";
 import TrendingHotel from "../../Component/Home/Card/TrendingHotel";
+import { useState } from "react";
+import Loading from "../../Component/Shared/Loading";
 
 const Home = () => {
+
+  const [loading, setLoading] = useState(true)
+
   const date = new Date();
   const today = new Intl.DateTimeFormat("en-GB", {
     day: "2-digit",
@@ -18,60 +23,70 @@ const Home = () => {
     year: "numeric",
   }).format(date);
 
+
+  console.log(loading)
+
+
+
   return (
     <section>
-      {/* banner */}
-      <Banner></Banner>
+      {loading && <div className="h-screen z-10"><Loading></Loading></div>}
+      {
+        <section>
+          {/* banner */}
+          <Banner loading={loading} setLoading={setLoading}></Banner>
 
-      {/* exclusive travels deals */}
-      <section>
-        <OfferCard></OfferCard>
-      </section>
+          {/* exclusive travels deals */}
+          <section>
+            <OfferCard></OfferCard>
+          </section>
 
-      {/* free visa */}
-      <section >
-        <FreeVisa></FreeVisa>
-      </section>
+          {/* free visa */}
+          <section >
+            <FreeVisa></FreeVisa>
+          </section>
 
-      {/* flights section */}
-      <section>
-        <FlightCards></FlightCards>
-      </section>
+          {/* flights section */}
+          <section>
+            <FlightCards></FlightCards>
+          </section>
 
-      {/* Holiday cards */}
-      <section>
-        <HolidayCard></HolidayCard>
-      </section>
+          {/* Holiday cards */}
+          <section>
+            <HolidayCard></HolidayCard>
+          </section>
 
-      {/* Trending Hotel */}
-      <section>
-        <TrendingHotel></TrendingHotel>
-      </section>
+          {/* Trending Hotel */}
+          <section>
+            <TrendingHotel></TrendingHotel>
+          </section>
 
-      {/* memory section */}
-      <section className="">
-        <MemoriesSection></MemoriesSection>
-      </section>
+          {/* memory section */}
+          <section className="">
+            <MemoriesSection></MemoriesSection>
+          </section>
 
-      {/* review section */}
-      <section className="">
-        <Testimonial></Testimonial>
-      </section>
-
-
-      {/* Today's Summmary */}
-      <section className="space-y-5 bg-[#FFF9F5] py-16">
-        <Title title={`Today's Summary | ${today}`} size="md"></Title>
-        <Summary></Summary>
-      </section>
+          {/* review section */}
+          <section className="">
+            <Testimonial></Testimonial>
+          </section>
 
 
-      {/* subcriber section */}
-      <section className="">
-        <SubscribeSection></SubscribeSection>
-      </section>
+          {/* Today's Summmary */}
+          <section className="space-y-5 bg-[#FFF9F5] py-16">
+            <Title title={`Today's Summary | ${today}`} size="md"></Title>
+            <Summary></Summary>
+          </section>
 
 
+          {/* subcriber section */}
+          <section className="">
+            <SubscribeSection></SubscribeSection>
+          </section>
+
+
+        </section>
+      }
     </section>
   );
 };

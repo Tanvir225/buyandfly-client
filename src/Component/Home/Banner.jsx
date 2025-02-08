@@ -11,7 +11,7 @@ import HolidayQuery from "./HolidayQuery";
 import VisaQuery from "./VisaQuery";
 import { useState } from "react";
 
-const BannerNew = () => {
+const BannerNew = ({loading,setLoading}) => {
 
 
   //STATE
@@ -31,7 +31,7 @@ const BannerNew = () => {
   ];
 
   const tabContent = [
-    <FlightQuery />,
+    <FlightQuery loading={loading} setLoading={setLoading}/>,
     <HotelQuery />,
     <HolidayQuery />,
     <VisaQuery />,
@@ -45,17 +45,17 @@ const BannerNew = () => {
 
   return (
     <div
-      className="hero min-h-screen overflow-x-hidden mt-10"
+      className="hero h-[850px] overflow-x-hidden"
       style={{
         backgroundImage:
           `url(${banner_bg})`,
       }}
     >
-      <div className="hero-overlay bg-opacity-60 w-full h-[100vh]"></div>
+      <div className="hero-overlay bg-opacity-50  w-full"></div>
       <div className="hero-content text-neutral-content">
         <div className="max-w-6xl xl:min-w-[1150px] w-full">
 
-          <h2 className="text-center lg:text-5xl lg:leading-normal text-base-100">Discover Your Next <br /> Great Adventure</h2>
+          <h2 className="text-center lg:text-6xl lg:leading-snug text-base-100 banner-title ">Discover Your Next <br /> Great Adventure</h2>
 
           <Tab.Group>
             <Tab.List className="px-5 flex justify-between items-center  py-5 rounded-t-xl  bg-white">
@@ -84,7 +84,7 @@ const BannerNew = () => {
                 {/* dropdown - btn */}
                 <div
                   onClick={() => setIsAirClass(!isAirClass)}
-                  className="mx-auto w-48  flex items-center justify-between rounded-lg px-3 py-2 border"
+                  className="mx-auto w-52  flex items-center justify-between rounded-lg px-3 py-2 border"
                 >
                   <h1 className=" text-gray-600" role="button">
                     {airClass}
@@ -119,7 +119,7 @@ const BannerNew = () => {
                   className={`${isAirClass
                     ? "visible top-0 opacity-100"
                     : "invisible -top-4 opacity-0"
-                    } absolute z-20 mx-auto my-12 w-44  rounded-xl py-4 border bg-base-100 duration-300`}
+                    } absolute z-20 mx-auto my-12 w-48  rounded-xl py-4 border bg-base-100 duration-300`}
                 >
                   {airClassoptions?.map((option, idx) => (
                     <div
