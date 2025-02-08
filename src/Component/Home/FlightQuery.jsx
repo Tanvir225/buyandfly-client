@@ -276,7 +276,7 @@ const FlightQuery = ({loading,setLoading,toggleFlight}) => {
               ))}
             </div>
 
-            <div className="absolute top-9 -left-6">
+            <div className="absolute top-9 -left-5">
               <GoArrowSwitch size={32} className="bg-base-100 shadow-md text-primary rounded-full p-1"></GoArrowSwitch>
             </div>
           </motion.div>
@@ -380,7 +380,7 @@ const FlightQuery = ({loading,setLoading,toggleFlight}) => {
 
         {/* fare section */}
         <section className=" flex flex-col lg:flex-row justify-between  md:mb-4 text-secondary my-5 ">
-          <div className="flex space-x-3">
+          <div className="flex flex-col lg:flex-row space-x-3">
             <label htmlFor="" className="">Fare Type:</label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="radio" name="fare" className="radio" />

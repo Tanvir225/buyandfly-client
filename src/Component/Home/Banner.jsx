@@ -48,14 +48,14 @@ const BannerNew = ({loading,setLoading}) => {
       className="hero h-[850px] w-full overflow-x-hidden"
       style={{
         backgroundImage:
-          `url(${banner_bg})`,
+          `url(${banner_bg})`
       }}
     >
       <div className="hero-overlay bg-opacity-50  w-full"></div>
       <div className="hero-content text-neutral-content">
         <div className="max-w-6xl xl:min-w-[1150px] w-full">
 
-          <h2 className="text-center lg:text-6xl lg:leading-snug text-base-100 banner-title ">Discover Your Next <br /> Great Adventure</h2>
+          <h2 className="text-center text-2xl lg:text-6xl lg:leading-snug text-base-100 banner-title ">Discover Your Next <br /> Great Adventure</h2>
 
           <Tab.Group>
             <Tab.List className="px-5 flex flex-col  lg:flex-row justify-between items-center  py-5 rounded-t-xl  bg-white">
