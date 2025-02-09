@@ -44,7 +44,7 @@ const Summary = () => {
   return (
     <section className="space-y-7 p-5">
       <div className="max-w-6xl mx-auto">
-        <div className=" grid md:grid-cols-4 grid-cols-4 border-2 border-[#DEE2E6] p-2 w-fit md:mx-0 mx-auto rounded-md  bg-white">
+        <div className=" grid grid-cols-3 lg:grid-cols-4 border-2  border-[#DEE2E6] p-2  w-full lg:w-fit md:mx-0 mx-auto rounded-md  bg-white">
           <button
             className={`px-4 flex gap-2 items-center ${activeTab === "Flight"
               ? "bg-[#EF5B0C] px-5 py-2 items-center font-medium text-[#FFFFFF] rounded-[10px]"

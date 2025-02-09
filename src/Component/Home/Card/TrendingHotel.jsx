@@ -22,6 +22,15 @@ function Card({ card }) {
     }
   };
 
+  // // if you don't want to change the slider automatically then you can just remove the useEffect
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     nextImage();
+  //   }, 3000);
+  //   return () => clearInterval(intervalId);
+  // }, [nextImage]);
+
+
   return (
     <div className="bg-white rounded-lg overflow-hidden mt-10 p-3">
       <div className="relative">
@@ -87,21 +96,21 @@ function Card({ card }) {
             Pet Friendly
           </p>
           <p className="flex gap-2 items-center font-medium border border-[#DEE2E6] rounded-2xl px-1 py-1 mt-1">
-            <TentTree size={10}/>
+            <TentTree size={10} />
             Lake Nearby
           </p>
         </div>
         <div className="flex gap-2 mt-1">
           <p className="flex gap-2 items-center font-medium border border-[#DEE2E6] rounded-2xl  py-1 mt-1">
-            <Flame size={10}/>
-            BonFire 
+            <Flame size={10} />
+            BonFire
           </p>
           <p className="flex gap-2 items-center font-medium border border-[#DEE2E6] rounded-2xl  py-1 mt-1">
             <Mountain size={10} />
             Mountain
           </p>
           <p className="flex gap-2 items-center font-medium border border-[#DEE2E6] rounded-2xl px-1 py-1 mt-1">
-            <FaUmbrellaBeach size={10}/>
+            <FaUmbrellaBeach size={10} />
             Beach View
           </p>
         </div>
@@ -147,6 +156,15 @@ const TrendingHotel = () => {
       setCurrentIndex((prev) => prev - itemsPerView);
     }
   };
+
+  // if you don't want to change the slider automatically then you can just remove the useEffect
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      nextSlide();
+    }, 3000);
+    return () => clearInterval(intervalId);
+  }, [nextSlide]);
+
 
   return (
     <div className="p-5 lg:py-16 bg-[#002E5B]">
@@ -318,7 +336,7 @@ const cards = [
     category: "Italy",
     price: 150,
     time: "day",
-    images: ["https://i.ibb.co.com/5gPQQZpf/image-5.png","https://i.ibb.co.com/MkcNmdGd/image-6.png", "https://i.ibb.co.com/BKjv9r4c/image-4.png", "https://i.ibb.co.com/MkcNmdGd/image-6.png", "https://i.ibb.co.com/MkcNmdGd/image-6.png"],
+    images: ["https://i.ibb.co.com/5gPQQZpf/image-5.png", "https://i.ibb.co.com/MkcNmdGd/image-6.png", "https://i.ibb.co.com/BKjv9r4c/image-4.png", "https://i.ibb.co.com/MkcNmdGd/image-6.png", "https://i.ibb.co.com/MkcNmdGd/image-6.png"],
     title: "Colosseum",
     rating: 4.9,
     location: "Rome, Italy",
@@ -329,7 +347,7 @@ const cards = [
     category: "Italy",
     price: 150,
     time: "day",
-    images: ["https://i.ibb.co.com/BKjv9r4c/image-4.png","https://i.ibb.co.com/MkcNmdGd/image-6.png", "https://i.ibb.co.com/5gPQQZpf/image-5.png", "https://i.ibb.co.com/MkcNmdGd/image-6.png", "https://i.ibb.co.com/MkcNmdGd/image-6.png"],
+    images: ["https://i.ibb.co.com/BKjv9r4c/image-4.png", "https://i.ibb.co.com/MkcNmdGd/image-6.png", "https://i.ibb.co.com/5gPQQZpf/image-5.png", "https://i.ibb.co.com/MkcNmdGd/image-6.png", "https://i.ibb.co.com/MkcNmdGd/image-6.png"],
     title: "Colosseum",
     rating: 4.9,
     location: "Rome, Italy",

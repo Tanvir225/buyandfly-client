@@ -52,7 +52,7 @@ const Testimonial = () => {
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 gap-4 lg:mt-10 md:mt-6 mt-4">
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 lg:mt-10 md:mt-6 mt-4">
         {visibleComments.map((comment, index) => (
           <div key={index} className="p-3 border border-[#E2E2E2] space-y-2 rounded-2xl flex flex-col justify-between">
             <p className="text-[#111111] font-semibold text-lg">{comment.title}</p>
