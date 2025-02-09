@@ -222,15 +222,15 @@ const FlightCards = () => {
             {matchData.map((card, index) => (
               <div key={index} className="w-full border border-[#DEE2E6] rounded-2xl">
                 <div>
-                  <div className="flex items-center gap-3 bg-[#FFF7F4] p-3">
+                  <div className="flex items-center gap-3 bg-[#FFF7F4] p-2">
                     <img className="w-[41px] h-[41px]" src={card.logo} alt="" />
                     <div className="text-[#111111]">
                       <p className="text-sm">{card.airline}</p>
-                      <p className="font-semibold text-lg">{card.route}</p>
+                      <p className="font-semibold ">{card.route}</p>
                     </div>
                   </div>
                   <div className="relative">
-                    <img className="w-full h-52" src={card.image} alt="" />
+                    <img className="w-full h-52 rounded" src={card.image} alt="" />
                     <div className="text-white absolute z-10 bottom-5 right-5 bg-[#0000004D] py-2 px-3 rounded-xl backdrop-blur-lg">
                       <p className="text-xs">Starting From</p>
                       <p className="font-semibold">BDT 4,200</p>

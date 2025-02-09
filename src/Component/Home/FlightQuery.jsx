@@ -380,7 +380,7 @@ const FlightQuery = ({loading,setLoading,toggleFlight}) => {
 
         {/* fare section */}
         <section className=" flex flex-col lg:flex-row justify-between  md:mb-4 text-secondary my-5 ">
-          <div className="flex flex-col lg:flex-row space-x-3">
+          <div className="flex flex-wrap lg:gap-0 gap-5 lg:flex-row space-x-3">
             <label htmlFor="" className="">Fare Type:</label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="radio" name="fare" className="radio" />
@@ -392,7 +392,7 @@ const FlightQuery = ({loading,setLoading,toggleFlight}) => {
             </label>
           </div>
 
-          <div className={`space-x-5   ${(toggle || toggleFlight) && 'opacity-0'}`}>
+          <div className={`space-x-5 lg:mt-0 mt-5   ${(toggle || toggleFlight) && 'opacity-0'}`}>
             <button className="btn btn-outline btn-primary" onClick={() => setToggle(!toggle)}>Add Hotel</button>
             <Button width={36} text="Search"></Button>
 

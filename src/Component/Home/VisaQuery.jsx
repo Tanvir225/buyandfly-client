@@ -270,7 +270,7 @@ const VisaQuery = () => {
         </section>
 
         {/* visa approve section */}
-        <section className="flex items-center justify-between  md:mb-4 text-secondary my-5 ">
+        <section className="flex flex-wrap items-center justify-between  md:mb-4 text-secondary my-5 ">
           <div className="flex space-x-3">
             <label htmlFor="" className="font-semibold">Approval Type : </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
@@ -283,7 +283,7 @@ const VisaQuery = () => {
             </label>
           </div>
 
-          <div className="px-5">
+          <div className="px-5 lg:mt-0 mt-5">
             <Button width={44} text="Search"></Button>
           </div>
         </section>

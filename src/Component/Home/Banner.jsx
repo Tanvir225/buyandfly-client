@@ -58,7 +58,7 @@ const BannerNew = ({loading,setLoading}) => {
           <h2 className="text-center text-2xl lg:text-6xl lg:leading-snug text-base-100 banner-title ">Discover Your Next <br /> Great Adventure</h2>
 
           <Tab.Group>
-            <Tab.List className="px-5 flex flex-col  lg:flex-row justify-between items-center  py-5 rounded-t-xl  bg-white">
+            <Tab.List className="px-5 flex flex-wrap flex-row justify-between items-center  py-5 rounded-t-xl  bg-white">
               <div className="space-x-2 space-y-2">
                 {tabList.map(({ label, icon: Icon }, idx) => (
                   <Tab

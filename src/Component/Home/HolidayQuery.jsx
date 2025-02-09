@@ -164,8 +164,8 @@ const HolidayQuery = () => {
         </section>
 
         {/* hotel type section */}
-        <section className="flex items-center justify-between  md:mb-4  my-5 ">
-          <div className="flex space-x-3">
+        <section className="flex flex-wrap gap-5 lg:gap-0 items-center justify-between  md:mb-4  my-5 ">
+          <div className="flex flex-wrap gap-5 space-x-3">
             <label htmlFor="" className="font-semibold text-secondary">Search For : </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="checkbox" name="business" className="checkbox-primary" />

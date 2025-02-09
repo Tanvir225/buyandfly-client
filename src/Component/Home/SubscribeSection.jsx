@@ -23,7 +23,7 @@ const SubscribeSection = () => {
           <p className="font-medium text-white mt-4 leading-5 md:text-start text-center">Make your vacation memorable with hand picked customized packages Make your vacation </p>
 
           <form action="" onSubmit={getEmail} className="flex items-center gap-2 mt-5 p-2 mx-auto lg:justify-start justify-center">
-            <input className="py-3 px-4 rounded-lg w-[352px]" type="email" name="email" id="email" placeholder="Insert your email here" />
+            <input className="py-3 px-4 rounded-lg w-full lg:w-[352px]" type="email" name="email" id="email" placeholder="Insert your email here" />
             <button type="submit" className="text-white bg-[#EF5B0C] py-2 px-3 rounded-xl"><Send size={32} /></button>
           </form>
         </div>
