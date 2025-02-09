@@ -4,16 +4,13 @@ import { motion } from "motion/react";
 
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../Shared/Button";
-import HButton from "../Shared/HButton";
 import Travellers from "./Utility/Travellers";
 import { GoArrowSwitch } from "react-icons/go";
 import MultiCity from "./Utility/MultiCity";
 import HotelQuery from "./HotelQuery";
-import { LucideCalendarSync } from "lucide-react";
-import Loading from "../Shared/Loading";
 import { HiOutlineCalendarDays } from "react-icons/hi2";
 
-const FlightQuery = ({loading,setLoading,toggleFlight}) => {
+const FlightQuery = ({setLoading,toggleFlight}) => {
 
   const [allCountries, setAllCountries] = useState([]);
   const [country, setCountry] = useState([]);
@@ -36,24 +33,7 @@ const FlightQuery = ({loading,setLoading,toggleFlight}) => {
 
   const [visible, setVisiable] = useState(false)
 
-  // filter serach state
-  const [filter, setFilter] = useState([])
-
-
-  // const [adult, setAdult] = useState(0);
-  // const [child, setChild] = useState(0);
-  // const [infant, setInfant] = useState(0);
-  // const [kids, setKids] = useState(0);
-
-
-  const [airClass, setAirClass] = useState("Economy");
-  // array of options
-  const airClassoptions = ['Economy', "Premium", "Business", "First Class"];
-
-
-
-
-
+ 
 
   // handTripTypeChange function
   const handleTripTypeChange = (event) => {
@@ -71,10 +51,8 @@ const FlightQuery = ({loading,setLoading,toggleFlight}) => {
       journeyTo,
       departure,
       returnDate,
-      // adult,
-      // child,
-      // infant,
-      airClass
+    
+      
     );
   };
 

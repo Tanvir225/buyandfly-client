@@ -1,4 +1,4 @@
-import DatePicker from "react-datepicker";
+
 import { motion } from "motion/react";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -6,8 +6,8 @@ import { useState } from "react";
 import Button from "../Shared/Button";
 
 const VisaQuery = () => {
-  const [travellers, setTravellers] = useState(1);
-  const [toggle, setToggle] = useState(false);
+
+
   const [residentOF, setResidentOf] = useState();
   const [travellingTo, setTravellingTo] = useState();
   const [country, setCountries] = useState([]);

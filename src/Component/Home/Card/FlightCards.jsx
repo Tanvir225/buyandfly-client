@@ -154,13 +154,13 @@ const FlightCards = () => {
     }
   };
 
-    // if you don't want to change the slider automatically then you can just remove the useEffect
-    useEffect(() => {
-      const intervalId = setInterval(() => {
-        nextSlide();
-      }, 3000);
-      return () => clearInterval(intervalId);
-    }, [nextSlide]);
+  // if you don't want to change the slider automatically then you can just remove the useEffect
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      nextSlide();
+    }, 3000);
+    return () => clearInterval(intervalId);
+  }, [nextSlide]);
 
   return (
     <div className="max-w-6xl mx-auto my-16 p-4">
@@ -173,8 +173,8 @@ const FlightCards = () => {
             onClick={prevSlide}
             disabled={currentIndex === 0}
             className={`transform p-3 rounded-full transition ${currentIndex === 0
-                ? "bg-transparent text-[#3F1600] border border-[#DEE2E6] cursor-not-allowed"
-                : "bg-[#EF5B0C] text-white hover:bg-orange-600"
+              ? "bg-transparent text-[#3F1600] border border-[#DEE2E6] cursor-not-allowed"
+              : "bg-[#EF5B0C] text-white hover:bg-orange-600"
               }`}
           >
             <ChevronLeft />
@@ -184,8 +184,8 @@ const FlightCards = () => {
             onClick={nextSlide}
             disabled={currentIndex + itemsPerView >= matchData.length}
             className={`transform p-3 rounded-full transition ${currentIndex + itemsPerView >= matchData.length
-                ? "bg-transparent text-[#3F1600] border border-[#DEE2E6] cursor-not-allowed"
-                : "bg-[#EF5B0C] text-white hover:bg-orange-600"
+              ? "bg-transparent text-[#3F1600] border border-[#DEE2E6] cursor-not-allowed"
+              : "bg-[#EF5B0C] text-white hover:bg-orange-600"
               }`}
           >
             <ChevronRight />

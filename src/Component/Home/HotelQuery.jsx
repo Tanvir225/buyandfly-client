@@ -1,14 +1,9 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import { motion } from "motion/react";
-
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../Shared/Button";
-
 import HotelPerson from "./Utility/HotelPerson";
-import HButton from "../Shared/HButton";
-import { FaCalendar } from "react-icons/fa6";
-import { LucideCalendarSync } from "lucide-react";
 import FlightQuery from "./FlightQuery";
 import { HiOutlineCalendarDays } from "react-icons/hi2";
 
