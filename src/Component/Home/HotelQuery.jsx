@@ -12,7 +12,7 @@ import { HiOutlineCalendarDays } from "react-icons/hi2";
 const HotelQuery = ({ toggleButton }) => {
 
   //STATE
-  const [isTravellers, setIsTravellers] = useState(false);
+
   const [toggleFlight, setToggleFlight] = useState(false);
 
   const [adult, setAdult] = useState(0)
@@ -24,24 +24,29 @@ const HotelQuery = ({ toggleButton }) => {
   const [toggle, setToggle] = useState(false)
 
   const [departure, setDepartureDate] = useState(new Date());
-  // Automatically set returnDate to tomorrow
+  // Automatically set returnDate to tomorrow next
   const [returnDate, setReturnDate] = useState(() => {
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    return tomorrow;
+    const tomorrowNext = new Date();
+    tomorrowNext.setDate(tomorrowNext.getDate() + 2);
+    return tomorrowNext;
   });
 
 
   //handle click
   const handleClick = () => {
-    if (!toggle) {
-      setRoom(room + 1)
-    }
-    else {
-      setRoom(room - 1)
-    }
+    // if (!toggle) {
+    //   setRoom(room + 1)
+    // }
+    // else {
+    //   setRoom(room - 1)
+    // }
     setToggle(!toggle)
 
+  }
+
+  if (adult2 || child2) {
+    setRoom(2)
+    
   }
 
 

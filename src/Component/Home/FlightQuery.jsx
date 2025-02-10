@@ -24,11 +24,11 @@ const FlightQuery = ({setLoading,toggleFlight}) => {
   const [searchToggleTo, setSearchToggleTo] = useState(false)
 
 
-  // Automatically set returnDate to tomorrow
+  // Automatically set returnDate to tomorrow next day
   const [returnDate, setReturnDate] = useState(() => {
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    return tomorrow;
+    const tomorrowNext = new Date();
+    tomorrowNext.setDate(tomorrowNext.getDate() + 2);
+    return tomorrowNext;
   });
 
   const [visible, setVisiable] = useState(false)
