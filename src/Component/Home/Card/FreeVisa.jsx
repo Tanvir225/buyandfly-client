@@ -5,7 +5,7 @@ import Title from '../../Shared/Title';
 
 const FreeVisa = () => {
     return (
-        <div className="bg-[#FFF9F5] w-full space-y-10 p-5 md:pb-16">
+        <div className="bg-[#FFF9F5] w-full space-y-10 p-5 md:pb-16 shadow-sm">
 
             <div className='mt-10'>
                 <Title size={4} title="Hassle-Free Visa Processing"></Title>
