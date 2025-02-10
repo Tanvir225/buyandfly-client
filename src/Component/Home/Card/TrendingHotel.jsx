@@ -157,13 +157,13 @@ const TrendingHotel = () => {
     }
   };
 
-  // if you don't want to change the slider automatically then you can just remove the useEffect
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      nextSlide();
-    }, 3000);
-    return () => clearInterval(intervalId);
-  }, [nextSlide]);
+  // // if you don't want to change the slider automatically then you can just remove the useEffect
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     nextSlide();
+  //   }, 3000);
+  //   return () => clearInterval(intervalId);
+  // }, [nextSlide]);
 
 
   return (
