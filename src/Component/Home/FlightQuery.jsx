@@ -9,6 +9,7 @@ import { GoArrowSwitch } from "react-icons/go";
 import MultiCity from "./Utility/MultiCity";
 import HotelQuery from "./HotelQuery";
 import { HiOutlineCalendarDays } from "react-icons/hi2";
+import { FaPlus } from "react-icons/fa";
 
 const FlightQuery = ({setLoading,toggleFlight}) => {
 
@@ -172,7 +173,7 @@ const FlightQuery = ({setLoading,toggleFlight}) => {
 
         {/* Inputs */}
         <section
-          className={`grid gap-3   text-left uppercase bg-gradient-to-b from-secondary to-primary text-secondary bg-clip-text ${tripType === "oneway"
+          className={`grid gap-3   text-left  bg-gradient-to-b from-secondary to-primary text-secondary bg-clip-text ${tripType === "oneway"
             ? "lg:grid-cols-4 !important"
             : "lg:grid-cols-4 !important"
             } grid-cols-1`}
@@ -362,17 +363,17 @@ const FlightQuery = ({setLoading,toggleFlight}) => {
             <label htmlFor="" className="">Fare Type:</label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="radio" name="fare" className="radio" />
-              <span className="text-secondary">Regular Fare</span>
+              <span className="text-secondary font-medium">Regular Fare</span>
             </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="radio" name="fare" className="radio" />
-              <span className="text-secondary">Student Fare</span>
+              <span className="text-secondary font-medium">Student Fare</span>
             </label>
           </div>
 
           <div className={`space-x-5 lg:mt-0 mt-5   ${(toggle || toggleFlight) && 'opacity-0'}`}>
-            <button className="btn btn-outline btn-primary" onClick={() => setToggle(!toggle)}>Add Hotel</button>
-            <Button width={36} text="Search"></Button>
+            <button className="btn btn-outline btn-primary" onClick={() => setToggle(!toggle)}><FaPlus></FaPlus> Add Hotel</button>
+            <Button width={44} text="Search"></Button>
 
           </div>
         </section>

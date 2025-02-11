@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const NavLink = () => {
     const links = (
-        <>
+        <div className="flex justify-center items-center gap-5 space-x-0 sm:space-x-1 md:space-x-1">
             <li>
                 <Link>Home</Link>
             </li>
@@ -25,7 +25,7 @@ const NavLink = () => {
             <li>
                 <Link>Print Ticket </Link>
             </li>
-        </>
+        </div>
     )
 
     return links

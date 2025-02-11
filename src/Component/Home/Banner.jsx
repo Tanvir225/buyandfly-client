@@ -45,7 +45,7 @@ const BannerNew = ({loading,setLoading}) => {
 
   return (
     <div
-      className="hero h-[850px] w-full overflow-x-hidden"
+      className="hero h-[900px] w-full overflow-x-hidden"
       style={{
         backgroundImage:
           `url(${banner_bg})`
@@ -55,17 +55,17 @@ const BannerNew = ({loading,setLoading}) => {
       <div className="hero-content text-neutral-content">
         <div className="max-w-6xl xl:min-w-[1150px] w-full">
 
-          <h2 className="text-center text-2xl lg:text-6xl lg:leading-snug text-base-100 banner-title ">Discover Your Next <br /> Great Adventure</h2>
+          <h2 className="text-center text-2xl my-5 lg:text-7xl lg:leading-snug text-base-100 banner-title ">Discover Your Next <br /> Great Adventure</h2>
 
           <Tab.Group>
-            <Tab.List className="px-5 flex flex-wrap flex-row justify-between items-center  py-5 rounded-t-xl  bg-white">
-              <div className="space-x-2 space-y-2">
+            <Tab.List className="px-5  flex flex-wrap flex-row justify-between items-center  py-5 rounded-t-xl  bg-white">
+              <div className="space-x-2 space-y-2 bg-base-200 p-2 rounded-lg">
                 {tabList.map(({ label, icon: Icon }, idx) => (
                   <Tab
                     key={idx}
                     onClick={()=>handleClick(label)}
                     className={({ selected }) =>
-                      ` btn btn-sm focus:outline-none ${idx === 0 ? "rounded-tl-xl" : ""
+                      ` btn btn-sm focus:outline-none font-medium    ${idx === 0 ? "rounded-tl-xl" : ""
                       } ${idx === tabList.length - 1 ? "rounded-tr-xl" : ""}
                   ${selected
                         ? "  bg-primary text-white hover:bg-primary"
@@ -74,7 +74,7 @@ const BannerNew = ({loading,setLoading}) => {
                     }
                   >
                     <Icon size={24} />{" "}
-                    <span className=" font-semibold">{label}</span>
+                    <span className="">{label}</span>
                   </Tab>
                 ))}
               </div>
@@ -86,7 +86,7 @@ const BannerNew = ({loading,setLoading}) => {
                   onClick={() => setIsAirClass(!isAirClass)}
                   className="mx-auto w-52  flex items-center justify-between rounded-lg px-3 py-2 border"
                 >
-                  <h1 className=" text-gray-600" role="button">
+                  <h1 className=" text-gray-600 font-medium" role="button">
                     {airClass}
                   </h1>
                   <svg

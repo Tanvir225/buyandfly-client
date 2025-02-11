@@ -6,6 +6,7 @@ import Button from "../Shared/Button";
 import HotelPerson from "./Utility/HotelPerson";
 import FlightQuery from "./FlightQuery";
 import { HiOutlineCalendarDays } from "react-icons/hi2";
+import { FaPlus } from "react-icons/fa";
 
 
 
@@ -57,14 +58,14 @@ const HotelQuery = ({ toggleButton }) => {
     <div className="p-2 bg-white ">
       <form>
         {/* Inputs */}
-        <section className="grid grid-cols-1 lg:grid-cols-4 gap-5 p-7 rounded-xl text-left uppercase text-black bg-white rounded-tl-none">
+        <section className="grid grid-cols-1 lg:grid-cols-4 gap-5 p-7 rounded-xl text-left  text-black bg-white rounded-tl-none">
           <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             className=""
           >
-            <label htmlFor="" className="text-sm ">
+            <label htmlFor="" className=" ">
               Where Do you want to stay
             </label>
             <input
@@ -182,31 +183,31 @@ const HotelQuery = ({ toggleButton }) => {
         {/* hotel type section */}
         <section className="flex flex-wrap gap-5  lg:gap-0 items-center justify-between  md:mb-4  my-5 ">
           <div className="flex flex-wrap gap-2 space-x-3">
-            <label htmlFor="" className="font-semibold text-secondary">Search For : </label>
+            <label htmlFor="" className=" text-secondary">Search For : </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="checkbox" name="business" className="checkbox-primary" />
-              <span className="">Business</span>
+              <span className="font-medium">Business</span>
             </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="checkbox" name="couples" className="checkbox-primary" />
-              <span className="">Couples</span>
+              <span className="font-medium">Couples</span>
             </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="checkbox" name="family" className="checkbox-primary" />
-              <span className="">Family</span>
+              <span className="font-medium">Family</span>
             </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="checkbox" name="friends" className="checkbox-primary" />
-              <span className="">Friends</span>
+              <span className="font-medium">Friends</span>
             </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="checkbox" name="friends" className="checkbox-primary" />
-              <span className="">Solo</span>
+              <span className="font-medium">Solo</span>
             </label>
           </div>
 
           <div className={`px-5 space-x-5 ${toggleButton && 'opacity-0'}`}>
-            <button type="button" className="btn btn-outline btn-primary" onClick={() => setToggleFlight(!toggleFlight)}>{toggleFlight ? 'Remove Flight' : 'Add Flight'}</button>
+            <button type="button" className="btn btn-outline btn-primary" onClick={() => setToggleFlight(!toggleFlight)}>{toggleFlight ? 'Remove Flight' :<div className="flex items-center gap-2"><FaPlus></FaPlus> Add Flight</div>}</button>
             <Button width={44} text="Search"></Button>
           </div>
         </section>

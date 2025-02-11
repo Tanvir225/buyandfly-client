@@ -55,7 +55,7 @@ const VisaQuery = () => {
   return (
     <div className="p-2 bg-white  rounded-b-lg rounded-tl-none w-full">
       <form>
-        <section className="grid grid-cols-1 lg:grid-cols-4 gap-5 p-7 rounded-xl text-left uppercase text-black bg-white rounded-tl-none">
+        <section className="grid grid-cols-1 lg:grid-cols-4 gap-5 p-7 rounded-xl text-left  text-black bg-white rounded-tl-none">
           <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
@@ -272,14 +272,14 @@ const VisaQuery = () => {
         {/* visa approve section */}
         <section className="flex flex-wrap items-center justify-between  md:mb-4 text-secondary my-5 ">
           <div className="flex space-x-3">
-            <label htmlFor="" className="font-semibold">Approval Type : </label>
+            <label htmlFor="" className="">Approval Type : </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="checkbox" name="eta" className="checkbox-primary" />
-              <span className="text-secondary">ETA</span>
+              <span className="text-secondary font-medium">ETA</span>
             </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
-              <input type="checkbox" name="invariable" className="checkbox-primary" />
-              <span className="text-secondary">Invariable</span>
+              <input type="checkbox" name="invariable" className="checkbox-secondary" />
+              <span className="text-secondary font-medium">Invariable</span>
             </label>
           </div>
 

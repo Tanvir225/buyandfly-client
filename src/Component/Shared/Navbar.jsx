@@ -4,6 +4,7 @@ import logo from "/logo.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
+import 'swiper/css/navigation';
 import { Autoplay } from "swiper/modules";
 
 import { FaMailBulk, FaPhone } from "react-icons/fa";
@@ -43,15 +44,15 @@ const Navbar = () => {
 
           {/* navigate to pages */}
           <div className="flex justify-center items-center text-sm space-x-0 sm:space-x-1 md:space-x-1">
-            <Link to={"/"} className="flex items-center gap-1"><FaPhone size={10}></FaPhone> 017XXXXXXXX</Link>
+            <Link to={"/"} className="flex items-center gap-1"><FaPhone size={14}></FaPhone> 017XXXXXXXX</Link>
             <div className="divider divider-horizontal  divider-accent"></div>
-            <Link to={"/"} className="flex items-center gap-1"><FaMailBulk size={15}></FaMailBulk> buyandfly@gmail.com</Link>
+            <Link to={"/"} className="flex items-center gap-1"><FaMailBulk size={14}></FaMailBulk> buyandfly@gmail.com</Link>
             <div className="divider divider-horizontal divider-accent"></div>
 
             {/* user  */}
             <details className="dropdown">
               <summary className="">Login</summary>
-              <ul className="menu dropdown-content bg-base-100 text-black rounded-box z-[1] w-48 p-2 shadow">
+              <ul className="menu dropdown-content bg-base-100 text-black rounded-box z-[1] w-36 p-2 shadow">
                 <li><Link to={"/"}>User Login</Link></li>
                 <li><Link to={"/"}>User Register</Link></li>
               </ul>
@@ -62,7 +63,7 @@ const Navbar = () => {
             {/* agent  */}
             <details className="dropdown">
               <summary className="">Agent</summary>
-              <ul className="menu dropdown-content bg-base-100 text-black rounded-box z-[1] w-44 p-1 shadow">
+              <ul className="menu dropdown-content bg-base-100 text-black rounded-box z-[1] w-40  p-1 shadow">
                 <li><Link to={"/"}>Agent Login</Link></li>
                 <li><Link to={"/"}>Agent Register</Link></li>
               </ul>
@@ -80,7 +81,7 @@ const Navbar = () => {
           </section>
           {/* nav item */}
           <section>
-            <ul className=" text-sm flex items-center justify-center gap-5 ">
+            <ul className="  flex items-center justify-center">
                <NavLink></NavLink>
             </ul>
           </section>

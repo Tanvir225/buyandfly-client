@@ -41,7 +41,7 @@ const HolidayQuery = () => {
 
   return (
     <div className="">
-      <form className="uppercase  w-full lg:w-[1152px] gap-7 text-black   bg-white p-10">
+      <form className="  w-full lg:w-[1152px] gap-7 text-black   bg-white p-10">
         <section className="grid grid-cols-1 lg:grid-cols-4 gap-5">
           <motion.div
             initial={{ opacity: 0, x: -10 }}
@@ -49,7 +49,7 @@ const HolidayQuery = () => {
             transition={{ duration: 0.5 }}
             className=""
           >
-            <label htmlFor="" className="text-sm">
+            <label htmlFor="" className="">
               Where Do you want to stay
             </label>
             <input
@@ -166,26 +166,26 @@ const HolidayQuery = () => {
         {/* hotel type section */}
         <section className="flex flex-wrap gap-5 lg:gap-0 items-center justify-between  md:mb-4  my-5 ">
           <div className="flex flex-wrap gap-5 space-x-3">
-            <label htmlFor="" className="font-semibold text-secondary">Search For : </label>
+            <label htmlFor="" className=" text-secondary">Search For : </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="checkbox" name="business" className="checkbox-primary" />
-              <span className="">Beach</span>
+              <span className="font-medium">Beach</span>
             </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="checkbox" name="couples" className="checkbox-primary" />
-              <span className="">Adventure</span>
+              <span className="font-medium">Adventure</span>
             </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="checkbox" name="family" className="checkbox-primary" />
-              <span className="">Family</span>
+              <span className="font-medium">Family</span>
             </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="checkbox" name="friends" className="checkbox-primary" />
-              <span className="">Romantic</span>
+              <span className="font-medium">Romantic</span>
             </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
               <input type="checkbox" name="friends" className="checkbox-primary" />
-              <span className="">Solo</span>
+              <span className="font-medium">Solo</span>
             </label>
           </div>
 
