@@ -137,18 +137,18 @@ const FlightQuery = ({setLoading,toggleFlight}) => {
               <input
                 type="radio"
                 name="tripType"
-                className="radio"
+                className="radio checked:bg-primary"
                 value="oneway"
                 checked={tripType === "oneway"}
                 onChange={handleTripTypeChange}
               />
-              <span>Oneway</span>
+              <span className="">Oneway</span>
             </label>
             <label className="flex items-center space-x-2 cursor-pointer">
               <input
                 type="radio"
                 name="tripType"
-                className="radio"
+                className="radio checked:bg-primary"
                 value="round trip"
                 checked={tripType === "round trip"}
                 onChange={handleTripTypeChange}
@@ -159,7 +159,7 @@ const FlightQuery = ({setLoading,toggleFlight}) => {
               <input
                 type="radio"
                 name="tripType"
-                className="radio"
+                className="radio checked:bg-primary"
                 value="multicity"
                 checked={tripType === "multicity"}
                 onChange={handleTripTypeChange}
@@ -362,11 +362,11 @@ const FlightQuery = ({setLoading,toggleFlight}) => {
           <div className="flex flex-wrap lg:gap-0 gap-5 lg:flex-row space-x-3">
             <label htmlFor="" className="">Fare Type:</label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
-              <input type="radio" name="fare" className="radio" />
+              <input type="radio"  name="fare" className="radio checked:bg-primary" />
               <span className="text-secondary font-medium">Regular Fare</span>
             </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
-              <input type="radio" name="fare" className="radio" />
+              <input type="radio" name="fare" className="radio checked:bg-primary" />
               <span className="text-secondary font-medium">Student Fare</span>
             </label>
           </div>
