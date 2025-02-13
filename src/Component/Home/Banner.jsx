@@ -15,13 +15,11 @@ const BannerNew = ({loading,setLoading}) => {
 
 
   //STATE
-  const [isAirClass, setIsAirClass] = useState(false);
-  const [airClass, setAirClass] = useState("Select Flight Class");
+
 
   const [selectedLabel,setSelectedLabel] = useState('Flights')
 
-  // array of options
-  const airClassoptions = ['Economy', "Premium", "Business", "First Class"];
+ 
 
   const tabList = [
     { label: "Flights", icon: PiAirplaneTakeoffLight },
@@ -45,7 +43,7 @@ const BannerNew = ({loading,setLoading}) => {
 
   return (
     <div
-      className="hero h-[1000px] w-full overflow-x-hidden"
+      className="hero h-[950px] w-full overflow-x-hidden"
       style={{
         backgroundImage:
           `url(${banner_bg})`
@@ -79,63 +77,7 @@ const BannerNew = ({loading,setLoading}) => {
                 ))}
               </div>
 
-              {/* economy */}
-              <div className={`relative ${selectedLabel === "Flights" || selectedLabel === "Holiday" ? 'block' :'hidden'}`}>
-                {/* dropdown - btn */}
-                <div
-                  onClick={() => setIsAirClass(!isAirClass)}
-                  className="mx-auto w-52  flex items-center justify-between rounded-lg px-3 py-2 border"
-                >
-                  <h1 className=" text-gray-600 font-medium" role="button">
-                    {airClass}
-                  </h1>
-                  <svg
-                    className={`${isAirClass ? "-rotate-180" : "rotate-0"
-                      } duration-300`}
-                    width={25}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g strokeWidth="0"></g>
-                    <g
-                      id="SVGRepo_tracerCarrier"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    ></g>
-                    <g id="SVGRepo_iconCarrier">
-                      <path
-                        d="M7 10L12 15L17 10"
-                        stroke="#4B5563"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      ></path>{" "}
-                    </g>
-                  </svg>
-                </div>
-                {/* dropdown - options  */}
-                <div
-                  className={`${isAirClass
-                    ? "visible top-0 opacity-100"
-                    : "invisible -top-4 opacity-0"
-                    } absolute z-20 mx-auto my-12 w-48  rounded-xl py-4 border bg-base-100 duration-300`}
-                >
-                  {airClassoptions?.map((option, idx) => (
-                    <div
-                      key={idx}
-                      onClick={(e) => {
-                        setAirClass(e.target.textContent);
-                        setIsAirClass(false);
-                      }}
-                      className="px-6 py-2 text-gray-500 hover:bg-sky-100"
-                      role="button"
-                    >
-                      {option}
-                    </div>
-                  ))}
-                </div>
-              </div>
+              
 
             </Tab.List>
             <Tab.Panels className="">

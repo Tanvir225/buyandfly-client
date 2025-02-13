@@ -21,10 +21,13 @@ const FlightQuery = ({ setLoading, toggleFlight }) => {
   const [toggle, setToggle] = useState(false);
   const [tripType, setTripType] = useState("oneway");
   const [searchToggleFrom, setSearchToggleFrom] = useState(false)
+  const [isAirClass, setIsAirClass] = useState(false);
+  const [airClass, setAirClass] = useState("Flight Class");
 
   const [searchToggleTo, setSearchToggleTo] = useState(false)
 
-
+  // array of options
+  const airClassoptions = ['Economy', "Premium", "Business", "First Class"];
   // Automatically set returnDate to tomorrow next day
   const [returnDate, setReturnDate] = useState(() => {
     const tomorrowNext = new Date();
@@ -131,7 +134,7 @@ const FlightQuery = ({ setLoading, toggleFlight }) => {
     <div className="p-5 bg-white rounded-b-lg rounded-tl-none">
       <form onSubmit={handleSubmit}>
         {/* Radio Buttons */}
-        <section className="flex flex-col md:flex-row justify-between  gap-5 lg:gap-10 text-secondary">
+        <section className="flex flex-col md:flex-row justify-between   gap-5 lg:gap-5 text-secondary">
           <div className="flex items-center  space-x-4 md:mb-4 text-sm font-semibold">
             <label className="flex items-center  space-x-2 cursor-pointer">
               <input
@@ -167,6 +170,77 @@ const FlightQuery = ({ setLoading, toggleFlight }) => {
               <span>Multicity</span>
             </label>
           </div>
+
+          <section className="flex items-center gap-5">
+            {/* economy */}
+            <div className={`relative`}>
+              {/* dropdown - btn */}
+              <div
+                onClick={() => setIsAirClass(!isAirClass)}
+                className="mx-auto w-44  flex items-center justify-between rounded-lg px-3 py-2 border"
+              >
+                <h1 className=" text-gray-600 font-medium" role="button">
+                  {airClass}
+                </h1>
+                <svg
+                  className={`${isAirClass ? "-rotate-180" : "rotate-0"
+                    } duration-300`}
+                  width={25}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g strokeWidth="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M7 10L12 15L17 10"
+                      stroke="#4B5563"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>{" "}
+                  </g>
+                </svg>
+              </div>
+              {/* dropdown - options  */}
+              <div
+                className={`${isAirClass
+                  ? "visible top-0 opacity-100"
+                  : "invisible -top-4 opacity-0"
+                  } absolute z-20 mx-auto my-12 w-48  rounded-xl py-4 border bg-base-100 duration-300`}
+              >
+                {airClassoptions?.map((option, idx) => (
+                  <div
+                    key={idx}
+                    onClick={(e) => {
+                      setAirClass(e.target.textContent);
+                      setIsAirClass(false);
+                    }}
+                    className="px-6 py-2 text-gray-500 hover:bg-sky-100"
+                    role="button"
+                  >
+                    {option}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <motion.div
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+
+              >
+                <Travellers></Travellers>
+              </motion.div>
+            </div>
+          </section>
 
 
         </section>
@@ -331,18 +405,16 @@ const FlightQuery = ({ setLoading, toggleFlight }) => {
             {/* {
               tripType === 'round trip' && <p className="capitalize text-sm text-secondary my-1">Total Trip Duration : 00 days</p>
             } */}
+
           </motion.div>
 
 
-          <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
 
-          >
-            <Travellers></Travellers>
-          </motion.div>
+          <div className={`flex items-center mt-8 gap-5 ${(toggle || toggleFlight) && 'opacity-0'}`}>
+            <button className="btn btn-outline btn-primary " onClick={() => setToggle(!toggle)}><FaPlus></FaPlus> Add Hotel</button>
+            <Button width={32} text="Search"></Button>
 
+          </div>
 
 
         </section>
@@ -372,11 +444,7 @@ const FlightQuery = ({ setLoading, toggleFlight }) => {
             </label>
           </div>
 
-          <div className={`space-x-5 lg:mt-0 mt-5   ${(toggle || toggleFlight) && 'opacity-0'}`}>
-            <button className="btn btn-outline btn-primary" onClick={() => setToggle(!toggle)}><FaPlus></FaPlus> Add Hotel</button>
-            <Button width={44} text="Search"></Button>
 
-          </div>
         </section>
 
         {/* add hotel content */}

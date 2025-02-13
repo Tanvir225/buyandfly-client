@@ -39,7 +39,7 @@ const Travellers = () => {
                 {/* dropdown - btn */}
                 <div
                     onClick={() => setIsTravellers(!isTravellers)}
-                    className="flex justify-between items-center border-2 w-full focus:outline-none h-12 p-3 mt-8 rounded-lg"
+                    className="flex justify-between items-center border-2 w-full focus:outline-none h-11 p-3  rounded-lg"
                 >
                     <h1 className=" text-gray-600 capitalize" role="button">
                         {(adult || child || infant) ? `${adult} adult ${child} child ${infant} infant` : "Travellers"}
@@ -74,7 +74,7 @@ const Travellers = () => {
                     className={`${isTravellers
                         ? "visible top-0 opacity-100"
                         : "invisible -top-4 opacity-0"
-                        } absolute z-20 mx-auto my-12 w-full  rounded-xl py-4 border bg-base-100 duration-300`}
+                        } absolute z-20 mx-auto my-12 w-[270px] -left-10  rounded-xl py-4 border bg-base-100 duration-300`}
                 >
 
                     <div className="capitalize px-3 space-y-2">
@@ -121,7 +121,7 @@ const Travellers = () => {
                             </div>
                         </section>
 
-                       
+                       <button className="btn btn-outline btn-primary w-full btn-sm" onClick={()=>setIsTravellers(false)}>Done</button>
                     </div>
 
                 </div>

@@ -15,7 +15,7 @@ const MultiCity = ({ visible, setVisiable }) => {
 
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 my-5 text-secondary">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 my-5 text-secondary ">
             <motion.div
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -92,14 +92,7 @@ const MultiCity = ({ visible, setVisiable }) => {
 
             </div>
             <div className="mt-9 space-x-3">
-                <button
-                    type="button"
-                    onClick={() => setVisiable(true)}
-                    className={`btn btn-sm btn-primary text-white transform transition-all duration-500 ease-in-out 
-    ${visible ? "opacity-0 scale-90 pointer-events-none" : "opacity-100 scale-100"}`}
-                >
-                    <FaPlus /> Add Another
-                </button>
+
 
                 <button
                     onClick={() => setVisiable(false)}
@@ -109,6 +102,17 @@ const MultiCity = ({ visible, setVisiable }) => {
                     <IoIosClose size={20} />
                 </button>
 
+            </div>
+
+            <div>
+                <button
+                    type="button"
+                    onClick={() => setVisiable(true)}
+                    className={`btn btn-sm btn-primary text-white transform transition-all duration-500 ease-in-out 
+    ${visible ? "opacity-0 scale-90 pointer-events-none" : "opacity-100 scale-100"}`}
+                >
+                    <FaPlus /> Add Another
+                </button>
             </div>
         </div>
     );
