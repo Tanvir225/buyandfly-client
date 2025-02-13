@@ -19,10 +19,10 @@ const Navbar = () => {
     <section className="fixed top-0 w-full z-20 hidden lg:block">
       {/* topbar */}
 
-      <div className="bg-secondary text-white py-1">
+      <div className="bg-secondary text-white py-3">
         <div className="flex justify-center items-center lg:justify-between max-w-6xl mx-auto px-2">
           {/* text */}
-          <div className="hidden text-[13px]  lg:block w-full lg:w-[40%]">
+          <div className="hidden text-[15px]  lg:block w-full lg:w-[42%]">
             <Swiper
               spaceBetween={10}
               grabCursor={true}
@@ -32,7 +32,7 @@ const Navbar = () => {
               loop={true} // Infinite loop
             >
               <SwiperSlide>
-                Wi-fi flights allowed, government notifies new rules on flights
+                Wi-fi flights allowed, government notifies on flights
                 allowed
               </SwiperSlide>
               <SwiperSlide>Travel far enough, you meet yourself.</SwiperSlide>
@@ -50,14 +50,7 @@ const Navbar = () => {
             <div className="divider divider-horizontal divider-accent"></div>
 
             {/* user  */}
-            <details className="dropdown">
-              <summary className="">Login</summary>
-              <ul className="menu dropdown-content bg-base-100 text-black rounded-box z-[1] w-36 p-2 shadow">
-                <li><Link to={"/"}>User Login</Link></li>
-                <li><Link to={"/"}>User Register</Link></li>
-              </ul>
-            </details>
-
+            <Link to={"/"} className="">Login</Link>
             <div className="divider divider-horizontal divider-accent"></div>
 
             {/* agent  */}

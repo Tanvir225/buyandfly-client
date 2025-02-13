@@ -30,16 +30,16 @@ const Travellers = () => {
 
     return (
         <div>
-            <label htmlFor="" className="">
+            {/* <label htmlFor="" className="">
                 How many are Travelling
-            </label>
+            </label> */}
 
             {/* economy */}
             <div className="relative ">
                 {/* dropdown - btn */}
                 <div
                     onClick={() => setIsTravellers(!isTravellers)}
-                    className="flex justify-between items-center border-2 w-full focus:outline-none h-10 p-3 mt-2 rounded-lg"
+                    className="flex justify-between items-center border-2 w-full focus:outline-none h-12 p-3 mt-8 rounded-lg"
                 >
                     <h1 className=" text-gray-600 capitalize" role="button">
                         {(adult || child || infant) ? `${adult} adult ${child} child ${infant} infant` : "Travellers"}

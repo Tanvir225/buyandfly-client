@@ -45,7 +45,7 @@ const BannerNew = ({loading,setLoading}) => {
 
   return (
     <div
-      className="hero h-[900px] w-full overflow-x-hidden"
+      className="hero h-[1000px] w-full overflow-x-hidden"
       style={{
         backgroundImage:
           `url(${banner_bg})`

@@ -22,9 +22,9 @@ const MultiCity = ({ visible, setVisiable }) => {
                 transition={{ duration: 0.5 }}
                 className="w-full"
             >
-                <label htmlFor="" className="">
+                {/* <label htmlFor="" className="">
                     From
-                </label>{" "}
+                </label>{" "} */}
                 <br />
                 <input
                     type="text"
@@ -48,9 +48,9 @@ const MultiCity = ({ visible, setVisiable }) => {
                 transition={{ duration: 0.5, delay: 0.25 }}
                 className="relative"
             >
-                <label htmlFor="" className="">
+                {/* <label htmlFor="" className="">
                     To
-                </label>{" "}
+                </label>{" "} */}
                 <br />
                 <input
                     type="text"
@@ -73,10 +73,10 @@ const MultiCity = ({ visible, setVisiable }) => {
 
 
             <div>
-                <label htmlFor="" className="">
+                {/* <label htmlFor="" className="">
                     Journey Date
-                </label>
-                <motion.div className="input input-bordered h-10 mt-2 flex items-center focus:outline-none">
+                </label> */}
+                <motion.div className="input input-bordered h-10 mt-8 flex items-center focus:outline-none">
 
 
                     <DatePicker

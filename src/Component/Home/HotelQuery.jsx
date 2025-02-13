@@ -47,7 +47,7 @@ const HotelQuery = ({ toggleButton }) => {
 
   if (adult2 || child2) {
     setRoom(2)
-    
+
   }
 
 
@@ -69,7 +69,7 @@ const HotelQuery = ({ toggleButton }) => {
               Where Do you want to stay
             </label>
             <input
-              className="border-2 w-full focus:outline-none h-10 p-3 mt-2 rounded-lg "
+              className="border-2 w-full focus:outline-none h-12 p-3 mt-2 rounded-lg "
               placeholder="Bangaldesh"
 
             />
@@ -88,7 +88,7 @@ const HotelQuery = ({ toggleButton }) => {
             {/* date picker */}
 
             <motion.div className="relative flex">
-              <div className="input input-bordered h-10 flex items-center focus:outline-none w-1/2 mt-2 border-r-0">
+              <div className="input input-bordered h-12 flex items-center focus:outline-none w-1/2 mt-2 border-r-0">
                 <DatePicker
 
                   className="focus:outline-none"
@@ -99,7 +99,7 @@ const HotelQuery = ({ toggleButton }) => {
                   dateFormat={"dd/MM/yyyy"}
                 />
               </div>
-              <div className="input input-bordered h-10 flex items-center focus:outline-none w-1/2 mt-2 border-l-0">
+              <div className="input input-bordered h-12 flex items-center focus:outline-none w-1/2 mt-2 border-l-0">
 
                 <DatePicker
 
@@ -112,8 +112,10 @@ const HotelQuery = ({ toggleButton }) => {
                 />
               </div>
 
-              <div className="absolute bottom-2  bg-sky-200 shadow-lg rounded-2xl p-1 left-[45%]">
-                <HiOutlineCalendarDays  size={16} color="black" ></HiOutlineCalendarDays  >
+              <div className="absolute bottom-2 w-8 text-center rounded-full bg-sky-300  shadow-lg p-2 font-medium left-[44%] top-3">
+                {/* <HiOutlineCalendarDays  size={16} color="black" ></HiOutlineCalendarDays  >
+                   */}
+                2
               </div>
             </motion.div>
 
@@ -130,7 +132,7 @@ const HotelQuery = ({ toggleButton }) => {
               Hotel Rating
             </label>
 
-            <select className="w-full focus:outline-none mt-2 input input-bordered h-10">
+            <select className="w-full focus:outline-none mt-2 input input-bordered h-12">
               <option selected>Choose rating</option>
               <option value="1">1 Star</option>
               <option value="2">2 Star</option>
@@ -150,7 +152,7 @@ const HotelQuery = ({ toggleButton }) => {
               How Many Are Travelling
             </label>
             <br />
-            <div className="dropdown text-gray-700 input input-bordered h-10 mt-2 focus:outline-none w-full transition-all">
+            <div className="dropdown text-gray-700 input input-bordered h-12 mt-2 focus:outline-none w-full transition-all">
               <div tabIndex={0} role="button" className="my-1">
                 {adult || child ? `${room} rooms ${adult + child + adult2 + child2} guest` : " Room & Guest "}
               </div>
@@ -207,7 +209,7 @@ const HotelQuery = ({ toggleButton }) => {
           </div>
 
           <div className={`px-5 space-x-5 ${toggleButton && 'opacity-0'}`}>
-            <button type="button" className="btn btn-outline btn-primary" onClick={() => setToggleFlight(!toggleFlight)}>{toggleFlight ? 'Remove Flight' :<div className="flex items-center gap-2"><FaPlus></FaPlus> Add Flight</div>}</button>
+            <button type="button" className="btn btn-outline btn-primary" onClick={() => setToggleFlight(!toggleFlight)}>{toggleFlight ? 'Remove Flight' : <div className="flex items-center gap-2"><FaPlus></FaPlus> Add Flight</div>}</button>
             <Button width={44} text="Search"></Button>
           </div>
         </section>

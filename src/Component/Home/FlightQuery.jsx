@@ -11,7 +11,7 @@ import HotelQuery from "./HotelQuery";
 import { HiOutlineCalendarDays } from "react-icons/hi2";
 import { FaPlus } from "react-icons/fa";
 
-const FlightQuery = ({setLoading,toggleFlight}) => {
+const FlightQuery = ({ setLoading, toggleFlight }) => {
 
   const [allCountries, setAllCountries] = useState([]);
   const [country, setCountry] = useState([]);
@@ -34,7 +34,7 @@ const FlightQuery = ({setLoading,toggleFlight}) => {
 
   const [visible, setVisiable] = useState(false)
 
- 
+
 
   // handTripTypeChange function
   const handleTripTypeChange = (event) => {
@@ -52,8 +52,8 @@ const FlightQuery = ({setLoading,toggleFlight}) => {
       journeyTo,
       departure,
       returnDate,
-    
-      
+
+
     );
   };
 
@@ -184,27 +184,26 @@ const FlightQuery = ({setLoading,toggleFlight}) => {
             transition={{ duration: 0.5 }}
             className=""
           >
-            <label htmlFor="" className="">
+            {/* <label htmlFor="" className="">
               From
-            </label>{" "}
+            </label> */}
             <br />
             <input
               readOnly
               onClick={handleSearchClick}
-              className="border-2 w-full focus:outline-none h-10 p-3 mt-2 rounded-lg "
+              className="border-2 w-full focus:outline-none h-12 p-3 mt-2 rounded-lg"
               value={journeyFrom}
-              placeholder="Bangaldesh"
-
+              placeholder=" DAC | Bangladesh"
             />
             <div
               className={`text-black space-y-3 ${searchToggleFrom ? "absolute" : "hidden"
-                } h-48 overflow-y-auto bg-base-100 shadow-xl w-60 z-20 p-3 rounded-md`}
+                } h-48 overflow-y-auto bg-base-100 shadow-xl w-64 z-20 p-3 rounded-md`}
             >
               <input
                 onChange={handleCountryChangeFrom}
                 name="search"
                 type="text"
-                className="input-sm w-full focus:outline-none border-b-2 h-12 rounded-md"
+                className="input-sm w-full focus:outline-none border-b-2 h-14 rounded-md"
                 placeholder="🛪 Type for airport name or code"
               />
               {country?.map((c, index) => (
@@ -223,21 +222,21 @@ const FlightQuery = ({setLoading,toggleFlight}) => {
             transition={{ duration: 0.5, delay: 0.25 }}
             className="relative"
           >
-            <label htmlFor="" className="">
+            {/* <label htmlFor="" className="">
               To
-            </label>{" "}
+            </label> */}
             <br />
             <input
               readOnly
               onClick={handleSearchClickTo}
-              className={`w-full focus:outline-none border-2 mt-2 h-10 p-3 rounded-lg`}
+              className={`w-full focus:outline-none border-2 mt-2 h-12 p-3 rounded-lg`}
               value={journeyTo}
-              placeholder="Nepal"
+              placeholder="BKK | Thailand"
 
             />
             <div
               className={` text-black ${searchToggleTo ? "absolute" : "hidden"
-                }  h-48 space-y-3 overflow-y-auto bg-base-100 shadow-xl w-60 z-20  p-3 rounded-md`}
+                }  h-48 space-y-3 overflow-y-auto bg-base-100 shadow-xl w-64 z-20  p-3 rounded-md`}
             >
 
               <input
@@ -255,8 +254,8 @@ const FlightQuery = ({setLoading,toggleFlight}) => {
               ))}
             </div>
 
-            <div className="absolute top-9 -left-5">
-              <GoArrowSwitch size={32} className="bg-base-100 shadow-md text-primary rounded-full p-1"></GoArrowSwitch>
+            <div className="absolute top-10 -left-6">
+              <GoArrowSwitch size={34} className="bg-base-100 shadow-md text-primary rounded-full p-1"></GoArrowSwitch>
             </div>
           </motion.div>
 
@@ -266,14 +265,14 @@ const FlightQuery = ({setLoading,toggleFlight}) => {
             transition={{ duration: 0.5, delay: 0.5 }}
 
           >
-            <label htmlFor="" className="">
+            {/* <label htmlFor="" className="">
               {tripType === 'oneway' ? "Journey Date" : "Add Dates"}
-            </label>
+            </label> */}
 
             {/* one way trip */}
 
             {
-              (tripType === 'oneway' || tripType === 'multicity') && <motion.div className="input input-bordered h-10 mt-2 flex items-center -space-x-10 focus:outline-none">
+              (tripType === 'oneway' || tripType === 'multicity') && <motion.div className="input input-bordered h-12 mt-8 flex items-center -space-x-10 focus:outline-none">
 
 
 
@@ -297,7 +296,7 @@ const FlightQuery = ({setLoading,toggleFlight}) => {
             {
               tripType === 'round trip' &&
               <motion.div className="relative flex">
-                <div className="input input-bordered h-10 flex items-center focus:outline-none w-1/2 mt-2 border-r-0">
+                <div className="input input-bordered h-12 flex items-center focus:outline-none w-1/2 mt-8 border-r-0">
                   <DatePicker
 
                     className="focus:outline-none "
@@ -308,7 +307,7 @@ const FlightQuery = ({setLoading,toggleFlight}) => {
                     dateFormat={"dd/MM/yyyy"}
                   />
                 </div>
-                <div className="input input-bordered h-10 flex items-center focus:outline-none w-1/2 mt-2 border-l-0">
+                <div className="input input-bordered h-12 flex items-center focus:outline-none w-1/2 mt-8 border-l-0">
 
                   <DatePicker
 
@@ -321,15 +320,17 @@ const FlightQuery = ({setLoading,toggleFlight}) => {
                   />
                 </div>
 
-                <div className="absolute bottom-2  bg-sky-200 rounded-2xl shadow-lg p-1 left-[44%]">
-                  <HiOutlineCalendarDays  size={16} color="black" ></HiOutlineCalendarDays  >
+                <div className="absolute bottom-1 w-8 text-center rounded-full bg-sky-300  shadow-lg p-2 font-medium left-[44%] ">
+                  {/* <HiOutlineCalendarDays  size={16} color="black" ></HiOutlineCalendarDays  >
+                   */}
+                  2
                 </div>
               </motion.div>
             }
 
-            {
+            {/* {
               tripType === 'round trip' && <p className="capitalize text-sm text-secondary my-1">Total Trip Duration : 00 days</p>
-            }
+            } */}
           </motion.div>
 
 
@@ -362,7 +363,7 @@ const FlightQuery = ({setLoading,toggleFlight}) => {
           <div className="flex flex-wrap lg:gap-0 gap-5 lg:flex-row space-x-3">
             <label htmlFor="" className="">Fare Type:</label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
-              <input type="radio"  name="fare" className="radio checked:bg-primary" />
+              <input type="radio" name="fare" className="radio checked:bg-primary" />
               <span className="text-secondary font-medium">Regular Fare</span>
             </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
