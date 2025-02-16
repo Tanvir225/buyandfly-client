@@ -11,7 +11,7 @@ import HolidayQuery from "./HolidayQuery";
 import VisaQuery from "./VisaQuery";
 import { useState } from "react";
 
-const BannerNew = ({loading,setLoading}) => {
+const BannerNew = ({}) => {
 
 
   //STATE
@@ -29,7 +29,7 @@ const BannerNew = ({loading,setLoading}) => {
   ];
 
   const tabContent = [
-    <FlightQuery loading={loading} setLoading={setLoading}/>,
+    <FlightQuery />,
     <HotelQuery />,
     <HolidayQuery />,
     <VisaQuery />,
@@ -43,7 +43,7 @@ const BannerNew = ({loading,setLoading}) => {
 
   return (
     <div
-      className="hero h-[950px] w-full overflow-x-hidden"
+      className="hero h-[1030px] w-full overflow-x-hidden"
       style={{
         backgroundImage:
           `url(${banner_bg})`

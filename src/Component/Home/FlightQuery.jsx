@@ -8,15 +8,14 @@ import Travellers from "./Utility/Travellers";
 import { GoArrowSwitch } from "react-icons/go";
 import MultiCity from "./Utility/MultiCity";
 import HotelQuery from "./HotelQuery";
-import { HiOutlineCalendarDays } from "react-icons/hi2";
 import { FaPlus } from "react-icons/fa";
 
-const FlightQuery = ({ setLoading, toggleFlight }) => {
+const FlightQuery = ({ toggleFlight }) => {
 
-  const [allCountries, setAllCountries] = useState([]);
-  const [country, setCountry] = useState([]);
-  const [journeyFrom, setJourneyFrom] = useState();
-  const [journeyTo, setJourneyTo] = useState();
+  const [allCountries, setAllCountries] = useState(flights);
+  const [country, setCountry] = useState(flights);
+  const [journeyFrom, setJourneyFrom] = useState([]);
+  const [journeyTo, setJourneyTo] = useState([]);
   const [departure, setDepartureDate] = useState(new Date());
   const [toggle, setToggle] = useState(false);
   const [tripType, setTripType] = useState("oneway");
@@ -61,16 +60,7 @@ const FlightQuery = ({ setLoading, toggleFlight }) => {
   };
 
 
-  // Fetch data and set the states
-  useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
-      .then((res) => res.json())
-      .then((data) => {
-        setAllCountries(data);
-        setCountry(data);  // Show all countries initially
-        setLoading(false)
-      });
-  }, []);
+
 
 
 
@@ -81,7 +71,7 @@ const FlightQuery = ({ setLoading, toggleFlight }) => {
       setCountry(allCountries);  // Reset to full list if input is empty
     } else {
       const filteredCountries = allCountries.filter((c) =>
-        c?.name?.common.toLowerCase().includes(value)
+        c?.city.toLowerCase().includes(value)
       );
       setCountry(filteredCountries);
     }
@@ -94,7 +84,7 @@ const FlightQuery = ({ setLoading, toggleFlight }) => {
       setCountry(allCountries);  // Reset to full list if input is empty
     } else {
       const filteredCountries = allCountries.filter((c) =>
-        c?.name?.common.toLowerCase().includes(value)
+        c?.city.toLowerCase().includes(value)
       );
       setCountry(filteredCountries);
     }
@@ -106,14 +96,29 @@ const FlightQuery = ({ setLoading, toggleFlight }) => {
 
 
   // Handle country selection from
-  const handleCountrySelect = (selectedCountry) => {
-    setJourneyFrom(selectedCountry);  // Set selected country
+  const handleCountrySelect = (city, code, airport) => {
+    setJourneyFrom([
+      {
+        city: city,
+        code: code,
+        airport: airport
+
+      }
+    ]);  // Set selected country
     setSearchToggleFrom(false);           // Close the dropdown
   };
 
   // Handle country selection To
-  const handleCountrySelectTo = (selectedCountry) => {
-    setJourneyTo(selectedCountry);  // Set selected country
+  const handleCountrySelectTo = (city, code, airport) => {
+    setJourneyTo([
+      {
+        city: city,
+        code: code,
+        airport: airport
+
+      }
+    ]
+    );  // Set selected country
     setSearchToggleTo(false);           // Close the dropdown
   };
 
@@ -126,6 +131,8 @@ const FlightQuery = ({ setLoading, toggleFlight }) => {
   const handleSearchClickTo = () => {
     setSearchToggleTo(true)
   }
+
+  console.log(journeyTo);
 
 
 
@@ -172,6 +179,17 @@ const FlightQuery = ({ setLoading, toggleFlight }) => {
           </div>
 
           <section className="flex items-center gap-5">
+
+            <div>
+              <motion.div
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+
+              >
+                <Travellers></Travellers>
+              </motion.div>
+            </div>
             {/* economy */}
             <div className={`relative`}>
               {/* dropdown - btn */}
@@ -230,16 +248,7 @@ const FlightQuery = ({ setLoading, toggleFlight }) => {
               </div>
             </div>
 
-            <div>
-              <motion.div
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
 
-              >
-                <Travellers></Travellers>
-              </motion.div>
-            </div>
           </section>
 
 
@@ -262,13 +271,14 @@ const FlightQuery = ({ setLoading, toggleFlight }) => {
               From
             </label> */}
             <br />
-            <input
-              readOnly
-              onClick={handleSearchClick}
-              className="border-2 w-full focus:outline-none h-12 p-3 mt-2 rounded-lg"
-              value={journeyFrom}
-              placeholder=" DAC | Bangladesh"
-            />
+            <div onClick={handleSearchClick} className="flex items-center mt-2  border rounded-lg h-14 w-full">
+              <span className="text-sm font-bold p-2 border-r-2">{journeyFrom[0]?.code || 'DAC'}</span>
+              <div className="flex flex-col items-start gap-1 p-2">
+                <span className="text-sm font-medium">{journeyFrom[0]?.city || "Dhaka"}</span>
+                <span className="text-xs text-gray-500  w-full">{journeyFrom[0]?.airport || "Bangladesh, Hazrat Shahjalal"}</span>
+              </div>
+            </div>
+
             <div
               className={`text-black space-y-3 ${searchToggleFrom ? "absolute" : "hidden"
                 } h-48 overflow-y-auto bg-base-100 shadow-xl w-64 z-20 p-3 rounded-md`}
@@ -281,9 +291,12 @@ const FlightQuery = ({ setLoading, toggleFlight }) => {
                 placeholder="🛪 Type for airport name or code"
               />
               {country?.map((c, index) => (
-                <div onClick={() => handleCountrySelect(c?.name?.common)} key={index} className="flex items-center gap-5 cursor-pointer p-2">
-                  <img src={`${c?.flags?.png}`} alt={`${c?.name?.common}`} className="w-10" />
-                  <p>{c?.name?.common}</p>
+                <div onClick={() => handleCountrySelect(c?.city, c?.code, c?.airport)} key={index} className="flex items-center gap-5 cursor-pointer p-2">
+                  <h2 className="border-r-2 border-b-2 p-2 ">{c?.code}</h2>
+                  <div>
+                    <p>{c?.city}</p>
+                    <p className="text-[12px]">{c?.airport}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -300,14 +313,13 @@ const FlightQuery = ({ setLoading, toggleFlight }) => {
               To
             </label> */}
             <br />
-            <input
-              readOnly
-              onClick={handleSearchClickTo}
-              className={`w-full focus:outline-none border-2 mt-2 h-12 p-3 rounded-lg`}
-              value={journeyTo}
-              placeholder="BKK | Thailand"
-
-            />
+            <div onClick={handleSearchClickTo} className="flex items-center mt-2  border rounded-lg h-14 text-wrap truncate">
+              <span className="text-sm font-bold p-2 border-r-2 ml-1">{journeyTo[0]?.code || "JED"}</span>
+              <div className="flex flex-col items-start gap-1 p-2">
+                <span className="text-sm font-medium">{journeyTo[0]?.city || "Jeddah"}</span>
+                <span className="text-xs text-gray-500 truncate w-full">{journeyTo[0]?.airport || "King Abdulaziz Int Airport"}</span>
+              </div>
+            </div>
             <div
               className={` text-black ${searchToggleTo ? "absolute" : "hidden"
                 }  h-48 space-y-3 overflow-y-auto bg-base-100 shadow-xl w-64 z-20  p-3 rounded-md`}
@@ -321,9 +333,12 @@ const FlightQuery = ({ setLoading, toggleFlight }) => {
                 placeholder="🛪 Type for airport name or code"
               />
               {country?.map((c, index) => (
-                <div onClick={() => handleCountrySelectTo(c?.name?.common)} key={index} className="flex items-center gap-5 cursor-pointer p-2">
-                  <img src={`${c?.flags?.png}`} alt={`${c?.name?.common}`} className="w-10" />
-                  <p>{c?.name?.common}</p>
+                <div onClick={() => handleCountrySelectTo(c?.city, c?.code, c?.airport)} key={index} className="flex items-center gap-5 cursor-pointer p-2">
+                  <h2 className="border-r-2 border-b-2 p-2 ">{c?.code}</h2>
+                  <div>
+                    <p>{c?.city}</p>
+                    <p className="text-[12px]">{c?.airport}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -346,7 +361,7 @@ const FlightQuery = ({ setLoading, toggleFlight }) => {
             {/* one way trip */}
 
             {
-              (tripType === 'oneway' || tripType === 'multicity') && <motion.div className="input input-bordered h-12 mt-8 flex items-center -space-x-10 focus:outline-none">
+              (tripType === 'oneway' || tripType === 'multicity') && <motion.div className="input input-bordered h-14 mt-8 flex items-center -space-x-10 focus:outline-none">
 
 
 
@@ -357,7 +372,7 @@ const FlightQuery = ({ setLoading, toggleFlight }) => {
                   onChange={(date) => setDepartureDate(date)}
                   showDisabledMonthNavigation
                   monthsShown={1}
-                  dateFormat={"dd/MM/yyyy"}
+                  dateFormat={"dd MMMM, yyyy "}
                 />
 
 
@@ -369,32 +384,33 @@ const FlightQuery = ({ setLoading, toggleFlight }) => {
 
             {
               tripType === 'round trip' &&
-              <motion.div className="relative flex">
-                <div className="input input-bordered h-12 flex items-center focus:outline-none w-1/2 mt-8 border-r-0">
+              <motion.div className="relative flex lg:w-[70%]">
+                <div className="input input-bordered h-14 flex items-center focus:outline-none w-full mt-8 border-r-0">
                   <DatePicker
 
-                    className="focus:outline-none "
+                    className="focus:outline-none"
+
                     selected={departure}
                     onChange={(date) => setDepartureDate(date)}
                     showDisabledMonthNavigation
                     monthsShown={1}
-                    dateFormat={"dd/MM/yyyy"}
+                    dateFormat={"dd MMMM, yyyy "}
                   />
                 </div>
-                <div className="input input-bordered h-12 flex items-center focus:outline-none w-1/2 mt-8 border-l-0">
+                <div className="input input-bordered h-14 flex items-center focus:outline-none w-full mt-8 border-l-0">
 
                   <DatePicker
 
-                    className="pl-2"
+                    className="pl-2 "
                     selected={returnDate}
                     onChange={(date) => setReturnDate(date)}
                     showDisabledMonthNavigation
                     monthsShown={1}
-                    dateFormat={"dd/MM/yyyy"}
+                    dateFormat={"MMMM d, yyyy "}
                   />
                 </div>
 
-                <div className="absolute bottom-1 w-8 text-center rounded-full bg-sky-300  shadow-lg p-2 font-medium left-[44%] ">
+                <div className="absolute bottom-1 w-8 text-center rounded-full bg-sky-300  shadow-lg p-2 font-medium left-[90%] ">
                   {/* <HiOutlineCalendarDays  size={16} color="black" ></HiOutlineCalendarDays  >
                    */}
                   2
@@ -410,10 +426,12 @@ const FlightQuery = ({ setLoading, toggleFlight }) => {
 
 
 
-          <div className={`flex items-center mt-8 gap-5 ${(toggle || toggleFlight) && 'opacity-0'}`}>
-            <button className="btn btn-outline btn-primary " onClick={() => setToggle(!toggle)}><FaPlus></FaPlus> Add Hotel</button>
-            <Button width={32} text="Search"></Button>
+          <div className={`flex items-center   mt-8 gap-5 ${(toggle || toggleFlight) && 'opacity-0'}`}>
+            <button className={`btn btn-outline btn-primary ${tripType === 'round trip' && 'hidden'}`} onClick={() => setToggle(!toggle)}><FaPlus></FaPlus> Add Hotel</button>
+            <div className={`${tripType === 'round trip' && 'ml-32'}`}>
+              <Button width={32} text="Search"></Button>
 
+            </div>
           </div>
 
 
@@ -472,3 +490,66 @@ const FlightQuery = ({ setLoading, toggleFlight }) => {
 export default FlightQuery;
 
 
+// fake data
+const flights = [
+  {
+    code: "DAC",
+    city: "Dhaka",
+    country: "Bangladesh",
+    airport: "Hazrat Shahjalal International Airport",
+  },
+  {
+    code: "CXB",
+    city: "Cox's Bazar",
+    country: "Bangladesh",
+    airport: "Cox's Bazar Airport",
+  },
+  {
+    code: "JFK",
+    city: "New York",
+    country: "United States",
+    airport: "John F Kennedy International Airport",
+  },
+  {
+    code: "LHR",
+    city: "London",
+    country: "United Kingdom",
+    airport: "Heathrow Airport",
+  },
+  {
+    code: "DXB",
+    city: "Dubai",
+    country: "United Arab Emirates",
+    airport: "Dubai International Airport",
+  },
+  {
+    code: "SIN",
+    city: "Singapore",
+    country: "Singapore",
+    airport: "Changi Airport",
+  },
+  {
+    code: "HND",
+    city: "Tokyo",
+    country: "Japan",
+    airport: "Haneda Airport",
+  },
+  {
+    code: "SYD",
+    city: "Sydney",
+    country: "Australia",
+    airport: "Sydney Kingsford Smith Airport",
+  },
+  {
+    code: "CDG",
+    city: "Paris",
+    country: "France",
+    airport: "Charles de Gaulle Airport",
+  },
+  {
+    code: "IST",
+    city: "Istanbul",
+    country: "Turkey",
+    airport: "Istanbul Airport",
+  },
+];

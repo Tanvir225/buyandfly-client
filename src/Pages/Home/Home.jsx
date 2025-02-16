@@ -14,7 +14,7 @@ import Loading from "../../Component/Shared/Loading";
 
 const Home = () => {
 
-  const [loading, setLoading] = useState(true)
+
 
   const date = new Date();
   const today = new Intl.DateTimeFormat("en-GB", {
@@ -24,17 +24,17 @@ const Home = () => {
   }).format(date);
 
 
-  console.log(loading)
+
 
 
 
   return (
     <section>
-      {loading && <div className="h-screen z-10"><Loading></Loading></div>}
+
       {
         <section>
           {/* banner */}
-          <Banner loading={loading} setLoading={setLoading}></Banner>
+          <Banner ></Banner>
 
           {/* exclusive travels deals */}
           <section>
