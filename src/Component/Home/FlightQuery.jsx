@@ -256,9 +256,9 @@ const FlightQuery = ({ toggleFlight }) => {
 
         {/* Inputs */}
         <section
-          className={`grid gap-3   text-left  bg-gradient-to-b from-secondary to-primary text-secondary bg-clip-text ${tripType === "oneway"
-            ? "lg:grid-cols-4 !important"
-            : "lg:grid-cols-4 !important"
+          className={`grid gap-3  text-left  bg-gradient-to-b from-secondary to-primary text-secondary bg-clip-text ${tripType === "oneway"
+            ? "lg:gap-72 lg:grid-cols-4 !important"
+            : "lg:-space-x-5 lg:grid-cols-3 !important"
             } grid-cols-1`}
         >
           <motion.div
@@ -271,7 +271,7 @@ const FlightQuery = ({ toggleFlight }) => {
               From
             </label> */}
             <br />
-            <div onClick={handleSearchClick} className="flex items-center mt-2  border rounded-lg h-14 w-full">
+            <div onClick={handleSearchClick} className={`flex items-center mt-2  border rounded-lg h-16 w-full lg:w-[340px] `}>
               <span className="text-sm font-bold p-2 border-r-2">{journeyFrom[0]?.code || 'DAC'}</span>
               <div className="flex flex-col items-start gap-1 p-2">
                 <span className="text-sm font-medium">{journeyFrom[0]?.city || "Dhaka"}</span>
@@ -281,7 +281,7 @@ const FlightQuery = ({ toggleFlight }) => {
 
             <div
               className={`text-black space-y-3 ${searchToggleFrom ? "absolute" : "hidden"
-                } h-48 overflow-y-auto bg-base-100 shadow-xl w-64 z-20 p-3 rounded-md`}
+                } h-52 overflow-y-auto bg-base-100 shadow-xl w-80  z-20 p-3 px-2 rounded-md`}
             >
               <input
                 onChange={handleCountryChangeFrom}
@@ -313,16 +313,16 @@ const FlightQuery = ({ toggleFlight }) => {
               To
             </label> */}
             <br />
-            <div onClick={handleSearchClickTo} className="flex items-center mt-2  border rounded-lg h-14 text-wrap truncate">
+            <div onClick={handleSearchClickTo} className={`flex items-center mt-2  border rounded-lg h-16 text-wrap truncate w-full lg:w-[340px] `}>
               <span className="text-sm font-bold p-2 border-r-2 ml-1">{journeyTo[0]?.code || "JED"}</span>
               <div className="flex flex-col items-start gap-1 p-2">
-                <span className="text-sm font-medium">{journeyTo[0]?.city || "Jeddah"}</span>
+                <span className="text-sm font-medium">{journeyTo[0]?.city || "Saudi Arabia"}</span>
                 <span className="text-xs text-gray-500 truncate w-full">{journeyTo[0]?.airport || "King Abdulaziz Int Airport"}</span>
               </div>
             </div>
             <div
               className={` text-black ${searchToggleTo ? "absolute" : "hidden"
-                }  h-48 space-y-3 overflow-y-auto bg-base-100 shadow-xl w-64 z-20  p-3 rounded-md`}
+                }  h-52 space-y-3 overflow-y-auto bg-base-100 shadow-xl  z-20  p-3 px-2 w-80 rounded-md`}
             >
 
               <input
@@ -343,7 +343,7 @@ const FlightQuery = ({ toggleFlight }) => {
               ))}
             </div>
 
-            <div className="absolute top-10 -left-6">
+            <div className="absolute top-12 -left-6">
               <GoArrowSwitch size={34} className="bg-base-100 shadow-md text-primary rounded-full p-1"></GoArrowSwitch>
             </div>
           </motion.div>
@@ -361,7 +361,7 @@ const FlightQuery = ({ toggleFlight }) => {
             {/* one way trip */}
 
             {
-              (tripType === 'oneway' || tripType === 'multicity') && <motion.div className="input input-bordered h-14 mt-8 flex items-center -space-x-10 focus:outline-none">
+              (tripType === 'oneway' || tripType === 'multicity') && <motion.div className={`input input-bordered h-16 mt-8  flex items-center w-full lg:w-[340px] -space-x-10 focus:outline-none ${tripType === 'multicity' && '-ml-7'}`}>
 
 
 
@@ -384,8 +384,8 @@ const FlightQuery = ({ toggleFlight }) => {
 
             {
               tripType === 'round trip' &&
-              <motion.div className="relative flex lg:w-[70%]">
-                <div className="input input-bordered h-14 flex items-center focus:outline-none w-full mt-8 border-r-0">
+              <motion.div className="relative flex lg:w-[50%] -ml-5">
+                <div className="input input-bordered h-16 flex items-center focus:outline-none w-full mt-8 border-r-0">
                   <DatePicker
 
                     className="focus:outline-none"
@@ -397,7 +397,7 @@ const FlightQuery = ({ toggleFlight }) => {
                     dateFormat={"dd MMMM, yyyy "}
                   />
                 </div>
-                <div className="input input-bordered h-14 flex items-center focus:outline-none w-full mt-8 border-l-0">
+                <div className="input input-bordered h-16 flex items-center focus:outline-none w-full mt-8 border-l-0">
 
                   <DatePicker
 
@@ -410,7 +410,7 @@ const FlightQuery = ({ toggleFlight }) => {
                   />
                 </div>
 
-                <div className="absolute bottom-1 w-8 text-center rounded-full bg-sky-300  shadow-lg p-2 font-medium left-[90%] ">
+                <div className="absolute bottom-3 w-8 text-center mask mask-hexagon bg-sky-300  shadow-lg p-2 font-medium left-[90%] ">
                   {/* <HiOutlineCalendarDays  size={16} color="black" ></HiOutlineCalendarDays  >
                    */}
                   2
@@ -426,11 +426,10 @@ const FlightQuery = ({ toggleFlight }) => {
 
 
 
-          <div className={`flex items-center   mt-8 gap-5 ${(toggle || toggleFlight) && 'opacity-0'}`}>
-            <button className={`btn btn-outline btn-primary ${tripType === 'round trip' && 'hidden'}`} onClick={() => setToggle(!toggle)}><FaPlus></FaPlus> Add Hotel</button>
-            <div className={`${tripType === 'round trip' && 'ml-32'}`}>
-              <Button width={32} text="Search"></Button>
+          <div className={`mt-9`}>
 
+            <div className={`${tripType === 'oneway' ? 'block' : 'hidden'} `}>
+              <Button width={28} text="Search"></Button>
             </div>
           </div>
 
@@ -449,7 +448,7 @@ const FlightQuery = ({ toggleFlight }) => {
         </motion.div>
 
         {/* fare section */}
-        <section className=" flex flex-col lg:flex-row justify-between  md:mb-4 text-secondary my-5 ">
+        <section className=" flex flex-col lg:flex-row justify-between items-center text-secondary my-5 ">
           <div className="flex flex-wrap lg:gap-0 gap-5 lg:flex-row space-x-3">
             <label htmlFor="" className="">Fare Type:</label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
@@ -463,15 +462,22 @@ const FlightQuery = ({ toggleFlight }) => {
           </div>
 
 
+          <div className={`flex items-center   gap-5 ${(toggle || toggleFlight) && 'opacity-0'}`}>
+            <button className={`btn btn-outline btn-primary ${tripType === 'oneway' && 'hidden'}`} onClick={() => setToggle(!toggle)}><FaPlus></FaPlus> Add Hotel</button>
+            <div className={`${tripType === 'oneway' ? 'hidden' : 'block'} `}>
+              <Button width={32} text="Search"></Button>
+            </div>
+          </div>
+
         </section>
 
         {/* add hotel content */}
         <section>
           {
-            toggle ? <section>
+            toggle ? <section className="w-[100%]">
               <HotelQuery toggleButton={toggle}></HotelQuery>
 
-              <div className={`space-x-5  text-right`}>
+              <div className={`flex justify-end gap-3  text-right`}>
                 <button className="btn btn-outline btn-primary" onClick={() => setToggle(!toggle)}>Remove Hotel</button>
                 <Button width={36} text="Search"></Button>
 

@@ -56,23 +56,23 @@ const BannerNew = ({}) => {
           <h2 className="text-center text-2xl my-5 lg:text-7xl lg:leading-snug text-base-100 banner-title ">Discover Your Next <br /> Great Adventure</h2>
 
           <Tab.Group>
-            <Tab.List className="px-5  flex flex-wrap flex-row justify-between items-center  py-5 rounded-t-xl  bg-white">
-              <div className="space-x-2 space-y-2 bg-base-200 p-2 rounded-lg">
+            <Tab.List className="px-5  flex flex-wrap flex-row justify-between items-center   rounded-t-xl  bg-white">
+              <div className=" flex items-center justify-center gap-7 p-3 rounded-lg ">
                 {tabList.map(({ label, icon: Icon }, idx) => (
                   <Tab
                     key={idx}
                     onClick={()=>handleClick(label)}
                     className={({ selected }) =>
-                      ` btn btn-sm focus:outline-none font-medium    ${idx === 0 ? "rounded-tl-xl" : ""
+                      `flex border- items-center gap-2 focus:outline-none font-medium    ${idx === 0 ? "rounded-tl-xl" : ""
                       } ${idx === tabList.length - 1 ? "rounded-tr-xl" : ""}
                   ${selected
-                        ? "  bg-primary text-white hover:bg-primary"
+                        ? "border-b-2  border-primary text-primary py-3 font-semibold"
                         : "text-secondary"
                       }`
                     }
                   >
                     <Icon size={24} />{" "}
-                    <span className="">{label}</span>
+                    <span className="">{label}</span> 
                   </Tab>
                 ))}
               </div>

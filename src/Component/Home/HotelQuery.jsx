@@ -5,7 +5,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import Button from "../Shared/Button";
 import HotelPerson from "./Utility/HotelPerson";
 import FlightQuery from "./FlightQuery";
-import { HiOutlineCalendarDays } from "react-icons/hi2";
 import { FaPlus } from "react-icons/fa";
 
 
@@ -13,6 +12,11 @@ import { FaPlus } from "react-icons/fa";
 const HotelQuery = ({ toggleButton }) => {
 
   //STATE
+
+  const [allCountries, setAllCountries] = useState(flights);
+  const [country, setCountry] = useState(flights);
+  const [searchToggleFrom, setSearchToggleFrom] = useState(false)
+  const [journeyFrom, setJourneyFrom] = useState([]);
 
   const [toggleFlight, setToggleFlight] = useState(false);
 
@@ -52,13 +56,48 @@ const HotelQuery = ({ toggleButton }) => {
 
 
 
+  // Handle search input change
+  const handleCountryChangeFrom = (e) => {
+    const value = e.target.value.toLowerCase();
+    if (value === "") {
+      setCountry(allCountries);  // Reset to full list if input is empty
+    } else {
+      const filteredCountries = allCountries.filter((c) =>
+        c?.city.toLowerCase().includes(value)
+      );
+      setCountry(filteredCountries);
+    }
+  };
+
+
+  // Handle country selection from
+  const handleCountrySelect = (city, code, airport) => {
+    setJourneyFrom([
+      {
+        city: city,
+        code: code,
+        airport: airport
+
+      }
+    ]);  // Set selected country
+    setSearchToggleFrom(false);           // Close the dropdown
+  };
+
+  // handle searchClick FROM
+  const handleSearchClick = () => {
+    setSearchToggleFrom(true)
+  }
+
+
+
+
 
 
   return (
-    <div className="p-2 bg-white ">
+    <div className="py-2 bg-white ">
       <form>
         {/* Inputs */}
-        <section className="grid grid-cols-1 lg:grid-cols-4 gap-5 p-7 rounded-xl text-left  text-black bg-white rounded-tl-none">
+        <section className="flex justify-between gap-3 p-5 rounded-xl text-left  text-black bg-white rounded-tl-none">
           <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
@@ -66,13 +105,37 @@ const HotelQuery = ({ toggleButton }) => {
             className=""
           >
             <label htmlFor="" className=" ">
-              Where Do you want to stay
+              Where you want to stay
             </label>
-            <input
-              className="border-2 w-full focus:outline-none h-12 p-3 mt-2 rounded-lg "
-              placeholder="Bangaldesh"
+            <div onClick={handleSearchClick} className={`flex items-center mt-2  border rounded-lg h-16 w-full  `}>
+              <span className="text-sm font-bold p-2 border-r-2">{journeyFrom[0]?.code || 'DAC'}</span>
+              <div className="flex flex-col items-start gap-1 p-2">
+                <span className="text-sm font-medium">{journeyFrom[0]?.city || "Dhaka"}</span>
+                <span className="text-xs text-gray-500  w-full">{journeyFrom[0]?.airport || "Bangladesh, Hazrat Shahjalal"}</span>
+              </div>
+            </div>
 
-            />
+            <div
+              className={`text-black space-y-3 ${searchToggleFrom ? "absolute" : "hidden"
+                } h-52 overflow-y-auto bg-base-100 shadow-xl w-64  z-20 p-3 px-2 rounded-md`}
+            >
+              <input
+                onChange={handleCountryChangeFrom}
+                name="search"
+                type="text"
+                className="input-sm w-full focus:outline-none border-b-2 h-14 rounded-md"
+                placeholder="🛪 Type for airport name or code"
+              />
+              {country?.map((c, index) => (
+                <div onClick={() => handleCountrySelect(c?.city, c?.code, c?.airport)} key={index} className="flex items-center gap-5 cursor-pointer p-2">
+                  <h2 className="border-r-2 border-b-2 p-2 ">{c?.code}</h2>
+                  <div>
+                    <p>{c?.city}</p>
+                    <p className="text-[12px]">{c?.airport}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </motion.div>
 
           <motion.div
@@ -87,8 +150,8 @@ const HotelQuery = ({ toggleButton }) => {
 
             {/* date picker */}
 
-            <motion.div className="relative flex">
-              <div className="input input-bordered h-12 flex items-center focus:outline-none w-1/2 mt-2 border-r-0">
+            <motion.div className="relative flex w-full">
+              <div className="input input-bordered h-16 flex items-center focus:outline-none w-fit  mt-2 border-r-0">
                 <DatePicker
 
                   className="focus:outline-none"
@@ -96,10 +159,10 @@ const HotelQuery = ({ toggleButton }) => {
                   onChange={(date) => setDepartureDate(date)}
                   showDisabledMonthNavigation
                   monthsShown={1}
-                  dateFormat={"dd/MM/yyyy"}
+                  dateFormat={"dd MMMM, yyyy"}
                 />
               </div>
-              <div className="input input-bordered h-12 flex items-center focus:outline-none w-1/2 mt-2 border-l-0">
+              <div className="input input-bordered h-16 flex items-center w-[fit] focus:outline-none  mt-2 border-l-0">
 
                 <DatePicker
 
@@ -108,11 +171,11 @@ const HotelQuery = ({ toggleButton }) => {
                   onChange={(date) => setReturnDate(date)}
                   showDisabledMonthNavigation
                   monthsShown={1}
-                  dateFormat={"dd/MM/yyyy"}
+                  dateFormat={"dd MMMM, yyyy"}
                 />
               </div>
 
-              <div className="absolute bottom-2 w-8 text-center rounded-full bg-sky-300  shadow-lg p-2 font-medium left-[44%] top-3">
+              <div className="absolute bottom-2 w-7 text-center mask mask-hexagon bg-sky-300  shadow-lg p-2 font-medium left-[45%]">
                 {/* <HiOutlineCalendarDays  size={16} color="black" ></HiOutlineCalendarDays  >
                    */}
                 2
@@ -132,7 +195,7 @@ const HotelQuery = ({ toggleButton }) => {
               Hotel Rating
             </label>
 
-            <select className="w-full focus:outline-none mt-2 input input-bordered h-12">
+            <select className="w-full focus:outline-none mt-2 input input-bordered h-16">
               <option selected>Choose rating</option>
               <option value="1">1 Star</option>
               <option value="2">2 Star</option>
@@ -149,16 +212,16 @@ const HotelQuery = ({ toggleButton }) => {
             className=""
           >
             <label htmlFor="" className="">
-              How Many Are Travelling
+              Travellers
             </label>
             <br />
-            <div className="dropdown text-gray-700 input input-bordered h-12 mt-2 focus:outline-none w-full transition-all">
-              <div tabIndex={0} role="button" className="my-1">
-                {adult || child ? `${room} rooms ${adult + child + adult2 + child2} guest` : " Room & Guest "}
+            <div className="dropdown text-gray-700 input input-bordered h-16 mt-2 focus:outline-none w-full transition-all">
+              <div tabIndex={0} role="button" className="my-1 pt-1 ">
+                {adult || child ? `${room} rooms ${adult + child + adult2 + child2} guest` : "Room & Guest"}
               </div>
               <ul
                 tabIndex={0}
-                className="menu  menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-6 w-72  p-2 shadow space-y-2"
+                className="menu  menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-6 w-52  p-2 shadow space-y-2"
               >
 
                 <div>
@@ -183,7 +246,7 @@ const HotelQuery = ({ toggleButton }) => {
         </section>
 
         {/* hotel type section */}
-        <section className="flex flex-wrap gap-5  lg:gap-0 items-center justify-between  md:mb-4  my-5 ">
+        <section className="flex flex-wrap gap-5  lg:gap-0 items-center justify-between  md:mb-4  my-5 px-5">
           <div className="flex flex-wrap gap-2 space-x-3">
             <label htmlFor="" className=" text-secondary">Search For : </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
@@ -208,7 +271,7 @@ const HotelQuery = ({ toggleButton }) => {
             </label>
           </div>
 
-          <div className={`px-5 space-x-5 ${toggleButton && 'opacity-0'}`}>
+          <div className={`px-5 flex items-center gap-3 ${toggleButton && 'opacity-0'}`}>
             <button type="button" className="btn btn-outline btn-primary" onClick={() => setToggleFlight(!toggleFlight)}>{toggleFlight ? 'Remove Flight' : <div className="flex items-center gap-2"><FaPlus></FaPlus> Add Flight</div>}</button>
             <Button width={44} text="Search"></Button>
           </div>
@@ -231,5 +294,72 @@ const HotelQuery = ({ toggleButton }) => {
 };
 
 export default HotelQuery;
+
+
+
+// fake data
+const flights = [
+  {
+    code: "DAC",
+    city: "Dhaka",
+    country: "Bangladesh",
+    airport: "Hazrat Shahjalal International Airport",
+  },
+  {
+    code: "CXB",
+    city: "Cox's Bazar",
+    country: "Bangladesh",
+    airport: "Cox's Bazar Airport",
+  },
+  {
+    code: "JFK",
+    city: "New York",
+    country: "United States",
+    airport: "John F Kennedy International Airport",
+  },
+  {
+    code: "LHR",
+    city: "London",
+    country: "United Kingdom",
+    airport: "Heathrow Airport",
+  },
+  {
+    code: "DXB",
+    city: "Dubai",
+    country: "United Arab Emirates",
+    airport: "Dubai International Airport",
+  },
+  {
+    code: "SIN",
+    city: "Singapore",
+    country: "Singapore",
+    airport: "Changi Airport",
+  },
+  {
+    code: "HND",
+    city: "Tokyo",
+    country: "Japan",
+    airport: "Haneda Airport",
+  },
+  {
+    code: "SYD",
+    city: "Sydney",
+    country: "Australia",
+    airport: "Sydney Kingsford Smith Airport",
+  },
+  {
+    code: "CDG",
+    city: "Paris",
+    country: "France",
+    airport: "Charles de Gaulle Airport",
+  },
+  {
+    code: "IST",
+    city: "Istanbul",
+    country: "Turkey",
+    airport: "Istanbul Airport",
+  },
+];
+
 
 
