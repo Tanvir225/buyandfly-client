@@ -281,7 +281,7 @@ const FlightQuery = ({ toggleFlight }) => {
 
             <div
               className={`text-black space-y-3 ${searchToggleFrom ? "absolute" : "hidden"
-                } h-52 overflow-y-auto bg-base-100 shadow-xl w-80  z-20 p-3 px-2 rounded-md`}
+                } h-52 overflow-y-auto bg-base-100 shadow-xl w-full lg:w-80  z-20 p-3 px-2 rounded-md`}
             >
               <input
                 onChange={handleCountryChangeFrom}
@@ -322,7 +322,7 @@ const FlightQuery = ({ toggleFlight }) => {
             </div>
             <div
               className={` text-black ${searchToggleTo ? "absolute" : "hidden"
-                }  h-52 space-y-3 overflow-y-auto bg-base-100 shadow-xl  z-20  p-3 px-2 w-80 rounded-md`}
+                }  h-52 space-y-3 overflow-y-auto bg-base-100 shadow-xl  z-20  p-3 px-2 w-full lg:w-80 rounded-md`}
             >
 
               <input
@@ -361,7 +361,7 @@ const FlightQuery = ({ toggleFlight }) => {
             {/* one way trip */}
 
             {
-              (tripType === 'oneway' || tripType === 'multicity') && <motion.div className={`input input-bordered h-16 mt-8  flex items-center w-full lg:w-[340px] -space-x-10 focus:outline-none ${tripType === 'multicity' && '-ml-7'}`}>
+              (tripType === 'oneway' || tripType === 'multicity') && <motion.div className={`input input-bordered h-16 mt-8  flex items-center w-full lg:w-[340px] focus:outline-none ${tripType === 'multicity' && 'lg:-ml-7'}`}>
 
 
 

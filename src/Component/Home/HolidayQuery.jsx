@@ -82,7 +82,7 @@ const HolidayQuery = () => {
   return (
     <div className="">
       <form className=" w-full lg:w-[1152px] gap-7 text-black   bg-white p-10">
-        <section className="flex items-center gap-5">
+        <section className="flex flex-col lg:flex-row items-center gap-5">
           <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}

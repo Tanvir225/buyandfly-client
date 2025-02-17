@@ -97,7 +97,7 @@ const HotelQuery = ({ toggleButton }) => {
     <div className="py-2 bg-white ">
       <form>
         {/* Inputs */}
-        <section className="flex justify-between gap-3 p-5 rounded-xl text-left  text-black bg-white rounded-tl-none">
+        <section className="flex flex-col lg:flex-row justify-between gap-3 p-5 rounded-xl text-left  text-black bg-white rounded-tl-none">
           <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
