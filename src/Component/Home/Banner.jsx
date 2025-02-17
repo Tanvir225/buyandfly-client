@@ -43,7 +43,7 @@ const BannerNew = ({}) => {
 
   return (
     <div
-      className="hero h-[1030px] w-full overflow-x-hidden"
+      className="hero h-[1050px] w-full overflow-x-hidden"
       style={{
         backgroundImage:
           `url(${banner_bg})`
