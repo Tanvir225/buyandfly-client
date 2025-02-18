@@ -175,7 +175,7 @@ const HotelQuery = ({ toggleButton }) => {
                 />
               </div>
 
-              <div className="absolute bottom-2 w-7 text-center mask mask-hexagon bg-sky-300  shadow-lg p-2 font-medium left-[45%]">
+              <div className="absolute bottom-2 w-8 text-center mask mask-hexagon bg-sky-300  shadow-lg p-2 font-medium left-[45%]">
                 {/* <HiOutlineCalendarDays  size={16} color="black" ></HiOutlineCalendarDays  >
                    */}
                 2
