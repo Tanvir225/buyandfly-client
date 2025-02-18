@@ -69,9 +69,9 @@ const Navbar = () => {
       <div className="bg-base-100 shadow-md py-1">
         <div className="max-w-6xl mx-auto px-2 flex items-center justify-between">
           {/* logo */}
-          <section className="w-32">
+          <Link to={"/"} className="w-32">
             <img src={logo} alt="logo" />
-          </section>
+          </Link>
           {/* nav item */}
           <section>
             <ul className="  flex items-center justify-center">
