@@ -346,7 +346,6 @@ const VisaQuery = () => {
               <span className="text-secondary font-medium">Invariable</span>
             </label>
           </div>
-
           <div className="px-5 lg:mt-0 mt-5">
             <Button width={44} text="Search"></Button>
           </div>

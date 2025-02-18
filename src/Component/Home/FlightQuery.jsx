@@ -426,10 +426,10 @@ const FlightQuery = ({ toggleFlight }) => {
 
 
 
-          <div className={`mt-9`}>
+          <div className={`mt-8`}>
 
             <div className={`${tripType === 'oneway' ? 'block' : 'hidden'} `}>
-              <Button width={28} text="Search"></Button>
+              <Button width={28} height={16}></Button>
             </div>
           </div>
 
