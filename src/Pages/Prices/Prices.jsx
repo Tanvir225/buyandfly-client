@@ -1,4 +1,5 @@
 import TicketList from "../../Component/Prices/TicketList";
+import TopbarList from "../../Component/Prices/TopbarList";
 
 
 const Prices = () => {
@@ -7,8 +8,10 @@ const Prices = () => {
 
 
             {/* top div */}
-            <div className="h-28 bg-base-100 w-full shadow-md flex justify-center items-center">
-                    topbar
+            <div className="h-40 bg-base-100 w-full shadow-md flex  items-center">
+                    <div className="max-w-6xl mx-auto flex items-center justify-between w-full">
+                    <TopbarList></TopbarList>
+                    </div>
             </div>
 
 
