@@ -6,6 +6,7 @@ import { LuBaggageClaim } from "react-icons/lu";
 import { PiAirplaneTakeoffLight } from "react-icons/pi";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { MdKeyboardArrowDown } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const TicketList = () => {
     return (
@@ -69,16 +70,16 @@ const TicketList = () => {
             <div className="my-2 flex flex-col lg:flex-row justify-between w-full gap-5 items-center px-3" >
 
 
-                <p className="text-primary font-semibold flex items-center gap-1">Flight Details <MdKeyboardArrowDown size={20}></MdKeyboardArrowDown></p>
+                <Link className="text-primary font-semibold flex items-center gap-1">Flight Details <MdKeyboardArrowDown size={20}></MdKeyboardArrowDown></Link>
 
                 <section className="flex items-center gap-5">
-                    <p className="font-medium text-[#0FA134]">Refundable</p>
-                    <p className="font-medium text-[#0FA134]">Instant</p>
+                    <Link className="font-medium text-[#0FA134]">Refundable</Link>
+                    <Link className="font-medium text-[#0FA134]">Instant</Link>
                 </section>
 
-            <section>
-                <button className="btn btn-primary btn-sm text-white">View Prices <MdKeyboardArrowDown size={20}></MdKeyboardArrowDown></button>
-            </section>
+                <section>
+                    <button className="btn btn-primary btn-sm text-white">View Prices <MdKeyboardArrowDown size={20}></MdKeyboardArrowDown></button>
+                </section>
 
             </div>
 

@@ -13,7 +13,7 @@ const Prices = () => {
 
 
            {/* container */}
-           <section className="max-w-6xl mx-auto py-16 grid grid-cols-12 gap-5   w-full">
+           <section className="max-w-6xl mx-auto py-7 grid grid-cols-12 gap-5   w-full">
                 {/* filter */}
                 <div className="w-full col-span-3 space-y-5">
 
