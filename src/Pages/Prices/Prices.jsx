@@ -1,3 +1,4 @@
+import TicketList from "../../Component/Prices/TicketList";
 
 
 const Prices = () => {
@@ -16,16 +17,20 @@ const Prices = () => {
                 {/* filter */}
                 <div className="w-full col-span-3 space-y-5">
 
-                    <section className="h-52 bg-base-100 rounded-md shadow-md p-5">popular filter</section>
-                    <section className="h-36 bg-base-100 rounded-md shadow-md p-5">Price Ranges</section>
-                    <section className="h-52 bg-base-100 rounded-md shadow-md p-5">Flight schedule</section>
-                    <section className="h-52 bg-base-100 rounded-md shadow-md p-5">Times</section>
+                    <section className="h-60 bg-base-100 rounded-md shadow-md p-5">popular filter</section>
+                    <section className="h-44 bg-base-100 rounded-md shadow-md p-5">Price Ranges</section>
+                    <section className="h-60 bg-base-100 rounded-md shadow-md p-5">Flight schedule</section>
+                    <section className="h-60 bg-base-100 rounded-md shadow-md p-5">Times</section>
 
                 </div>
 
                 {/* price list */}
-                <div className="bg-base-100 rounded-md shadow-md p-5 w-full col-span-9">
-                    price list
+                <div className=" w-full col-span-9 space-y-4">
+                    <TicketList></TicketList>
+                    <TicketList></TicketList>
+                    <TicketList></TicketList>
+                    <TicketList></TicketList>
+                    <TicketList></TicketList>
                 </div>
            </section>
         </div>
