@@ -1,3 +1,4 @@
+import CustomaizeFilter from "../../Component/Prices/CustomaizeFilter";
 import TicketList from "../../Component/Prices/TicketList";
 import TopbarList from "../../Component/Prices/TopbarList";
 
@@ -19,11 +20,12 @@ const Prices = () => {
            <section className="max-w-6xl mx-auto py-7 grid grid-cols-12 gap-5   w-full">
                 {/* filter */}
                 <div className="w-full col-span-3 space-y-5">
-
+{/* 
                     <section className="h-60 bg-base-100 rounded-md shadow-md p-5">popular filter</section>
                     <section className="h-44 bg-base-100 rounded-md shadow-md p-5">Price Ranges</section>
                     <section className="h-60 bg-base-100 rounded-md shadow-md p-5">Flight schedule</section>
-                    <section className="h-60 bg-base-100 rounded-md shadow-md p-5">Times</section>
+                    <section className="h-60 bg-base-100 rounded-md shadow-md p-5">Times</section> */}
+                    <CustomaizeFilter></CustomaizeFilter>
 
                 </div>
 
