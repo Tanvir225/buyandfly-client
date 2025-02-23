@@ -27,18 +27,19 @@ const Footer = () => {
           <p className="font-semibold text-[18px] text-[#111111]">Get In Touch</p>
 
           <p className="text-[14px] text-[#7B6E7E] font-medium mt-3 flex items-center gap-2">
-            <MapPin size={22} className="bg-[#FFD7C1] p-1 text-[#EF5B0C] rounded-md" />
-            Plati Gialos, Mykonos, Greece
+            <MapPin size={30} className="bg-[#FFD7C1] p-1 text-[#EF5B0C] rounded-md" />
+            2nd Floor,337,S.M Tower,Laksam Bypass,Cumilla,Bangladesh
+
           </p>
 
           <p className="text-[14px] text-[#7B6E7E] font-medium mt-2 flex items-center gap-2">
             <Phone size={22} className="bg-[#FFD7C1] p-1 text-[#EF5B0C] rounded-md" />
-            +8801319.555.0115
+            09606-030405
           </p>
 
           <p className="text-[14px] text-[#7B6E7E] font-medium mt-2 flex items-center gap-2">
             <Mail size={22} className="bg-[#FFD7C1] p-1 text-[#EF5B0C] rounded-md" />
-            felicia.reid@example.com
+            agency@buyandfly.net
           </p>
         </div>
 

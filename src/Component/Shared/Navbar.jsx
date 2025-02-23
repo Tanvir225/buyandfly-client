@@ -44,9 +44,9 @@ const Navbar = () => {
 
           {/* navigate to pages */}
           <div className="flex justify-center items-center text-sm space-x-0 sm:space-x-1 md:space-x-1">
-            <Link to={"/"} className="flex items-center gap-1"><FaPhone size={14}></FaPhone> 017XXXXXXXX</Link>
+            <Link to={"/"} className="flex items-center gap-1"><FaPhone size={14}></FaPhone> 09606-030405</Link>
             <div className="divider divider-horizontal  divider-accent"></div>
-            <Link to={"/"} className="flex items-center gap-1"><FaMailBulk size={14}></FaMailBulk> buyandfly@gmail.com</Link>
+            <Link to={"/"} className="flex items-center gap-1"><FaMailBulk size={14}></FaMailBulk>agency@buyandfly.net</Link>
             <div className="divider divider-horizontal divider-accent"></div>
 
             {/* user  */}

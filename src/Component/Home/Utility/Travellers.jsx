@@ -2,7 +2,7 @@ import { useState } from "react";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 
 
-const Travellers = ({height}) => {
+const Travellers = ({ height, toggle }) => {
 
     //STATE
     const [isTravellers, setIsTravellers] = useState(false);
@@ -10,6 +10,12 @@ const Travellers = ({height}) => {
     const [adult, setAdult] = useState(0)
     const [child, setChild] = useState(0)
     const [infant, setInfant] = useState(0)
+
+
+    const [isAirClass, setIsAirClass] = useState(false);
+    const [airClass, setAirClass] = useState("Flight Class");
+    // array of options
+    const airClassoptions = ['Economy', "Premium", "Business", "First Class"];
 
     // increment function
     const handleIncrement = (passenger, setPassenger) => {
@@ -39,7 +45,7 @@ const Travellers = ({height}) => {
                 {/* dropdown - btn */}
                 <div
                     onClick={() => setIsTravellers(!isTravellers)}
-                    className={`flex justify-between items-center border-2 w-full focus:outline-none ${height ? 'h-16' :'h-11'} p-3  rounded-lg`}
+                    className={`flex justify-between items-center border-2 w-full focus:outline-none ${height ? 'h-16' : 'h-11'} p-3  rounded-lg`}
                 >
                     <h1 className=" text-gray-600 capitalize" role="button">
                         {(adult || child || infant) ? `${adult} adult ${child} child ${infant} infant` : "Travellers"}
@@ -121,7 +127,68 @@ const Travellers = ({height}) => {
                             </div>
                         </section>
 
-                       <button className="btn btn-outline btn-primary w-full btn-sm" onClick={()=>setIsTravellers(false)}>Done</button>
+
+                        {/* fligh class */}
+                        {
+                            toggle && <div className={`relative border p-2 rounded-lg`}>
+                                {/* dropdown - btn */}
+                                <div
+                                    onClick={() => setIsAirClass(!isAirClass)}
+                                    className="mx-auto   flex items-center justify-between rounded-lg px-3 "
+                                >
+                                    <h1 className=" text-gray-600 font-medium" role="button">
+                                        {airClass}
+                                    </h1>
+                                    <svg
+                                        className={`${isAirClass ? "-rotate-180" : "rotate-0"
+                                            } duration-300`}
+                                        width={25}
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <g strokeWidth="0"></g>
+                                        <g
+                                            id="SVGRepo_tracerCarrier"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        ></g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path
+                                                d="M7 10L12 15L17 10"
+                                                stroke="#4B5563"
+                                                strokeWidth="1.5"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                            ></path>{" "}
+                                        </g>
+                                    </svg>
+                                </div>
+                                {/* dropdown - options  */}
+                                <div
+                                    className={`${isAirClass
+                                        ? "visible top-0 opacity-100"
+                                        : "invisible -top-4 opacity-0"
+                                        } absolute z-20 mx-auto my-12 w-40  rounded-xl py-4 border bg-base-100 duration-300`}
+                                >
+                                    {airClassoptions?.map((option, idx) => (
+                                        <div
+                                            key={idx}
+                                            onClick={(e) => {
+                                                setAirClass(e.target.textContent);
+                                                setIsAirClass(false);
+                                            }}
+                                            className="px-6 py-2 text-gray-500 hover:bg-sky-100"
+                                            role="button"
+                                        >
+                                            {option}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        }
+
+                        <button className="btn btn-outline btn-primary w-full btn-sm" onClick={() => setIsTravellers(false)}>Done</button>
                     </div>
 
                 </div>

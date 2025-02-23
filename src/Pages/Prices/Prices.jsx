@@ -1,4 +1,5 @@
 import CustomaizeFilter from "../../Component/Prices/CustomaizeFilter";
+import DateOverview from "../../Component/Prices/DateOverview";
 import TicketList from "../../Component/Prices/TicketList";
 import TopbarList from "../../Component/Prices/TopbarList";
 
@@ -9,35 +10,31 @@ const Prices = () => {
 
 
             {/* top div */}
-            <div className="h-40 bg-base-100 w-full shadow-md flex  items-center">
-                    <div className="max-w-6xl mx-auto flex items-center justify-between w-full">
+            <div className="h-28 bg-base-100 w-full shadow-md flex  items-center">
+                <div className="max-w-6xl mx-auto flex items-center justify-between w-full">
                     <TopbarList></TopbarList>
-                    </div>
+                </div>
             </div>
 
 
-           {/* container */}
-           <section className="max-w-6xl mx-auto py-7 grid grid-cols-12 gap-5   w-full">
+            {/* container */}
+            <section className="max-w-6xl mx-auto py-7 grid grid-cols-12 gap-5   w-full">
                 {/* filter */}
                 <div className="w-full col-span-3 space-y-5">
-{/* 
-                    <section className="h-60 bg-base-100 rounded-md shadow-md p-5">popular filter</section>
-                    <section className="h-44 bg-base-100 rounded-md shadow-md p-5">Price Ranges</section>
-                    <section className="h-60 bg-base-100 rounded-md shadow-md p-5">Flight schedule</section>
-                    <section className="h-60 bg-base-100 rounded-md shadow-md p-5">Times</section> */}
                     <CustomaizeFilter></CustomaizeFilter>
 
                 </div>
 
                 {/* price list */}
                 <div className=" w-full col-span-9 space-y-4">
+                    <DateOverview></DateOverview>
                     <TicketList></TicketList>
                     <TicketList></TicketList>
                     <TicketList></TicketList>
                     <TicketList></TicketList>
                     <TicketList></TicketList>
                 </div>
-           </section>
+            </section>
         </div>
     );
 };
