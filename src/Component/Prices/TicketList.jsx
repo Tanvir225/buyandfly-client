@@ -7,82 +7,136 @@ import { PiAirplaneTakeoffLight } from "react-icons/pi";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const TicketList = () => {
+    const [details, setDetails] = useState(false);
+    const [price, setPrice] = useState(false);
+
     return (
-        <section className="bg-base-100 shadow-md rounded-md p-5 flex flex-col  items-center text-sm">
+        <section>
+            <section className="bg-base-100 shadow-md rounded-md p-5 flex flex-col  items-center text-sm">
 
-            {/* first layer */}
-            <section className="flex flex-col lg:flex-row items-center justify-center gap-7 border-b-2 pb-3">
+                {/* first layer */}
+                <section className="flex flex-col lg:flex-row items-center justify-center gap-7 border-b-2 pb-3">
 
-                {/* airlines */}
+                    {/* airlines */}
 
-                <div className="flex items-center gap-10">
-                    <div className="w-12">
-                        <img src={ticketImage} alt="logo" />
+                    <div className="flex items-center gap-10">
+                        <div className="w-12">
+                            <img src={ticketImage} alt="logo" />
+                        </div>
+                        <div className="space-y-2">
+                            <h2 className="font-medium">Qatar Airways</h2>
+                            <section className="flex items-center gap-2">
+                                <PiPlugCharging size={30} className="p-1 rounded-lg border-2"></PiPlugCharging>
+                                <IoManOutline size={30} className="p-1 rounded-lg border-2"></IoManOutline>
+                                <LuBaggageClaim size={30} className="p-1 rounded-lg border-2"></LuBaggageClaim>
+                            </section>
+                        </div>
                     </div>
-                    <div className="space-y-2">
-                        <h2 className="font-medium">Qatar Airways</h2>
-                        <section className="flex items-center gap-2">
-                            <PiPlugCharging size={30} className="p-1 rounded-lg border-2"></PiPlugCharging>
-                            <IoManOutline size={30} className="p-1 rounded-lg border-2"></IoManOutline>
-                            <LuBaggageClaim size={30} className="p-1 rounded-lg border-2"></LuBaggageClaim>
+
+                    {/* From  */}
+                    <div>
+                        <h2 className="text-gray-500 font-medium">Dhaka (DAC)</h2>
+                        <h3 className="font-semibold">12:50 PM</h3>
+                        <h3 className="text-gray-500 font-medium">07 Feb, Fri</h3>
+                    </div>
+
+                    {/* icon face */}
+                    <div>
+                        <p className="text-gray-500 text-center">1 h 15 min</p>
+                        <section className="flex items-center gap-2 text-gray-600">
+                            <PiAirplaneTakeoffLight size={28}></PiAirplaneTakeoffLight>
+                            <HiOutlineDotsHorizontal size={26}></HiOutlineDotsHorizontal>
+                            <HiOutlineDotsHorizontal size={26}></HiOutlineDotsHorizontal>
+                            <HiOutlineDotsHorizontal size={26}></HiOutlineDotsHorizontal>
+                            <HiOutlineLocationMarker size={28}></HiOutlineLocationMarker>
                         </section>
+                        <p className="text-gray-500 text-center">1 Stops</p>
                     </div>
-                </div>
 
-                {/* From  */}
-                <div>
-                    <h2 className="text-gray-500 font-medium">Dhaka (DAC)</h2>
-                    <h3 className="font-semibold">12:50 PM</h3>
-                    <h3 className="text-gray-500 font-medium">07 Feb, Fri</h3>
-                </div>
+                    {/* to  */}
+                    <div>
+                        <h2 className="text-gray-500 font-medium">Riyadh (RUH)</h2>
+                        <h3 className="font-semibold">09:15 PM</h3>
+                        <h3 className="text-gray-500 font-medium">07 Feb, Fri</h3>
+                    </div>
 
-                {/* icon face */}
-                <div>
-                    <p className="text-gray-500 text-center">1 h 15 min</p>
-                    <section className="flex items-center gap-2 text-gray-600">
-                        <PiAirplaneTakeoffLight size={28}></PiAirplaneTakeoffLight>
-                        <HiOutlineDotsHorizontal size={26}></HiOutlineDotsHorizontal>
-                        <HiOutlineDotsHorizontal size={26}></HiOutlineDotsHorizontal>
-                        <HiOutlineDotsHorizontal size={26}></HiOutlineDotsHorizontal>
-                        <HiOutlineLocationMarker size={28}></HiOutlineLocationMarker>
+                    {/* fare */}
+                    <div>
+                        <h2 className="font-semibold">BDT 121,458</h2>
+                        <p className="text-gray-500">Economy</p>
+                    </div>
+
+                </section>
+
+                {/* second layer */}
+                <div className="my-2 flex flex-col lg:flex-row justify-between w-full gap-5 items-center px-3" >
+
+
+                    <button onClick={() => setDetails(!details)} className="text-primary font-semibold flex items-center gap-1">Flight Details <MdKeyboardArrowDown size={20}></MdKeyboardArrowDown></button>
+
+                    <section className="flex items-center gap-5">
+                        <Link className="font-medium text-[#0FA134]">Refundable</Link>
+                        <Link className="font-medium text-[#0FA134]">Instant</Link>
                     </section>
-                    <p className="text-gray-500 text-center">1 Stops</p>
-                </div>
 
-                {/* to  */}
-                <div>
-                    <h2 className="text-gray-500 font-medium">Riyadh (RUH)</h2>
-                    <h3 className="font-semibold">09:15 PM</h3>
-                    <h3 className="text-gray-500 font-medium">07 Feb, Fri</h3>
-                </div>
+                    <section>
+                        <button onClick={() => setPrice(!price)} className="btn btn-primary btn-sm text-white">View Prices <MdKeyboardArrowDown size={20}></MdKeyboardArrowDown></button>
+                    </section>
 
-                {/* fare */}
-                <div>
-                    <h2 className="font-semibold">BDT 121,458</h2>
-                    <p className="text-gray-500">Economy</p>
                 </div>
 
             </section>
 
-            {/* second layer */}
-            <div className="my-2 flex flex-col lg:flex-row justify-between w-full gap-5 items-center px-3" >
+            {/* details */}
+            {
+                details && <div className="w-full bg-base-100 h-52 p-5">hi</div>
+            }
+            {/* prices */}
+            {
+                price && <div className="w-full bg-base-100 h-52 p-5">
 
 
-                <Link className="text-primary font-semibold flex items-center gap-1">Flight Details <MdKeyboardArrowDown size={20}></MdKeyboardArrowDown></Link>
-
-                <section className="flex items-center gap-5">
-                    <Link className="font-medium text-[#0FA134]">Refundable</Link>
-                    <Link className="font-medium text-[#0FA134]">Instant</Link>
-                </section>
-
-                <section>
-                    <button className="btn btn-primary btn-sm text-white">View Prices <MdKeyboardArrowDown size={20}></MdKeyboardArrowDown></button>
-                </section>
-
-            </div>
-
+                    <div className="overflow-x-auto">
+                        <table className="table table-zebra">
+                            {/* head */}
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Job</th>
+                                    <th>Favorite Color</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {/* row 1 */}
+                                <tr>
+                                    <th>1</th>
+                                    <td>Cy Ganderton</td>
+                                    <td>Quality Control Specialist</td>
+                                    <td>Blue</td>
+                                </tr>
+                                {/* row 2 */}
+                                <tr>
+                                    <th>2</th>
+                                    <td>Hart Hagerty</td>
+                                    <td>Desktop Support Technician</td>
+                                    <td>Purple</td>
+                                </tr>
+                                {/* row 3 */}
+                                <tr>
+                                    <th>3</th>
+                                    <td>Brice Swyre</td>
+                                    <td>Tax Accountant</td>
+                                    <td>Red</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
         </section>
     );
 };
