@@ -9,7 +9,7 @@ import { IoMoonOutline } from "react-icons/io5";
 export default function CustomaizeFilter() {
   const [isAirlines, setIsAirline] = useState(true);
   const [isPrices, setIsPrices] = useState(true);
-  const [isPopular, setIsPopular] = useState(false);
+  const [isPopular, setIsPopular] = useState(true);
   const [isTime, setIsTime] = useState(false);
   const [isCities, setIsCities] = useState(false);
   const [isFSchedule, setIsFSchedule] = useState(false);
@@ -49,47 +49,98 @@ export default function CustomaizeFilter() {
   return (
     <div>
 
-      {/* price range start */}
-      <div className="rounded-[10px] max-w-sm shadow-md mt-3">
+
+      {/* popular filter start */}
+      <div className="rounded-[10px] max-w-sm shadow-md">
         {/* dropdown start */}
         <div>
           <div
             className="flex justify-between items-center cursor-pointer text-black p-3"
-            onClick={() => toggleFilter(isPrices, setIsPrices)}
+            onClick={() => toggleFilter(isPopular, setIsPopular)}
           >
-            <p className="text-[#111111] font-medium text-sm">Price Range</p>
+            <p className="text-[#111111] font-medium text-sm">Popular Filter</p>
             <div className="text-[#111111]">
-              {isPrices ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+              {isPopular ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
             </div>
           </div>
           <div className="border-t-2 border-[#DEE2E6]"></div>
         </div>
         {/* dropdown end */}
 
-        {/* range start */}
+        {/* checkbox start */}
         <div
-          className={`mt-2 px-3 pb-3 space-y-3 transition-all duration-300 ease-in-out overflow-hidden ${isPrices ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+          className={`mt-2 px-3 pb-3 space-y-3 transition-all duration-300 ease-in-out overflow-hidden ${isPopular ? "max-h-52 opacity-100" : "max-h-0 opacity-0"
             }`}
         >
-          <div className="items-center justify-between">
+          <div className="flex items-center justify-between">
             <label className="flex items-center space-x-2">
               <input
-                type="range"
-                min="0"
-                max="100"
-                value={price}
-                onChange={handleRangeChange}
-                className="w-full h-2 bg-[#FDEADF] rounded-lg appearance-none cursor-pointer accent-[#EF5B0C] mt-1"
+                type="checkbox"
+                name="nonStop"
+                value="nonStop"
+                className="w-4 h-4 accent-[#EF5B0C] border-gray-300 rounded"
               />
+              <span className="text-sm text-[#111111]">Non Stop (1)</span>
             </label>
-            <div className="text-center text-sm font-medium text-[#111111] mt-2">
-              <p>BDT 140,256 - BDT 2,015,431</p>
-            </div>
+            <p className="text-sm text-[#111111]">BDT 179885</p>
+          </div>
+
+          <div className="flex items-center justify-between">
+            <label className="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="oneStop"
+                value="oneStop"
+                className="w-4 h-4 accent-[#EF5B0C] border-gray-300 rounded"
+              />
+              <span className="text-sm text-[#111111]">1 Stop (38)</span>
+            </label>
+            <p className="text-sm text-[#111111]">BDT 179885</p>
+          </div>
+
+          <div className="flex items-center justify-between">
+            <label className="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="earlyMorningDepartures"
+                value="earlyMorningDepartures"
+                className="w-4 h-4 accent-[#EF5B0C] border-gray-300 rounded"
+              />
+              <span className="text-sm text-[#111111]">Early Morning Departures (16)</span>
+            </label>
+            <p className="text-sm text-[#111111]">BDT 179885</p>
+          </div>
+
+          <div className="flex items-center justify-between">
+            <label className="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="lateDepartures"
+                value="lateDepartures"
+                className="w-4 h-4 accent-[#EF5B0C] border-gray-300 rounded"
+              />
+              <span className="text-sm text-[#111111]">Late Departures (38)</span>
+            </label>
+            <p className="text-sm text-[#111111]">BDT 179885</p>
+          </div>
+
+          <div className="flex items-center justify-between">
+            <label className="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="refundable"
+                value="refundable"
+                className="w-4 h-4 accent-[#EF5B0C] border-gray-300 rounded"
+              />
+              <span className="text-sm text-[#111111]">Refundable (38)</span>
+            </label>
+            <p className="text-sm text-[#111111]">BDT 179885</p>
           </div>
         </div>
-        {/* range end */}
+        {/* checkbox end */}
       </div>
-      {/* price range end */}
+      {/* popular filter end */}
+
 
       {/* airline start */}
       <div className="rounded-[10px] max-w-sm shadow-md mt-3">
@@ -229,97 +280,48 @@ export default function CustomaizeFilter() {
       </div>
       {/* airline end */}
 
-
-      {/* popular filter start */}
-      <div className="rounded-[10px] max-w-sm shadow-md">
+      {/* price range start */}
+      <div className="rounded-[10px] max-w-sm shadow-md mt-3">
         {/* dropdown start */}
         <div>
           <div
             className="flex justify-between items-center cursor-pointer text-black p-3"
-            onClick={() => toggleFilter(isPopular, setIsPopular)}
+            onClick={() => toggleFilter(isPrices, setIsPrices)}
           >
-            <p className="text-[#111111] font-medium text-sm">Popular Filter</p>
+            <p className="text-[#111111] font-medium text-sm">Price Range</p>
             <div className="text-[#111111]">
-              {isPopular ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+              {isPrices ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
             </div>
           </div>
           <div className="border-t-2 border-[#DEE2E6]"></div>
         </div>
         {/* dropdown end */}
 
-        {/* checkbox start */}
+        {/* range start */}
         <div
-          className={`mt-2 px-3 pb-3 space-y-3 transition-all duration-300 ease-in-out overflow-hidden ${isPopular ? "max-h-52 opacity-100" : "max-h-0 opacity-0"
+          className={`mt-2 px-3 pb-3 space-y-3 transition-all duration-300 ease-in-out overflow-hidden ${isPrices ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
             }`}
         >
-          <div className="flex items-center justify-between">
+          <div className="items-center justify-between">
             <label className="flex items-center space-x-2">
               <input
-                type="checkbox"
-                name="nonStop"
-                value="nonStop"
-                className="w-4 h-4 accent-[#EF5B0C] border-gray-300 rounded"
+                type="range"
+                min="0"
+                max="100"
+                value={price}
+                onChange={handleRangeChange}
+                className="w-full h-2 bg-[#FDEADF] rounded-lg appearance-none cursor-pointer accent-[#EF5B0C] mt-1"
               />
-              <span className="text-sm text-[#111111]">Non Stop (1)</span>
             </label>
-            <p className="text-sm text-[#111111]">BDT 179885</p>
-          </div>
-
-          <div className="flex items-center justify-between">
-            <label className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                name="oneStop"
-                value="oneStop"
-                className="w-4 h-4 accent-[#EF5B0C] border-gray-300 rounded"
-              />
-              <span className="text-sm text-[#111111]">1 Stop (38)</span>
-            </label>
-            <p className="text-sm text-[#111111]">BDT 179885</p>
-          </div>
-
-          <div className="flex items-center justify-between">
-            <label className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                name="earlyMorningDepartures"
-                value="earlyMorningDepartures"
-                className="w-4 h-4 accent-[#EF5B0C] border-gray-300 rounded"
-              />
-              <span className="text-sm text-[#111111]">Early Morning Departures (16)</span>
-            </label>
-            <p className="text-sm text-[#111111]">BDT 179885</p>
-          </div>
-
-          <div className="flex items-center justify-between">
-            <label className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                name="lateDepartures"
-                value="lateDepartures"
-                className="w-4 h-4 accent-[#EF5B0C] border-gray-300 rounded"
-              />
-              <span className="text-sm text-[#111111]">Late Departures (38)</span>
-            </label>
-            <p className="text-sm text-[#111111]">BDT 179885</p>
-          </div>
-
-          <div className="flex items-center justify-between">
-            <label className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                name="refundable"
-                value="refundable"
-                className="w-4 h-4 accent-[#EF5B0C] border-gray-300 rounded"
-              />
-              <span className="text-sm text-[#111111]">Refundable (38)</span>
-            </label>
-            <p className="text-sm text-[#111111]">BDT 179885</p>
+            <div className="text-center text-sm font-medium text-[#111111] mt-2">
+              <p>BDT 140,256 - BDT 2,015,431</p>
+            </div>
           </div>
         </div>
-        {/* checkbox end */}
+        {/* range end */}
       </div>
-      {/* popular filter end */}
+      {/* price range end */}
+
 
       {/* flight schedules start */}
       <div className="rounded-[10px] max-w-sm shadow-md mt-3">

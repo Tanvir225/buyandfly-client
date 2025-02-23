@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const TicketList = () => {
     return (
-        <section className="bg-base-100 shadow-md rounded-md p-5 flex flex-col  items-center">
+        <section className="bg-base-100 shadow-md rounded-md p-5 flex flex-col  items-center text-sm">
 
             {/* first layer */}
             <section className="flex flex-col lg:flex-row items-center justify-center gap-7 border-b-2 pb-3">

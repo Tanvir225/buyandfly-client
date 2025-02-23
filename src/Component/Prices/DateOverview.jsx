@@ -40,7 +40,7 @@ const DateOverview = () => {
                         <div key={index} className="w-full flex justify-center items-center shrink-0">
                             {group.map((data, inx) => (
                                 <div key={inx} className="text-sm p-2 border w-full text-center rounded-md">
-                                    {data.date} <br /> {data.price}
+                                    {data.date} <br /> {data.price} BDT
                                 </div>
                             ))}
                         </div>
