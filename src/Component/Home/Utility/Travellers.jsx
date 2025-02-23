@@ -45,7 +45,7 @@ const Travellers = ({ height, toggle }) => {
                 {/* dropdown - btn */}
                 <div
                     onClick={() => setIsTravellers(!isTravellers)}
-                    className={`flex justify-between items-center border-2 w-full focus:outline-none ${height ? 'h-16' : 'h-11'} p-3  rounded-lg`}
+                    className={`flex justify-between items-center border-2 w-full focus:outline-none ${height ? 'h-14' : 'h-11'} p-3  rounded-lg`}
                 >
                     <h1 className=" text-gray-600 capitalize" role="button">
                         {(adult || child || infant) ? `${adult} adult ${child} child ${infant} infant` : "Travellers"}

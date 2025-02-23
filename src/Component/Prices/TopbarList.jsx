@@ -105,12 +105,12 @@ const TopbarList = () => {
 
 
     return (
-        <section className="">
+        <section className="mt-5">
             {/* input field */}
             <div className="grid grid-cols-12 gap-3 ">
 
                 {/*trip type */}
-                <div className={`relative col-span-1 border rounded-lg h-16 mt-2 p-2 flex items-center `}>
+                <div className={`relative col-span-1 border rounded-lg h-14 mt-2 p-2 flex items-center `}>
                     {/* dropdown - btn */}
                     <div
                         onClick={() => setIsTripType(!isTripType)}
@@ -169,7 +169,7 @@ const TopbarList = () => {
 
 
                 <section className="col-span-2">
-                    <div onClick={handleSearchClick} className={`flex items-center mt-2  border rounded-lg h-16 `}>
+                    <div onClick={handleSearchClick} className={`flex items-center mt-2  border rounded-lg h-14 `}>
                         <span className="text-sm font-bold p-2 border-r-2">{journeyFrom[0]?.code || 'DAC'}</span>
                         <div className="flex flex-col items-start gap-1 p-2">
                             <span className="text-sm font-medium">{journeyFrom[0]?.city || "Dhaka"}</span>
@@ -201,7 +201,7 @@ const TopbarList = () => {
                 </section>
 
                 <section className="col-span-2">
-                    <div onClick={handleSearchClickTo} className={`flex items-center mt-2  border rounded-lg h-16 text-wrap truncate `}>
+                    <div onClick={handleSearchClickTo} className={`flex items-center mt-2  border rounded-lg h-14 text-wrap truncate `}>
                         <span className="text-sm font-bold p-2 border-r-2 ml-1">{journeyTo[0]?.code || "JED"}</span>
                         <div className="flex flex-col items-start gap-1 p-2">
                             <span className="text-sm font-medium">{journeyTo[0]?.city || "Saudi Arabia"}</span>
@@ -234,7 +234,7 @@ const TopbarList = () => {
 
                 </section>
 
-                <section className="input input-bordered h-16 flex items-center col-span-2 mt-2">
+                <section className="input input-bordered h-14 flex items-center col-span-2 mt-2">
                     <DatePicker
 
                         className="focus:outline-none "
@@ -252,7 +252,7 @@ const TopbarList = () => {
                 </section>
 
                 <section className="col-span-2">
-                    <input type="text" placeholder="airlines" className="input input-bordered h-16 mt-2 lg:w-40 focus:outline-none" />
+                    <input type="text" placeholder="airlines" className="input input-bordered h-14 mt-2 lg:w-40 focus:outline-none" />
                 </section>
 
                 <section className="mt-4 col-span-1">

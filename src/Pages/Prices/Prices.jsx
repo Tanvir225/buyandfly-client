@@ -10,7 +10,7 @@ const Prices = () => {
 
 
             {/* top div */}
-            <div className="h-28 bg-base-100 w-full shadow-md flex  items-center">
+            <div className="h-24 bg-base-100 w-full shadow-md flex  items-center">
                 <div className="max-w-6xl mx-auto flex items-center justify-between w-full">
                     <TopbarList></TopbarList>
                 </div>
