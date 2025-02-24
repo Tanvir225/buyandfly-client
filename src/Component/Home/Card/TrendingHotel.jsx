@@ -168,7 +168,7 @@ const TrendingHotel = () => {
 
   return (
     <div className="p-5 lg:py-16 bg-[#002E5B]">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between">
           <p className="font-semibold text-xl lg:text-3xl text-white ">
             Top Trending hotel in worldwide

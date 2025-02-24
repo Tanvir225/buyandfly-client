@@ -8,6 +8,7 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import ViewPrices from "./ViewPrices";
 
 const TicketList = () => {
     const [details, setDetails] = useState(false);
@@ -15,23 +16,24 @@ const TicketList = () => {
 
     return (
         <section>
-            <section className="bg-base-100 shadow-md rounded-md p-5 flex flex-col  items-center text-sm">
+            <section className="bg-base-100 shadow-md rounded-md p-3 flex flex-col  items-center text-sm">
 
                 {/* first layer */}
-                <section className="flex flex-col lg:flex-row items-center justify-center gap-7 border-b-2 pb-3">
+                <section className="flex flex-col lg:flex-row items-center justify-between gap-7 border-b-2 pb-3 w-full">
 
                     {/* airlines */}
 
-                    <div className="flex items-center gap-10">
+                    <div className="flex items-center gap-3">
                         <div className="w-12">
                             <img src={ticketImage} alt="logo" />
                         </div>
                         <div className="space-y-2">
                             <h2 className="font-medium">Qatar Airways</h2>
                             <section className="flex items-center gap-2">
-                                <PiPlugCharging size={30} className="p-1 rounded-lg border-2"></PiPlugCharging>
+                                <p className="font-medium">XY - 8745</p>
+                                {/* <PiPlugCharging size={30} className="p-1 rounded-lg border-2"></PiPlugCharging>
                                 <IoManOutline size={30} className="p-1 rounded-lg border-2"></IoManOutline>
-                                <LuBaggageClaim size={30} className="p-1 rounded-lg border-2"></LuBaggageClaim>
+                                <LuBaggageClaim size={30} className="p-1 rounded-lg border-2"></LuBaggageClaim> */}
                             </section>
                         </div>
                     </div>
@@ -96,45 +98,8 @@ const TicketList = () => {
             }
             {/* prices */}
             {
-                price && <div className="w-full bg-base-100 h-52 p-5">
-
-
-                    <div className="overflow-x-auto">
-                        <table className="table table-zebra">
-                            {/* head */}
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Name</th>
-                                    <th>Job</th>
-                                    <th>Favorite Color</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {/* row 1 */}
-                                <tr>
-                                    <th>1</th>
-                                    <td>Cy Ganderton</td>
-                                    <td>Quality Control Specialist</td>
-                                    <td>Blue</td>
-                                </tr>
-                                {/* row 2 */}
-                                <tr>
-                                    <th>2</th>
-                                    <td>Hart Hagerty</td>
-                                    <td>Desktop Support Technician</td>
-                                    <td>Purple</td>
-                                </tr>
-                                {/* row 3 */}
-                                <tr>
-                                    <th>3</th>
-                                    <td>Brice Swyre</td>
-                                    <td>Tax Accountant</td>
-                                    <td>Red</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                price && <div className="w-full bg-base-100  p-5">
+                    <ViewPrices setPrice={setPrice}></ViewPrices>
                 </div>
             }
         </section>

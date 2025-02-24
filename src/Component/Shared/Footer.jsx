@@ -15,7 +15,7 @@ const Footer = () => {
 
   return (
     <div className="bg-[#FFF9F5] p-7 lg:p-16">
-      <div className="max-w-6xl mx-auto grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 lg:justify-items-end md:justify-items-stretch justify-items-stretch lg:gap-10 md:gap-6 gap-3">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 lg:justify-items-end md:justify-items-stretch justify-items-stretch lg:gap-10 md:gap-6 gap-3">
         <div>
           <img src={logo} alt="logo" className="w-32" />
           <p className="font-medium text-[#7B6E7E] mt-3">

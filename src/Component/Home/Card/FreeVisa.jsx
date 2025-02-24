@@ -8,10 +8,10 @@ const FreeVisa = () => {
         <div className="bg-[#FFF9F5] w-full space-y-10 p-5 md:pb-16 shadow-sm">
 
             <div className='mt-10'>
-                <Title size={4} title="Hassle-Free Visa Processing"></Title>
+                <Title  title="Hassle-Free Visa Processing"></Title>
             </div>
 
-            <div className="max-w-6xl mx-auto grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 gap-4 w-full">
+            <div className="max-w-7xl mx-auto grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 gap-4 w-full">
                 {visaData.map((visa, index) => (<div key={index} className="relative w-fit mx-auto">
                     <div className="relative w-full">
                         <img className="rounded-2xl w-full  " src={visa.image} alt="" />

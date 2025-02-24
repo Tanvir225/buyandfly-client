@@ -20,7 +20,7 @@ const Navbar = () => {
       {/* topbar */}
 
       <div className="bg-secondary text-white py-3">
-        <div className="flex justify-center items-center lg:justify-between max-w-6xl mx-auto px-2">
+        <div className="flex justify-center items-center lg:justify-between max-w-7xl mx-auto px-2">
           {/* text */}
           <div className="hidden text-[15px]  lg:block w-full lg:w-[42%]">
             <Swiper
@@ -54,20 +54,14 @@ const Navbar = () => {
             <div className="divider divider-horizontal divider-accent"></div>
 
             {/* agent  */}
-            <details className="dropdown">
-              <summary className="">Agent</summary>
-              <ul className="menu dropdown-content bg-base-100 text-black rounded-box z-[1] w-40  p-1 shadow">
-                <li><Link to={"/"}>Agent Login</Link></li>
-                <li><Link to={"/"}>Agent Register</Link></li>
-              </ul>
-            </details>
+            <Link to={"/"} className="">Agent</Link>
           </div>
         </div>
       </div>
 
       {/* navbar */}
       <div className="bg-base-100 shadow-md py-1">
-        <div className="max-w-6xl mx-auto px-2 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-2 flex items-center justify-between">
           {/* logo */}
           <Link to={"/"} className="w-32">
             <img src={logo} alt="logo" />

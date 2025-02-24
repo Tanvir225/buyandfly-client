@@ -80,7 +80,7 @@ const Travellers = ({ height, toggle }) => {
                     className={` ${isTravellers
                         ? "visible  top-4 opacity-100"
                         : "invisible -top-4 opacity-0"
-                        } absolute  z-20 mx-auto my-12 w-[260px] -left-10  rounded-xl py-4 border bg-base-100 duration-300`}
+                        } absolute  z-20 mx-auto my-8 w-[260px] -left-10  rounded-xl py-4 border bg-base-100 duration-300`}
                 >
 
                     <div className="capitalize px-3 space-y-2">

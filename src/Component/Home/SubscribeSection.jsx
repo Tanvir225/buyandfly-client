@@ -15,7 +15,7 @@ const SubscribeSection = () => {
 
   return (
     <section className="bg-[#002E5B] p-5 lg:py-20">
-      <div className=" max-w-6xl mx-auto  flex justify-between md:flex-row flex-col-reverse md:gap-5 gap-7 items-center">
+      <div className=" max-w-7xl mx-auto  flex justify-between md:flex-row flex-col-reverse md:gap-5 gap-7 items-center">
         <div>
           <p className="font-semibold text-xl lg:text-3xl  text-white md:text-left text-center tracking-widest">
             Your Travel Journey <br /> Starts Here
@@ -29,7 +29,7 @@ const SubscribeSection = () => {
         </div>
 
         <div>
-          <img className="rounded-2xl w-96" src={image} alt="" />
+          <img className="rounded-2xl " src={image} alt="" />
         </div>
       </div>
     </section>

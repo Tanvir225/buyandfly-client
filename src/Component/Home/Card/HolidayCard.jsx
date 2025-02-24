@@ -96,7 +96,7 @@ const HolidayCard = () => {
 
   return (
     <div className="bg-[#FFF9F5] p-5 lg:p-16">
-      <div className=" max-w-6xl mx-auto">
+      <div className=" max-w-7xl mx-auto">
         <div className="flex items-center justify-between">
           <p className="font-semibold text-xl lg:text-3xl text-secondary">
             Holiday Deals Under Budget

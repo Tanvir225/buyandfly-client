@@ -43,7 +43,7 @@ const Summary = () => {
 
   return (
     <section className="space-y-7 p-5">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className=" grid grid-cols-3 lg:grid-cols-4 border-2  border-[#DEE2E6] p-2  w-full lg:w-fit md:mx-0 mx-auto rounded-md  bg-white">
           <button
             className={`px-4 flex gap-2 items-center ${activeTab === "Flight"
@@ -88,7 +88,7 @@ const Summary = () => {
       </div>
 
 
-      <div className="max-w-6xl mx-auto grid md:gap-4 md:grid-cols-3 grid-cols-1 gap-5">
+      <div className="max-w-7xl mx-auto grid md:gap-4 md:grid-cols-3 grid-cols-1 gap-5">
         <div className="border border-[#E2E2E2] bg-base-100 shadow-sm rounded-xl h-32 p-4">
           <div className="text-[#883DCF] bg-[#F4ECFB]  rounded-xl w-fit">
             <Search size={24} />

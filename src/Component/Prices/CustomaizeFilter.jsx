@@ -15,8 +15,8 @@ export default function CustomaizeFilter() {
   const [isFSchedule, setIsFSchedule] = useState(false);
 
   const [price, setPrice] = useState(0);
-  const [selectedTab, setSelectedTab] = useState("Departure");
-  const [selectedTime, setSelectedTime] = useState("");
+  const [departureTime, setDepartureTime] = useState("");
+  const [arrivalTime, setArrivalTime] = useState("");
   // const [filters, setFilters] = useState({
   //   nonStop: "",
   //   oneStop: "",
@@ -69,7 +69,7 @@ export default function CustomaizeFilter() {
 
         {/* checkbox start */}
         <div
-          className={`mt-2 px-3 pb-3 space-y-3 transition-all duration-300 ease-in-out overflow-hidden ${isPopular ? "max-h-52 opacity-100" : "max-h-0 opacity-0"
+          className={`mt-2 px-2  pb-3 space-y-5 transition-all duration-300 ease-in-out overflow-hidden ${isPopular ? "max-h-52 opacity-100" : "max-h-0 opacity-0"
             }`}
         >
           <div className="flex items-center justify-between">
@@ -80,7 +80,7 @@ export default function CustomaizeFilter() {
                 value="nonStop"
                 className="w-4 h-4 accent-[#EF5B0C] border-gray-300 rounded"
               />
-              <span className="text-sm text-[#111111]">Non Stop (1)</span>
+              <span className="text-sm text-[#111111]">Non Stop(1)</span>
             </label>
             <p className="text-sm text-[#111111]">BDT 179885</p>
           </div>
@@ -93,7 +93,7 @@ export default function CustomaizeFilter() {
                 value="oneStop"
                 className="w-4 h-4 accent-[#EF5B0C] border-gray-300 rounded"
               />
-              <span className="text-sm text-[#111111]">1 Stop (38)</span>
+              <span className="text-sm text-[#111111]">1 Stop(38)</span>
             </label>
             <p className="text-sm text-[#111111]">BDT 179885</p>
           </div>
@@ -106,7 +106,7 @@ export default function CustomaizeFilter() {
                 value="earlyMorningDepartures"
                 className="w-4 h-4 accent-[#EF5B0C] border-gray-300 rounded"
               />
-              <span className="text-sm text-[#111111]">Early Morning Departures (16)</span>
+              <span className="text-sm text-[#111111]">Early Morning(16)</span>
             </label>
             <p className="text-sm text-[#111111]">BDT 179885</p>
           </div>
@@ -119,7 +119,7 @@ export default function CustomaizeFilter() {
                 value="lateDepartures"
                 className="w-4 h-4 accent-[#EF5B0C] border-gray-300 rounded"
               />
-              <span className="text-sm text-[#111111]">Late Departures (38)</span>
+              <span className="text-sm text-[#111111]">Late Departures(38)</span>
             </label>
             <p className="text-sm text-[#111111]">BDT 179885</p>
           </div>
@@ -132,7 +132,7 @@ export default function CustomaizeFilter() {
                 value="refundable"
                 className="w-4 h-4 accent-[#EF5B0C] border-gray-300 rounded"
               />
-              <span className="text-sm text-[#111111]">Refundable (38)</span>
+              <span className="text-sm text-[#111111]">Refundable(38)</span>
             </label>
             <p className="text-sm text-[#111111]">BDT 179885</p>
           </div>
@@ -161,7 +161,7 @@ export default function CustomaizeFilter() {
 
         {/* checkbox start */}
         <div
-          className={`mt-2 px-3 pb-3 space-y-3 transition-all duration-300 ease-in-out overflow-hidden ${isAirlines ? "max-h-70 opacity-100" : "max-h-0 opacity-0"
+          className={`mt-2 px-2 pb-3 space-y-5 transition-all duration-300 ease-in-out overflow-hidden ${isAirlines ? "max-h-70 opacity-100" : "max-h-0 opacity-0"
             }`}
         >
           <div className="flex items-center justify-between">
@@ -175,7 +175,7 @@ export default function CustomaizeFilter() {
               <div>
                 <img src={logo} alt="" />
               </div>
-              <span className="text-sm text-[#111111]">US-Bangla Airlines (25)</span>
+              <span className="text-sm text-[#111111]">US-Bangla Air(25)</span>
             </label>
             <p className="text-sm text-[#111111]">BDT565814</p>
           </div>
@@ -191,7 +191,7 @@ export default function CustomaizeFilter() {
               <div>
                 <img src={logo} alt="" />
               </div>
-              <span className="text-sm text-[#111111]">Qatar Airways (12)</span>
+              <span className="text-sm text-[#111111]">Qatar Airways(12)</span>
             </label>
             <p className="text-sm text-[#111111]">BDT565814</p>
           </div>
@@ -207,7 +207,7 @@ export default function CustomaizeFilter() {
               <div>
                 <img src={logo} alt="" />
               </div>
-              <span className="text-sm text-[#111111]">Emirates (12)</span>
+              <span className="text-sm text-[#111111]">Emirates(12)</span>
             </label>
             <p className="text-sm text-[#111111]">BDT565814</p>
           </div>
@@ -223,7 +223,7 @@ export default function CustomaizeFilter() {
               <div>
                 <img src={logo} alt="" />
               </div>
-              <span className="text-sm text-[#111111]">Indigo (12)</span>
+              <span className="text-sm text-[#111111]">Indigo(12)</span>
             </label>
             <p className="text-sm text-[#111111]">BDT565814</p>
           </div>
@@ -239,7 +239,7 @@ export default function CustomaizeFilter() {
               <div>
                 <img src={logo} alt="" />
               </div>
-              <span className="text-sm text-[#111111]">Air India (12)</span>
+              <span className="text-sm text-[#111111]">Air India(12)</span>
             </label>
             <p className="text-sm text-[#111111]">BDT565814</p>
           </div>
@@ -255,26 +255,12 @@ export default function CustomaizeFilter() {
               <div>
                 <img src={logo} alt="" />
               </div>
-              <span className="text-sm text-[#111111]">Singapore Airlines (12)</span>
+              <span className="text-sm text-[#111111]">Singapore Air(12)</span>
             </label>
             <p className="text-sm text-[#111111]">BDT565814</p>
           </div>
 
-          <div className="flex items-center justify-between">
-            <label className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                name="bimanBangladeshAirlines"
-                value="bimanBangladeshAirlines"
-                className="w-4 h-4 accent-[#EF5B0C] border-gray-300 rounded"
-              />
-              <div>
-                <img src={logo} alt="" />
-              </div>
-              <span className="text-sm text-[#111111]">Biman Bangladesh Airlines (12)</span>
-            </label>
-            <p className="text-sm text-[#111111]">BDT565814</p>
-          </div>
+         
         </div>
         {/* checkbox end */}
       </div>
@@ -342,79 +328,149 @@ export default function CustomaizeFilter() {
 
         {
           isFSchedule && <div>
-            {/* options start */}
-            <div className="px-3">
-              <div className="flex space-x-1 border border-[#DEE2E6] w-fit p-2 rounded-lg mt-2">
-                <button
-                  className={`px-4 py-2 rounded-l-lg ${selectedTab === "Departure"
-                    ? "bg-[#ddc8bc] text-[#EF5B0C] text-sm font-medium"
-                    : "bg-[#F6F6F5] text-[#7B6E7E] text-sm font-medium"
-                    }`}
-                  onClick={() => setSelectedTab("Departure")}
-                >
-                  Departure
-                </button>
-                <button
-                  className={`px-4 py-2 rounded-r-lg ${selectedTab === "Arrival"
-                    ? "bg-[#FDEADF] text-[#EF5B0C] text-sm font-medium"
-                    : "bg-[#F6F6F5] text-[#7B6E7E] text-sm font-medium"
-                    }`}
-                  onClick={() => setSelectedTab("Arrival")}
-                >
-                  Arrival
-                </button>
-              </div>
-            </div>
-            {/* options end */}
 
             {/* time start */}
             <div className="px-3 mt-3">
-              <p className="text-[#111111] font-medium text-sm">Departure Dhaka : Anytime</p>
+              <p className="text-[#111111] text-sm font-semibold">Departure From Dhaka</p>
 
               <div className="my-2 space-y-2">
                 <button
-                  className={`btn btn-sm w-full ${selectedTime === "00-06 AM"
+                  className={`flex justify-between rounded gap-5 p-2 border w-full ${departureTime === "00-06 AM"
                     ? "bg-[#FDEADF] text-[#EF5B0C] text-sm  font-medium"
                     : "bg-[#F6F6F5] text-secondary text-sm font-medium"
                     }`}
-                  onClick={() => setSelectedTime("00-06 AM")}
+                  onClick={() => setDepartureTime("00-06 AM")}
                 >
-                  <FiSunrise className="text-lg text-[#7B6E7E] text-center mb-1" />
-                  00-06 AM
+                  <div className="flex items-center gap-2">
+                    <FiSunrise size={20} className="text-lg text-[#7B6E7E] text-center mb-1" />
+                    00-06 AM
+                  </div>
+                  <div>
+                    <p className="text-[#111111] text-sm font-medium">BDT 565814</p>
+                  </div>
                 </button>
 
                 <button
-                  className={`btn btn-sm w-full ${selectedTime === "06-12 AM"
+                  className={`flex justify-between border rounded gap-5 p-2 w-full ${departureTime === "06-12 AM"
                     ? "bg-[#FDEADF] text-[#EF5B0C] text-sm font-medium"
                     : "bg-[#F6F6F5] text-secondary text-sm font-medium"
                     }`}
-                  onClick={() => setSelectedTime("06-12 AM")}
+                  onClick={() => setDepartureTime("06-12 AM")}
                 >
-                  <MdOutlineWbSunny className="text-lg text-[#7B6E7E] text-center mb-1" />
-                  06-12 AM
+                  <div className="flex items-center gap-2">
+                    <MdOutlineWbSunny size={20} className="text-lg text-[#7B6E7E] text-center mb-1" />
+                    06-12 AM
+                  </div>
+                  <div>
+                    <p className="text-[#111111] text-sm font-medium">BDT 565814</p>
+                  </div>
                 </button>
 
                 <button
-                  className={`btn btn-sm w-full ${selectedTime === "12-06 PM"
+                  className={`flex justify-between border rounded gap-5 p-2  w-full ${departureTime === "12-06 PM"
                     ? "bg-[#FDEADF] text-[#EF5B0C] text-sm font-medium"
                     : "bg-[#F6F6F5] text-secondary text-sm font-medium"
                     }`}
-                  onClick={() => setSelectedTime("12-06 PM")}
+                  onClick={() => setDepartureTime("12-06 PM")}
                 >
-                  <FiSunset className="text-lg text-[#7B6E7E] text-center mb-1" />
-                  12-06 PM
+                  <div className="flex items-center gap-2">
+                    <FiSunset className="text-lg text-[#7B6E7E] text-center mb-1" />
+                    12-06 PM
+                  </div>
+
+                  <div>
+                    <p className="text-[#111111] text-sm font-medium">BDT 565814</p>
+                  </div>
                 </button>
 
                 <button
-                  className={`btn btn-sm  w-full ${selectedTime === "06-12 PM"
+                  className={`flex justify-between rounded gap-5 p-2 border  w-full ${departureTime === "06-12 PM"
                     ? "bg-[#FDEADF] text-[#EF5B0C] text-sm font-medium"
                     : "bg-[#F6F6F5] text-secondary text-sm font-medium"
                     }`}
-                  onClick={() => setSelectedTime("06-12 PM")}
+                  onClick={() => setDepartureTime("06-12 PM")}
                 >
-                  <IoMoonOutline className="text-lg text-[#7B6E7E] text-center mb-1" />
-                  06-12 PM
+                  <div className="flex items-center gap-2">
+                    <IoMoonOutline size={20} className="text-lg text-[#7B6E7E] text-center mb-1" />
+                    06-12 PM
+                  </div>
+
+                  <div>
+                    <p className="text-[#111111] text-sm font-medium">BDT 565814</p>
+                  </div>
                 </button>
+
+
+                {/*arrival time  */}
+                <p className="font-semibold text-sm">Arrival At Jeddah</p>
+
+                <div className="my-2 space-y-2 pb-3">
+                  <button
+                    className={`flex justify-between rounded gap-5 p-2 border w-full ${arrivalTime === "00-06 AM"
+                      ? "bg-[#FDEADF] text-[#EF5B0C] text-sm  font-medium"
+                      : "bg-[#F6F6F5] text-secondary text-sm font-medium"
+                      }`}
+                    onClick={() => setArrivalTime("00-06 AM")}
+                  >
+                    <div className="flex items-center gap-2">
+                      <FiSunrise size={20} className="text-lg text-[#7B6E7E] text-center mb-1" />
+                      00-06 AM
+                    </div>
+                    <div>
+                      <p className="text-[#111111] text-sm font-medium">BDT 565814</p>
+                    </div>
+                  </button>
+
+                  <button
+                    className={`flex justify-between border rounded gap-5 p-2 w-full ${arrivalTime === "06-12 AM"
+                      ? "bg-[#FDEADF] text-[#EF5B0C] text-sm font-medium"
+                      : "bg-[#F6F6F5] text-secondary text-sm font-medium"
+                      }`}
+                    onClick={() => setArrivalTime("06-12 AM")}
+                  >
+                    <div className="flex items-center gap-2">
+                      <MdOutlineWbSunny size={20} className="text-lg text-[#7B6E7E] text-center mb-1" />
+                      06-12 AM
+                    </div>
+                    <div>
+                      <p className="text-[#111111] text-sm font-medium">BDT 565814</p>
+                    </div>
+                  </button>
+
+                  <button
+                    className={`flex justify-between border rounded gap-5 p-2  w-full ${arrivalTime === "12-06 PM"
+                      ? "bg-[#FDEADF] text-[#EF5B0C] text-sm font-medium"
+                      : "bg-[#F6F6F5] text-secondary text-sm font-medium"
+                      }`}
+                    onClick={() => setArrivalTime("12-06 PM")}
+                  >
+                    <div className="flex items-center gap-2">
+                      <FiSunset className="text-lg text-[#7B6E7E] text-center mb-1" />
+                      12-06 PM
+                    </div>
+
+                    <div>
+                      <p className="text-[#111111] text-sm font-medium">BDT 565814</p>
+                    </div>
+                  </button>
+
+                  <button
+                    className={`flex justify-between rounded gap-5 p-2 border  w-full ${arrivalTime === "06-12 PM"
+                      ? "bg-[#FDEADF] text-[#EF5B0C] text-sm font-medium"
+                      : "bg-[#F6F6F5] text-secondary text-sm font-medium"
+                      }`}
+                    onClick={() => setArrivalTime("06-12 PM")}
+                  >
+                    <div className="flex items-center gap-2">
+                      <IoMoonOutline size={20} className="text-lg text-[#7B6E7E] text-center mb-1" />
+                      06-12 PM
+                    </div>
+
+                    <div>
+                      <p className="text-[#111111] text-sm font-medium">BDT 565814</p>
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
             {/* time end */}

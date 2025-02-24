@@ -11,7 +11,7 @@ import HolidayQuery from "./HolidayQuery";
 import VisaQuery from "./VisaQuery";
 import { useState } from "react";
 
-const BannerNew = ({}) => {
+const BannerNew = () => {
 
 
   //STATE

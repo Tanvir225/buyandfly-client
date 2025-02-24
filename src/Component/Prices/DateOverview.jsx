@@ -26,7 +26,7 @@ const DateOverview = () => {
     return (
         <div className="relative mx-auto px-10">
             {/* Left Arrow */}
-            <button onClick={prevSlider} className="absolute -left-1 top-3 btn btn-sm btn-primary btn-outline">
+            <button onClick={prevSlider} className="absolute -left-1 top-2 btn btn-sm btn-primary btn-outline">
                 <FaArrowLeft></FaArrowLeft>
             </button>
 
@@ -39,8 +39,8 @@ const DateOverview = () => {
                     {chunkedFlights.map((group, index) => (
                         <div key={index} className="w-full flex justify-center items-center shrink-0">
                             {group.map((data, inx) => (
-                                <div key={inx} className="text-sm p-2 border w-full text-center rounded-md">
-                                    {data.date} <br /> {data.price} BDT
+                                <div key={inx} className="text-sm p-1 border w-full text-center rounded-md">
+                                    {data.date} <br /> <span className="font-semibold">{data.price} BDT</span>
                                 </div>
                             ))}
                         </div>
@@ -49,7 +49,7 @@ const DateOverview = () => {
             </div>
 
             {/* Right Arrow */}
-            <button onClick={nextSlider} className="absolute -right-1 top-3  btn btn-sm btn-primary btn-outline">
+            <button onClick={nextSlider} className="absolute -right-1 top-2  btn btn-sm btn-primary btn-outline">
                 <FaArrowRight/>
             </button>
         </div>

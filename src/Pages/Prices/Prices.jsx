@@ -11,14 +11,14 @@ const Prices = () => {
 
             {/* top div */}
             <div className="h-18 bg-base-100 w-full shadow-md flex  items-center">
-                <div className="max-w-6xl mx-auto flex items-center justify-between w-full">
+                <div className="max-w-7xl mx-auto flex items-center justify-between w-full">
                     <TopbarList></TopbarList>
                 </div>
             </div>
 
 
             {/* container */}
-            <section className="max-w-6xl mx-auto py-7 grid grid-cols-12 gap-5   w-full">
+            <section className="max-w-7xl mx-auto py-7 grid grid-cols-12 gap-5   w-full">
                 {/* filter */}
                 <div className="w-full col-span-3 space-y-5">
                     <CustomaizeFilter></CustomaizeFilter>

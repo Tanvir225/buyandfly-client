@@ -24,9 +24,9 @@ const TopbarList = () => {
     const fareClassoptions = ['regular fare', "student fare"];
 
     const [isTripType, setIsTripType] = useState(false);
-    const [tripType, setTripType] = useState("one way");
+    const [tripType, setTripType] = useState("oneway");
     // array of options
-    const tripTypeOptions = ['one way', "round way"];
+    const tripTypeOptions = ['oneway', "round"];
 
 
 
@@ -110,7 +110,7 @@ const TopbarList = () => {
             <div className="grid grid-cols-12 gap-5 ">
 
                 {/*trip type */}
-                <div className={`relative col-span-1 border rounded-lg h-10 mt-2   flex items-center w-[95px] `}>
+                <div className={`relative col-span-1  border rounded-lg h-10 mt-2   flex items-center w-[93px] `}>
                     {/* dropdown - btn */}
                     <div
                         onClick={() => setIsTripType(!isTripType)}
@@ -149,7 +149,7 @@ const TopbarList = () => {
                         className={`${isTripType
                             ? "visible top-2 left-1 opacity-100"
                             : "invisible -top-4 opacity-0"
-                            } absolute z-20 mx-auto my-16 w-36  rounded-xl py-4 border bg-base-100 duration-300`}
+                            } absolute z-20 mx-auto -ml-5 my-8 w-36  rounded-xl py-4 border bg-base-100 duration-300`}
                     >
                         {tripTypeOptions?.map((option, idx) => (
                             <div
