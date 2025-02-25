@@ -9,6 +9,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import ViewPrices from "./ViewPrices";
+import FlightDetails from "./FlightDetails";
 
 const TicketList = () => {
     const [details, setDetails] = useState(false);
@@ -94,7 +95,9 @@ const TicketList = () => {
 
             {/* details */}
             {
-                details && <div className="w-full bg-base-100 h-52 p-5">hi</div>
+                details && <div className="w-full bg-base-100  p-5">
+                    <FlightDetails setDetails={setDetails}></FlightDetails>
+                </div>
             }
             {/* prices */}
             {
