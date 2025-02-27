@@ -109,10 +109,10 @@ export default function ViewPrices({setPrice}) {
         <p className="text-center font-medium mt-2 border-b-2 border-[#DEE2E6] pb-2">Q;Q;C</p>
 
         <div className="text-center text-green-500 font-medium mt-2 border-b-2 border-[#DEE2E6] pb-2 flex flex-col">
-          <p>
+          {/* <p>
             Agent fare : <span className="text-black">BDT178818</span>
-          </p>
-          <p className="text-orange-500 self-end text-xs lg:mr-[90px]">incl. AIT VAT</p>
+          </p> */}
+          <p className="text-orange-500  text-xs ">incl. AIT VAT</p>
         </div>
 
         <p className="text-orange-500 font-bold text-center mt-2">
@@ -160,10 +160,10 @@ export default function ViewPrices({setPrice}) {
         <p className="text-center font-medium mt-2 border-b-2 border-[#DEE2E6] pb-2">Z;C;C</p>
 
         <div className="text-center text-green-500 font-medium mt-2 border-b-2 border-[#DEE2E6] pb-2 flex flex-col">
-          <p>
+          {/* <p>
             Agent fare : <span className="text-black">BDT211881</span>
-          </p>
-          <p className="text-orange-500 self-end text-xs lg:mr-[90px]">incl. AIT VAT</p>
+          </p> */}
+          <p className="text-orange-500  text-xs ">incl. AIT VAT</p>
         </div>
 
         <p className="text-orange-500 font-bold text-center mt-2">
@@ -211,10 +211,10 @@ export default function ViewPrices({setPrice}) {
         <p className="text-center font-medium mt-2 border-b-2 border-[#DEE2E6] pb-2">Z;C;C</p>
 
         <div className="text-center text-green-500 font-medium mt-2 border-b-2 border-[#DEE2E6] pb-2 flex flex-col">
-          <p>
+          {/* <p>
             Agent fare : <span className="text-black">BDT218651</span>
-          </p>
-          <p className="text-orange-500 self-end text-xs lg:mr-[90px]">incl. AIT VAT</p>
+          </p> */}
+          <p className="text-orange-500 text-xs">incl. AIT VAT</p>
         </div>
 
         <p className="text-orange-500 font-bold text-center mt-2">

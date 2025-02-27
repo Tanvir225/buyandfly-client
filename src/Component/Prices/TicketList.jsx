@@ -69,6 +69,7 @@ const TicketList = () => {
                     {/* fare */}
                     <div>
                         <h2 className="font-semibold">BDT 121,458</h2>
+                        <p className="text-[12px] font-medium line-through">BDT 123,463</p>
                         <p className="text-gray-500">Economy</p>
                     </div>
 
