@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
+import { useDispatch } from "react-redux";
+import { set_travellers_number } from "../../../features/travellers/travellers_slice";
 
 
 const Travellers = ({ height, toggle }) => {
+    // initialize react-redux dispatch function
+    const dispatch = useDispatch()
 
     //STATE
     const [isTravellers, setIsTravellers] = useState(false);
@@ -11,11 +15,18 @@ const Travellers = ({ height, toggle }) => {
     const [child, setChild] = useState(0)
     const [infant, setInfant] = useState(0)
 
-
     const [isAirClass, setIsAirClass] = useState(false);
     const [airClass, setAirClass] = useState("Flight Class");
     // array of options
     const airClassoptions = ['Economy', "Premium", "Business", "First Class"];
+
+    useEffect(() => {
+        dispatch(set_travellers_number({
+            adult,
+            child,
+            infant
+        }))
+    }, [adult, child, infant])
 
     // increment function
     const handleIncrement = (passenger, setPassenger) => {
@@ -32,7 +43,6 @@ const Travellers = ({ height, toggle }) => {
             setPassenger(passenger)
         }
     }
-
 
     return (
         <div>

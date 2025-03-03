@@ -9,16 +9,24 @@ import { GoArrowSwitch } from "react-icons/go";
 import MultiCity from "./Utility/MultiCity";
 import HotelQuery from "./HotelQuery";
 import { FaPlus } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useGet_all_citiesQuery } from "../../features/city/city_api";
 
 const FlightQuery = ({ toggleFlight }) => {
+  const navigate = useNavigate()
 
-  const [allCountries, setAllCountries] = useState(flights);
+  const { adult_travellers_number, child_travellers_number, infant_travellers_number } = useSelector(state => state.travellers)
+
+  const [allFromCountries, setAllFromCountries] = useState(flights);
+  const [allToCountries, setAllToCountries] = useState(flights);
   const [country, setCountry] = useState(flights);
   const [journeyFrom, setJourneyFrom] = useState([]);
   const [journeyTo, setJourneyTo] = useState([]);
-  const [departure, setDepartureDate] = useState(new Date());
+  const [departureDate, setDepartureDate] = useState(new Date());
   const [toggle, setToggle] = useState(false);
   const [tripType, setTripType] = useState("oneway");
+  const [fareType, setFareType] = useState("");
   const [searchToggleFrom, setSearchToggleFrom] = useState(false)
   const [isAirClass, setIsAirClass] = useState(false);
   const [airClass, setAirClass] = useState("Flight Class");
@@ -37,7 +45,35 @@ const FlightQuery = ({ toggleFlight }) => {
   const [visible, setVisiable] = useState(false)
 
 
+  const { data } = useGet_all_citiesQuery()
+  console.log(data)
 
+  useEffect(() => {
+    if (data?.data?.length > 0) {
+      setAllFromCountries(
+        [...flights, ...data.data.map((item, i) => {
+          return {
+            code: item.code,
+            city: item.city_name,
+            country: item.country_name,
+            airport: item.name
+          }
+        }),
+        ]
+      )
+      setAllToCountries(
+        [...flights, ...data.data.map((item, i) => {
+          return {
+            code: item.code,
+            city: item.city_name,
+            country: item.country_name,
+            airport: item.name
+          }
+        }),
+        ]
+      )
+    }
+  }, [data?.data])
   // handTripTypeChange function
   const handleTripTypeChange = (event) => {
     setTripType(event.target.value);
@@ -45,21 +81,24 @@ const FlightQuery = ({ toggleFlight }) => {
 
   // handleSubmit Function
   const handleSubmit = (event) => {
+
     event.preventDefault();
 
+    const params = new URLSearchParams()
+    params.set("journeyFrom", journeyFrom[0].code)
+    params.set("journeyTo", journeyTo[0].code)
+    params.set("tripType", tripType)
+    params.set("departureDate", departureDate)
+    params.set("returnDate", returnDate)
+    params.set("fareType", fareType)
+    params.set("airClass", airClass)
+    params.set("adult", adult_travellers_number)
+    params.set("child", child_travellers_number)
+    params.set("infant", infant_travellers_number)
 
-
-    console.log(
-      tripType,
-      journeyTo,
-      departure,
-      returnDate,
-
-
-    );
+    // navigate to search page
+    navigate(`/prices?${params.toString()}`);
   };
-
-
 
 
 
@@ -68,25 +107,57 @@ const FlightQuery = ({ toggleFlight }) => {
   const handleCountryChangeFrom = (e) => {
     const value = e.target.value.toLowerCase();
     if (value === "") {
-      setCountry(allCountries);  // Reset to full list if input is empty
+      // setCountry(allFromCountries);  // Reset to full list if input is empty
+      setAllFromCountries([...flights, ...data.data.map((item, i) => {
+        return {
+          code: item.code,
+          city: item.city_name,
+          country: item.country_name,
+          airport: item.name
+        }
+      }),
+      ])
     } else {
-      const filteredCountries = allCountries.filter((c) =>
-        c?.city.toLowerCase().includes(value)
+      const filteredCountries = [...flights, ...data.data.map((item, i) => {
+        return {
+          code: item.code,
+          city: item.city_name,
+          country: item.country_name,
+          airport: item.name
+        }
+      })].filter((c) =>
+        c?.city?.toLowerCase()?.includes(value)
       );
-      setCountry(filteredCountries);
+      setAllFromCountries(filteredCountries);
     }
   };
 
   // Handle search input change
   const handleCountryChangeTo = (e) => {
     const value = e.target.value.toLowerCase();
+    console.log(value)
     if (value === "") {
-      setCountry(allCountries);  // Reset to full list if input is empty
+      // setCountry(allFromCountries);  // Reset to full list if input is empty
+      setAllToCountries([...flights, ...data.data.map((item, i) => {
+        return {
+          code: item.code,
+          city: item.city_name,
+          country: item.country_name,
+          airport: item.name
+        }
+      })])
     } else {
-      const filteredCountries = allCountries.filter((c) =>
-        c?.city.toLowerCase().includes(value)
+      const filteredCountries = [...flights, ...data.data.map((item, i) => {
+        return {
+          code: item.code,
+          city: item.city_name,
+          country: item.country_name,
+          airport: item.name
+        }
+      })].filter((c) =>
+        c?.city?.toLowerCase()?.includes(value)
       );
-      setCountry(filteredCountries);
+      setAllToCountries(filteredCountries);
     }
   };
 
@@ -96,26 +167,27 @@ const FlightQuery = ({ toggleFlight }) => {
 
 
   // Handle country selection from
-  const handleCountrySelect = (city, code, airport) => {
+  const handleCountrySelect = (city, code, airport, countryName) => {
     setJourneyFrom([
       {
         city: city,
         code: code,
-        airport: airport
-
+        airport: airport,
+        countryName
       }
     ]);  // Set selected country
     setSearchToggleFrom(false);           // Close the dropdown
   };
 
   // Handle country selection To
-  const handleCountrySelectTo = (city, code, airport) => {
+  const handleCountrySelectTo = (city, code, airport, countryName) => {
+    console.log(countryName)
     setJourneyTo([
       {
         city: city,
         code: code,
-        airport: airport
-
+        airport: airport,
+        countryName
       }
     ]
     );  // Set selected country
@@ -132,10 +204,11 @@ const FlightQuery = ({ toggleFlight }) => {
     setSearchToggleTo(true)
   }
 
-  console.log(journeyTo);
-
-
-
+  // handle fareType
+  const handleFareType = (e) => {
+    setFareType(e.target.value)
+  }
+  console.log(allFromCountries)
 
   return (
     <div className="p-5 bg-white rounded-b-lg rounded-tl-none">
@@ -185,7 +258,6 @@ const FlightQuery = ({ toggleFlight }) => {
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-
               >
                 <Travellers></Travellers>
               </motion.div>
@@ -275,7 +347,7 @@ const FlightQuery = ({ toggleFlight }) => {
               <span className="text-sm font-bold p-2 border-r-2">{journeyFrom[0]?.code || 'DAC'}</span>
               <div className="flex flex-col items-start gap-1 p-2">
                 <span className="text-sm font-medium">{journeyFrom[0]?.city || "Dhaka"}</span>
-                <span className="text-xs text-gray-500  w-full">{journeyFrom[0]?.airport || "Bangladesh, Hazrat Shahjalal"}</span>
+                <span className="text-xs text-gray-500  w-full">{journeyFrom[0]?.countryName || 'Bangladesh'}, {journeyFrom[0]?.airport || "Hazrat Shahjalal"}</span>
               </div>
             </div>
 
@@ -290,12 +362,12 @@ const FlightQuery = ({ toggleFlight }) => {
                 className="input-sm w-full focus:outline-none border-b-2 h-14 rounded-md"
                 placeholder="🛪 Type for airport name or code"
               />
-              {country?.map((c, index) => (
-                <div onClick={() => handleCountrySelect(c?.city, c?.code, c?.airport)} key={index} className="flex items-center gap-5 cursor-pointer p-2">
+              {allFromCountries?.map((c, index) => (
+                <div onClick={() => handleCountrySelect(c?.city, c?.code, c?.airport, c.country)} key={index} className="flex items-center gap-5 cursor-pointer p-2">
                   <h2 className="border-r-2 border-b-2 p-2 ">{c?.code}</h2>
                   <div>
                     <p>{c?.city}</p>
-                    <p className="text-[12px]">{c?.airport}</p>
+                    <p className="text-[12px]">{c.country}, {c?.airport}</p>
                   </div>
                 </div>
               ))}
@@ -317,7 +389,7 @@ const FlightQuery = ({ toggleFlight }) => {
               <span className="text-sm font-bold p-2 border-r-2 ml-1">{journeyTo[0]?.code || "JED"}</span>
               <div className="flex flex-col items-start gap-1 p-2">
                 <span className="text-sm font-medium">{journeyTo[0]?.city || "Saudi Arabia"}</span>
-                <span className="text-xs text-gray-500 truncate w-full">{journeyTo[0]?.airport || "King Abdulaziz Int Airport"}</span>
+                <span className="text-xs text-gray-500 truncate w-[80%]">{journeyTo[0]?.countryName || 'Saudi Arabia'}, {journeyTo[0]?.airport || "King Abdulaziz Int Airport"}</span>
               </div>
             </div>
             <div
@@ -332,8 +404,8 @@ const FlightQuery = ({ toggleFlight }) => {
                 className="input-sm w-full focus:outline-none border-b-2 h-12 rounded-md"
                 placeholder="🛪 Type for airport name or code"
               />
-              {country?.map((c, index) => (
-                <div onClick={() => handleCountrySelectTo(c?.city, c?.code, c?.airport)} key={index} className="flex items-center gap-5 cursor-pointer p-2">
+              {allToCountries?.map((c, index) => (
+                <div onClick={() => handleCountrySelectTo(c?.city, c?.code, c?.airport, c?.country)} key={index} className="flex items-center gap-5 cursor-pointer p-2">
                   <h2 className="border-r-2 border-b-2 p-2 ">{c?.code}</h2>
                   <div>
                     <p>{c?.city}</p>
@@ -368,7 +440,7 @@ const FlightQuery = ({ toggleFlight }) => {
                 <DatePicker
 
                   className="focus:outline-none "
-                  selected={departure}
+                  selected={departureDate}
                   onChange={(date) => setDepartureDate(date)}
                   showDisabledMonthNavigation
                   monthsShown={1}
@@ -390,7 +462,7 @@ const FlightQuery = ({ toggleFlight }) => {
 
                     className="focus:outline-none"
 
-                    selected={departure}
+                    selected={departureDate}
                     onChange={(date) => setDepartureDate(date)}
                     showDisabledMonthNavigation
                     monthsShown={1}
@@ -452,11 +524,11 @@ const FlightQuery = ({ toggleFlight }) => {
           <div className="flex flex-wrap lg:gap-0 gap-5 lg:flex-row space-x-3">
             <label htmlFor="" className="">Fare Type:</label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
-              <input type="radio" name="fare" className="radio checked:bg-primary" />
+              <input onChange={handleFareType} type="radio" name="fare" value={'Regular Fare'} className="radio checked:bg-primary" />
               <span className="text-secondary font-medium">Regular Fare</span>
             </label>
             <label className="flex items-center btn btn-sm   cursor-pointer">
-              <input type="radio" name="fare" className="radio checked:bg-primary" />
+              <input onChange={handleFareType} type="radio" name="fare" value={'Student Fare'} className="radio checked:bg-primary" />
               <span className="text-secondary font-medium">Student Fare</span>
             </label>
           </div>
@@ -508,7 +580,7 @@ const flights = [
     code: "CXB",
     city: "Cox's Bazar",
     country: "Bangladesh",
-    airport: "Cox's Bazar Airport",
+    airport: "Cox's Bazar Airportt",
   },
   {
     code: "JFK",

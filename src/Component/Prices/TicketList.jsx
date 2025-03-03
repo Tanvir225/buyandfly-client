@@ -11,7 +11,7 @@ import { useState } from "react";
 import ViewPrices from "./ViewPrices";
 import FlightDetails from "./FlightDetails";
 
-const TicketList = () => {
+const TicketList = ({air_ways_name, departureIATA, arrivalTime, arrivalIATA, timeDiff, departureTime, totalPrice, stopCount, marketingFlightNo, airline}) => {
     const [details, setDetails] = useState(false);
     const [price, setPrice] = useState(false);
 
@@ -26,12 +26,13 @@ const TicketList = () => {
 
                     <div className="flex items-center gap-3">
                         <div className="w-12">
-                            <img src={ticketImage} alt="logo" />
+                            <img src={`https://www.gstatic.com/flights/airline_logos/70px/${airline}.png`} alt="logo" />
+                            {/* <img src={`https://tbbd-flight.s3.ap-southeast-1.amazonaws.com/airlines-logo/${airline}.png`} alt="logo" /> */}
                         </div>
                         <div className="space-y-2">
-                            <h2 className="font-medium">Qatar Airways</h2>
+                            <h2 className="font-medium">{air_ways_name}</h2>
                             <section className="flex items-center gap-2">
-                                <p className="font-medium">XY - 8745</p>
+                                <p className="font-medium">{marketingFlightNo}</p>
                                 {/* <PiPlugCharging size={30} className="p-1 rounded-lg border-2"></PiPlugCharging>
                                 <IoManOutline size={30} className="p-1 rounded-lg border-2"></IoManOutline>
                                 <LuBaggageClaim size={30} className="p-1 rounded-lg border-2"></LuBaggageClaim> */}
@@ -41,14 +42,14 @@ const TicketList = () => {
 
                     {/* From  */}
                     <div>
-                        <h2 className="text-gray-500 font-medium">Dhaka (DAC)</h2>
-                        <h3 className="font-semibold">12:50 PM</h3>
+                        <h2 className="text-gray-500 font-medium">{departureIATA}</h2>
+                        <h3 className="font-semibold">{departureTime}</h3>
                         <h3 className="text-gray-500 font-medium">07 Feb, Fri</h3>
                     </div>
 
                     {/* icon face */}
                     <div>
-                        <p className="text-gray-500 text-center">1 h 15 min</p>
+                        <p className="text-gray-500 text-center">{timeDiff}</p>
                         <section className="flex items-center gap-2 text-gray-600">
                             <PiAirplaneTakeoffLight size={28}></PiAirplaneTakeoffLight>
                             <HiOutlineDotsHorizontal size={26}></HiOutlineDotsHorizontal>
@@ -56,19 +57,19 @@ const TicketList = () => {
                             <HiOutlineDotsHorizontal size={26}></HiOutlineDotsHorizontal>
                             <HiOutlineLocationMarker size={28}></HiOutlineLocationMarker>
                         </section>
-                        <p className="text-gray-500 text-center">1 Stops</p>
+                        <p className="text-gray-500 text-center">{stopCount} Stops</p>
                     </div>
 
                     {/* to  */}
                     <div>
-                        <h2 className="text-gray-500 font-medium">Riyadh (RUH)</h2>
-                        <h3 className="font-semibold">09:15 PM</h3>
+                        <h2 className="text-gray-500 font-medium">{arrivalIATA}</h2>
+                        <h3 className="font-semibold">{arrivalTime}</h3>
                         <h3 className="text-gray-500 font-medium">07 Feb, Fri</h3>
                     </div>
 
                     {/* fare */}
                     <div>
-                        <h2 className="font-semibold">BDT 121,458</h2>
+                        <h2 className="font-semibold">BDT {totalPrice}</h2>
                         <p className="text-[12px] font-medium line-through">BDT 123,463</p>
                         <p className="text-gray-500">Economy</p>
                     </div>

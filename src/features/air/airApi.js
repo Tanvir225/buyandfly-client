@@ -16,5 +16,4 @@ export const {
     useGet_airsMutation
 } = air_api;
 
-// ✅ Fix: Export the `reducerPath` and reducer
 export const air_apiReducer = air_api.reducer;

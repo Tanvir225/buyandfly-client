@@ -1,0 +1,161 @@
+"scheduleDescs": [
+    {
+        "id": 1,
+        "frequency": "SMTWTFS",
+        "stopCount": 0,
+        "eTicketable": true,
+        "totalMilesFlown": 124,
+        "elapsedTime": 60,
+        "departure": {
+            "airport": "DAC",
+            "city": "DAC",
+            "country": "BD",
+            "time": "18:45:00+06:00",
+            "terminal": "D"
+        },
+        "arrival": {
+            "airport": "ZYL",
+            "city": "ZYL",
+            "country": "BD",
+            "time": "19:45:00+06:00"
+        },
+        "carrier": {
+            "marketing": "BG",
+            "marketingFlightNumber": 605,
+            "operating": "BG",
+            "operatingFlightNumber": 605,
+            "equipment": {
+                "code": "DH8",
+                "typeForFirstLeg": "N",
+                "typeForLastLeg": "N"
+            }
+        }
+    },
+    {
+        "id": 2,
+        "frequency": "SMTWT**",
+        "stopCount": 0,
+        "eTicketable": true,
+        "totalMilesFlown": 124,
+        "elapsedTime": 60,
+        "departure": {
+            "airport": "DAC",
+            "city": "DAC",
+            "country": "BD",
+            "time": "15:00:00+06:00",
+            "terminal": "D"
+        },
+        "arrival": {
+            "airport": "ZYL",
+            "city": "ZYL",
+            "country": "BD",
+            "time": "16:00:00+06:00"
+        },
+        "carrier": {
+            "marketing": "BG",
+            "marketingFlightNumber": 603,
+            "operating": "BG",
+            "operatingFlightNumber": 603,
+            "equipment": {
+                "code": "DH8",
+                "typeForFirstLeg": "N",
+                "typeForLastLeg": "N"
+            }
+        }
+    },
+    {
+        "id": 3,
+        "frequency": "*MT*TFS",
+        "stopCount": 0,
+        "eTicketable": true,
+        "totalMilesFlown": 189,
+        "elapsedTime": 65,
+        "departure": {
+            "airport": "CXB",
+            "city": "CXB",
+            "country": "BD",
+            "time": "09:40:00+06:00"
+        },
+        "arrival": {
+            "airport": "DAC",
+            "city": "DAC",
+            "country": "BD",
+            "time": "10:45:00+06:00",
+            "terminal": "D"
+        },
+        "carrier": {
+            "marketing": "BG",
+            "marketingFlightNumber": 434,
+            "operating": "BG",
+            "operatingFlightNumber": 434,
+            "equipment": {
+                "code": "DH8",
+                "typeForFirstLeg": "N",
+                "typeForLastLeg": "N"
+            }
+        }
+    },
+    {
+        "id": 4,
+        "frequency": "**T****",
+        "stopCount": 0,
+        "eTicketable": true,
+        "totalMilesFlown": 124,
+        "elapsedTime": 55,
+        "departure": {
+            "airport": "DAC",
+            "city": "DAC",
+            "country": "BD",
+            "time": "18:10:00+06:00"
+        },
+        "arrival": {
+            "airport": "ZYL",
+            "city": "ZYL",
+            "country": "BD",
+            "time": "19:05:00+06:00"
+        },
+        "carrier": {
+            "marketing": "BG",
+            "marketingFlightNumber": 251,
+            "operating": "BG",
+            "operatingFlightNumber": 251,
+            "equipment": {
+                "code": "738",
+                "typeForFirstLeg": "N",
+                "typeForLastLeg": "N"
+            }
+        }
+    },
+    {
+        "id": 5,
+        "frequency": "S*TWTFS",
+        "stopCount": 0,
+        "eTicketable": true,
+        "totalMilesFlown": 189,
+        "elapsedTime": 65,
+        "departure": {
+            "airport": "CXB",
+            "city": "CXB",
+            "country": "BD",
+            "time": "13:25:00+06:00"
+        },
+        "arrival": {
+            "airport": "DAC",
+            "city": "DAC",
+            "country": "BD",
+            "time": "14:30:00+06:00",
+            "terminal": "D"
+        },
+        "carrier": {
+            "marketing": "BG",
+            "marketingFlightNumber": 436,
+            "operating": "BG",
+            "operatingFlightNumber": 436,
+            "equipment": {
+                "code": "DH8",
+                "typeForFirstLeg": "N",
+                "typeForLastLeg": "N"
+            }
+        }
+    }
+],
