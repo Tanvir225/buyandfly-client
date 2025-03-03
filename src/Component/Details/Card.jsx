@@ -110,7 +110,7 @@ export default function Card() {
           {/* booking details end */}
 
           {/* form start */}
-          <div className=" rounded-lg shadow-lg bg-base-100 relative ml-5">
+          <div className=" rounded-lg shadow-lg bg-base-100 relative ml-5 p-3">
             <div className="flex items-center justify-between px-4 py-2">
               <h2 className="text-xl font-bold text-gray-700">Provide Traveller Details</h2>
               <p className="text-sm text-gray-600">0 of 1 validated</p>
