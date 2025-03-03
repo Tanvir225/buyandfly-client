@@ -3,7 +3,8 @@ import Card from "../../Component/Details/Card";
 
 const Details = () => {
     return (
-        <div className="">
+        <div className="p-2">
+            
             <Card></Card>
         </div>
     );
