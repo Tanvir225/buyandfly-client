@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import ViewPrices from "./ViewPrices";
 import FlightDetails from "./FlightDetails";
+import { AiFillCaretUp } from "react-icons/ai";
 
 const TicketList = ({item, flights, air_ways_name, departureIATA, arrivalTime, arrivalIATA, timeDiff, departureTime, totalPrice, stopCount, marketingFlightNo, airline, departureDate, arrivalDate}) => {
     const [details, setDetails] = useState(false);
@@ -83,8 +84,24 @@ const TicketList = ({item, flights, air_ways_name, departureIATA, arrivalTime, a
                     <button onClick={() => setDetails(!details)} className="text-primary font-semibold flex items-center gap-1">Flight Details <MdKeyboardArrowDown size={20}></MdKeyboardArrowDown></button>
 
                     <section className="flex items-center gap-5">
-                        <Link className="font-medium text-[#0FA134]">Refundable</Link>
-                        <Link className="font-medium text-[#0FA134]">Instant</Link>
+                        <div className="pointer group relative mx-auto flex w-max justify-center">
+                            {/* Hover button */}
+                            <button className=" text-[#0FA134] font-medium">Refundable</button>
+                            {/* Hover Text */}
+                            <div className="absolute -bottom-10 cursor-pointer whitespace-nowrap opacity-0 duration-500 hover:hidden group-hover:-bottom-20 group-hover:opacity-100  ">
+                                <p className="rounded-md bg-base-100 text-center px-3 py-3 text-black shadow-[0px_0px_10px_0px_#0EA5E9]">Plane Chage <br /> Mumbai (BOM) | 4h 10m Layover</p>
+                                <span className="absolute -top-5 left-[45%] text-[#0EA5E9]"><AiFillCaretUp size={30}></AiFillCaretUp></span>
+                            </div>
+                        </div>
+                        <div className="pointer group relative mx-auto flex w-max justify-center">
+                            {/* Hover button */}
+                            <button className=" text-[#0FA134] font-medium">Instant</button>
+                            {/* Hover Text */}
+                            <div className="absolute -bottom-10 cursor-pointer whitespace-nowrap opacity-0 duration-500 hover:hidden group-hover:-bottom-20 group-hover:opacity-100  ">
+                                <p className="rounded-md bg-base-100 text-center px-3 py-3 text-black shadow-[0px_0px_10px_0px_#0EA5E9]">Plane Chage <br /> Mumbai (BOM) | 4h 10m Layover</p>
+                                <span className="absolute -top-5 left-[45%] text-[#0EA5E9]"><AiFillCaretUp size={30}></AiFillCaretUp></span>
+                            </div>
+                        </div>
                     </section>
 
                     <section>

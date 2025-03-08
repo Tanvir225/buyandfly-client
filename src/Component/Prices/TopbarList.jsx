@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import { GoArrowSwitch } from "react-icons/go";
 import Travellers from "../Home/Utility/Travellers";
 import Button from "../Shared/Button";
+import { AiOutlineClose } from "react-icons/ai";
 
 
 
@@ -15,6 +16,7 @@ const TopbarList = () => {
     const [searchToggleFrom, setSearchToggleFrom] = useState(false)
     const [searchToggleTo, setSearchToggleTo] = useState(false)
     const [addCity, setAddCity] = useState(false);
+    const [addCityMore, setAddCityMore] = useState(false);
     const [departure, setDepartureDate] = useState(new Date());
     // Automatically set returnDate to tomorrow next day
     const [returnDate, setReturnDate] = useState(() => {
@@ -175,8 +177,8 @@ const TopbarList = () => {
                 </div>
 
 
-                <section className="col-span-2">
-                    <div onClick={handleSearchClick} className={`flex items-center mt-2  border rounded-lg h-10 `}>
+                <section className={`col-span-2 ${tripType === 'multicity' && 'w-[217px]'}`}>
+                    <div onClick={tripType === 'multicity' ? () => setAddCity(!addCity) : handleSearchClick} className={`flex items-center mt-2  border rounded-lg h-10 `}>
                         <span className="text-sm font-bold p-2 border-r-2">{journeyFrom[0]?.code || 'DAC'}</span>
                         <div className="flex flex-col items-start gap-1 p-2">
                             <span className="text-sm font-medium">{journeyFrom[0]?.city || "Dhaka"}</span>
@@ -185,7 +187,7 @@ const TopbarList = () => {
                     </div>
 
                     <div
-                        className={`text-black space-y-3 ${searchToggleFrom ? "absolute" : "hidden"
+                        className={` ${tripType === 'multicity' && 'hidden'} text-black space-y-3 ${searchToggleFrom ? "absolute" : "hidden"
                             } h-52 overflow-y-auto bg-base-100 shadow-xl w-full lg:w-60  z-20 p-3 px-2 rounded-md`}
                     >
                         <input
@@ -207,8 +209,8 @@ const TopbarList = () => {
                     </div>
                 </section>
 
-                <section className="col-span-2">
-                    <div onClick={handleSearchClickTo} className={`flex items-center mt-2  border rounded-lg h-10 text-wrap truncate `}>
+                <section className={`col-span-2 `}>
+                    <div onClick={tripType === 'multicity' ? () => setAddCity(!addCity) : handleSearchClickTo} className={`flex items-center mt-2  border rounded-lg h-10 text-wrap truncate `}>
                         <span className="text-sm font-bold p-2 border-r-2 ml-1">{journeyTo[0]?.code || "JED"}</span>
                         <div className="flex flex-col items-start gap-1 p-2">
                             <span className="text-sm font-medium">{journeyTo[0]?.city || "Saudi Arabia"}</span>
@@ -216,7 +218,7 @@ const TopbarList = () => {
                         </div>
                     </div>
                     <div
-                        className={` text-black ${searchToggleTo ? "absolute" : "hidden"
+                        className={`${tripType === 'multicity' && 'hidden'} text-black ${searchToggleTo ? "absolute" : "hidden"
                             }  h-52 space-y-3 overflow-y-auto bg-base-100 shadow-xl  z-20  p-3 px-2 w-full lg:w-60 rounded-md`}
                     >
 
@@ -268,7 +270,7 @@ const TopbarList = () => {
                     </section>
                 }
 
-                <section className={`w-full my-2 col-span-2 ${tripType === 'multicity' ? 'hidden' : 'block'}`}>
+                <section className={`w-full my-2 col-span-2 `}>
                     <Travellers height={true} toggle={true}></Travellers>
                 </section>
 
@@ -276,14 +278,10 @@ const TopbarList = () => {
                     <input type="text" placeholder="airlines" className="input input-bordered h-10 mt-2 lg:w-40 focus:outline-none" />
                 </section>
 
-                <section className={`-ml-5 mt-1 col-span-1 ${tripType === 'multicity' ? 'hidden' : 'block'}`}>
+                <section className={`-ml-5 mt-1 col-span-1 `}>
                     <Button text=""></Button>
                 </section>
-                {
-                    tripType === 'multicity' && <section className="mt-3 -ml-10">
-                        <p onClick={()=>setAddCity(!addCity)} className=" lg:w-[200px] btn btn-sm font-semibold btn-outline btn-primary hover:text-white">{addCity ? 'Remove' :'Add city'}</p>
-                    </section>
-                }
+
             </div>
 
             {/* add city */}
@@ -292,7 +290,7 @@ const TopbarList = () => {
                     <div className="grid grid-cols-12 gap-5 ">
 
                         {/*trip type */}
-                      
+
 
                         <section className="col-span-3">
                             <div onClick={handleSearchClick} className={`flex items-center mt-2  border rounded-lg h-10 `}>
@@ -391,16 +389,137 @@ const TopbarList = () => {
                             <Travellers height={true} toggle={true}></Travellers>
                         </section> */}
 
-                        <section className="col-span-2">
+                        {/* <section className="col-span-2">
                             <input type="text" placeholder="airlines" className="input input-bordered h-10 mt-2 lg:w-40 focus:outline-none" />
-                        </section>
+                        </section> */}
 
-                        <section className="-ml-5 mt-1 col-span-1">
-                            <Button text=""></Button>
+                        <section className=" mt-1 col-span-1 flex items-center gap-2">
+                            <button onClick={() => setAddCity(!addCity)} className="btn  btn-sm mt-2 btn-error text-white"><AiOutlineClose ></AiOutlineClose></button>
+                            <button onClick={() => setAddCityMore(true)} className={`${!addCityMore && 'btn  btn-sm mt-2 btn-primary text-white'}`}>{addCityMore ? '' : 'add'}</button>
                         </section>
                     </div>
                 </section>
             }
+
+            {/* add more city */}
+
+            {
+                addCityMore && <section>
+                    <div className="grid grid-cols-12 gap-5 ">
+
+                        {/*trip type */}
+
+
+                        <section className="col-span-3">
+                            <div onClick={handleSearchClick} className={`flex items-center mt-2  border rounded-lg h-10 `}>
+                                <span className="text-sm font-bold p-2 border-r-2">{journeyFrom[0]?.code || 'DAC'}</span>
+                                <div className="flex flex-col items-start gap-1 p-2">
+                                    <span className="text-sm font-medium">{journeyFrom[0]?.city || "Dhaka"}</span>
+                                    {/* <span className="text-xs text-gray-500  w-full">{journeyFrom[0]?.airport || "Bangladesh, Hazrat Shahjalal"}</span> */}
+                                </div>
+                            </div>
+
+                            <div
+                                className={`text-black space-y-3 ${searchToggleFrom ? "absolute" : "hidden"
+                                    } h-52 overflow-y-auto bg-base-100 shadow-xl w-full lg:w-60  z-20 p-3 px-2 rounded-md`}
+                            >
+                                <input
+                                    onChange={handleCountryChangeFrom}
+                                    name="search"
+                                    type="text"
+                                    className="input-sm w-full focus:outline-none border-b-2 h-14 rounded-md"
+                                    placeholder="🛪 Type for airport name or code"
+                                />
+                                {country?.map((c, index) => (
+                                    <div onClick={() => handleCountrySelect(c?.city, c?.code, c?.airport)} key={index} className="flex items-center gap-5 cursor-pointer p-2">
+                                        <h2 className="border-r-2 border-b-2 p-2 ">{c?.code}</h2>
+                                        <div>
+                                            <p>{c?.city}</p>
+                                            <p className="text-[12px]">{c?.airport}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+
+                        <section className="col-span-3">
+                            <div onClick={handleSearchClickTo} className={`flex items-center mt-2  border rounded-lg h-10 text-wrap truncate `}>
+                                <span className="text-sm font-bold p-2 border-r-2 ml-1">{journeyTo[0]?.code || "JED"}</span>
+                                <div className="flex flex-col items-start gap-1 p-2">
+                                    <span className="text-sm font-medium">{journeyTo[0]?.city || "Saudi Arabia"}</span>
+                                    {/* <span className="text-xs text-gray-500 truncate w-full">{journeyTo[0]?.airport || "King Abdulaziz Int Airport"}</span> */}
+                                </div>
+                            </div>
+                            <div
+                                className={` text-black ${searchToggleTo ? "absolute" : "hidden"
+                                    }  h-52 space-y-3 overflow-y-auto bg-base-100 shadow-xl  z-20  p-3 px-2 w-full lg:w-60 rounded-md`}
+                            >
+
+                                <input
+                                    onChange={handleCountryChangeTo}
+                                    name="search"
+                                    type="text"
+                                    className="input-sm w-full focus:outline-none border-b-2 h-12 rounded-md"
+                                    placeholder="🛪 Type for airport name or code"
+                                />
+                                {country?.map((c, index) => (
+                                    <div onClick={() => handleCountrySelectTo(c?.city, c?.code, c?.airport)} key={index} className="flex items-center gap-5 cursor-pointer p-2">
+                                        <h2 className="border-r-2 border-b-2 p-2 ">{c?.code}</h2>
+                                        <div>
+                                            <p>{c?.city}</p>
+                                            <p className="text-[12px]">{c?.airport}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+
+                        </section>
+
+                        <section className={`input input-bordered h-10 flex items-center ${tripType === 'oneway' || tripType === 'multicity' ? 'col-span-2' : 'col-span-1'} mt-2`}>
+                            <DatePicker
+
+                                className="focus:outline-none "
+                                selected={departure}
+                                onChange={(date) => setDepartureDate(date)}
+                                showDisabledMonthNavigation
+                                monthsShown={1}
+                                dateFormat={"dd MMM "}
+                            />
+
+                        </section>
+                        {
+                            tripType === "round" && <section className="input input-bordered h-10 flex items-center col-span-1 mt-2">
+                                <DatePicker
+
+                                    className="focus:outline-none "
+                                    selected={returnDate}
+                                    onChange={(date) => setReturnDate(date)}
+                                    showDisabledMonthNavigation
+                                    monthsShown={1}
+                                    dateFormat={"dd MMM "}
+                                />
+
+                            </section>
+                        }
+
+                        {/* <section className="w-full my-2 col-span-2">
+                            <Travellers height={true} toggle={true}></Travellers>
+                        </section> */}
+
+                        {/* <section className="col-span-2">
+                            <input type="text" placeholder="airlines" className="input input-bordered h-10 mt-2 lg:w-40 focus:outline-none" />
+                        </section> */}
+
+                        <section className=" mt-1 col-span-1 flex items-center gap-2">
+                            <button onClick={() => setAddCityMore(false)} className="btn  btn-sm mt-2 btn-error text-white"><AiOutlineClose ></AiOutlineClose></button>
+                        </section>
+                    </div>
+                </section>
+            }
+
+
+
 
         </section>
     );
