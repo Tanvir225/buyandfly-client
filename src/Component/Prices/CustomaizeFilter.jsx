@@ -1,19 +1,26 @@
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "/logo.svg";
 import { FiSunrise, FiSunset } from "react-icons/fi";
 import { MdOutlineWbSunny } from "react-icons/md";
 import { IoMoonOutline } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { setFilter } from "../../features/customizedFilter/customizedFilterSlice";
 
 
-export default function CustomaizeFilter() {
+export default function CustomaizeFilter({airlines}) {
   const [isAirlines, setIsAirline] = useState(true);
   const [isPrices, setIsPrices] = useState(true);
   const [isPopular, setIsPopular] = useState(true);
   const [isTime, setIsTime] = useState(false);
   const [isCities, setIsCities] = useState(false);
   const [isFSchedule, setIsFSchedule] = useState(false);
-
+  const [isNonStop, setIsNonStop] = useState(true)
+  const [isOneStop, setIsOneStop] = useState(false)
+  const [filterObject, setFilterObject] = useState({
+    isNonStop:false,
+    isOneStop: false
+  })
   const [price, setPrice] = useState(0);
   const [departureTime, setDepartureTime] = useState("");
   const [arrivalTime, setArrivalTime] = useState("");
@@ -46,10 +53,12 @@ export default function CustomaizeFilter() {
   // checked={filters.name !== ""}
   //         onChange={handleCheckboxChange}
 
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(setFilter(filterObject))
+  }, [filterObject])
   return (
     <div>
-
-
       {/* popular filter start */}
       <div className="rounded-[10px] max-w-sm shadow-md">
         {/* dropdown start */}
@@ -75,12 +84,18 @@ export default function CustomaizeFilter() {
           <div className="flex items-center justify-between">
             <label className="flex items-center space-x-2">
               <input
+                onChange={(e) => {
+                  setFilterObject({
+                    ...filterObject,
+                    isNonStop: !filterObject.isNonStop
+                  })
+                }}
                 type="checkbox"
                 name="nonStop"
-                value="nonStop"
+                checked = {filterObject.isNonStop}
                 className="w-4 h-4 accent-[#EF5B0C] border-gray-300 rounded"
               />
-              <span className="text-sm text-[#111111]">Non Stop(1)</span>
+              <span className="text-sm text-[#111111]">Non Stop({airlines.filter(item => item.flights.length===1).length})</span>
             </label>
             <p className="text-sm text-[#111111]">BDT 179885</p>
           </div>
@@ -88,12 +103,19 @@ export default function CustomaizeFilter() {
           <div className="flex items-center justify-between">
             <label className="flex items-center space-x-2">
               <input
+                onChange={(e) => {
+                  setFilterObject({
+                    ...filterObject,
+                    isOneStop: !filterObject.isOneStop
+                  })
+                }}
                 type="checkbox"
                 name="oneStop"
                 value="oneStop"
+                checked = {filterObject.isOneStop}
                 className="w-4 h-4 accent-[#EF5B0C] border-gray-300 rounded"
               />
-              <span className="text-sm text-[#111111]">1 Stop(38)</span>
+              <span className="text-sm text-[#111111]">1 Stop({airlines.filter(item => item.flights.length===2).length})</span>
             </label>
             <p className="text-sm text-[#111111]">BDT 179885</p>
           </div>

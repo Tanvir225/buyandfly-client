@@ -3,7 +3,7 @@ import { ImArrowUpRight2 } from "react-icons/im";
 import { IoAirplane } from "react-icons/io5";
 import { LuPlaneTakeoff } from "react-icons/lu";
 
-export default function FlightDetails({ setDetails }) {
+export default function FlightDetails({ item, setDetails, flights, departureDate }) {
   return (
     <div>
 
@@ -14,18 +14,25 @@ export default function FlightDetails({ setDetails }) {
           {/* flight details start */}
           <div className="text-sm ">
             <p className="flex items-center gap-2 p-3 font-semibold  text-gray-800 bg-slate-100">
-              DAC <IoAirplane /> JED<span className="text-gray-300">|</span>
-              <span className="text-gray-500">22 Mar,Sat</span>
+              {flights[0].departure.airport} <IoAirplane /> {flights[flights.length - 1]?.arrival?.airport}<span className="text-gray-300">|</span>
+              <span className="text-gray-500">{departureDate}</span>
               <span className="text-gray-300">|</span>
-              <span className="text-gray-950">1 Stop</span>
+              <span className="text-gray-950">{flights.length - 1} {(flights.length - 1) > 1 ? ' Stops' : ' Stop'}</span>
             </p>
-
+            {/* 
+            
+            1285
+            210
+            250
+            325
+              
+            */}
             <div>
               <p className="flex items-center gap-2 font-semibold  text-gray-800 mt-2">
-                <ImArrowUpRight2 /> IndiGo<span className="text-gray-300">|</span>
-                <span className="text-gray-500">6E 1104</span>
+                <ImArrowUpRight2 /> {flights[0].carrier.marketing}<span className="text-gray-300">|</span>
+                <span className="text-gray-500">{flights[0].carrier.marketing} 1104</span>
                 <span className="text-gray-300">|</span>
-                <span className="text-gray-950">321</span>
+                <span className="text-gray-950">{flights[0].carrier.marketingFlightNumber}</span>
                 <span className="text-gray-300">|</span>
                 <span className="text-gray-700">
                   Economy - T<span className="text-orange-500">10 Seats Left</span>
@@ -34,10 +41,10 @@ export default function FlightDetails({ setDetails }) {
 
               <div className="flex justify-between mt-5">
                 <div>
-                  <p className="text-lg font-bold">16 : 25</p>
-                  <p className="text-gray-500 font-medium">Sat,22 Mar, 25</p>
+                  <p className="text-lg font-bold">{flights[0].departure.time.slice(0, 5)}</p>
+                  <p className="text-gray-500 font-medium">{departureDate}, 25</p>
                   <p className="text-gray-800 text-[13px] font-medium">
-                    Hazrat Shahjalal International Airport (DAC)
+                    {flights[0].departure.airport}
                   </p>
                 </div>
 
@@ -53,72 +60,78 @@ export default function FlightDetails({ setDetails }) {
                       <GrLocation />
                     </p>
                   </div>
-                  <p className="text-center mt-1">3h 5m</p>
+                  <p className="text-center mt-1">{(flights[0]?.elapsedTime / 60).toFixed(0)} h {flights[0]?.elapsedTime % 60} m</p>
                 </div>
 
                 <div className="text-right">
-                  <p className="text-lg font-bold">19 : 00</p>
+                  <p className="text-lg font-bold">{flights[0].arrival.time.slice(0, 5)}</p>
                   <p className="text-gray-500 font-medium">Sat,22 Mar, 25</p>
                   <p className="text-gray-800 text-[13px] font-medium">
-                    Terminal 3,Indira Gandhi Internation Airpoert (DEL)
+                    {flights[0]?.arrival?.terminal ? 'Terminal ' + flights[0]?.arrival?.terminal + ", " : ''} {flights[0].arrival.airport}
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="flex justify-end my-6 w-full">
-              <div className="flex items-center max-w-screen-lg w-full">
-                <p className="text-orange-500 font-medium border border-gray-400 min-w-max px-1">
-                  Change of planes <span className="text-black">1h 30m Layover in New Delhi</span>
+            {flights[1] && (
+              <>
+                <div className="flex justify-end my-6 w-full">
+                  <div className="flex items-center max-w-screen-lg w-full">
+                    <p className="text-orange-500 font-medium border border-gray-400 min-w-max px-1">
+                      Change of planes <span className="text-black">{((item?.elapsedTime - (flights[0]?.elapsedTime + flights[1]?.elapsedTime)) / 60).toFixed(0)} h {(item.elapsedTime - (flights[0].elapsedTime + flights[1].elapsedTime)) % 60} m Layover in {flights[0].arrival.city}</span>
+                    </p>
+                    <div className="border-t border-gray-400 w-full"></div>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {flights[1] && (
+              <div className="">
+                <p className="flex items-center gap-2 font-semibold  text-gray-800 mt-2">
+                  <ImArrowUpRight2 /> {flights[1].carrier.marketing}<span className="text-gray-300">|</span>
+                  <span className="text-gray-500">6E 63</span>
+                  <span className="text-gray-300">|</span>
+                  <span className="text-gray-950">321</span>
+                  <span className="text-gray-300">|</span>
+                  <span className="text-gray-700">
+                    Economy - T<span className="text-orange-500">10 Seats Left</span>
+                  </span>
                 </p>
-                <div className="border-t border-gray-400 w-full"></div>
-              </div>
-            </div>
-
-            <div className="">
-              <p className="flex items-center gap-2 font-semibold  text-gray-800 mt-2">
-                <ImArrowUpRight2 /> IndiGo<span className="text-gray-300">|</span>
-                <span className="text-gray-500">6E 63</span>
-                <span className="text-gray-300">|</span>
-                <span className="text-gray-950">321</span>
-                <span className="text-gray-300">|</span>
-                <span className="text-gray-700">
-                  Economy - T<span className="text-orange-500">10 Seats Left</span>
-                </span>
-              </p>
-              <div className="flex justify-between mt-6">
-                <div className="space-y-1">
-                  <p className="text-lg font-bold">20 : 30</p>
-                  <p className="text-gray-500 font-medium">Sat,22 Mar, 25</p>
-                  <p className="text-gray-800 text-[13px] font-medium">
-                    Terminal 3,Indira Gandhi International Airport (DEL)
-                  </p>
-                </div>
-
-                <div>
-                  <div className="flex items-center gap-3">
-                    <p className="text-2xl">
-                      <LuPlaneTakeoff />
-                    </p>
-                    <p className="flex gap-3">
-                      ••• <span>•••</span> <span>•••</span>
-                    </p>
-                    <p className="text-2xl">
-                      <GrLocation />
+                <div className="flex justify-between mt-6">
+                  <div className="space-y-1">
+                    <p className="text-lg font-bold">{flights[1].departure.time.slice(0, 5)}</p>
+                    <p className="text-gray-500 font-medium">Sat,22 Mar, 25</p>
+                    <p className="text-gray-800 text-[13px] font-medium">
+                      {flights[1]?.departure?.terminal ? 'Terminal ' + flights[1]?.departure?.terminal + ',' : ''} {flights[1].departure.airport}
                     </p>
                   </div>
-                  <p className="text-center mt-1">6h 25m</p>
-                </div>
 
-                <div className="text-right">
-                  <p className="text-lg font-bold">00 : 25</p>
-                  <p className="text-gray-500 font-medium">Sun,23 Mar, 25</p>
-                  <p className="text-gray-800 text-[13px] font-medium">
-                    Terminal: N.King Abdulaziz International Airport (JED)
-                  </p>
+                  <div>
+                    <div className="flex items-center gap-3">
+                      <p className="text-2xl">
+                        <LuPlaneTakeoff />
+                      </p>
+                      <p className="flex gap-3">
+                        ••• <span>•••</span> <span>•••</span>
+                      </p>
+                      <p className="text-2xl">
+                        <GrLocation />
+                      </p>
+                    </div>
+                    <p className="text-center mt-1">{(flights[1].elapsedTime / 60).toFixed(0)} h {(flights[1].elapsedTime % 60)} m</p>
+                  </div>
+
+                  <div className="text-right">
+                    <p className="text-lg font-bold">{flights[1].arrival.time.slice(0, 5)}</p>
+                    <p className="text-gray-500 font-medium">Sun,23 Mar, 25</p>
+                    <p className="text-gray-800 text-[13px] font-medium">
+                      {flights[1]?.arrival?.terminal ? 'Terminal ' + flights[1]?.arrival?.terminal + ', ' : ''}{flights[1].arrival.airport}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
           {/* flight details end */}
 

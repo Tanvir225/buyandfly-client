@@ -6,13 +6,15 @@ import TicketList from "../../Component/Prices/TicketList";
 import TopbarList from "../../Component/Prices/TopbarList";
 import { useGet_airsMutation } from "../../features/air/airApi";
 import { Loader } from "lucide-react";
-import { formatTimeDifference, getNormalTime } from "../../Component/Prices/Utility/customTime";
+import { calculateTotalTravelDuration, datewithDayString, getNormalTime } from "../../Component/Prices/Utility/customTime";
+import { useSelector } from "react-redux";
 
 
 const Prices = () => {
 
     const [get_airs, { data, isLoading }] = useGet_airsMutation()
     const [airlines, set_airlines] = useState([])
+    const [copy_airlines, set_copy_airlines] = useState([])
 
     const [searchParams, setSearchParams] = useSearchParams()
     const journey_from = searchParams.get('journeyFrom')
@@ -25,8 +27,7 @@ const Prices = () => {
     const adult = searchParams.get('adult')
     const child = searchParams.get('child')
     const infant = searchParams.get('infant')
-
-
+    const [ departureDate, setDepartureDate] = useState()
     const custom_date_format = (date_time) => {
         let date_str = date_time;
         date_str = date_str.replace(' (Bangladesh Standard Time)', '')
@@ -72,7 +73,7 @@ const Prices = () => {
         infant
     ])
 
-
+    const values = useSelector(state => state.filters)
     useEffect(() => {
         if (data?.data?.groupedItineraryResponse?.scheduleDescs && data?.data?.groupedItineraryResponse?.legDescs && data?.data?.groupedItineraryResponse?.itineraryGroups) {
             const sabreResponse = {
@@ -80,13 +81,11 @@ const Prices = () => {
                 "legDescs": data?.data?.groupedItineraryResponse?.legDescs,
                 "itineraries": data?.data?.groupedItineraryResponse?.itineraryGroups[0]?.itineraries
             };
-            console.log(sabreResponse.itineraries)
-            // Convert schedule references to full flight details
+            setDepartureDate(data?.data?.groupedItineraryResponse?.itineraryGroups[0].groupDescription.legDescriptions[0].departureDate)
             const getFlightDetails = (ref) => {
                 return sabreResponse.scheduleDescs.find(schedule => schedule.id === ref);
             };
 
-            // Process leg descriptions to extract full itineraries
             const itineraries = sabreResponse.legDescs.map(leg => {
                 const itinerarie = data?.data?.groupedItineraryResponse?.itineraryGroups[0]?.itineraries?.find((item) => {
                     if(item?.legs[0].ref === leg.id){
@@ -97,69 +96,43 @@ const Prices = () => {
                 return {
                     elapsedTime: leg.elapsedTime,
                     flights,
-                    itinerarie
+                    itinerarie,
                 };
             });
 
             // Sort by shortest total travel time (optional)
             itineraries.sort((a, b) => a.elapsedTime - b.elapsedTime);
 
-            console.log(itineraries);
-            set_airlines([...itineraries])
+            
+
+            set_copy_airlines ([...itineraries])
+            const filteredItineraries = itineraries.filter(item => {
+                const isNonStop = item.flights.length===1;
+                const isOneStop = item.flights.length===2;
+                if(values.isNonStop === isNonStop || values.isOneStop === isOneStop){
+                    return true
+                }
+            })
+            set_airlines([...filteredItineraries])
         }
-    }, [data?.data?.groupedItineraryResponse?.scheduleDescs, data?.data?.groupedItineraryResponse?.legDescs, data?.data?.groupedItineraryResponse?.itineraryGroups])
-
-
+    }, [values, data?.data?.groupedItineraryResponse?.scheduleDescs, data?.data?.groupedItineraryResponse?.legDescs, data?.data?.groupedItineraryResponse?.itineraryGroups])
     // useEffect(() => {
-    //     if (data?.data?.groupedItineraryResponse?.validatingCarrierDescs) {
-    //         const validCarriers = data.data.groupedItineraryResponse.validatingCarrierDescs.map(item => item.default.code);
-    //         const filteredSchedules = data?.data?.groupedItineraryResponse?.scheduleDescs?.filter(
-    //             item => validCarriers.includes(item?.carrier?.marketing) // Ensure correct property access
-    //         ).map(item => {
-    //             const timeDiff = formatTimeDifference(item?.arrival?.time, item?.departure?.time)
-    //             return {
-    //                 id: item.id,
-    //                 stopCount: item.stopCount,
-    //                 marketingFlightNo: item?.carrier?.marketing + " - " + item?.carrier?.marketingFlightNumber,
-    //                 airline: item?.carrier?.marketing,
-    //                 air_ways_name: airlineMap[item?.carrier?.marketing],
-    //                 departureIATA: item?.departure?.airport,
-    //                 departureTime: getNormalTime(item?.departure?.time),
-    //                 arrivalTime: getNormalTime(item?.arrival?.time),
-    //                 timeDiff,
-    //                 arrivalIATA: item?.arrival?.airport,
-    //             }
-    //         }).filter(item => item.departureIATA === journey_from).filter((item => item.arrivalIATA === journey_to))
-    //         const shceduleIds = filteredSchedules.map(item => item.id)
-    //         let leg_ids = ""
-    //         data?.data?.groupedItineraryResponse.legDescs.forEach((item, i) => {
-    //             const scheduleArr = item.schedules;
-    //             scheduleArr.forEach((itm) => {
-    //                 if (shceduleIds.includes(itm.ref)) {
-    //                     leg_ids = leg_ids + " " + item.id
-    //                 }
-    //             })
-    //         })
-    //         let desireItems = []
-    //         data?.data?.groupedItineraryResponse?.itineraryGroups[0]?.itineraries?.forEach((item, i) => {
-    //             const legs = item.legs.map(ele => ele.ref)
-    //             legs.forEach((itm => {
-    //                 if (leg_ids.includes(itm)) {
-    //                     desireItems.push(item)
-    //                 }
-    //             }))
-    //         })
-    //         desireItems = desireItems.map(item => {
-    //             return item.pricingInformation[0].fare.totalFare.totalPrice
-    //         })
-    //         set_airlines(filteredSchedules.map((item, i) => {
-    //             return {
-    //                 ...item,
-    //                 totalPrice: parseFloat(desireItems[i]).toFixed(0)
-    //             }
-    //         }))
-    //     }
-    // }, [data?.data?.groupedItineraryResponse?.validatingCarrierDescs, data?.data?.groupedItineraryResponse?.fareComponentDescs])
+        
+    //     const filteredAirlines = copy_airlines.filter(item => {
+    //         const oneStop = item.flights.length===2?true:false
+    //         console.log(oneStop)
+    //         const nonStop = item.flights.length === 1? true:false
+    //         console.log(nonStop)
+    //         if(values.oneStop === oneStop && values.nonStop === nonStop){
+    //             return true
+    //         }else {
+    //             return false
+    //         }
+    //     })
+    //     console.log(filteredAirlines)
+    //     // set_airlines([...filteredAirlines])
+        
+    // }, [values])
 
 
     console.log(airlines)
@@ -180,8 +153,7 @@ const Prices = () => {
             <section className="max-w-7xl mx-auto py-7 grid grid-cols-12 gap-5   w-full">
                 {/* filter */}
                 <div className="w-full col-span-3 space-y-5">
-                    <CustomaizeFilter></CustomaizeFilter>
-
+                    <CustomaizeFilter airlines = {copy_airlines}></CustomaizeFilter>
                 </div>
 
                 {/* price list */}
@@ -191,21 +163,29 @@ const Prices = () => {
                         <Loader />
                     </>) : (
                         airlines?.length > 0 && airlines.map((item, i) => {
-                            console.log(item)
+                            console.log(departureDate)
                             return (
                                 <>
                                     <TicketList
                                         key={item.id}
+                                        item = {item}
                                         airline={item?.flights[0]?.carrier?.marketing}
                                         air_ways_name={airlineMap[item?.flights[0]?.carrier?.marketing]}
                                         departureIATA={item.flights[0].departure.airport}
-                                        arrivalTime={item.arrivalTime}
-                                        departureTime={item.departureTime}
-                                        arrivalIATA={item.flights[0].arrival.airport}
-                                        timeDiff={item.timeDiff}
+                                        arrivalTime={getNormalTime(item.flights[item.flights.length-1].arrival.time)}
+                                        departureTime={getNormalTime(item.flights[0].departure.time)}
+                                        departureDate={datewithDayString(departureDate)}
+                                        arrivalDate={datewithDayString(departureDate, item.flights.reduce((f,i) => f.arrival?.dateAdjustment?f.arrival.dateAdjustment:0+i.arrival?.dateAdjustment?i.arrival?.dateAdjustment:0), 0)}
+                                        arrivalIATA={item.flights[item.flights.length-1].arrival.airport}
+                                        // timeDiff={formatTimeDifference(item.flights[0].arrival.time, item.flights[item.flights.length-1].departure.time, departureDate, item.flights.reduce((f,i) => f.arrival?.dateAdjustment?f.arrival.dateAdjustment:0+i.arrival?.dateAdjustment?i.arrival?.dateAdjustment:0), 0)}
+                                        timeDiff={calculateTotalTravelDuration(item.flights, departureDate)}
+                                        // departureDateStr = {departureDate}
+                                        // arrivalDateStr = {arrivalDate}
                                         totalPrice={item.itinerarie.pricingInformation[0].fare.totalFare.totalPrice}
+                                        flightType = {item.itinerarie.pricingInformation[0].fare}
                                         stopCount={item?.flights?.length-1}
                                         marketingFlightNo={item.marketingFlightNo}
+                                        flights={item?.flights}
                                     >
                                     </TicketList>
                                 </>

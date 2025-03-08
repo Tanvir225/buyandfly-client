@@ -46,7 +46,6 @@ const FlightQuery = ({ toggleFlight }) => {
 
 
   const { data } = useGet_all_citiesQuery()
-  console.log(data)
 
   useEffect(() => {
     if (data?.data?.length > 0) {

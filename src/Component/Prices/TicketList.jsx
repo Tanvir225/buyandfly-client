@@ -11,7 +11,7 @@ import { useState } from "react";
 import ViewPrices from "./ViewPrices";
 import FlightDetails from "./FlightDetails";
 
-const TicketList = ({air_ways_name, departureIATA, arrivalTime, arrivalIATA, timeDiff, departureTime, totalPrice, stopCount, marketingFlightNo, airline}) => {
+const TicketList = ({item, flights, air_ways_name, departureIATA, arrivalTime, arrivalIATA, timeDiff, departureTime, totalPrice, stopCount, marketingFlightNo, airline, departureDate, arrivalDate}) => {
     const [details, setDetails] = useState(false);
     const [price, setPrice] = useState(false);
 
@@ -44,12 +44,12 @@ const TicketList = ({air_ways_name, departureIATA, arrivalTime, arrivalIATA, tim
                     <div>
                         <h2 className="text-gray-500 font-medium">{departureIATA}</h2>
                         <h3 className="font-semibold">{departureTime}</h3>
-                        <h3 className="text-gray-500 font-medium">07 Feb, Fri</h3>
+                        <h3 className="text-gray-500 font-medium">{departureDate}</h3>
                     </div>
 
                     {/* icon face */}
                     <div>
-                        <p className="text-gray-500 text-center">{timeDiff}</p>
+                        <p className="text-gray-500 text-center">{(item.elapsedTime/60).toFixed(0)} h {(item.elapsedTime%60)} m</p>
                         <section className="flex items-center gap-2 text-gray-600">
                             <PiAirplaneTakeoffLight size={28}></PiAirplaneTakeoffLight>
                             <HiOutlineDotsHorizontal size={26}></HiOutlineDotsHorizontal>
@@ -64,7 +64,7 @@ const TicketList = ({air_ways_name, departureIATA, arrivalTime, arrivalIATA, tim
                     <div>
                         <h2 className="text-gray-500 font-medium">{arrivalIATA}</h2>
                         <h3 className="font-semibold">{arrivalTime}</h3>
-                        <h3 className="text-gray-500 font-medium">07 Feb, Fri</h3>
+                        <h3 className="text-gray-500 font-medium">{arrivalDate}</h3>
                     </div>
 
                     {/* fare */}
@@ -98,7 +98,7 @@ const TicketList = ({air_ways_name, departureIATA, arrivalTime, arrivalIATA, tim
             {/* details */}
             {
                 details && <div className="w-full bg-base-100  p-5">
-                    <FlightDetails setDetails={setDetails}></FlightDetails>
+                    <FlightDetails departureDate = {departureDate} item = {item} setDetails={setDetails} flights = {flights}></FlightDetails>
                 </div>
             }
             {/* prices */}
