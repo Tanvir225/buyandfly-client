@@ -50,7 +50,7 @@ const TicketList = ({item, flights, air_ways_name, departureIATA, arrivalTime, a
 
                     {/* icon face */}
                     <div>
-                        <p className="text-gray-500 text-center">{(item.elapsedTime/60).toFixed(0)} h {(item.elapsedTime%60)} m</p>
+                        <p className="text-gray-500 text-center">{Math.floor(item.elapsedTime/60)} h {(item.elapsedTime%60)} m</p>
                         <section className="flex items-center gap-2 text-gray-600">
                             <PiAirplaneTakeoffLight size={28}></PiAirplaneTakeoffLight>
                             <HiOutlineDotsHorizontal size={26}></HiOutlineDotsHorizontal>
@@ -86,7 +86,7 @@ const TicketList = ({item, flights, air_ways_name, departureIATA, arrivalTime, a
                     <section className="flex items-center gap-5">
                         <div className="pointer group relative mx-auto flex w-max justify-center">
                             {/* Hover button */}
-                            <button className=" text-[#0FA134] font-medium">Refundable</button>
+                            <button className=" text-[#0FA134] font-medium">{item.itinerarie.pricingInformation[0].fare.passengerInfoList[0].passengerInfo.nonRefundable?'Nonrefundable':'Refundable'}</button>
                             {/* Hover Text */}
                             <div className="absolute -bottom-10 cursor-pointer whitespace-nowrap opacity-0 duration-500 hover:hidden group-hover:-bottom-20 group-hover:opacity-100  ">
                                 <p className="rounded-md bg-base-100 text-center px-3 py-3 text-black shadow-[0px_0px_10px_0px_#0EA5E9]">Plane Chage <br /> Mumbai (BOM) | 4h 10m Layover</p>

@@ -11,7 +11,7 @@ const Travellers = ({ height, toggle }) => {
     //STATE
     const [isTravellers, setIsTravellers] = useState(false);
 
-    const [adult, setAdult] = useState(0)
+    const [adult, setAdult] = useState(1)
     const [child, setChild] = useState(0)
     const [infant, setInfant] = useState(0)
 
@@ -58,7 +58,9 @@ const Travellers = ({ height, toggle }) => {
                     className={`flex justify-between items-center border-2 w-full focus:outline-none ${height ? 'h-10' : 'h-11'} p-3  rounded-lg`}
                 >
                     <h1 className=" text-gray-600 capitalize" role="button">
-                        {(adult || child || infant) ? `${adult} adult ${child} child ${infant} infant` : "Travellers"}
+                        {/* {(adult || child || infant) ? `${adult} adult ${child} child ${infant} infant` : "Travellers"} */}
+                        {/* {adult>0&&`${adult} adult`} {child>0&&`${child} child`} {infant>0&&`${infant} infant`} */}
+                        {adult===0 && child===0 && infant === 0?"Travellers":`${adult>0?adult+ ' adult':''} ${child>0?child+ 'child':''} ${infant>0?infant+ ' infant':''}`}
                     </h1>
                     <svg
                         className={`${isTravellers ? "-rotate-180" : "rotate-0"

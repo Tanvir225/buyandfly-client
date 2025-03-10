@@ -116,6 +116,7 @@ const Prices = () => {
             set_airlines([...filteredItineraries])
         }
     }, [values, data?.data?.groupedItineraryResponse?.scheduleDescs, data?.data?.groupedItineraryResponse?.legDescs, data?.data?.groupedItineraryResponse?.itineraryGroups])
+    console.log('airlines', airlines)
     // useEffect(() => {
         
     //     const filteredAirlines = copy_airlines.filter(item => {

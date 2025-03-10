@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import DatePicker from "react-datepicker";
 import { motion } from "motion/react";
 
@@ -15,6 +15,8 @@ import { useGet_all_citiesQuery } from "../../features/city/city_api";
 
 const FlightQuery = ({ toggleFlight }) => {
   const navigate = useNavigate()
+  const form_country_ref = useRef(null)
+  const to_country_ref = useRef(null)
 
   const { adult_travellers_number, child_travellers_number, infant_travellers_number } = useSelector(state => state.travellers)
 
@@ -124,8 +126,12 @@ const FlightQuery = ({ toggleFlight }) => {
           country: item.country_name,
           airport: item.name
         }
-      })].filter((c) =>
-        c?.city?.toLowerCase()?.includes(value)
+      })].filter((c) => {
+        if (c?.city?.toLowerCase()?.includes(value) || c?.code?.toLowerCase()?.includes(value) || c?.country?.toLowerCase()?.includes(value) || c?.airport?.toLowerCase()?.includes(value)) {
+          return true
+        }
+      }
+
       );
       setAllFromCountries(filteredCountries);
     }
@@ -153,8 +159,11 @@ const FlightQuery = ({ toggleFlight }) => {
           country: item.country_name,
           airport: item.name
         }
-      })].filter((c) =>
-        c?.city?.toLowerCase()?.includes(value)
+      })].filter((c) => {
+        if (c?.city?.toLowerCase()?.includes(value) || c?.code?.toLowerCase()?.includes(value) || c?.country?.toLowerCase()?.includes(value) || c?.airport?.toLowerCase()?.includes(value)) {
+          return true
+        }
+      }
       );
       setAllToCountries(filteredCountries);
     }
@@ -207,7 +216,23 @@ const FlightQuery = ({ toggleFlight }) => {
   const handleFareType = (e) => {
     setFareType(e.target.value)
   }
-  console.log(allFromCountries)
+
+  const handleClickOutside = (event) => {
+    if (form_country_ref.current && !form_country_ref.current.contains(event.target)) {
+      setSearchToggleFrom(false);
+    }
+    if (to_country_ref.current && !to_country_ref.current.contains(event.target)) {
+      setSearchToggleTo(false);
+    }
+  };
+
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="p-5 bg-white rounded-b-lg rounded-tl-none">
@@ -272,8 +297,7 @@ const FlightQuery = ({ toggleFlight }) => {
                   {airClass}
                 </h1>
                 <svg
-                  className={`${isAirClass ? "-rotate-180" : "rotate-0"
-                    } duration-300`}
+                  className={`${isAirClass ? "-rotate-180" : "rotate-0"} duration-300`}
                   width={25}
                   viewBox="0 0 24 24"
                   fill="none"
@@ -351,6 +375,7 @@ const FlightQuery = ({ toggleFlight }) => {
             </div>
 
             <div
+              ref={form_country_ref}
               className={`text-black space-y-3 ${searchToggleFrom ? "absolute" : "hidden"
                 } h-52 overflow-y-auto bg-base-100 shadow-xl w-full lg:w-80  z-20 p-3 px-2 rounded-md`}
             >
@@ -392,6 +417,7 @@ const FlightQuery = ({ toggleFlight }) => {
               </div>
             </div>
             <div
+              ref={to_country_ref}
               className={` text-black ${searchToggleTo ? "absolute" : "hidden"
                 }  h-52 space-y-3 overflow-y-auto bg-base-100 shadow-xl  z-20  p-3 px-2 w-full lg:w-80 rounded-md`}
             >
