@@ -80,7 +80,7 @@ const AddonService = () => {
                 {/* data show start */}
                 <div>
                     {selectedAddOnServicesSide === "baggageProtection" && (
-                        <div className="">
+                        <div className="w-full lg:w-[600px]">
                             <div className="flex items-center justify-between p-3 border-b border-gray-300">
                                 <div className="flex items-center gap-3">
                                     <p className="text-gray-800 font-bold ">Baggage Protection</p>
@@ -326,7 +326,7 @@ const AddonService = () => {
                     )}
 
                     {selectedAddOnServicesSide === "travelShield" && (
-                        <div className="">
+                        <div className="w-full lg:w-[600px]">
                             <div className="flex items-center justify-between p-3 border-b border-gray-300">
                                 <div className="flex items-center gap-3">
                                     <p className="text-gray-800 font-bold ">Travel Shield</p>
