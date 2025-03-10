@@ -20,7 +20,7 @@ const Navbar = () => {
       {/* topbar */}
 
       <div className="bg-secondary text-white py-3">
-        <div className="flex justify-center items-center lg:justify-between max-w-7xl mx-auto px-2">
+        <div className="flex justify-center items-center lg:justify-between md:max-w-5xl lg:max-w-6xl xl:max-w-7xl mx-auto px-2">
           {/* text */}
           <div className="hidden text-[15px]  lg:block w-full lg:w-[42%]">
             <Swiper
@@ -61,7 +61,7 @@ const Navbar = () => {
 
       {/* navbar */}
       <div className="bg-base-100 shadow-md py-1">
-        <div className="max-w-7xl mx-auto px-2 flex items-center justify-between">
+        <div className="md:max-w-5xl lg:max-w-6xl xl:max-w-7xl mx-auto px-2 flex items-center justify-between">
           {/* logo */}
           <Link to={"/"} className="w-32">
             <img src={logo} alt="logo" />

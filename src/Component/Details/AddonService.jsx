@@ -35,7 +35,7 @@ const AddonService = () => {
     // add-on services sidebar
 
     return (
-        <div className="flex gap-5 max-w-7xl mx-auto">
+        <div className="flex gap-5 md:max-w-5xl lg:max-w-6xl xl:max-w-7xl mx-auto">
             <div className="flex gap-5">
                 {/* sidebar start */}
                 <div>

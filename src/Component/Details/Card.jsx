@@ -34,7 +34,7 @@ export default function Card() {
 
 
   return (
-    <div className="mt-32 mb-5 flex flex-col justify-center items-center gap-2 max-w-7xl mx-auto border p-5 rounded-lg ring-1">
+    <div className="mt-32 mb-5 flex flex-col justify-center items-center gap-2 md:max-w-5xl lg:max-w-6xl xl:max-w-7xl mx-auto border p-5 rounded-lg ring-1">
       {/* top bar start*/}
       <div className="flex items-center gap-5 bg-white py-1 px-3 rounded-lg">
         {/* time part start */}
