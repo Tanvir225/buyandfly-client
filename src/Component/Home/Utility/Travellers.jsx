@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import { useDispatch } from "react-redux";
 import { set_travellers_number } from "../../../features/travellers/travellers_slice";
 
 
 const Travellers = ({ height, toggle }) => {
+    const travellers_ref = useRef()
     // initialize react-redux dispatch function
     const dispatch = useDispatch()
 
@@ -44,6 +45,19 @@ const Travellers = ({ height, toggle }) => {
         }
     }
 
+    const handleClickOutside = (event) => {
+        if (travellers_ref.current && !travellers_ref.current.contains(event.target)) {
+            setIsTravellers(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
     return (
         <div>
             {/* <label htmlFor="" className="">
@@ -51,7 +65,7 @@ const Travellers = ({ height, toggle }) => {
             </label> */}
 
             {/* economy */}
-            <div className="relative ">
+            <div className="relative">
                 {/* dropdown - btn */}
                 <div
                     onClick={() => setIsTravellers(!isTravellers)}
@@ -60,7 +74,7 @@ const Travellers = ({ height, toggle }) => {
                     <h1 className=" text-gray-600 capitalize" role="button">
                         {/* {(adult || child || infant) ? `${adult} adult ${child} child ${infant} infant` : "Travellers"} */}
                         {/* {adult>0&&`${adult} adult`} {child>0&&`${child} child`} {infant>0&&`${infant} infant`} */}
-                        {adult===0 && child===0 && infant === 0?"Travellers":`${adult>0?adult+ ' adult':''} ${child>0?child+ 'child':''} ${infant>0?infant+ ' infant':''}`}
+                        {adult === 0 && child === 0 && infant === 0 ? "Travellers" : `${adult > 0 ? adult + ' adult' : ''} ${child > 0 ? child + 'child' : ''} ${infant > 0 ? infant + ' infant' : ''}`}
                     </h1>
                     <svg
                         className={`${isTravellers ? "-rotate-180" : "rotate-0"
@@ -89,6 +103,7 @@ const Travellers = ({ height, toggle }) => {
                 </div>
                 {/* dropdown - options  */}
                 <div
+                    ref = {travellers_ref}
                     className={` ${isTravellers
                         ? "visible  top-4 opacity-100"
                         : "invisible -top-4 opacity-0"

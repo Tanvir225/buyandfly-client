@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 import { useGet_all_citiesQuery } from "../../features/city/city_api";
 
 const FlightQuery = ({ toggleFlight }) => {
+  const air_class_ref = useRef()
   const navigate = useNavigate()
   const form_country_ref = useRef(null)
   const to_country_ref = useRef(null)
@@ -224,6 +225,9 @@ const FlightQuery = ({ toggleFlight }) => {
     if (to_country_ref.current && !to_country_ref.current.contains(event.target)) {
       setSearchToggleTo(false);
     }
+    if (air_class_ref.current && !air_class_ref.current.contains(event.target)) {
+      setIsAirClass(false);
+    }
   };
 
 
@@ -322,6 +326,7 @@ const FlightQuery = ({ toggleFlight }) => {
               </div>
               {/* dropdown - options  */}
               <div
+                ref={air_class_ref}
                 className={`${isAirClass
                   ? "visible top-0 opacity-100"
                   : "invisible -top-4 opacity-0"
