@@ -116,7 +116,6 @@ const Prices = () => {
             set_airlines([...filteredItineraries])
         }
     }, [values, data?.data?.groupedItineraryResponse?.scheduleDescs, data?.data?.groupedItineraryResponse?.legDescs, data?.data?.groupedItineraryResponse?.itineraryGroups])
-    console.log('airlines', airlines)
     // useEffect(() => {
         
     //     const filteredAirlines = copy_airlines.filter(item => {
@@ -136,7 +135,6 @@ const Prices = () => {
     // }, [values])
 
 
-    console.log(airlines)
 
     return (
         <div className="mt-24 bg-[#f5f5f5] ">
@@ -168,6 +166,7 @@ const Prices = () => {
                             return (
                                 <>
                                     <TicketList
+                                        data = {data}
                                         key={item.id}
                                         item = {item}
                                         airline={item?.flights[0]?.carrier?.marketing}

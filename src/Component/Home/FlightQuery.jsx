@@ -24,8 +24,19 @@ const FlightQuery = ({ toggleFlight }) => {
   const [allFromCountries, setAllFromCountries] = useState(flights);
   const [allToCountries, setAllToCountries] = useState(flights);
   const [country, setCountry] = useState(flights);
-  const [journeyFrom, setJourneyFrom] = useState([]);
-  const [journeyTo, setJourneyTo] = useState([]);
+  const [journeyFrom, setJourneyFrom] = useState([{
+    airport: "Hazrat Shahjalal International Airport",
+    city: "Dhaka",
+    code: "DAC",
+    countryName: "Bangladesh"
+  }]);
+  const [journeyTo, setJourneyTo] = useState([{
+    airport: "Cox's Bazar Airport",
+    city: "Cox's Bazar",
+    code: "CXB",
+    countryName: "Bangladesh"
+  }]);
+  console.log(journeyFrom, journeyTo)
   const [departureDate, setDepartureDate] = useState(new Date());
   const [toggle, setToggle] = useState(false);
   const [tripType, setTripType] = useState("oneway");

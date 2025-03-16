@@ -12,10 +12,11 @@ import ViewPrices from "./ViewPrices";
 import FlightDetails from "./FlightDetails";
 import { AiFillCaretUp } from "react-icons/ai";
 
-const TicketList = ({item, flights, air_ways_name, departureIATA, arrivalTime, arrivalIATA, timeDiff, departureTime, totalPrice, stopCount, marketingFlightNo, airline, departureDate, arrivalDate}) => {
+const TicketList = ({ data, item, flights, air_ways_name, departureIATA, arrivalTime, arrivalIATA, timeDiff, departureTime, totalPrice, stopCount, marketingFlightNo, airline, departureDate, arrivalDate}) => {
     const [details, setDetails] = useState(false);
     const [price, setPrice] = useState(false);
-
+    const baggageAllowanceDescs = data?.data?.groupedItineraryResponse?.baggageAllowanceDescs
+    console.log('bag',baggageAllowanceDescs)
     return (
         <section>
             <section className="bg-base-100 shadow-md rounded-md p-3 flex flex-col  items-center text-sm">
@@ -115,7 +116,7 @@ const TicketList = ({item, flights, air_ways_name, departureIATA, arrivalTime, a
             {/* details */}
             {
                 details && <div className="w-full bg-base-100  p-5">
-                    <FlightDetails departureDate = {departureDate} item = {item} setDetails={setDetails} flights = {flights}></FlightDetails>
+                    <FlightDetails departureDate = {departureDate} baggageAllowanceDescs = {baggageAllowanceDescs} item = {item} setDetails={setDetails} flights = {flights}></FlightDetails>
                 </div>
             }
             {/* prices */}

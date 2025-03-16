@@ -3,7 +3,8 @@ import { ImArrowUpRight2 } from "react-icons/im";
 import { IoAirplane } from "react-icons/io5";
 import { LuPlaneTakeoff } from "react-icons/lu";
 
-export default function FlightDetails({ item, setDetails, flights, departureDate }) {
+export default function FlightDetails({ baggageAllowanceDescs, item, setDetails, flights, departureDate }) {
+  console.log('rahat', baggageAllowanceDescs)
   return (
     <div>
 
@@ -28,7 +29,7 @@ export default function FlightDetails({ item, setDetails, flights, departureDate
                 <span className="text-gray-950">{flights[0].carrier.marketingFlightNumber}</span>
                 <span className="text-gray-300">|</span>
                 <span className="text-gray-700">
-                  Economy - T<span className="text-orange-500">10 Seats Left</span>
+                  Economy - T<span className="text-orange-500">{item.itinerarie.pricingInformation[0]?.fare?.passengerInfoList[0]?.passengerInfo?.fareComponents[0]?.segments[0].segment?.seatsAvailable} Seats Left</span>
                 </span>
               </p>
 
@@ -226,7 +227,7 @@ export default function FlightDetails({ item, setDetails, flights, departureDate
                       <td className="py-3 px-5 font-medium text-gray-600">{ele.passengerInfo.passengerTotalFare.commissionAmount}</td>
                       {/* <td className="py-3 px-5 font-medium text-gray-600">156</td> */}
                       <td className="py-3 px-5 font-medium text-gray-600">{ele.passengerInfo.passengerNumber}</td>
-                      <td className="py-3 px-5 font-medium text-gray-600">BDT {ele.passengerInfo.passengerTotalFare.totalFare*ele.passengerInfo.passengerNumber}</td>
+                      <td className="py-3 px-5 font-medium text-gray-600">BDT {ele.passengerInfo.passengerTotalFare.totalFare * ele.passengerInfo.passengerNumber}</td>
                     </tr>
                   )
                 })}
@@ -234,10 +235,10 @@ export default function FlightDetails({ item, setDetails, flights, departureDate
             </table>
 
             <div className="ml-auto my-2">
-              <div className="font-medium flex lg:gap-20 md:gap-10 gap-5 ">
+              {/* <div className="font-medium flex lg:gap-20 md:gap-10 gap-5 ">
                 <p>Total Agent Payable</p>
                 <p>BDT {item.itinerarie.pricingInformation[0].fare.totalFare.totalPrice}</p>
-              </div>
+              </div> */}
 
               <div className="font-medium flex lg:gap-14 md:gap-10 gap-5  mt-2">
                 <p>Total Customer Payable</p>
@@ -268,13 +269,26 @@ export default function FlightDetails({ item, setDetails, flights, departureDate
               </thead>
 
               <tbody>
-                <tr>
-                  <td className="flex items-center justify-center font-semibold gap-2 py-3 px-5  text-gray-600">
-                    DAC <IoAirplane /> JED
-                  </td>
-                  <td className="text-gray-600 py-3 px-5 font-medium">ADT : 30kg</td>
-                  <td className="text-gray-600 py-3 px-5 font-medium">ADT : 7kg</td>
-                </tr>
+                {item?.itinerarie?.pricingInformation?.[0]?.fare?.passengerInfoList?.map((itm, index) => {
+                  const baggageInfo = itm?.passengerInfo?.baggageInformation;
+                  const baggageRef = baggageInfo?.[0]?.allowance?.ref;
+
+                  const baggageDesc = baggageAllowanceDescs?.find(ele => ele.id === baggageRef);
+
+                  return (
+                    <tr key={index}>
+                      <td className="flex items-center justify-center font-semibold gap-2 py-3 px-5 text-gray-600">
+                        {flights?.[0]?.departure?.city} <IoAirplane /> {flights?.[flights.length - 1]?.arrival?.city}
+                      </td>
+
+                      <td className="text-gray-600 py-3 px-5 font-medium">
+                        {itm?.passengerInfo?.passengerType} : {baggageDesc?.weight || baggageDesc?.pieceCount} {baggageDesc?.unit?baggageDesc.unit:''}
+                      </td>
+
+                      <td className="text-gray-600 py-3 px-5 font-medium">ADT : 7kg</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -302,7 +316,7 @@ export default function FlightDetails({ item, setDetails, flights, departureDate
                 <tr className="bg-gray-300">
                   <th className="flex items-center gap-2 p-2">
                     DAC <IoAirplane /> JED{" "}
-                    <span className="text-sm font-normal text-gray-600">(via stop 1 - DEL)</span>
+                    <span className="text-sm font-normal text-gray-600">(via stop {flights.length-1} - DEL)</span>
                   </th>
                   <th></th>
                 </tr>
@@ -364,7 +378,7 @@ export default function FlightDetails({ item, setDetails, flights, departureDate
 
 
 
-    </div>
+    </div >
   );
 }
 
