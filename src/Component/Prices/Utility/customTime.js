@@ -114,4 +114,21 @@ const flights = [
 
 const departureDate = "2025-03-25";
 
-console.log(calculateTotalTravelDuration(flights, departureDate));
+export const calculateTimeDifference = (arrival, departure) => {
+    const [arrivalHours, arrivalMinutes] = arrival.split(":").map(Number);
+    const [departureHours, departureMinutes] = departure.split(":").map(Number);
+  
+    let arrivalTotalMinutes = arrivalHours * 60 + arrivalMinutes;
+    let departureTotalMinutes = departureHours * 60 + departureMinutes;
+  
+    // Handle cases where departure time is on the next day
+    if (departureTotalMinutes < arrivalTotalMinutes) {
+        departureTotalMinutes += 24 * 60; // Add 24 hours in minutes
+    }
+  
+    let diffMinutes = departureTotalMinutes - arrivalTotalMinutes;
+    let hours = Math.floor(diffMinutes / 60);
+    let minutes = diffMinutes % 60;
+  
+    return `${hours} h and ${minutes} m`;
+  }

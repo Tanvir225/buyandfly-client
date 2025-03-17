@@ -2,6 +2,7 @@ import { GrLocation } from "react-icons/gr";
 import { ImArrowUpRight2 } from "react-icons/im";
 import { IoAirplane } from "react-icons/io5";
 import { LuPlaneTakeoff } from "react-icons/lu";
+import { calculateTimeDifference } from "./Utility/customTime";
 
 export default function FlightDetails({ baggageAllowanceDescs, item, setDetails, flights, departureDate }) {
   console.log('rahat', baggageAllowanceDescs)
@@ -72,7 +73,7 @@ export default function FlightDetails({ baggageAllowanceDescs, item, setDetails,
                 <div className="flex justify-end my-6 w-full">
                   <div className="flex items-center max-w-screen-lg w-full">
                     <p className="text-orange-500 font-medium border border-gray-400 min-w-max px-1">
-                      Change of planes <span className="text-black">{Math.floor(((item?.elapsedTime - (flights[0]?.elapsedTime + flights[1]?.elapsedTime)) / 60))} h {(item.elapsedTime - (flights[0].elapsedTime + flights[1].elapsedTime)) % 60} m Layover in {flights[0].arrival.city}</span>
+                      Change of planes <span className="text-black">{calculateTimeDifference(flights[0].arrival.time.split('+')[0], flights[1].departure.time.split('+')[0])}</span>
                     </p>
                     <div className="border-t border-gray-400 w-full"></div>
                   </div>
@@ -131,7 +132,7 @@ export default function FlightDetails({ baggageAllowanceDescs, item, setDetails,
                 <div className="flex justify-end my-6 w-full">
                   <div className="flex items-center max-w-screen-lg w-full">
                     <p className="text-orange-500 font-medium border border-gray-400 min-w-max px-1">
-                      Change of planes <span className="text-black">{Math.floor(((item?.elapsedTime - (flights[1]?.elapsedTime + flights[2]?.elapsedTime)) / 60))} h {(item.elapsedTime - (flights[1].elapsedTime + flights[2].elapsedTime)) % 60} m Layover in {flights[1].arrival.city}</span>
+                      Change of planes <span className="text-black">{calculateTimeDifference(flights[1].arrival.time.split('+')[0], flights[2].departure.time.split('+')[0])}</span>
                     </p>
                     <div className="border-t border-gray-400 w-full"></div>
                   </div>
