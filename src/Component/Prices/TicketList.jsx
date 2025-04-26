@@ -71,7 +71,7 @@ const TicketList = ({ data, item, flights, air_ways_name, departureIATA, arrival
 
                     {/* fare */}
                     <div>
-                        <h2 className="font-semibold">BDT {totalPrice}</h2>
+                        <h2 className="font-semibold">BDT {Math.ceil(totalPrice)}</h2>
                         <p className="text-[12px] font-medium line-through">BDT 123,463</p>
                         <p className="text-gray-500">Economy</p>
                     </div>
